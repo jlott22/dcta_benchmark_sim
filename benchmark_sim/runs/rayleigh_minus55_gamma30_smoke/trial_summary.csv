@@ -1,0 +1,2 @@
+trial_id,algorithm,comm_model,comm_level,scenario_file,target_x,target_y,clue_locations,first_clue_robot,first_clue_x,first_clue_y,robot_start_locations,robot_end_locations,clues_detected_by_robot,target_found_by_robot
+0,ACBBA,rayleigh_style,sens_-55,trials_d1_c4_g19.csv,7,3,"(11,5);(1,10);(7,5);(9,7)",02,1,10,"00:(0,0);01:(0,5);02:(0,10);03:(0,15)","00:(7,3);01:(9,13);02:(8,6);03:(10,14)",00:1;01:0;02:1;03:0,00

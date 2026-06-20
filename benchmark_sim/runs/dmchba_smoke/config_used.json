@@ -1,0 +1,73 @@
+{
+  "sim_config": {
+    "grid_size": 19,
+    "robot_ids": [
+      "00",
+      "01",
+      "02",
+      "03"
+    ],
+    "start_positions": {
+      "00": [
+        0,
+        0
+      ],
+      "01": [
+        0,
+        5
+      ],
+      "02": [
+        0,
+        10
+      ],
+      "03": [
+        0,
+        15
+      ]
+    },
+    "start_headings": {
+      "00": [
+        1,
+        0
+      ],
+      "01": [
+        1,
+        0
+      ],
+      "02": [
+        1,
+        0
+      ],
+      "03": [
+        1,
+        0
+      ]
+    },
+    "target_decay_exp": 1.0,
+    "reward_factor": 5.0,
+    "move_cost": 1.0,
+    "turn_cost": 0.3,
+    "visited_step_penalty": 4.0,
+    "min_step_cost": 0.01,
+    "async_step_mean_s": 1.6,
+    "async_step_jitter_s": 0.1,
+    "async_min_delay_s": 1.5,
+    "async_max_delay_s": 1.7,
+    "async_initial_spread_s": 1.0,
+    "async_tick_span_s": 0.25,
+    "turn_quarter_s": 0.3,
+    "yield_delay_s": 0.3,
+    "no_goal_delay_s": 0.5,
+    "comm_delay_s": 0.04,
+    "comm_delay_jitter_s": 0.01,
+    "collision_intent_settle_s": 0.05,
+    "debug_max_events": 800000,
+    "write_parquet": false
+  },
+  "algorithm": "benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator",
+  "algorithm_name": "DMCHBA",
+  "comm_model": "ideal",
+  "comm_level": "1.0",
+  "scenario_file": "C:\\Users\\lottj\\AppData\\Local\\Temp\\dmchba_smoke_scenario.json",
+  "seed": 0
+}

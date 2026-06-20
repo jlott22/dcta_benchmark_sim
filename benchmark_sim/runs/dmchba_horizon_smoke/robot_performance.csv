@@ -1,0 +1,5 @@
+trial_id,algorithm,comm_model,comm_level,robot_id,steps_total,steps_after_first_clue,unique_cells_contributed,system_revisits_by_robot,task_cell_replans,path_replans,collision_prevention_events,messages_sent,protected_messages_sent,unprotected_messages_sent,core_messages_sent,allocation_messages_sent,post_clue_messages_sent,messages_sent_by_topic,messages_delivered_to_robot,messages_dropped_to_robot
+0,DMCHBA,ideal,1.0,00,32,32,28,5,0,0,0,65,32,33,65,0,64,clue:1;collision_intent:32;state:32,191,0
+0,DMCHBA,ideal,1.0,01,31,31,25,7,0,0,0,64,32,32,64,0,63,clue:1;collision_intent:31;state:31;target:1,193,0
+0,DMCHBA,ideal,1.0,02,31,30,32,0,0,0,0,63,31,32,63,0,61,clue:1;collision_intent:31;state:31,193,0
+0,DMCHBA,ideal,1.0,03,32,31,28,5,0,0,0,65,32,33,65,0,63,clue:1;collision_intent:32;state:32,191,0

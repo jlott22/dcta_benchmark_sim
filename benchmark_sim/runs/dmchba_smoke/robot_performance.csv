@@ -1,0 +1,5 @@
+trial_id,algorithm,comm_model,comm_level,robot_id,steps_total,steps_after_first_clue,unique_cells_contributed,system_revisits_by_robot,individual_revisits,goals_selected,goal_replans,path_replans,yields,collision_prevention_events,messages_sent,messages_delivered_to_robot,messages_dropped_to_robot
+0,DMCHBA,ideal,1.0,00,7,6,8,1,0,6,5,0,0,0,53,171,0
+0,DMCHBA,ideal,1.0,01,7,6,8,0,0,7,6,1,1,1,61,166,0
+0,DMCHBA,ideal,1.0,02,7,6,8,0,0,7,6,0,0,0,53,171,0
+0,DMCHBA,ideal,1.0,03,8,7,9,0,0,8,7,0,0,0,60,165,0

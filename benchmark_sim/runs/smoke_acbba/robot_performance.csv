@@ -1,0 +1,5 @@
+trial_id,algorithm,comm_model,comm_level,robot_id,steps_total,steps_after_first_clue,unique_cells_contributed,system_revisits_by_robot,individual_revisits,goals_selected,goal_replans,path_replans,yields,collision_prevention_events,messages_sent,messages_delivered_to_robot,messages_dropped_to_robot
+0,ACBBA,ideal,1.0,00,42,42,42,2,1,41,40,0,0,0,443,1255,0
+0,ACBBA,ideal,1.0,01,43,43,44,0,0,43,42,0,0,0,447,1254,0
+0,ACBBA,ideal,1.0,02,43,42,42,2,2,41,40,0,0,0,440,1259,0
+0,ACBBA,ideal,1.0,03,43,42,35,22,9,24,23,0,0,0,371,1328,0
