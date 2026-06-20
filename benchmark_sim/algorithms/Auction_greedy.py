@@ -182,6 +182,9 @@ class AuctionGreedyAllocator(AllocatorBase):
             if self._is_searched(robot, cell):
                 return
 
+            if self._is_obstacle(robot, cell):
+                return
+
             reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
 
             # Fallback: highest reward cell, preserving the current task cell on ties.
@@ -231,7 +234,7 @@ class AuctionGreedyAllocator(AllocatorBase):
             (x, y)
             for y in range(grid_size)
             for x in range(grid_size)
-            if not self._is_searched(robot, (x, y))
+            if not self._is_searched(robot, (x, y)) and not self._is_obstacle(robot, (x, y))
         ]
 
         if unknowns:
@@ -373,6 +376,16 @@ class AuctionGreedyAllocator(AllocatorBase):
             searched = getattr(robot, "local_searched", set())
 
         return cell in searched
+
+    def _is_obstacle(self, robot: Any, cell: Cell) -> bool:
+        """Return True if this robot locally knows the cell is blocked."""
+
+        for attr in ("known_obstacles", "obstacles", "blocked", "blocked_cells"):
+            cells = getattr(robot, attr, None)
+            if cells is not None and cell in cells:
+                return True
+
+        return False
 
     def _peer_positions(self, robot: Any) -> dict:
         """
