@@ -165,6 +165,10 @@ class RobotShell:
 
     def _set_collision_intent(self, intent: Optional[Cell]) -> None:
         if intent is None:
+            if self._communicated_collision_intent is None:
+                return
+            self._communicated_collision_intent = None
+            self.publish_collision_intent(None)
             return
         normalized = (int(intent[0]), int(intent[1]))
         if self._communicated_collision_intent == normalized:
@@ -208,6 +212,7 @@ class RobotShell:
                 self._collision_peer_intents[sender] = intent
             elif loc is not None and in_bounds(loc, self.grid_size):
                 self._collision_peer_positions[sender] = loc
+                self._collision_peer_intents.pop(sender, None)
             return
         if category in {"cbaa_entry", "acbba_entry", "pi_entry", "pi_clear_path", "hipc_entry"}:
             self._deliver_allocator_payload(payload)
@@ -253,6 +258,7 @@ class RobotShell:
             self._publish_allocator_messages()
 
         if self.current_goal is None:
+            self._set_collision_intent(None)
             self.last_event = "no_goal"
             return StepResult(reason="no_goal", time_cost_s=self.cfg.no_goal_delay_s)
 
@@ -281,6 +287,7 @@ class RobotShell:
                     if backoff is not None:
                         return backoff
                 self.current_goal = None
+                self._set_collision_intent(None)
                 self.last_event = "path_failed"
                 return StepResult(reason="path_failed", time_cost_s=self.cfg.replan_delay_s)
 
@@ -299,6 +306,7 @@ class RobotShell:
             blocked.add(next_cell)
 
         self.current_goal = None
+        self._set_collision_intent(None)
         self.last_event = "path_failed"
         return StepResult(reason="path_failed", time_cost_s=self.cfg.replan_delay_s)
 
@@ -452,7 +460,7 @@ class RobotShell:
 
     def _maybe_temporarily_invalidate_blocked_goal(self, blocked_cell: Cell) -> Optional[StepResult]:
         goal = self.current_goal
-        if goal is None or not self._post_clue_started():
+        if goal is None or not self._allocation_active():
             return None
 
         self._blocked_goal_failures[goal] = self._blocked_goal_failures.get(goal, 0) + 1
@@ -462,6 +470,7 @@ class RobotShell:
         self._temporary_invalid_task_moves[goal] = 2
         self._blocked_goal_failures.pop(goal, None)
         self.current_goal = None
+        self._set_collision_intent(None)
         self.last_event = "blocked_goal_backoff"
         wait_s = self.bus.rng.uniform(0.0, 5.0)
         return StepResult(reason="blocked_goal_backoff", time_cost_s=wait_s)
@@ -479,6 +488,9 @@ class RobotShell:
 
     def _post_clue_started(self) -> bool:
         return self.world.first_clue_time_s is not None
+
+    def _allocation_active(self) -> bool:
+        return self._post_clue_started() or getattr(self.cfg, "trial_mode", "clue_search") == "coverage"
 
     def _clear_pending_actions(self) -> None:
         self.pending_actions.clear()

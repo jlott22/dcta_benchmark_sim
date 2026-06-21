@@ -100,14 +100,15 @@ class CBAAAllocator(AllocatorBase):
             target probability map and the communicated winning-bid table.
         """
 
-        if not self._first_clue_seen(robot):
+        coverage_mode = self._coverage_mode(robot)
+        if not self._first_clue_seen(robot) and not coverage_mode:
             # Keep pre-clue behavior identical to Auction_greedy.py.
             goal = self.next_serpentine_goal_in_band(robot)
             mode = "serpentine_pre_clue"
         else:
             self._reset_if_new_clue_information(robot)
             goal = self.pick_goal(robot)
-            mode = "cbaa_post_clue"
+            mode = "cbaa_coverage" if coverage_mode else "cbaa_post_clue"
 
         return AllocationDecision(
             goal=goal,
@@ -288,7 +289,7 @@ class CBAAAllocator(AllocatorBase):
         signature for that cell.
         """
 
-        if not self._first_clue_seen(robot):
+        if not self._first_clue_seen(robot) and not self._coverage_mode(robot):
             return []
 
         self._ensure_cbaa_state(robot)
@@ -507,7 +508,7 @@ class CBAAAllocator(AllocatorBase):
         released_winner: Any = NO_WINNER,
         released_bid: float = NO_BID,
     ) -> None:
-        if not self._first_clue_seen(robot):
+        if not self._first_clue_seen(robot) and not self._coverage_mode(robot):
             return
 
         self._ensure_cbaa_state(robot)

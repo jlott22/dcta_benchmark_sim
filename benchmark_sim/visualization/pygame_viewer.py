@@ -272,16 +272,17 @@ class Viewer:
             pygame.draw.circle(self.screen, (8, 20, 26), center, clue_outline)
             pygame.draw.circle(self.screen, (40, 220, 220), center, clue_radius)
 
-        tx, ty = self.world_to_screen(self.state.world.target)
-        inset = max(3, self.cell_px // 8)
-        target_rect = pygame.Rect(
-            tx + inset,
-            ty + inset,
-            self.cell_px - (2 * inset) - 1,
-            self.cell_px - (2 * inset) - 1,
-        )
-        pygame.draw.rect(self.screen, (24, 10, 24), target_rect.inflate(4, 4), border_radius=4)
-        pygame.draw.rect(self.screen, (255, 40, 150), target_rect, border_radius=4)
+        if self.state.world.target is not None:
+            tx, ty = self.world_to_screen(self.state.world.target)
+            inset = max(3, self.cell_px // 8)
+            target_rect = pygame.Rect(
+                tx + inset,
+                ty + inset,
+                self.cell_px - (2 * inset) - 1,
+                self.cell_px - (2 * inset) - 1,
+            )
+            pygame.draw.rect(self.screen, (24, 10, 24), target_rect.inflate(4, 4), border_radius=4)
+            pygame.draw.rect(self.screen, (255, 40, 150), target_rect, border_radius=4)
 
     def _draw_panel(self) -> None:
         pygame = self.pygame

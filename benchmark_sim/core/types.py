@@ -36,7 +36,7 @@ def quarter_turns(from_dir: Optional[Heading], to_dir: Heading) -> int:
 @dataclass(frozen=True)
 class TrialScenario:
     trial_id: int
-    target: Cell
+    target: Optional[Cell]
     clues: List[Cell]
     metadata: Dict[str, Any] = field(default_factory=dict)
 

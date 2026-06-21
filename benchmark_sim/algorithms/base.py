@@ -66,3 +66,7 @@ class AllocatorBase:
 
     def debug_state(self) -> Dict[str, Any]:
         return {}
+
+    def _coverage_mode(self, robot: RobotAPI) -> bool:
+        cfg = getattr(robot, "cfg", None)
+        return getattr(cfg, "trial_mode", "clue_search") == "coverage"

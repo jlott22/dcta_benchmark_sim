@@ -86,12 +86,13 @@ class AuctionGreedyAllocator(AllocatorBase):
             use pick_goal()
         """
 
-        if not self._first_clue_seen(robot):
+        coverage_mode = self._coverage_mode(robot)
+        if not self._first_clue_seen(robot) and not coverage_mode:
             goal = self.next_serpentine_goal_in_band(robot)
             mode = "serpentine_pre_clue"
         else:
             goal = self.pick_goal(robot)
-            mode = "can_win_post_clue"
+            mode = "ag_coverage" if coverage_mode else "can_win_post_clue"
 
         return AllocationDecision(
             goal=goal,

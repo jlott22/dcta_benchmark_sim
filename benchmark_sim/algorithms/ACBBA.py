@@ -49,13 +49,14 @@ class ACBBAAllocator(AllocatorBase):
     # ------------------------------------------------------------------
 
     def choose_goal(self, robot: Any) -> AllocationDecision:
-        if not self._first_clue_seen(robot):
+        coverage_mode = self._coverage_mode(robot)
+        if not self._first_clue_seen(robot) and not coverage_mode:
             goal = self.next_serpentine_goal_in_band(robot)
             mode = "serpentine_pre_clue"
         else:
             self._reset_if_new_clue_information(robot)
             goal = self.pick_goal(robot)
-            mode = "acbba_post_clue"
+            mode = "acbba_coverage" if coverage_mode else "acbba_post_clue"
 
         return AllocationDecision(
             goal=goal,
@@ -298,7 +299,7 @@ class ACBBAAllocator(AllocatorBase):
         bundle snapshot flag in order to forward received table changes.
         """
 
-        if not self._first_clue_seen(robot):
+        if not self._first_clue_seen(robot) and not self._coverage_mode(robot):
             return []
 
         self._ensure_acbba_state(robot)
@@ -845,7 +846,7 @@ class ACBBAAllocator(AllocatorBase):
         timestamp: float,
         include_bundle_metadata: bool = False,
     ) -> None:
-        if not self._first_clue_seen(robot):
+        if not self._first_clue_seen(robot) and not self._coverage_mode(robot):
             return
 
         self._ensure_acbba_state(robot)

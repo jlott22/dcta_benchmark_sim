@@ -14,6 +14,7 @@ WEST: Heading = (-1, 0)
 
 @dataclass
 class SimConfig:
+    trial_mode: str = "clue_search"
     grid_size: int = 19
     robot_ids: List[str] = field(default_factory=lambda: ["00", "01", "02", "03"])
     start_positions: Dict[str, Cell] = field(default_factory=lambda: {
@@ -56,7 +57,7 @@ class SimConfig:
     collision_intent_settle_s: float = 0.10
 
     # Safety cap is for implementation bugs, not an experimental timeout.
-    debug_max_events: int = 800_000
+    debug_max_events: int = 50_000
 
     # Output behavior. Metric exports are CSV-only.
     write_parquet: bool = False

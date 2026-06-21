@@ -98,6 +98,9 @@ class AsyncTrialRunner:
 
     def run_trial(self, scenario: TrialScenario, on_step: Optional[Callable[[TrialState, RobotShell, StepResult], None]] = None) -> TrialState:
         state = self.new_trial(scenario)
+        if self._coverage_complete(state):
+            state.done = True
+            return state
         q = self.initial_queue(state)
         order = len(q)
         while q:
@@ -108,6 +111,8 @@ class AsyncTrialRunner:
             result = processed.result
             if on_step:
                 on_step(state, robot, result)
+            if self._coverage_complete(state):
+                state.done = True
             if state.done:
                 break
         return state
@@ -129,7 +134,11 @@ class AsyncTrialRunner:
         state.events_processed += 1
 
         processed = ProcessedEvent(time_s=state.clock_s, rid=event.rid, result=result)
-        if result.found_target:
+        if self._coverage_complete(state):
+            state.done = True
+            return processed, order
+
+        if result.found_target and getattr(state.cfg, "trial_mode", "clue_search") != "coverage":
             state.done = True
             # Guaranteed target message delivery path gets pumped for consistency.
             state.bus.pump(state.clock_s + self.cfg.comm_delay_s + 1e-9)
@@ -145,6 +154,11 @@ class AsyncTrialRunner:
         order += 1
         heapq.heappush(q, WakeEvent(state.clock_s + interval, order, event.rid))
         return processed, order
+
+    def _coverage_complete(self, state: TrialState) -> bool:
+        if getattr(state.cfg, "trial_mode", "clue_search") != "coverage":
+            return False
+        return state.world.unique_cells_searched() >= state.cfg.grid_size * state.cfg.grid_size
 
     def step_until(
         self,

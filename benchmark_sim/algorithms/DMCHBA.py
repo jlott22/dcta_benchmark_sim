@@ -90,7 +90,8 @@ class DMCHBAAllocator(AllocatorBase):
             matching-by-clone Hungarian reassignment.
         """
 
-        if not self._first_clue_seen(robot):
+        coverage_mode = self._coverage_mode(robot)
+        if not self._first_clue_seen(robot) and not coverage_mode:
             self._ensure_dmchba_state(robot)
             goal = self.next_serpentine_goal_in_band(robot)
             mode = "serpentine_pre_clue"
@@ -101,7 +102,7 @@ class DMCHBAAllocator(AllocatorBase):
             if trigger is not None:
                 self._run_dmchba_assignment(robot, trigger)
             goal = self._first_path_goal(robot)
-            mode = "dmchba_post_clue"
+            mode = "dmchba_coverage" if coverage_mode else "dmchba_post_clue"
 
         return AllocationDecision(
             goal=goal,

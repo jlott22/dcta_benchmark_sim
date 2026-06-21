@@ -90,13 +90,14 @@ class PIAllocator(AllocatorBase):
     # ------------------------------------------------------------------
 
     def choose_goal(self, robot: Any) -> AllocationDecision:
-        if not self._first_clue_seen(robot):
+        coverage_mode = self._coverage_mode(robot)
+        if not self._first_clue_seen(robot) and not coverage_mode:
             goal = self.next_serpentine_goal_in_band(robot)
             mode = "serpentine_pre_clue"
         else:
             self._reset_if_new_clue_information(robot)
             goal = self.pick_goal(robot)
-            mode = "pi_post_clue"
+            mode = "pi_coverage" if coverage_mode else "pi_post_clue"
 
         return AllocationDecision(
             goal=goal,
@@ -521,7 +522,7 @@ class PIAllocator(AllocatorBase):
         this sender.
         """
 
-        if not self._first_clue_seen(robot):
+        if not self._first_clue_seen(robot) and not self._coverage_mode(robot):
             return []
 
         self._ensure_pi_state(robot)

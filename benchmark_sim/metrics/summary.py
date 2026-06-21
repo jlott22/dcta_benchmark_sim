@@ -50,17 +50,19 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
             for rid in rec.by_robot:
                 clues_detected_by_robot[rid] += 1
 
+    target = world.target
     target_found_by_robot = world.target_found_by or ""
     first_clue = world.first_clue_cell
 
     trial_summary = {
         "trial_id": world.scenario.trial_id,
+        "trial_mode": getattr(state.cfg, "trial_mode", "clue_search"),
         "algorithm": algorithm_name,
         "comm_model": comm_model,
         "comm_level": comm_level,
         "scenario_file": scenario_file,
-        "target_x": world.target[0],
-        "target_y": world.target[1],
+        "target_x": target[0] if target is not None else "",
+        "target_y": target[1] if target is not None else "",
         "clue_locations": _cell_list_str(world.clues),
         "first_clue_robot": world.first_clue_robot or "",
         "first_clue_x": first_clue[0] if first_clue else "",
@@ -112,6 +114,7 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
 
     system_performance = {
         "trial_id": world.scenario.trial_id,
+        "trial_mode": getattr(state.cfg, "trial_mode", "clue_search"),
         "algorithm": algorithm_name,
         "comm_model": comm_model,
         "comm_level": comm_level,
@@ -150,6 +153,7 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
         c = rb.counters
         robot_rows.append({
             "trial_id": world.scenario.trial_id,
+            "trial_mode": getattr(state.cfg, "trial_mode", "clue_search"),
             "algorithm": algorithm_name,
             "comm_model": comm_model,
             "comm_level": comm_level,

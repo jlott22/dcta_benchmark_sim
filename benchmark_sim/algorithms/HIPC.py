@@ -61,13 +61,14 @@ class HIPCAllocator(AllocatorBase):
     # ------------------------------------------------------------------
 
     def choose_goal(self, robot: Any) -> AllocationDecision:
-        if not self._first_clue_seen(robot):
+        coverage_mode = self._coverage_mode(robot)
+        if not self._first_clue_seen(robot) and not coverage_mode:
             goal = self.next_serpentine_goal_in_band(robot)
             mode = "serpentine_pre_clue"
         else:
             self._reset_if_new_clue_information(robot)
             goal = self.pick_goal(robot)
-            mode = "hipc_post_clue"
+            mode = "hipc_coverage" if coverage_mode else "hipc_post_clue"
 
         self._ensure_hipc_state(robot)
 
@@ -333,7 +334,7 @@ class HIPCAllocator(AllocatorBase):
         messages through the normal simulator outbound path.
         """
 
-        if not self._first_clue_seen(robot):
+        if not self._first_clue_seen(robot) and not self._coverage_mode(robot):
             return []
 
         self._ensure_hipc_state(robot)

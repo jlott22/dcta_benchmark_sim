@@ -24,7 +24,7 @@ class World:
     target_found_by: Optional[str] = None
 
     @property
-    def target(self) -> Cell:
+    def target(self) -> Optional[Cell]:
         return self.scenario.target
 
     @property
@@ -53,7 +53,7 @@ class World:
         return True
 
     def detect_target(self, rid: str, cell: Cell, time_s: float) -> bool:
-        if cell != self.target:
+        if self.target is None or cell != self.target:
             return False
         self.target_found_time_s = time_s
         self.target_found_by = rid
