@@ -109,8 +109,11 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
     )
 
     robot_steps = [rb.counters.steps_total for rb in robots.values()]
-    robot_post = [rb.counters.steps_after_first_clue for rb in robots.values()]
+    robot_unique_cells = [rb.counters.unique_cells_contributed for rb in robots.values()]
     robot_messages = [bus_counts.sent_by_robot.get(rid, 0) for rid in robots]
+    # Historical Gini fields were step-based, not unique-cell balance.
+    # Recompute old runs separately if you need this metric for archived outputs.
+    workload_gini_unique_cells_contributed = gini(robot_unique_cells)
 
     system_performance = {
         "trial_id": world.scenario.trial_id,
@@ -144,8 +147,7 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
         "messages_sent_by_topic": _counts_dict_str(bus_counts.sent_by_topic),
         "max_steps_any_robot": max(robot_steps) if robot_steps else 0,
         "max_messages_any_robot": max(robot_messages) if robot_messages else 0,
-        "workload_gini_steps": gini(robot_steps),
-        "workload_gini_post_clue_steps": gini(robot_post),
+        "workload_gini_unique_cells_contributed": workload_gini_unique_cells_contributed,
     }
 
     robot_rows: List[dict] = []
