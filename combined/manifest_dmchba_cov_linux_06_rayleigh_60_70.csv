@@ -1,0 +1,3 @@
+run_id,algorithm_key,algorithm_name,algorithm_module,target_drop,comm_label,comm_model,comm_level,trial_mode,grid_size,num_trials,seed,out_dir
+"dmchba_rayleigh_m37_79","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","60%","rayleigh_m37_79","rayleigh_style","-37.79","coverage","19","100","0","runs/coverage_100_all/raw/rayleigh_style/dmchba_rayleigh_m37_79"
+"dmchba_rayleigh_m32_58","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","70%","rayleigh_m32_58","rayleigh_style","-32.58","coverage","19","100","0","runs/coverage_100_all/raw/rayleigh_style/dmchba_rayleigh_m32_58"
