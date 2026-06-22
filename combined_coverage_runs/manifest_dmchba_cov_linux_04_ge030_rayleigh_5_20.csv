@@ -1,0 +1,5 @@
+run_id,algorithm_key,algorithm_name,algorithm_module,target_drop,comm_label,comm_model,comm_level,trial_mode,grid_size,num_trials,seed,out_dir
+"dmchba_ge_030","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","70%","ge_030","gilbert_elliot","0.30","coverage","19","100","0","runs/coverage_100_all/raw/gilbert_elliot/dmchba_ge_030"
+"dmchba_rayleigh_m59_40","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","5%","rayleigh_m59_40","rayleigh_style","-59.40","coverage","19","100","0","runs/coverage_100_all/raw/rayleigh_style/dmchba_rayleigh_m59_40"
+"dmchba_rayleigh_m56_04","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","10%","rayleigh_m56_04","rayleigh_style","-56.04","coverage","19","100","0","runs/coverage_100_all/raw/rayleigh_style/dmchba_rayleigh_m56_04"
+"dmchba_rayleigh_m52_15","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","20%","rayleigh_m52_15","rayleigh_style","-52.15","coverage","19","100","0","runs/coverage_100_all/raw/rayleigh_style/dmchba_rayleigh_m52_15"
