@@ -1,9 +1,0 @@
-DMCHBA coverage Linux shard complete
-Shard:    dmchba_cov_linux_04_ge030_rayleigh_5_20
-Started:  2026-06-21T11:32:54-07:00
-Finished: 2026-06-21T20:28:24-07:00
-Repo:     /home/jlott/dcta_benchmark_sim_coverage
-Runs:     4
-Trials:   400
-Failures: 0
-Failed run IDs:

@@ -1,4 +1,0 @@
-run_id,algorithm_key,algorithm_name,algorithm_module,target_drop,comm_label,comm_model,comm_level,trial_mode,grid_size,num_trials,seed,out_dir
-"dmchba_rayleigh_m49_17","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","30%","rayleigh_m49_17","rayleigh_style","-49.17","coverage","19","100","0","runs/coverage_100_all/raw/rayleigh_style/dmchba_rayleigh_m49_17"
-"dmchba_rayleigh_m46_04","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","40%","rayleigh_m46_04","rayleigh_style","-46.04","coverage","19","100","0","runs/coverage_100_all/raw/rayleigh_style/dmchba_rayleigh_m46_04"
-"dmchba_rayleigh_m42_16","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","50%","rayleigh_m42_16","rayleigh_style","-42.16","coverage","19","100","0","runs/coverage_100_all/raw/rayleigh_style/dmchba_rayleigh_m42_16"

@@ -1,5 +1,0 @@
-run_id,algorithm_key,algorithm_name,algorithm_module,target_drop,comm_label,comm_model,comm_level,trial_mode,grid_size,num_trials,seed,out_dir
-"dmchba_bernoulli_070","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","70%","bernoulli_070","bernoulli","0.70","coverage","19","100","0","runs/coverage_100_all/raw/bernoulli/dmchba_bernoulli_070"
-"dmchba_ge_095","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","5%","ge_095","gilbert_elliot","0.95","coverage","19","100","0","runs/coverage_100_all/raw/gilbert_elliot/dmchba_ge_095"
-"dmchba_ge_090","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","10%","ge_090","gilbert_elliot","0.90","coverage","19","100","0","runs/coverage_100_all/raw/gilbert_elliot/dmchba_ge_090"
-"dmchba_ge_080","dmchba","DMCHBA","benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator","20%","ge_080","gilbert_elliot","0.80","coverage","19","100","0","runs/coverage_100_all/raw/gilbert_elliot/dmchba_ge_080"
