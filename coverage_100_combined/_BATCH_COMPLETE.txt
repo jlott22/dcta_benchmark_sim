@@ -1,0 +1,7 @@
+Coverage 100 combine complete
+raw_root=runs/coverage_100_all/raw
+combined_root=runs/coverage_100_all/combined
+runs_combined=150
+system_rows=15000
+robot_rows=60000
+trial_rows=15000
