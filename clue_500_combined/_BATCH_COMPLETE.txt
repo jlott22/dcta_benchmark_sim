@@ -1,0 +1,8 @@
+Final 500 combine complete
+raw_root=runs/final_500_all/raw
+combined_root=runs/final_500_all/combined
+algorithms=auctiongreedy,cbaa,acbba,pi,hipc,dmchba
+runs_combined=150
+system_rows=75000
+robot_rows=300000
+trial_rows=75000
