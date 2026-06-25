@@ -13,6 +13,22 @@ from benchmark_sim.metrics.export import write_outputs
 from benchmark_sim.metrics.summary import build_rows
 
 
+def parse_positive_int(value: str) -> int:
+    try:
+        parsed = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("must be a positive integer") from exc
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError("must be a positive integer")
+    return parsed
+
+
+def parse_max_candidate_cells(value: str) -> int | None:
+    if str(value).lower() == "all":
+        return None
+    return parse_positive_int(value)
+
+
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Run DCTA benchmark trials.")
     p.add_argument("--scenario-file", default=None, help="CSV/JSON scenario file from clue-object generator.")
@@ -28,6 +44,18 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--out-dir", default="runs/default")
     p.add_argument("--grid-size", type=int, default=19)
     p.add_argument("--target-decay-exp", type=float, default=1.0)
+    p.add_argument(
+        "--commitment-horizon",
+        type=parse_positive_int,
+        default=None,
+        help="Override bundle/commitment horizon for ACBBA, PI, HIPC, DMCHBA, and DGA. CBAA ignores this.",
+    )
+    p.add_argument(
+        "--max-candidate-cells",
+        type=parse_max_candidate_cells,
+        default=None,
+        help="Top-K candidate prefilter for CBAA, ACBBA, PI, HIPC, DMCHBA, and DGA; use 'all' or omit for full candidates.",
+    )
     p.add_argument("--no-parquet", action="store_true", help="Deprecated; metric outputs are always CSV-only.")
     return p.parse_args()
 
@@ -52,6 +80,8 @@ def main() -> None:
         grid_size=args.grid_size,
         target_decay_exp=args.target_decay_exp,
         write_parquet=False,
+        commitment_horizon=args.commitment_horizon,
+        max_candidate_cells=args.max_candidate_cells,
     )
     allocator_cls = load_allocator_class(args.algorithm)
     algorithm_name = args.algorithm_name or getattr(allocator_cls, "name", allocator_cls.__name__)

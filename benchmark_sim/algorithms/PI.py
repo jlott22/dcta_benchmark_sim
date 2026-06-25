@@ -110,6 +110,10 @@ class PIAllocator(AllocatorBase):
                 "pi_claims_known": self._count_known_claims(robot),
                 "pi_pending_snapshot": bool(getattr(robot, "pi_pending_snapshot", False)),
                 "pi_route_cost": self._route_cost(robot, self._get_path(robot)),
+                "pi_bundle_size": self._planning_horizon(robot, self.BUNDLE_SIZE),
+                "pi_candidate_count_before_filter": int(getattr(robot, "candidate_count_before_filter", 0)),
+                "pi_candidate_count_after_filter": int(getattr(robot, "candidate_count_after_filter", 0)),
+                "pi_max_candidate_cells": getattr(robot, "max_candidate_cells", None),
             },
         )
 
@@ -147,7 +151,8 @@ class PIAllocator(AllocatorBase):
 
         changed = False
 
-        while len(self._get_path(robot)) < self.BUNDLE_SIZE:
+        bundle_size = self._planning_horizon(robot, self.BUNDLE_SIZE)
+        while len(self._get_path(robot)) < bundle_size:
             candidate = self._best_inclusion_candidate(robot)
             if candidate is None:
                 break
@@ -164,42 +169,49 @@ class PIAllocator(AllocatorBase):
 
         owner_by_cell, significance_by_cell = self._consensus_maps(robot)
         path = self._get_path(robot)
-        grid_size = self._grid_size(robot)
+        candidates = self._candidate_cells(robot)
 
         best: Optional[Tuple[Cell, int, float, float]] = None
         # Tuple layout: (cell, insertion_index, marginal_cost, improvement)
 
-        for y in range(grid_size):
-            for x in range(grid_size):
-                cell = (x, y)
+        for cell in candidates:
+            if cell in path:
+                continue
 
-                if cell in path:
-                    continue
+            if not self._valid_task_cell(robot, cell):
+                continue
 
-                if not self._valid_task_cell(robot, cell):
-                    continue
+            insertion_index, marginal_cost = self._best_insertion(robot, path, cell)
+            if insertion_index is None:
+                continue
 
-                insertion_index, marginal_cost = self._best_insertion(robot, path, cell)
-                if insertion_index is None:
-                    continue
+            current_owner = owner_by_cell.get(cell, self.NO_OWNER)
+            known_significance = float(significance_by_cell.get(cell, self.INF_SIGNIFICANCE))
 
-                current_owner = owner_by_cell.get(cell, self.NO_OWNER)
-                known_significance = float(significance_by_cell.get(cell, self.INF_SIGNIFICANCE))
+            if not self._can_include(robot, current_owner, known_significance, marginal_cost):
+                continue
 
-                if not self._can_include(robot, current_owner, known_significance, marginal_cost):
-                    continue
+            improvement = self._pi_improvement(known_significance, marginal_cost)
+            candidate = (cell, insertion_index, marginal_cost, improvement)
 
-                improvement = self._pi_improvement(known_significance, marginal_cost)
-                candidate = (cell, insertion_index, marginal_cost, improvement)
-
-                if self._better_candidate(robot, candidate, best):
-                    best = candidate
+            if self._better_candidate(robot, candidate, best):
+                best = candidate
 
         if best is None:
             return None
 
         cell, insertion_index, marginal_cost, _ = best
         return cell, insertion_index, marginal_cost
+
+    def _candidate_cells(self, robot: Any) -> List[Cell]:
+        grid_size = self._grid_size(robot)
+        cells: List[Cell] = []
+        for y in range(grid_size):
+            for x in range(grid_size):
+                cell = (x, y)
+                if self._valid_task_cell(robot, cell):
+                    cells.append(cell)
+        return self._filter_candidate_cells(robot, cells)
 
     def _can_include(
         self,

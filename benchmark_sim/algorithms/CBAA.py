@@ -117,6 +117,9 @@ class CBAAAllocator(AllocatorBase):
                 "mode": mode,
                 "cbaa_current_task": self._get_current_task(robot),
                 "cbaa_claims_known": self._count_known_claims(robot),
+                "cbaa_candidate_count_before_filter": int(getattr(robot, "candidate_count_before_filter", 0)),
+                "cbaa_candidate_count_after_filter": int(getattr(robot, "candidate_count_after_filter", 0)),
+                "cbaa_max_candidate_cells": getattr(robot, "max_candidate_cells", None),
             },
         )
 
@@ -149,29 +152,33 @@ class CBAAAllocator(AllocatorBase):
         best_cell: Optional[Cell] = None
         best_bid = self.NO_BID
 
-        grid_size = self._grid_size(robot)
+        candidates = self._candidate_cells(robot)
 
-        for y in range(grid_size):
-            for x in range(grid_size):
-                cell = (x, y)
+        for cell in candidates:
+            my_bid = self._bid(robot, cell)
 
-                if not self._valid_task_cell(robot, cell):
-                    continue
+            if not self._can_claim(robot, cell, my_bid):
+                continue
 
-                my_bid = self._bid(robot, cell)
-
-                if not self._can_claim(robot, cell, my_bid):
-                    continue
-
-                if self._better_new_choice(robot, cell, my_bid, best_cell, best_bid):
-                    best_cell = cell
-                    best_bid = my_bid
+            if self._better_new_choice(robot, cell, my_bid, best_cell, best_bid):
+                best_cell = cell
+                best_bid = my_bid
 
         if best_cell is None:
             return None
 
         self._claim_cell(robot, best_cell, best_bid)
         return best_cell
+
+    def _candidate_cells(self, robot: Any) -> List[Cell]:
+        grid_size = self._grid_size(robot)
+        cells: List[Cell] = []
+        for y in range(grid_size):
+            for x in range(grid_size):
+                cell = (x, y)
+                if self._valid_task_cell(robot, cell):
+                    cells.append(cell)
+        return self._filter_candidate_cells(robot, cells)
 
     def _bid(self, robot: Any, cell: Cell) -> float:
         """Return this robot's own CBAA bid for a task cell."""

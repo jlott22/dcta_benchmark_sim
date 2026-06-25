@@ -62,5 +62,9 @@ class SimConfig:
     # Output behavior. Metric exports are CSV-only.
     write_parquet: bool = False
 
+    # Optional sensitivity-study controls. None preserves allocator defaults.
+    commitment_horizon: Optional[int] = None
+    max_candidate_cells: Optional[int] = None
+
     def to_dict(self):
         return asdict(self)

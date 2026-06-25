@@ -68,6 +68,10 @@ class ACBBAAllocator(AllocatorBase):
                 "acbba_trigger": getattr(robot, "acbba_last_reallocation_trigger", None),
                 "acbba_claims_known": self._count_known_claims(robot),
                 "acbba_pending_snapshot": bool(getattr(robot, "acbba_pending_snapshot", False)),
+                "acbba_bundle_size": self._planning_horizon(robot, self.BUNDLE_SIZE),
+                "acbba_candidate_count_before_filter": int(getattr(robot, "candidate_count_before_filter", 0)),
+                "acbba_candidate_count_after_filter": int(getattr(robot, "candidate_count_after_filter", 0)),
+                "acbba_max_candidate_cells": getattr(robot, "max_candidate_cells", None),
             },
         )
 
@@ -104,39 +108,37 @@ class ACBBAAllocator(AllocatorBase):
 
         changed = False
 
-        while len(path) < self.BUNDLE_SIZE:
+        bundle_size = self._planning_horizon(robot, self.BUNDLE_SIZE)
+        candidates = self._candidate_cells(robot)
+
+        while len(path) < bundle_size:
             best_cell: Optional[Cell] = None
             best_index = 0
             best_bid = self.NO_BID
 
-            grid_size = self._grid_size(robot)
+            for cell in candidates:
+                if cell in path or cell in bundle:
+                    continue
 
-            for y in range(grid_size):
-                for x in range(grid_size):
-                    cell = (x, y)
+                if not self._valid_task_cell(robot, cell):
+                    continue
 
-                    if cell in path or cell in bundle:
-                        continue
+                insertion_index, my_bid = self._best_insertion_bid(robot, path, cell)
 
-                    if not self._valid_task_cell(robot, cell):
-                        continue
+                if not self._can_claim(robot, cell, my_bid):
+                    continue
 
-                    insertion_index, my_bid = self._best_insertion_bid(robot, path, cell)
-
-                    if not self._can_claim(robot, cell, my_bid):
-                        continue
-
-                    if self._better_insertion_choice(
-                        cell,
-                        insertion_index,
-                        my_bid,
-                        best_cell,
-                        best_index,
-                        best_bid,
-                    ):
-                        best_cell = cell
-                        best_index = insertion_index
-                        best_bid = my_bid
+                if self._better_insertion_choice(
+                    cell,
+                    insertion_index,
+                    my_bid,
+                    best_cell,
+                    best_index,
+                    best_bid,
+                ):
+                    best_cell = cell
+                    best_index = insertion_index
+                    best_bid = my_bid
 
             if best_cell is None:
                 break
@@ -148,6 +150,16 @@ class ACBBAAllocator(AllocatorBase):
 
         if changed:
             setattr(robot, "acbba_pending_snapshot", True)
+
+    def _candidate_cells(self, robot: Any) -> List[Cell]:
+        grid_size = self._grid_size(robot)
+        cells: List[Cell] = []
+        for y in range(grid_size):
+            for x in range(grid_size):
+                cell = (x, y)
+                if self._valid_task_cell(robot, cell):
+                    cells.append(cell)
+        return self._filter_candidate_cells(robot, cells)
 
     def _route_distance(self, robot: Any, path: List[Cell]) -> float:
         """Return route distance robot.pos -> path[0] -> path[1] -> ..."""

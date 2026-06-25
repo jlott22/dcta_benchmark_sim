@@ -82,6 +82,10 @@ class HIPCAllocator(AllocatorBase):
                 "hipc_trigger": getattr(robot, "hipc_last_reallocation_trigger", None),
                 "hipc_team_size": int(getattr(robot, "hipc_last_team_size", 1)),
                 "hipc_candidate_count": int(getattr(robot, "hipc_last_candidate_count", 0)),
+                "hipc_bundle_size": self._planning_horizon(robot, self.BUNDLE_SIZE),
+                "hipc_candidate_count_before_filter": int(getattr(robot, "candidate_count_before_filter", 0)),
+                "hipc_candidate_count_after_filter": int(getattr(robot, "candidate_count_after_filter", 0)),
+                "hipc_max_candidate_cells": getattr(robot, "max_candidate_cells", None),
                 "hipc_dropped_peers": sorted(str(rid) for rid in getattr(robot, "hipc_dropped_peers", set())),
                 "hipc_bad_prediction_count": dict(getattr(robot, "hipc_bad_prediction_count", {})),
                 "hipc_claims_known": self._count_known_claims(robot),
@@ -123,7 +127,8 @@ class HIPCAllocator(AllocatorBase):
         team_plan = self._run_local_team_taa(robot, team_agents, candidates)
 
         rid_key = self._rid_key(robot.rid)
-        new_path = team_plan.get(rid_key, [])[: self.BUNDLE_SIZE]
+        bundle_size = self._planning_horizon(robot, self.BUNDLE_SIZE)
+        new_path = team_plan.get(rid_key, [])[:bundle_size]
 
         setattr(robot, "hipc_last_team_size", len(team_agents))
         setattr(robot, "hipc_last_candidate_count", len(candidates))
@@ -154,7 +159,7 @@ class HIPCAllocator(AllocatorBase):
                 cells.append((-probability, distance, cell))
 
         cells.sort(key=lambda item: (item[0], item[1], item[2]))
-        return [cell for _, _, cell in cells]
+        return self._filter_candidate_cells(robot, [cell for _, _, cell in cells])
 
     def _hipc_team_agents(self, robot: Any) -> Dict[str, Cell]:
         """
@@ -212,7 +217,8 @@ class HIPCAllocator(AllocatorBase):
         endpoint: Dict[str, Cell] = dict(team_agents)
         assigned_cells: Set[Cell] = set()
 
-        max_assignments = max(1, len(team_agents) * self.BUNDLE_SIZE)
+        bundle_size = self._planning_horizon(robot, self.BUNDLE_SIZE)
+        max_assignments = max(1, len(team_agents) * bundle_size)
 
         for _ in range(max_assignments):
             best_rid: Optional[str] = None
@@ -220,7 +226,7 @@ class HIPCAllocator(AllocatorBase):
             best_score = self.NO_BID
 
             for rid in sorted(team_agents.keys()):
-                if len(plan[rid]) >= self.BUNDLE_SIZE:
+                if len(plan[rid]) >= bundle_size:
                     continue
 
                 reference = endpoint[rid]
@@ -281,7 +287,8 @@ class HIPCAllocator(AllocatorBase):
         self._ensure_hipc_state(robot)
 
         old_path = self._get_path(robot)
-        normalized_new = self._normalize_cell_list(list(new_path))[: self.BUNDLE_SIZE]
+        bundle_size = self._planning_horizon(robot, self.BUNDLE_SIZE)
+        normalized_new = self._normalize_cell_list(list(new_path))[:bundle_size]
 
         if tuple(old_path) == tuple(normalized_new):
             return

@@ -28,8 +28,9 @@ class DMCHBAAllocator(AllocatorBase):
       bundle, reservation, or assignment messages. It relies on the simulator's
       normal shared state, especially robot positions, known clues, searched
       cells, obstacles, and the local target_p map.
-    - At reassignment, every valid unsearched grid cell is considered. No top-k
-      filtering is applied in the simulation version.
+    - At reassignment, every valid unsearched grid cell is considered unless the
+      simulator-level max-candidate sensitivity flag applies a shared top-k
+      prefilter.
     - The assignment phase clones every known robot enough times to cover the
       current task set, adds pseudotasks to make the cost matrix square, and
       runs a Hungarian min-cost assignment.
@@ -113,11 +114,14 @@ class DMCHBAAllocator(AllocatorBase):
                 "dmchba_path_len": len(self._get_path(robot)),
                 "dmchba_assigned_count": int(getattr(robot, "dmchba_last_assigned_count", 0)),
                 "dmchba_committed_count": int(getattr(robot, "dmchba_last_committed_count", 0)),
-                "dmchba_commitment_horizon": self.COMMITMENT_HORIZON,
+                "dmchba_commitment_horizon": self._planning_horizon(robot, self.COMMITMENT_HORIZON),
                 "dmchba_candidate_count": int(getattr(robot, "dmchba_last_candidate_count", 0)),
+                "dmchba_candidate_count_before_filter": int(getattr(robot, "candidate_count_before_filter", 0)),
+                "dmchba_candidate_count_after_filter": int(getattr(robot, "candidate_count_after_filter", 0)),
+                "dmchba_max_candidate_cells": getattr(robot, "max_candidate_cells", None),
                 "dmchba_team_size": int(getattr(robot, "dmchba_last_team_size", 0)),
                 "dmchba_matrix_n": int(getattr(robot, "dmchba_last_matrix_n", 0)),
-                "dmchba_evaluates_all_candidates": True,
+                "dmchba_evaluates_all_candidates": getattr(robot, "max_candidate_cells", None) is None,
                 "dmchba_allocator_messages": False,
             },
         )
@@ -220,7 +224,8 @@ class DMCHBAAllocator(AllocatorBase):
         my_key = self._canonical_rid(getattr(robot, "rid", ""))
         assigned = assigned_by_robot.get(my_key, [])
         ordered_path = self._order_assigned_cells(robot, assigned)
-        committed_path = ordered_path[: self.COMMITMENT_HORIZON]
+        commitment_horizon = self._planning_horizon(robot, self.COMMITMENT_HORIZON)
+        committed_path = ordered_path[:commitment_horizon]
 
         setattr(robot, "dmchba_path", committed_path)
         setattr(robot, "dmchba_last_assigned_count", len(ordered_path))
@@ -490,7 +495,7 @@ class DMCHBAAllocator(AllocatorBase):
                 if self._valid_task_cell(robot, cell):
                     cells.append(cell)
 
-        return cells
+        return self._filter_candidate_cells(robot, cells)
 
     def _team_agents(self, robot: Any) -> Dict[str, Cell]:
         """Return known team agent positions as canonical_rid -> cell."""
