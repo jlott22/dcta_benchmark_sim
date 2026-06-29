@@ -2,7 +2,7 @@
 % Horizon sensitivity analysis for DCTA benchmark.
 %
 % Input:
-%   horizon_results/system_performance_all.csv
+%   horizon_results/system_performance.csv
 %
 % Required columns:
 %   trial_id
@@ -36,7 +36,7 @@
 clear; clc; close all;
 
 %% ---------------- User settings ----------------
-csvPath = fullfile('horizon_results', 'system_performance_all.csv');
+csvPath = fullfile('horizon_results', 'system_performance.csv');
 outDir  = fullfile('horizon_results', 'horizon_figs');
 
 metricCol = 'post_clue_steps_to_find';

@@ -134,6 +134,14 @@ iterValues = sort(iterValues(:))';
 iterOrderLabels = "iter" + string(iterValues);
 iterPrettyLabels = string(iterValues);
 
+baselineSetting = "iter" + string(baselineIter);
+baselinePretty = baselineSetting;
+
+if ~ismember(baselineSetting, iterOrderLabels)
+    error('Baseline setting %s was not found in detected iteration settings: %s', ...
+        baselineSetting, strjoin(iterOrderLabels, ', '));
+end
+
 fprintf('Loaded %d valid iteration-sensitivity rows before duplicate collapse.\n', height(T));
 fprintf('Detected iteration settings: %s\n', strjoin(iterOrderLabels, ', '));
 
@@ -578,7 +586,10 @@ function plot_by_comm(S, yCol, plotTitleBase, yLabelText, filePrefix, outDir, xV
         figPath = fullfile(outDir, sprintf('%s_%s_%s.fig', filePrefix, safeCm, safeCl));
 
         try
-            exportgraphics(f, pngPath, 'Resolution', 300);
+            savefig(f, figPath);
+            saveas(f, pngPath);
+            fprintf('Saved %s\n', figPath);
+            fprintf('Saved %s\n', pngPath);
         catch
             saveas(f, pngPath);
         end
