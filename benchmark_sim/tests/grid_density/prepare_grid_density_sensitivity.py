@@ -3,10 +3,10 @@
 Prepare scenario files and a condition manifest for the grid-density saturation sensitivity study.
 
 Designed to be saved in:
-  /home/jlott/dcta_benchmark_sim/benchmark_sim/tests/prepare_grid_density_sensitivity.py
+  /home/jlott/dcta_benchmark_sim/benchmark_sim/tests/grid_density/prepare_grid_density_sensitivity.py
 
 Run indirectly through run_grid_density_sensitivity.sh, or directly from repo root:
-  python3 benchmark_sim/tests/prepare_grid_density_sensitivity.py --repo-root /home/jlott/dcta_benchmark_sim
+  python3 benchmark_sim/tests/grid_density/prepare_grid_density_sensitivity.py --repo-root /home/jlott/dcta_benchmark_sim
 """
 from __future__ import annotations
 

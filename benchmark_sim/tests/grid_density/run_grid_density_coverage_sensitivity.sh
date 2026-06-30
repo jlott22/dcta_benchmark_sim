@@ -3,13 +3,13 @@ set -euo pipefail
 
 WORKERS="${1:-20}"
 if ! [[ "$WORKERS" =~ ^[0-9]+$ ]] || [[ "$WORKERS" -lt 1 ]]; then
-  echo "Usage: bash benchmark_sim/tests/run_grid_density_sensitivity.sh [num_workers]" >&2
+  echo "Usage: bash benchmark_sim/tests/grid_density/run_grid_density_coverage_sensitivity.sh [num_workers]" >&2
   exit 2
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-RUN_ROOT="$REPO_ROOT/runs/sensitivity_grid_density_50"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+RUN_ROOT="$REPO_ROOT/runs/sensitivity_grid_density_coverage_50"
 MANIFEST="$RUN_ROOT/condition_manifest.csv"
 LOG_DIR="$RUN_ROOT/worker_logs"
 
@@ -18,23 +18,22 @@ mkdir -p "$RUN_ROOT" "$LOG_DIR"
 cd "$REPO_ROOT"
 
 echo "============================================================"
-echo "[SETUP] Grid-density saturation sensitivity"
+echo "[SETUP] Coverage grid-density saturation sensitivity"
 echo "[INFO] repo root: $REPO_ROOT"
 echo "[INFO] run root:  $RUN_ROOT"
 echo "[INFO] workers:   $WORKERS"
 echo "============================================================"
 
-python3 "$SCRIPT_DIR/prepare_grid_density_sensitivity.py" \
+python3 "$SCRIPT_DIR/prepare_grid_density_coverage_sensitivity.py" \
   --repo-root "$REPO_ROOT" \
   --run-root "$RUN_ROOT" \
   --num-trials 50 \
-  --num-clues 4 \
   --target-decay-exp 1.0
 
 echo "[INFO] Launching partitioned workers..."
 PIDS=()
 for ((w=0; w<WORKERS; w++)); do
-  python3 "$SCRIPT_DIR/run_grid_density_worker.py" \
+  python3 "$SCRIPT_DIR/run_grid_density_coverage_worker.py" \
     --repo-root "$REPO_ROOT" \
     --manifest "$MANIFEST" \
     --worker-index "$w" \
@@ -58,7 +57,7 @@ if [[ "$FAIL" -ne 0 ]]; then
 fi
 
 echo "============================================================"
-echo "[DONE] Raw sensitivity runs complete."
+echo "[DONE] Raw coverage sensitivity runs complete."
 echo "[NEXT] Combine with:"
-echo "  bash benchmark_sim/tests/combine_grid_density_sensitivity.sh"
+echo "  bash benchmark_sim/tests/grid_density/combine_grid_density_coverage_sensitivity.sh"
 echo "============================================================"

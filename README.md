@@ -75,8 +75,10 @@ benchmark_sim/
     pygame_viewer.py
   tests/
     test_*.py
-    run_*.sh
-    combine_*.sh
+    dga_final500/
+    dga_iteration/
+    grid_density/
+    horizon_topk/
 known_visit_sim/
   run_trials.py
   generate_scenarios.py
@@ -85,6 +87,8 @@ known_visit_sim/
   core/
   metrics/
   tests/
+    test_known_visit.py
+    known_visit_horizon/
 final_trial_500.csv
 known_visit_g19_t10_n500.csv
 README.md
@@ -469,17 +473,15 @@ python -m unittest discover -s benchmark_sim/tests -v
 python -m unittest discover -s known_visit_sim/tests -v
 ```
 
-The `benchmark_sim/tests/` directory also contains Bash drivers for the current
-experiments, including:
+The `benchmark_sim/tests/` root contains standalone unit/integration tests.
+Multi-file experiment workflows are grouped by study:
 
-- `run_dga_final500_by_condition.sh`: DGA over the 500-trial scenario for the
-  configured ideal, Bernoulli, Gilbert-Elliot, and Rayleigh-style conditions.
-- `run_dga_iteration_sensitivity.sh` and
-  `run_dga_iteration_ideal_missing_repair.sh`: DGA iteration studies and repair.
-- `run_grid_density_sensitivity.sh`: grid-size/robot-density study with
-  partitioned Python workers.
-- `combine_*.sh` and `combine_grid_density_sensitivity.py`: validation and
-  aggregation of raw study outputs.
+- `tests/dga_final500/`: run and combine DGA over the 500-trial communication
+  condition matrix.
+- `tests/dga_iteration/`: DGA iteration sensitivity, repair, and combination.
+- `tests/grid_density/`: clue-search and coverage grid-size/robot-density
+  preparation, workers, runners, validation, and aggregation.
+- `tests/horizon_topk/`: horizon/top-K sensitivity generation and combination.
 
 Run these scripts from a Bash environment. Some older/final-run drivers contain
 a machine-specific default repository path; set `DCTA_REPO_ROOT` where the

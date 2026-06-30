@@ -64,7 +64,7 @@ def validate_run(out_dir: Path, robot_count: int) -> None:
 
 
 def run_validation(output_root: Path) -> None:
-    package_dir = Path(__file__).resolve().parents[1]
+    package_dir = Path(__file__).resolve().parents[2]
     repo_root = package_dir.parent
     output_root.mkdir(parents=True, exist_ok=True)
 

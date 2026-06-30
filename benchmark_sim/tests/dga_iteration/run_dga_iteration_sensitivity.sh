@@ -5,9 +5,9 @@ set -euo pipefail
 # DGA iteration sensitivity test
 #
 # Usage:
-#   bash benchmark_sim/tests/run_dga_iteration_sensitivity.sh
-#   bash benchmark_sim/tests/run_dga_iteration_sensitivity.sh 8
-#   bash benchmark_sim/tests/run_dga_iteration_sensitivity.sh 4
+#   bash benchmark_sim/tests/dga_iteration/run_dga_iteration_sensitivity.sh
+#   bash benchmark_sim/tests/dga_iteration/run_dga_iteration_sensitivity.sh 8
+#   bash benchmark_sim/tests/dga_iteration/run_dga_iteration_sensitivity.sh 4
 #
 # This partitions TRIALS across NUM_CORES workers.
 # Each worker runs the same iteration/communication conditions,
@@ -25,7 +25,7 @@ MAX_TRIALS_TOTAL=300
 
 OUT_ROOT="runs/sensitivity_dga_iterations"
 OVERWRITE_PREVIOUS=1
-SCRIPT_ROOT="benchmark_sim/tests/dga_iteration_sensitivity_generated"
+SCRIPT_ROOT="benchmark_sim/tests/dga_iteration/dga_iteration_sensitivity_generated"
 PARTITION_DIR="$SCRIPT_ROOT/scenario_partitions"
 WORKER_DIR="$SCRIPT_ROOT/workers"
 LOG_DIR="$SCRIPT_ROOT/logs"
