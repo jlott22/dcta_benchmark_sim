@@ -78,6 +78,10 @@ print(len(rows))
 PY
 )"
 EXPECTED_ROBOT_ROWS=$((EXPECTED_TRIALS * ROBOT_COUNT))
+if [[ "$EXPECTED_TRIALS" -ne 500 ]]; then
+  echo "ERROR: expected exactly 500 scenario rows, found $EXPECTED_TRIALS in $SCENARIO_FILE" >&2
+  exit 2
+fi
 
 for condition in "${CONDITIONS[@]}"; do
   IFS="|" read -r folder model label cli_value <<< "$condition"
@@ -91,6 +95,7 @@ echo "[INFO] scenario file: $SCENARIO_FILE"
 echo "[INFO] scenario rows: $EXPECTED_TRIALS"
 echo "[INFO] raw output root: $RAW_ROOT"
 echo "[INFO] simulator entrypoint: ${SIMULATOR[*]}"
+echo "[INFO] simulator command template: ${SIMULATOR[*]} --scenario-file $SCENARIO_FILE --trial-mode clue_search --algorithm $ALGORITHM --algorithm-name DGA --comm-model <model> --comm-level <value> --grid-size $GRID_SIZE --num-robots $ROBOT_COUNT --robot-start-layout edge_even --condition-id <folder> --max-trials $EXPECTED_TRIALS --seed $SEED --out-dir <condition_dir>"
 echo "[INFO] max parallel conditions: $MAX_PARALLEL"
 echo "[INFO] algorithm CLI value: $ALGORITHM"
 echo "[INFO] grid size: $GRID_SIZE"
@@ -334,4 +339,3 @@ if failed_rows:
 else:
     print(f"[DONE] all {len(conditions)} conditions passed validation")
 PY
-
