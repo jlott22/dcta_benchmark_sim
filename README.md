@@ -1,6 +1,9 @@
 # Decentralized Task-Cell Allocation (DCTA) Benchmark Simulator
 
-Asynchronous grid simulator for benchmarking decentralized task-cell allocation algorithms in clue-informed multi-robot search under degraded communication.
+Asynchronous grid simulators for benchmarking decentralized task-cell allocation
+algorithms under degraded communication. The repository contains the main
+clue-informed search/coverage simulator and an isolated static known-target
+visit simulator.
 
 The simulator provides:
 
@@ -12,6 +15,7 @@ The simulator provides:
 - algorithm message routing
 - batch CSV metrics
 - pygame live visualization
+- a static 10-target collaborative-visit benchmark
 
 ## Current Benchmark Assumptions
 
@@ -73,9 +77,22 @@ benchmark_sim/
     test_*.py
     run_*.sh
     combine_*.sh
+known_visit_sim/
+  run_trials.py
+  generate_scenarios.py
+  algorithms/
+  comms/
+  core/
+  metrics/
+  tests/
 final_trial_500.csv
+known_visit_g19_t10_n500.csv
 README.md
 ```
+
+`known_visit_sim/` is an isolated fork and does not import `benchmark_sim` at
+runtime. This keeps the secondary known-target evaluation from changing the
+main clue-informed benchmark.
 
 Generated result directories at the repository root (`clue_500_combined/`,
 `coverage_100_combined/`, and `sensitivity_test_results/`) contain study data,
@@ -94,6 +111,7 @@ README and the `benchmark_sim/` package:
 ```powershell
 python -m benchmark_sim.run_trials --help
 python -m unittest discover -s benchmark_sim/tests -v
+python -m unittest discover -s known_visit_sim/tests -v
 ```
 
 ## Implemented Algorithms
@@ -216,6 +234,69 @@ Useful options:
 
 Use `python -m benchmark_sim.run_trials --help` as the authoritative CLI
 reference.
+
+## Static Collaborative Known-Target Visit
+
+`known_visit_sim` is the secondary pure task-allocation/routing benchmark. All
+task locations are known to every robot at initialization, there are no clues
+or hidden targets, and world truth ends a trial when every task cell has been
+visited. The bundled `known_visit_g19_t10_n500.csv` contains 500 paired
+scenarios with 10 unique task cells on a 19x19 grid, generated with seed
+`20260630`; task cells do not overlap the default robot starts.
+
+Generate another paired scenario file:
+
+```powershell
+python -m known_visit_sim.generate_scenarios `
+  --grid-size 19 `
+  --num-robots 4 `
+  --num-targets 10 `
+  --num-trials 500 `
+  --robot-start-layout edge_even `
+  --seed 20260630 `
+  --output known_visit_g19_t10_n500.csv
+```
+
+Run one algorithm/communication condition:
+
+```powershell
+python -m known_visit_sim.run_trials `
+  --scenario-file known_visit_g19_t10_n500.csv `
+  --algorithm DGA `
+  --comm-model ideal `
+  --grid-size 19 `
+  --num-robots 4 `
+  --robot-start-layout edge_even `
+  --condition-id known_visit_ideal `
+  --out-dir runs/known_visit/dga_ideal
+```
+
+Unlike the main simulator, `--algorithm` accepts a built-in short name:
+`CBAA`, `ACBBA`, `PI`, `HIPC`, `DMCHBA`, `DGA`, or `AuctionGreedy`. It supports
+the same four communication-model names and also exposes
+`--commitment-horizon` and `--max-candidate-cells`.
+
+Known-visit communication deliberately has only droppable `state` messages
+and protected `collision_intent` messages at the core level. A robot infers a
+peer's task completion from a delivered peer location; there is no dedicated
+task-complete message. World truth records completion independently, so trial
+termination does not require local consensus.
+
+Each known-visit run writes:
+
+```text
+trial_summary.csv
+system_performance.csv
+robot_performance.csv
+target_performance.csv
+config_used.json
+```
+
+Known-visit metrics include completed-target count, completion status and
+simulation time, duplicate target visits/target conflicts, task-cell revisits,
+total and maximum robot steps, unique cells visited, replans, communication
+counts, messages per completed target, workload Gini values, and per-target
+first-finder/completion records.
 
 ## Running The Live Viewer
 
@@ -385,6 +466,7 @@ Run the complete unit/integration suite from the repository root:
 
 ```powershell
 python -m unittest discover -s benchmark_sim/tests -v
+python -m unittest discover -s known_visit_sim/tests -v
 ```
 
 The `benchmark_sim/tests/` directory also contains Bash drivers for the current
