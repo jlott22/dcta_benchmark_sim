@@ -76,14 +76,6 @@ class CBAAAllocator(AllocatorBase):
     # Same reward scaling name/value as Auction_greedy.py.
     REWARD_FACTOR = 5.0
 
-    # Same fixed row bands as the 19x19 Pololu experiment and Auction_greedy.py.
-    BANDS = {
-        "00": (0, 4),
-        "01": (5, 9),
-        "02": (10, 14),
-        "03": (15, 18),
-    }
-
     NO_WINNER = None
     NO_BID = -1.0e18
     EPS = 1.0e-9
@@ -651,12 +643,7 @@ class CBAAAllocator(AllocatorBase):
         """
 
         grid_size = self._grid_size(robot)
-        rid = str(robot.rid)
-
-        if rid not in self.BANDS:
-            BAND_Y_MIN, BAND_Y_MAX = 0, grid_size - 1
-        else:
-            BAND_Y_MIN, BAND_Y_MAX = self.BANDS[rid]
+        BAND_Y_MIN, BAND_Y_MAX = self._assigned_row_band(robot)
 
         cur_x, cur_y = robot.pos
 

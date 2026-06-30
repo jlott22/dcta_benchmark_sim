@@ -34,15 +34,8 @@ class HIPCAllocator(AllocatorBase):
     # Keep bundle depth matched to the other bundle allocators for fair comparison.
     BUNDLE_SIZE = 3
 
-    # Same reward scaling and row bands as CBAA/AuctionGreedy.
+    # Same reward scaling as CBAA/AuctionGreedy.
     REWARD_FACTOR = 5.0
-    BANDS = {
-        "00": (0, 4),
-        "01": (5, 9),
-        "02": (10, 14),
-        "03": (15, 18),
-    }
-
     NO_WINNER = None
     NO_BID = -1.0e18
     EPS = 1.0e-9
@@ -972,12 +965,7 @@ class HIPCAllocator(AllocatorBase):
 
     def next_serpentine_goal_in_band(self, robot: Any) -> Optional[Cell]:
         grid_size = self._grid_size(robot)
-        rid = str(robot.rid)
-
-        if rid not in self.BANDS:
-            band_y_min, band_y_max = 0, grid_size - 1
-        else:
-            band_y_min, band_y_max = self.BANDS[rid]
+        band_y_min, band_y_max = self._assigned_row_band(robot)
 
         cur_x, cur_y = robot.pos
         if cur_y < band_y_min:

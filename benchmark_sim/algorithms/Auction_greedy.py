@@ -63,14 +63,6 @@ class AuctionGreedyAllocator(AllocatorBase):
     # Same reward scaling name as the robot code.
     REWARD_FACTOR = 5.0
 
-    # Same fixed row bands as your 19x19 Pololu experiment.
-    BANDS = {
-        "00": (0, 4),
-        "01": (5, 9),
-        "02": (10, 14),
-        "03": (15, 18),
-    }
-
     def choose_goal(self, robot: Any) -> AllocationDecision:
         """
         Required simulator allocator entry point.
@@ -265,13 +257,7 @@ class AuctionGreedyAllocator(AllocatorBase):
         """
 
         grid_size = self._grid_size(robot)
-        rid = str(robot.rid)
-
-        if rid not in self.BANDS:
-            # If a new robot ID is ever used, fall back to all rows.
-            BAND_Y_MIN, BAND_Y_MAX = 0, grid_size - 1
-        else:
-            BAND_Y_MIN, BAND_Y_MAX = self.BANDS[rid]
+        BAND_Y_MIN, BAND_Y_MAX = self._assigned_row_band(robot)
 
         cur_x, cur_y = robot.pos
 

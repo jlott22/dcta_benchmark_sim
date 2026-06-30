@@ -72,6 +72,26 @@ class AllocatorBase:
         cfg = getattr(robot, "cfg", None)
         return getattr(cfg, "trial_mode", "clue_search") == "coverage"
 
+    def _assigned_row_band(self, robot: RobotAPI) -> Tuple[int, int]:
+        """Return this robot's deterministic, approximately even row partition."""
+        grid_size = int(getattr(robot, "grid_size", 0))
+        cfg = getattr(robot, "cfg", None)
+        robot_ids = [str(rid) for rid in getattr(cfg, "robot_ids", [])]
+        rid = str(robot.rid)
+        if grid_size <= 0:
+            raise ValueError("grid_size must be positive")
+        if not robot_ids or rid not in robot_ids:
+            return (0, grid_size - 1)
+
+        robot_count = len(robot_ids)
+        index = robot_ids.index(rid)
+        rows_per_robot, extra_rows = divmod(grid_size, robot_count)
+        start = index * rows_per_robot + min(index, extra_rows)
+        height = rows_per_robot + (1 if index < extra_rows else 0)
+        if height <= 0:
+            raise ValueError("row-band assignment requires robot_count <= grid_size")
+        return (start, start + height - 1)
+
     def _planning_horizon(self, robot: RobotAPI, default: int) -> int:
         cfg = getattr(robot, "cfg", None)
         override = getattr(cfg, "commitment_horizon", None)

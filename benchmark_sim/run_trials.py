@@ -5,7 +5,7 @@ from pathlib import Path
 
 from benchmark_sim.algorithms.registry import load_allocator_class
 from benchmark_sim.comms.models import make_comm_model
-from benchmark_sim.config import SimConfig
+from benchmark_sim.config import EAST, SimConfig, edge_even_start_positions, generate_robot_ids
 from benchmark_sim.core.scenario_loader import load_scenarios
 from benchmark_sim.core.scheduler import AsyncTrialRunner
 from benchmark_sim.core.types import TrialScenario
@@ -42,7 +42,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--max-trials", type=int, default=None)
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--out-dir", default="runs/default")
-    p.add_argument("--grid-size", type=int, default=19)
+    p.add_argument("--grid-size", type=parse_positive_int, default=19)
+    p.add_argument("--num-robots", type=parse_positive_int, default=4)
+    p.add_argument("--robot-start-layout", default="edge_even", choices=["edge_even"])
+    p.add_argument("--condition-id", default="")
+    p.add_argument("--target-cells-per-robot", type=float, default=None)
+    p.add_argument("--actual-cells-per-robot", type=float, default=None)
     p.add_argument("--target-decay-exp", type=float, default=1.0)
     p.add_argument(
         "--commitment-horizon",
@@ -75,9 +80,21 @@ def scenarios_for_args(args: argparse.Namespace) -> list[TrialScenario]:
 
 def main() -> None:
     args = parse_args()
+    robot_ids = generate_robot_ids(args.num_robots)
+    if args.robot_start_layout == "edge_even":
+        start_positions = edge_even_start_positions(args.grid_size, robot_ids)
+    else:  # argparse choices make this defensive branch unreachable.
+        raise ValueError(f"unsupported robot start layout: {args.robot_start_layout}")
     cfg = SimConfig(
         trial_mode=args.trial_mode,
         grid_size=args.grid_size,
+        robot_ids=robot_ids,
+        start_positions=start_positions,
+        start_headings={rid: EAST for rid in robot_ids},
+        robot_start_layout=args.robot_start_layout,
+        condition_id=args.condition_id,
+        target_cells_per_robot=args.target_cells_per_robot,
+        actual_cells_per_robot=args.actual_cells_per_robot,
         target_decay_exp=args.target_decay_exp,
         write_parquet=False,
         commitment_horizon=args.commitment_horizon,

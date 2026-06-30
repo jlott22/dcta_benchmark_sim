@@ -49,13 +49,6 @@ class DGAAllocator(AllocatorBase):
     MUTATION_RATE = 0.3
     ELITE_COUNT = 2
 
-    BANDS = {
-        "00": (0, 4),
-        "01": (5, 9),
-        "02": (10, 14),
-        "03": (15, 18),
-    }
-
     BAD_PRED_LIMIT = 3
     PREDICTION_TOLERANCE_CELLS = 0
     EPS = 1.0e-9
@@ -1141,12 +1134,7 @@ class DGAAllocator(AllocatorBase):
 
     def next_serpentine_goal_in_band(self, robot: Any) -> Optional[Cell]:
         grid_size = self._grid_size(robot)
-        rid = str(robot.rid)
-
-        if rid not in self.BANDS:
-            band_y_min, band_y_max = 0, grid_size - 1
-        else:
-            band_y_min, band_y_max = self.BANDS[rid]
+        band_y_min, band_y_max = self._assigned_row_band(robot)
 
         cur_x, cur_y = robot.pos
         if cur_y < band_y_min:

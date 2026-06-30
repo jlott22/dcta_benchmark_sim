@@ -67,14 +67,6 @@ class DMCHBAAllocator(AllocatorBase):
     TIE_EPS = 1.0e-9
     COMMITMENT_HORIZON = 3
 
-    # Same fixed row bands as the 19x19 Pololu experiment and existing files.
-    BANDS = {
-        "00": (0, 4),
-        "01": (5, 9),
-        "02": (10, 14),
-        "03": (15, 18),
-    }
-
     # ------------------------------------------------------------------
     # Main simulator entry point
     # ------------------------------------------------------------------
@@ -581,12 +573,7 @@ class DMCHBAAllocator(AllocatorBase):
 
     def next_serpentine_goal_in_band(self, robot: Any) -> Optional[Cell]:
         grid_size = self._grid_size(robot)
-        rid = self._canonical_rid(robot.rid)
-
-        if rid not in self.BANDS:
-            band_y_min, band_y_max = 0, grid_size - 1
-        else:
-            band_y_min, band_y_max = self.BANDS[rid]
+        band_y_min, band_y_max = self._assigned_row_band(robot)
 
         cur_x, cur_y = self._robot_pos(robot)
 

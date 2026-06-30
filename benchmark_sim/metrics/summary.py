@@ -54,13 +54,23 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
     target_found_by_robot = world.target_found_by or ""
     first_clue = world.first_clue_cell
 
-    trial_summary = {
+    common_metadata = {
         "trial_id": world.scenario.trial_id,
-        "trial_mode": getattr(state.cfg, "trial_mode", "clue_search"),
         "algorithm": algorithm_name,
         "comm_model": comm_model,
         "comm_level": comm_level,
+        "grid_size": state.cfg.grid_size,
+        "grid_cells": state.cfg.grid_size * state.cfg.grid_size,
+        "robot_count": len(state.cfg.robot_ids),
+        "target_cells_per_robot": state.cfg.target_cells_per_robot,
+        "actual_cells_per_robot": state.cfg.actual_cells_per_robot,
+        "condition_id": state.cfg.condition_id,
         "scenario_file": scenario_file,
+    }
+
+    trial_summary = {
+        **common_metadata,
+        "trial_mode": getattr(state.cfg, "trial_mode", "clue_search"),
         "target_x": target[0] if target is not None else "",
         "target_y": target[1] if target is not None else "",
         "clue_locations": _cell_list_str(world.clues),
@@ -116,11 +126,8 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
     workload_gini_unique_cells_contributed = gini(robot_unique_cells)
 
     system_performance = {
-        "trial_id": world.scenario.trial_id,
+        **common_metadata,
         "trial_mode": getattr(state.cfg, "trial_mode", "clue_search"),
-        "algorithm": algorithm_name,
-        "comm_model": comm_model,
-        "comm_level": comm_level,
         "total_team_steps": total_team_steps,
         "steps_before_first_clue": steps_before_first,
         "post_clue_steps_to_find": steps_after_first,
@@ -154,11 +161,8 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
     for rid, rb in sorted(robots.items()):
         c = rb.counters
         robot_rows.append({
-            "trial_id": world.scenario.trial_id,
+            **common_metadata,
             "trial_mode": getattr(state.cfg, "trial_mode", "clue_search"),
-            "algorithm": algorithm_name,
-            "comm_model": comm_model,
-            "comm_level": comm_level,
             "robot_id": rid,
             "steps_total": c.steps_total,
             "steps_after_first_clue": c.steps_after_first_clue,

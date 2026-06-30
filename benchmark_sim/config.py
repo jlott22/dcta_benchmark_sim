@@ -12,23 +12,43 @@ SOUTH: Heading = (0, -1)
 WEST: Heading = (-1, 0)
 
 
+def generate_robot_ids(num_robots: int) -> List[str]:
+    """Return deterministic robot IDs, zero-padded through at least 99."""
+    if num_robots <= 0:
+        raise ValueError("num_robots must be positive")
+    return [f"{index:02d}" for index in range(num_robots)]
+
+
+def edge_even_start_positions(grid_size: int, robot_ids: List[str]) -> Dict[str, Cell]:
+    """Place robots evenly along the left edge of a square grid."""
+    if grid_size <= 0:
+        raise ValueError("grid_size must be positive")
+    if not robot_ids:
+        raise ValueError("at least one robot is required")
+    if len(robot_ids) > grid_size:
+        raise ValueError("edge_even requires num_robots <= grid_size")
+
+    if len(robot_ids) == 1:
+        return {robot_ids[0]: (0, (grid_size - 1) // 2)}
+
+    denominator = len(robot_ids) - 1
+    return {
+        rid: (0, round(index * (grid_size - 1) / denominator))
+        for index, rid in enumerate(robot_ids)
+    }
+
+
 @dataclass
 class SimConfig:
     trial_mode: str = "clue_search"
     grid_size: int = 19
-    robot_ids: List[str] = field(default_factory=lambda: ["00", "01", "02", "03"])
-    start_positions: Dict[str, Cell] = field(default_factory=lambda: {
-        "00": (0, 0),
-        "01": (0, 5),
-        "02": (0, 10),
-        "03": (0, 15),
-    })
-    start_headings: Dict[str, Heading] = field(default_factory=lambda: {
-        "00": EAST,
-        "01": EAST,
-        "02": EAST,
-        "03": EAST,
-    })
+    robot_ids: List[str] = field(default_factory=lambda: generate_robot_ids(4))
+    start_positions: Dict[str, Cell] = field(default_factory=dict)
+    start_headings: Dict[str, Heading] = field(default_factory=dict)
+    robot_start_layout: str = "edge_even"
+    condition_id: str = ""
+    target_cells_per_robot: Optional[float] = None
+    actual_cells_per_robot: Optional[float] = None
 
     # Belief/reward parameters. Belief uses target_p only.
     target_decay_exp: float = 1.0
@@ -65,6 +85,23 @@ class SimConfig:
     # Optional sensitivity-study controls. None preserves allocator defaults.
     commitment_horizon: Optional[int] = None
     max_candidate_cells: Optional[int] = None
+
+    def __post_init__(self) -> None:
+        if not self.robot_ids:
+            raise ValueError("at least one robot is required")
+        if not self.start_positions:
+            if self.robot_start_layout != "edge_even":
+                raise ValueError(f"unsupported robot start layout: {self.robot_start_layout}")
+            self.start_positions = edge_even_start_positions(self.grid_size, self.robot_ids)
+        if not self.start_headings:
+            self.start_headings = {rid: EAST for rid in self.robot_ids}
+
+        missing_positions = set(self.robot_ids).difference(self.start_positions)
+        missing_headings = set(self.robot_ids).difference(self.start_headings)
+        if missing_positions:
+            raise ValueError(f"missing start positions for robots: {sorted(missing_positions)}")
+        if missing_headings:
+            raise ValueError(f"missing start headings for robots: {sorted(missing_headings)}")
 
     def to_dict(self):
         return asdict(self)

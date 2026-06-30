@@ -7,7 +7,7 @@ from typing import Dict, List, Optional
 
 from benchmark_sim.algorithms.registry import load_allocator_class
 from benchmark_sim.comms.models import make_comm_model
-from benchmark_sim.config import SimConfig
+from benchmark_sim.config import EAST, SimConfig, edge_even_start_positions, generate_robot_ids
 from benchmark_sim.core.scenario_loader import load_scenarios
 from benchmark_sim.core.scheduler import AsyncTrialRunner, TrialState
 from benchmark_sim.core.types import Cell
@@ -21,8 +21,16 @@ class Viewer:
         self.pygame = pygame
         pygame.init()
         self.args = args
+        robot_ids = generate_robot_ids(args.num_robots)
         self.cfg = SimConfig(
             grid_size=args.grid_size,
+            robot_ids=robot_ids,
+            start_positions=edge_even_start_positions(args.grid_size, robot_ids),
+            start_headings={rid: EAST for rid in robot_ids},
+            robot_start_layout=args.robot_start_layout,
+            condition_id=args.condition_id,
+            target_cells_per_robot=args.target_cells_per_robot,
+            actual_cells_per_robot=args.actual_cells_per_robot,
             target_decay_exp=args.target_decay_exp,
             async_tick_span_s=args.async_tick_span,
             write_parquet=False,
@@ -113,11 +121,10 @@ class Viewer:
             if self.state and self.state.done:
                 self.scenario_index = (self.scenario_index + 1) % len(self.scenarios)
                 self._new_trial()
-        elif event.key in (pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4):
-            idx = event.key - pygame.K_1
-            if idx < len(self.cfg.robot_ids):
-                self.selected_robot = self.cfg.robot_ids[idx]
-                self.view_mode = "robot"
+        elif event.key == pygame.K_TAB:
+            idx = (self.cfg.robot_ids.index(self.selected_robot) + 1) % len(self.cfg.robot_ids)
+            self.selected_robot = self.cfg.robot_ids[idx]
+            self.view_mode = "robot"
         elif event.key == pygame.K_LEFTBRACKET:
             self.speed = max(1, self.speed - 1)
             self.step_accum = min(self.step_accum, 0.99)
@@ -327,7 +334,7 @@ class Viewer:
             self.screen.blit(label, (x, y0))
             y0 += label.get_height() + 3
         y0 += 12
-        for line in ["p pause | . step | t truth view", "1-4 robot views | n next", "[ ] speed | q quit"]:
+        for line in ["p pause | . step | t truth view", "tab next robot | n next trial", "[ ] speed | q quit"]:
             label = self.font_small.render(line, True, (190, 190, 200))
             self.screen.blit(label, (x, y0))
             y0 += label.get_height() + 3
@@ -344,6 +351,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--out-dir", default="runs/viewer")
     p.add_argument("--grid-size", type=int, default=19)
+    p.add_argument("--num-robots", type=int, default=4)
+    p.add_argument("--robot-start-layout", default="edge_even", choices=["edge_even"])
+    p.add_argument("--condition-id", default="")
+    p.add_argument("--target-cells-per-robot", type=float, default=None)
+    p.add_argument("--actual-cells-per-robot", type=float, default=None)
     p.add_argument("--target-decay-exp", type=float, default=1.0)
     p.add_argument("--async-tick-span", type=float, default=0.25)
     p.add_argument("--viewer-speed", "--viewer-fps", dest="viewer_speed", type=int, default=1)
