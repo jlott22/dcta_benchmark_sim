@@ -40,8 +40,9 @@ for ((w=0; w<WORKERS; w++)); do
     --worker-index "$w" \
     --num-workers "$WORKERS" \
     > "$LOG_DIR/worker_${w}.log" 2>&1 &
-  PIDS+=("$!")
-  echo "[INFO] worker $w pid=${PIDS[-1]} log=$LOG_DIR/worker_${w}.log"
+  pid="$!"
+  PIDS+=("$pid")
+  echo "[INFO] worker $w pid=$pid log=$LOG_DIR/worker_${w}.log"
 done
 
 FAIL=0

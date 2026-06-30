@@ -12,10 +12,9 @@ from __future__ import annotations
 
 import argparse
 import csv
-import math
 import random
 from pathlib import Path
-from typing import Dict, Iterable, List, Sequence, Tuple
+from typing import Dict, List, Sequence, Tuple
 
 Cell = Tuple[int, int]
 
@@ -91,6 +90,19 @@ def weighted_sample_without_replacement(
     return selected
 
 
+def planned_start_cells(grid_size: int) -> set[Cell]:
+    """Return every edge_even start used by any planned density at this grid size."""
+    starts: set[Cell] = set()
+    for robot_count in set(ROBOT_COUNTS[grid_size].values()):
+        if robot_count == 1:
+            starts.add((0, (grid_size - 1) // 2))
+            continue
+        for index in range(robot_count):
+            y = round(index * (grid_size - 1) / (robot_count - 1))
+            starts.add((0, y))
+    return starts
+
+
 def generate_scenarios_for_grid(
     grid_size: int,
     num_trials: int,
@@ -107,6 +119,11 @@ def generate_scenarios_for_grid(
         header.extend([f"clue{i}_x", f"clue{i}_y"])
 
     all_cells = [(x, y) for y in range(grid_size) for x in range(grid_size)]
+    # RobotShell marks start cells searched during initialization but does not sense
+    # clues or targets there. Reserving every planned start keeps all scenario items
+    # observable for every robot-density condition sharing this scenario file.
+    reserved_starts = planned_start_cells(grid_size)
+    scenario_cells = [cell for cell in all_cells if cell not in reserved_starts]
 
     with out_path.open("w", newline="") as f:
         f.write(f"# scenario_set=grid_density_sensitivity\n")
@@ -118,8 +135,8 @@ def generate_scenarios_for_grid(
         writer.writerow(header)
 
         for trial_id in range(num_trials):
-            target = rng.choice(all_cells)
-            candidate_cells = [c for c in all_cells if c != target]
+            target = rng.choice(scenario_cells)
+            candidate_cells = [c for c in scenario_cells if c != target]
             weights = []
             for cell in candidate_cells:
                 dist = abs(cell[0] - target[0]) + abs(cell[1] - target[1])

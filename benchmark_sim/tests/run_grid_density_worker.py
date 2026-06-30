@@ -36,9 +36,15 @@ def should_skip(row: Dict[str, str], force: bool) -> bool:
         return False
     out_dir = Path(row["out_dir"])
     expected = int(row["num_trials"])
+    expected_robot_rows = expected * int(row["robot_count"])
     system_csv = out_dir / "system_performance.csv"
     trial_csv = out_dir / "trial_summary.csv"
-    return count_data_rows(system_csv) >= expected and count_data_rows(trial_csv) >= expected
+    robot_csv = out_dir / "robot_performance.csv"
+    return (
+        count_data_rows(system_csv) == expected
+        and count_data_rows(trial_csv) == expected
+        and count_data_rows(robot_csv) == expected_robot_rows
+    )
 
 
 def build_command(row: Dict[str, str]) -> List[str]:
@@ -73,6 +79,10 @@ def main() -> None:
     args = parse_args()
     repo_root = Path(args.repo_root).resolve()
     manifest = Path(args.manifest).resolve()
+    if args.num_workers <= 0:
+        raise SystemExit("--num-workers must be positive")
+    if not 0 <= args.worker_index < args.num_workers:
+        raise SystemExit("--worker-index must be in [0, num-workers)")
 
     with manifest.open(newline="") as f:
         rows = list(csv.DictReader(f))
@@ -80,6 +90,7 @@ def main() -> None:
     selected = [row for i, row in enumerate(rows) if i % args.num_workers == args.worker_index]
     print(f"[WORKER {args.worker_index:02d}] selected {len(selected)} of {len(rows)} conditions")
 
+    failed: List[str] = []
     for local_idx, row in enumerate(selected, start=1):
         out_dir = Path(row["out_dir"])
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -91,6 +102,15 @@ def main() -> None:
 
         cmd = build_command(row)
         print(f"[WORKER {args.worker_index:02d}] run {row['condition_id']} ({local_idx}/{len(selected)})")
+        for filename in (
+            "system_performance.csv",
+            "trial_summary.csv",
+            "robot_performance.csv",
+            "config_used.json",
+        ):
+            stale_path = out_dir / filename
+            if stale_path.exists():
+                stale_path.unlink()
         with log_path.open("w") as log:
             log.write("COMMAND:\n")
             log.write(" ".join(cmd) + "\n\n")
@@ -98,10 +118,20 @@ def main() -> None:
             result = subprocess.run(cmd, cwd=str(repo_root), stdout=log, stderr=subprocess.STDOUT)
 
         if result.returncode != 0:
-            print(f"[WORKER {args.worker_index:02d}] ERROR {row['condition_id']} returncode={result.returncode}", file=sys.stderr)
+            print(
+                f"[WORKER {args.worker_index:02d}] ERROR "
+                f"{row['condition_id']} returncode={result.returncode}",
+                file=sys.stderr,
+            )
             print(f"[WORKER {args.worker_index:02d}] see log: {log_path}", file=sys.stderr)
-            sys.exit(result.returncode)
+            failed.append(row["condition_id"])
 
+    if failed:
+        print(
+            f"[WORKER {args.worker_index:02d}] failed conditions: {','.join(failed)}",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
     print(f"[WORKER {args.worker_index:02d}] done")
 
 

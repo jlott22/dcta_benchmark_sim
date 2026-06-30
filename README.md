@@ -1,4 +1,4 @@
-# DCTA Benchmark Simulator
+# Decentralized Task-Cell Allocation (DCTA) Benchmark Simulator
 
 Asynchronous grid simulator for benchmarking decentralized task-cell allocation algorithms in clue-informed multi-robot search under degraded communication.
 
@@ -16,11 +16,12 @@ The simulator provides:
 ## Current Benchmark Assumptions
 
 - Default grid is `19 x 19`.
-- Four robots are used by default:
+- Four robots are used by default. The `edge_even` layout distributes them over
+  the full left edge:
   - `00` starts at `(0, 0)`
-  - `01` starts at `(0, 5)`
-  - `02` starts at `(0, 10)`
-  - `03` starts at `(0, 15)`
+  - `01` starts at `(0, 6)`
+  - `02` starts at `(0, 12)`
+  - `03` starts at `(0, 18)`
 - All robots start facing east.
 - Movement is asynchronous with configurable timing jitter.
 - Target and clue detection are perfect when a robot reaches the cell.
@@ -35,6 +36,7 @@ The simulator provides:
 
 ```text
 benchmark_sim/
+  CHANGE_LOG.md
   run_trials.py
   run_viewer.py
   config.py
@@ -44,6 +46,7 @@ benchmark_sim/
     Auction_greedy.py
     CBAA.py
     DMCHBA.py
+    DGA.py
     HIPC.py
     PI.py
     base.py
@@ -66,6 +69,31 @@ benchmark_sim/
     summary.py
   visualization/
     pygame_viewer.py
+  tests/
+    test_*.py
+    run_*.sh
+    combine_*.sh
+final_trial_500.csv
+README.md
+```
+
+Generated result directories at the repository root (`clue_500_combined/`,
+`coverage_100_combined/`, and `sensitivity_test_results/`) contain study data,
+not simulator source.
+
+## Requirements and Setup
+
+- Python 3.10 or newer (the current repository is exercised with Python 3.13).
+- No third-party package is required for headless batch runs or unit tests.
+- `pygame` is optional and only required for the live viewer.
+- Bash is required for the study-driver scripts in `benchmark_sim/tests/`.
+
+Run module commands from the repository root, the directory containing this
+README and the `benchmark_sim/` package:
+
+```powershell
+python -m benchmark_sim.run_trials --help
+python -m unittest discover -s benchmark_sim/tests -v
 ```
 
 ## Implemented Algorithms
@@ -75,6 +103,7 @@ Built-in allocator modules currently include:
 - `benchmark_sim.algorithms.ACBBA:ACBBAAllocator`
 - `benchmark_sim.algorithms.CBAA:CBAAAllocator`
 - `benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator`
+- `benchmark_sim.algorithms.DGA:DGAAllocator`
 - `benchmark_sim.algorithms.PI:PIAllocator`
 - `benchmark_sim.algorithms.HIPC:HIPCAllocator`
 - `benchmark_sim.algorithms.Auction_greedy:AuctionGreedyAllocator`
@@ -87,7 +116,8 @@ The CLI accepts allocator classes in `module.path:ClassName` format. Algorithm d
 
 - `ideal` - all non-protected messages are delivered.
 - `bernoulli` - independent receiver-side drops. `--comm-level` is drop probability.
-- `gilbert_elliot` - two-state burst-loss model. `--comm-level` sets good-state persistence.
+- `gilbert_elliot` - all-or-nothing two-state burst-loss model. `--comm-level`
+  sets GOOD-state persistence (`pGG`); BAD-state persistence is `1 - pGG`.
 - `rayleigh_style` - simplified distance/path-loss/fading model. `--comm-level` sets sensitivity in dBm.
 
 Protected messages bypass degraded delivery:
@@ -122,44 +152,46 @@ In simulator terminology:
 - `object_x/object_y` is the target location
 - `clueN_x/clueN_y` are clue locations
 
-The repository root includes `final_trial_500.csv`.
+The repository root includes `final_trial_500.csv` (500 trials).
+
+`benchmark_sim/clue_object_generator_manhat.py` can generate a fixed object
+list or regenerate clue sets around that list. Its current controls
+(`COMMAND`, grid size, trial count, clue count, seed, and output path) are
+constants at the top of the file; it does not currently expose a CLI.
 
 ## Running Batch Trials
 
-Example ACBBA run:
+Example ACBBA run (PowerShell):
 
-```bash
-python -m benchmark_sim.run_trials ^
-  --scenario-file final_trial_500.csv ^
-  --algorithm benchmark_sim.algorithms.ACBBA:ACBBAAllocator ^
-  --algorithm-name ACBBA ^
-  --comm-model bernoulli ^
-  --comm-level 0.10 ^
-  --max-trials 10 ^
+```powershell
+python -m benchmark_sim.run_trials `
+  --scenario-file final_trial_500.csv `
+  --algorithm benchmark_sim.algorithms.ACBBA:ACBBAAllocator `
+  --comm-model bernoulli `
+  --comm-level 0.10 `
+  --max-trials 10 `
   --out-dir runs/acbba_bernoulli_010
 ```
 
-Example DMCHBA run:
+Example DGA run:
 
-```bash
-python -m benchmark_sim.run_trials ^
-  --scenario-file final_trial_500.csv ^
-  --algorithm benchmark_sim.algorithms.DMCHBA:DMCHBAAllocator ^
-  --algorithm-name DMCHBA ^
-  --comm-model ideal ^
-  --max-trials 10 ^
-  --out-dir runs/dmchba_ideal
+```powershell
+python -m benchmark_sim.run_trials `
+  --scenario-file final_trial_500.csv `
+  --algorithm benchmark_sim.algorithms.DGA:DGAAllocator `
+  --comm-model ideal `
+  --max-trials 10 `
+  --out-dir runs/dga_ideal
 ```
 
 Coverage mode does not require a scenario file:
 
-```bash
-python -m benchmark_sim.run_trials ^
-  --trial-mode coverage ^
-  --num-trials 5 ^
-  --algorithm benchmark_sim.algorithms.Auction_greedy:AuctionGreedyAllocator ^
-  --algorithm-name AG ^
-  --comm-model ideal ^
+```powershell
+python -m benchmark_sim.run_trials `
+  --trial-mode coverage `
+  --num-trials 5 `
+  --algorithm benchmark_sim.algorithms.Auction_greedy:AuctionGreedyAllocator `
+  --comm-model ideal `
   --out-dir runs/ag_coverage
 ```
 
@@ -171,25 +203,35 @@ Useful options:
 - `--num-trials <n>` for coverage mode
 - `--seed <int>`
 - `--grid-size <n>`
+- `--num-robots <n>` (must not exceed grid size for `edge_even`)
+- `--robot-start-layout edge_even`
+- `--condition-id <label>`
+- `--target-cells-per-robot <float>` and `--actual-cells-per-robot <float>`
 - `--target-decay-exp <float>`
+- `--commitment-horizon <n>` overrides the default for ACBBA, PI, HIPC,
+  DMCHBA, and DGA; CBAA ignores it
+- `--max-candidate-cells <n|all>` controls the candidate prefilter for CBAA,
+  ACBBA, PI, HIPC, DMCHBA, and DGA
 - `--out-dir <path>`
+
+Use `python -m benchmark_sim.run_trials --help` as the authoritative CLI
+reference.
 
 ## Running The Live Viewer
 
 The viewer requires pygame:
 
-```bash
+```powershell
 pip install pygame
 ```
 
 Run:
 
-```bash
-python -m benchmark_sim.run_viewer ^
-  --scenario-file final_trial_500.csv ^
-  --algorithm benchmark_sim.algorithms.ACBBA:ACBBAAllocator ^
-  --algorithm-name ACBBA ^
-  --comm-model bernoulli ^
+```powershell
+python -m benchmark_sim.run_viewer `
+  --scenario-file final_trial_500.csv `
+  --algorithm benchmark_sim.algorithms.ACBBA:ACBBAAllocator `
+  --comm-model bernoulli `
   --comm-level 0.10
 ```
 
@@ -222,6 +264,12 @@ Descriptor and verification fields:
 - `algorithm`
 - `comm_model`
 - `comm_level`
+- `grid_size`
+- `grid_cells`
+- `robot_count`
+- `target_cells_per_robot`
+- `actual_cells_per_robot`
+- `condition_id`
 - `scenario_file`
 - `target_x`
 - `target_y`
@@ -330,6 +378,30 @@ Allocator implementations subclass `AllocatorBase` and provide:
 - `choose_goal(robot)`
 
 The simulator handles movement, sensing, protected target termination, protected collision-intent safety, message loss, belief updates, and metric collection. Algorithms select task cells and publish allocation-specific messages through `robot.publish_algorithm_message(...)`.
+
+## Tests and Experiment Drivers
+
+Run the complete unit/integration suite from the repository root:
+
+```powershell
+python -m unittest discover -s benchmark_sim/tests -v
+```
+
+The `benchmark_sim/tests/` directory also contains Bash drivers for the current
+experiments, including:
+
+- `run_dga_final500_by_condition.sh`: DGA over the 500-trial scenario for the
+  configured ideal, Bernoulli, Gilbert-Elliot, and Rayleigh-style conditions.
+- `run_dga_iteration_sensitivity.sh` and
+  `run_dga_iteration_ideal_missing_repair.sh`: DGA iteration studies and repair.
+- `run_grid_density_sensitivity.sh`: grid-size/robot-density study with
+  partitioned Python workers.
+- `combine_*.sh` and `combine_grid_density_sensitivity.py`: validation and
+  aggregation of raw study outputs.
+
+Run these scripts from a Bash environment. Some older/final-run drivers contain
+a machine-specific default repository path; set `DCTA_REPO_ROOT` where the
+script supports it or inspect the header before launching a long run.
 
 ## Notes
 
