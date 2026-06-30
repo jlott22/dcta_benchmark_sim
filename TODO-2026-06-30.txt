@@ -1,0 +1,76 @@
+DCTA Benchmark Simulation TODO
+Date: 2026-06-30
+
+Status key
+----------
+[COMPLETED]      Experiment has been run and completed.
+[MADE - NOT RUN] Test implementation and scripts exist, but the experiment has not been run.
+[IN PROGRESS]     Experiment is currently running or partially complete.
+[NOT MADE]        Test implementation and scripts still need to be created.
+
+
+Grid-Size / Robot-Density Tests
+-------------------------------
+
+1. [MADE - NOT RUN] Coverage environment
+   Run the grid-size / robot-density sensitivity test for the coverage environment.
+
+2. [MADE - NOT RUN] Clue-informed search environment
+   Run the grid-size / robot-density sensitivity test for the clue-informed search environment.
+
+3. [MADE - NOT RUN] Known-target environment
+   Run the grid-size / robot-density sensitivity test for the known-target environment.
+
+
+Core Benchmark Tests
+--------------------
+
+4. [COMPLETED] Core clue-informed search environment trials
+   Core clue-informed search trials are complete for all algorithms except DGA.
+
+5. [IN PROGRESS] DGA 500 core trials in the clue-informed search environment
+   Complete the DGA core benchmark over all 500 clue-informed search trials.
+
+6. [COMPLETED] Core coverage environment trials
+   Core coverage trials are complete.
+
+7. [MADE - NOT RUN] Core known-target environment tests
+   Run the core known-target benchmark with 500 trials for each required algorithm and condition.
+
+
+Horizon Sensitivity Tests
+-------------------------
+
+8. [COMPLETED] Clue-informed search environment
+   Horizon sensitivity testing is complete for the clue-informed search environment.
+
+9. [MADE - NOT RUN] Known-target environment
+   Run commitment-horizon sensitivity testing in the known-target environment.
+
+10. [NOT MADE] Coverage environment
+   Create and run commitment-horizon sensitivity testing in the coverage environment.
+
+
+Top-K Sensitivity Tests
+-----------------------
+
+Paper note: Top-K sensitivity data will be reserved for the hardware paper.
+
+11. [COMPLETED] Clue-informed search environment
+   Top-K candidate sensitivity testing is complete for the clue-informed search environment.
+
+12. [NOT MADE] Known-target environment
+   Create and run top-K candidate sensitivity testing in the known-target environment.
+
+
+DGA Iteration Sensitivity Tests
+-------------------------------
+
+13. [COMPLETED] Clue-informed search environment
+    DGA iteration sensitivity testing is complete for the clue-informed search environment.
+
+14. [NOT MADE] Known-target environment
+    Create and run DGA iteration sensitivity testing in the known-target environment.
+
+15. [NOT MADE] Coverage environment
+    Create and run DGA iteration sensitivity testing in the coverage environment.
