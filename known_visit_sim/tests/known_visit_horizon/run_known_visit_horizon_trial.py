@@ -5,11 +5,17 @@ import argparse
 import csv
 import inspect
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any, Iterable, List, Tuple
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
+REPO_ROOT = Path(os.environ.get("DCTA_REPO_ROOT", "/home/dcta_benchmark_sim")).expanduser().resolve()
+if not (REPO_ROOT / "known_visit_sim").is_dir():
+    raise RuntimeError(
+        f"known_visit_sim package not found under {REPO_ROOT}; "
+        "clone the repository to /home/dcta_benchmark_sim or set DCTA_REPO_ROOT"
+    )
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 

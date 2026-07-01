@@ -302,6 +302,23 @@ total and maximum robot steps, unique cells visited, replans, communication
 counts, messages per completed target, workload Gini values, and per-target
 first-finder/completion records.
 
+### AGX Orin Known-Visit Horizon Study
+
+The horizon-sensitivity workflow defaults to a repository clone at
+`/home/dcta_benchmark_sim`:
+
+```bash
+cd /home/dcta_benchmark_sim
+python3 known_visit_sim/tests/known_visit_horizon/make_known_visit_horizon_sensitivity.py
+./runs/sensitivity_known_visit_horizon_300/start_all_known_visit_horizon_parts.sh
+bash known_visit_sim/tests/known_visit_horizon/combine_known_visit_horizon_sensitivity_300.sh
+```
+
+The scenario is generated at the repository root. Worker scripts, manifests,
+logs, raw results, and combined results are written beneath
+`runs/sensitivity_known_visit_horizon_300/`. Set `DCTA_REPO_ROOT` only when the
+repository is cloned somewhere other than `/home/dcta_benchmark_sim`.
+
 ## Running The Live Viewer
 
 The viewer requires pygame:

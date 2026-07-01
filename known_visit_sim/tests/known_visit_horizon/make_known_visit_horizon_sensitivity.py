@@ -2,10 +2,11 @@
 from __future__ import annotations
 
 import csv
+import os
 import shlex
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
+REPO_ROOT = Path(os.environ.get("DCTA_REPO_ROOT", "/home/dcta_benchmark_sim")).expanduser().resolve()
 PYTHON_BIN = "${PYTHON_BIN:-python3}"
 RUNNER_REL = Path("known_visit_sim/tests/known_visit_horizon/run_known_visit_horizon_trial.py")
 SCENARIO_FILE = Path("known_visit_10target_300.csv")
@@ -162,6 +163,11 @@ def write_start_script():
 
 
 def main():
+    if not (REPO_ROOT / "known_visit_sim").is_dir():
+        raise SystemExit(
+            f"known_visit_sim package not found under {REPO_ROOT}; "
+            "clone the repository to /home/dcta_benchmark_sim or set DCTA_REPO_ROOT"
+        )
     jobs = build_jobs()
     parts, loads = assign_jobs(jobs)
     write_manifest(jobs)

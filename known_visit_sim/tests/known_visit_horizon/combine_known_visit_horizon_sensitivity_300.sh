@@ -2,8 +2,11 @@
 set -u
 set -o pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+REPO_ROOT="${DCTA_REPO_ROOT:-/home/dcta_benchmark_sim}"
+if [[ ! -d "$REPO_ROOT/known_visit_sim" ]]; then
+  echo "ERROR: known_visit_sim package not found under $REPO_ROOT" >&2
+  exit 2
+fi
 cd "$REPO_ROOT" || exit 1
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 
