@@ -44,8 +44,11 @@ Horizon Sensitivity Tests
 8. [COMPLETED] Clue-informed search environment
    Horizon sensitivity testing is complete for the clue-informed search environment.
 
-9. [MADE - NOT RUN] Known-target environment
-   Run commitment-horizon sensitivity testing in the known-target environment.
+9. [IN PROGRESS] Known-target environment
+   Commitment-horizon sensitivity testing is running as a fresh 300-trial,
+   120-condition study on 9 cores. Per-trial checkpoints, time-based collision
+   backoff, stalled-allocation recovery, and sleep-protected progress tracking
+   are enabled.
 
 10. [NOT MADE] Coverage environment
    Create and run commitment-horizon sensitivity testing in the coverage environment.

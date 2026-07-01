@@ -6,15 +6,17 @@ import unittest
 from pathlib import Path
 
 from known_visit_sim.algorithms.registry import load_allocator_class
+from known_visit_sim.algorithms.base import AllocatorBase
 from known_visit_sim.comms.models import BernoulliModel, IdealModel
 from known_visit_sim.config import SimConfig, edge_even_start_positions, generate_robot_ids
 from known_visit_sim.core.scenario_loader import load_scenarios
 from known_visit_sim.core.scheduler import AsyncTrialRunner
-from known_visit_sim.core.types import TrialScenario
+from known_visit_sim.core.types import AllocationDecision, TrialScenario
 from known_visit_sim.core.world import World
 from known_visit_sim.generate_scenarios import generate
 from known_visit_sim.metrics.export import write_outputs
 from known_visit_sim.metrics.summary import build_rows, gini
+from known_visit_sim.tests.known_visit_horizon.run_known_visit_horizon_trial import make_comm_model
 
 
 ALGORITHMS = ("CBAA", "ACBBA", "PI", "HIPC", "DMCHBA", "DGA", "AuctionGreedy")
@@ -58,6 +60,26 @@ class GeneratorTests(unittest.TestCase):
 
 
 class CommunicationAndWorldTests(unittest.TestCase):
+    def test_stagnation_detector_reports_no_goal_diagnostics(self) -> None:
+        class NoGoalAllocator(AllocatorBase):
+            name = "NoGoal"
+
+            def choose_goal(self, robot):
+                return AllocationDecision(goal=None, debug={"reason": "test"})
+
+        cfg = config(debug_max_events=100, debug_max_stagnant_events=8)
+        runner = AsyncTrialRunner(cfg, NoGoalAllocator, IdealModel(), 1)
+        with self.assertRaisesRegex(RuntimeError, r"Stagnation detected.*event_reasons.*no_goal"):
+            runner.run_trial(TrialScenario(99, [(2, 2)]))
+
+    def test_horizon_runner_applies_communication_levels_to_the_right_fields(self) -> None:
+        ge = make_comm_model("gilbert_elliot", "0.75")
+        self.assertEqual(ge.p_good_to_good, 0.75)
+        self.assertEqual(ge.p_bad_to_bad, 0.25)
+        rayleigh = make_comm_model("rayleigh_style", "-50.66")
+        self.assertEqual(rayleigh.sensitivity_dbm, -50.66)
+        self.assertEqual(rayleigh.tx_power_dbm, 30.0)
+
     def test_state_infers_completion_but_does_not_create_world_visit(self) -> None:
         cfg = config()
         scenario = TrialScenario(0, [(2, 2)])
@@ -159,9 +181,12 @@ class AllocatorAndOutputTests(unittest.TestCase):
             system["task_cell_revisits_total"], system["duplicate_target_visits"]
         )
         self.assertIn("workload_gini_targets_found", system)
+        self.assertIn("events_processed", system)
+        self.assertIn("stall_recoveries_total", system)
         self.assertEqual(sum(row["targets_found"] for row in robots), 2)
         self.assertTrue(all("steps_total" in row for row in robots))
         self.assertTrue(all("task_cell_revisits" in row for row in robots))
+        self.assertTrue(all("stall_recoveries" in row for row in robots))
         self.assertTrue(all(row["first_completion_time_s"] != "" for row in targets))
         self.assertAlmostEqual(gini([0, 2]), 0.5)
         with tempfile.TemporaryDirectory() as tmp:

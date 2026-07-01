@@ -2,7 +2,8 @@
 set -u
 set -o pipefail
 
-REPO_ROOT="${DCTA_REPO_ROOT:-/home/dcta_benchmark_sim}"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="${DCTA_REPO_ROOT:-$(cd -- "$SCRIPT_DIR/../../.." && pwd)}"
 if [[ ! -d "$REPO_ROOT/known_visit_sim" ]]; then
   echo "ERROR: known_visit_sim package not found under $REPO_ROOT" >&2
   exit 2

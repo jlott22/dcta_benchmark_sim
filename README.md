@@ -299,25 +299,28 @@ config_used.json
 Known-visit metrics include completed-target count, completion status and
 simulation time, duplicate target visits/target conflicts, task-cell revisits,
 total and maximum robot steps, unique cells visited, replans, communication
-counts, messages per completed target, workload Gini values, and per-target
+counts, messages per completed target, event counts, local stall-recovery
+counts, workload Gini values, and per-target
 first-finder/completion records.
 
 ### AGX Orin Known-Visit Horizon Study
 
-The horizon-sensitivity workflow defaults to a repository clone at
-`/home/dcta_benchmark_sim`:
+The horizon-sensitivity workflow discovers the repository from the script
+location and defaults to nine workers. Each completed trial is durably
+checkpointed so interrupted conditions resume without repeating prior trials:
 
 ```bash
-cd /home/dcta_benchmark_sim
-python3 known_visit_sim/tests/known_visit_horizon/make_known_visit_horizon_sensitivity.py
+cd /path/to/dcta_benchmark_sim
+python3 known_visit_sim/tests/known_visit_horizon/make_known_visit_horizon_sensitivity.py --cores 9
 ./runs/sensitivity_known_visit_horizon_300/start_all_known_visit_horizon_parts.sh
 bash known_visit_sim/tests/known_visit_horizon/combine_known_visit_horizon_sensitivity_300.sh
 ```
 
 The scenario is generated at the repository root. Worker scripts, manifests,
 logs, raw results, and combined results are written beneath
-`runs/sensitivity_known_visit_horizon_300/`. Set `DCTA_REPO_ROOT` only when the
-repository is cloned somewhere other than `/home/dcta_benchmark_sim`.
+`runs/sensitivity_known_visit_horizon_300/`. The launcher opens a separate
+terminal progress monitor when `gnome-terminal` or `xterm` and a display are
+available; it also prints the command for running the monitor manually.
 
 ## Running The Live Viewer
 

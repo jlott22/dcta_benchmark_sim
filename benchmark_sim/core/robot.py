@@ -68,7 +68,7 @@ class RobotShell:
         self.collision_avoidance_active = False
         self._collision_event_counted_since_move = False
         self._blocked_goal_failures: Dict[Cell, int] = {}
-        self._temporary_invalid_task_moves: Dict[Cell, int] = {}
+        self._temporary_invalid_task_until: Dict[Cell, float] = {}
         self._communicated_collision_intent: Optional[Cell] = None
         self._last_published_state_pos: Optional[Cell] = None
         self._now: float = 0.0
@@ -122,7 +122,7 @@ class RobotShell:
 
     @property
     def blocked(self) -> Set[Cell]:
-        return self.known_obstacles | set(self._temporary_invalid_task_moves.keys())
+        return self.known_obstacles | set(self._temporary_invalid_task_until.keys())
 
     @property
     def blocked_cells(self) -> Set[Cell]:
@@ -221,6 +221,7 @@ class RobotShell:
 
     def step(self, now_s: float, planner: AStarPlanner) -> StepResult:
         self._now = now_s
+        self._expire_temporary_invalid_tasks()
         self.bus.pump(now_s)
         if self.pending_actions:
             return self._execute_pending_action(planner)
@@ -387,7 +388,6 @@ class RobotShell:
         self.pos = next_cell
         self._collision_event_counted_since_move = False
         self._blocked_goal_failures.clear()
-        self._age_temporary_invalid_tasks_after_move()
         self.counters.steps_total += 1
         if self._post_clue_started():
             self.counters.steps_after_first_clue += 1
@@ -467,24 +467,18 @@ class RobotShell:
         if self._blocked_goal_failures[goal] < 2:
             return None
 
-        self._temporary_invalid_task_moves[goal] = 2
+        wait_s = self.bus.rng.uniform(0.0, self.cfg.collision_goal_backoff_max_s)
+        self._temporary_invalid_task_until[goal] = self._now + max(wait_s, 1.0e-3)
         self._blocked_goal_failures.pop(goal, None)
         self.current_goal = None
         self._set_collision_intent(None)
         self.last_event = "blocked_goal_backoff"
-        wait_s = self.bus.rng.uniform(0.0, 5.0)
         return StepResult(reason="blocked_goal_backoff", time_cost_s=wait_s)
 
-    def _age_temporary_invalid_tasks_after_move(self) -> None:
-        expired: List[Cell] = []
-        for cell, moves_left in list(self._temporary_invalid_task_moves.items()):
-            moves_left -= 1
-            if moves_left <= 0:
-                expired.append(cell)
-            else:
-                self._temporary_invalid_task_moves[cell] = moves_left
-        for cell in expired:
-            self._temporary_invalid_task_moves.pop(cell, None)
+    def _expire_temporary_invalid_tasks(self) -> None:
+        for cell, expires_at in list(self._temporary_invalid_task_until.items()):
+            if self._now >= expires_at:
+                self._temporary_invalid_task_until.pop(cell, None)
 
     def _post_clue_started(self) -> bool:
         return self.world.first_clue_time_s is not None

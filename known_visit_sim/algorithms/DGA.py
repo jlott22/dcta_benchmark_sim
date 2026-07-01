@@ -29,6 +29,18 @@ class DGAAllocator(AllocatorBase):
     PREDICTION_TOLERANCE_CELLS = 0
     EPS = 1.0e-9
 
+    def recover_stalled_allocation(self, robot: Any) -> bool:
+        """Locally expire peer assignments after the shared stall timeout."""
+        self._ensure_dga_state(robot)
+        counts = getattr(robot, "dga_bad_prediction_count", {}) or {}
+        for peer_id in self._safe_peer_positions(robot):
+            peer_key = self._rid_key(peer_id)
+            if peer_key != self._rid_key(robot.rid):
+                counts[peer_key] = max(int(counts.get(peer_key, 0)), self.BAD_PRED_LIMIT)
+        setattr(robot, "dga_bad_prediction_count", counts)
+        self._reset_path_state(robot)
+        return True
+
     def choose_goal(self, robot: Any) -> AllocationDecision:
         goal = self.pick_goal(robot)
         mode = "known_visit"

@@ -75,6 +75,7 @@ class SimConfig:
     comm_delay_s: float = 0.04
     comm_delay_jitter_s: float = 0.01
     collision_intent_settle_s: float = 0.10
+    collision_goal_backoff_max_s: float = 5.0
 
     # Safety cap is for implementation bugs, not an experimental timeout.
     debug_max_events: int = 50_000
@@ -102,6 +103,8 @@ class SimConfig:
             raise ValueError(f"missing start positions for robots: {sorted(missing_positions)}")
         if missing_headings:
             raise ValueError(f"missing start headings for robots: {sorted(missing_headings)}")
+        if self.collision_goal_backoff_max_s <= 0:
+            raise ValueError("collision_goal_backoff_max_s must be positive")
 
     def to_dict(self):
         return asdict(self)

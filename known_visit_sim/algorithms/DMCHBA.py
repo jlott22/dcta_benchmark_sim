@@ -19,6 +19,12 @@ class DMCHBAAllocator(AllocatorBase):
     TIE_EPS = 1.0e-9
     COMMITMENT_HORIZON = 3
 
+    def recover_stalled_allocation(self, robot: Any) -> bool:
+        self._ensure_dmchba_state(robot)
+        setattr(robot, "dmchba_path", [])
+        setattr(robot, "dmchba_last_assignment_signature", None)
+        return True
+
     # ------------------------------------------------------------------
     # Main simulator entry point
     # ------------------------------------------------------------------

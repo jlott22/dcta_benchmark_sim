@@ -283,7 +283,7 @@ class AsyncMovementTests(unittest.TestCase):
         self.assertEqual(robot.counters.collision_prevention_events, 1)
         self.assertGreater(robot.counters.path_replans, robot.counters.collision_prevention_events)
 
-    def test_repeated_blocked_goal_is_temporarily_invalid_for_two_moves(self) -> None:
+    def test_repeated_blocked_goal_is_temporarily_invalid_until_backoff_time(self) -> None:
         runner, state, queue, order = _runner(
             _cfg(collision_intent_settle_s=0.0),
             _FirstUnblockedGoalAllocator,
@@ -298,19 +298,14 @@ class AsyncMovementTests(unittest.TestCase):
         second, order = runner.process_next_event(state, queue, order)
         self.assertEqual(second.result.reason, "blocked_goal_backoff")
         self.assertIn((0, 1), robot.blocked_cells)
+        expires_at = robot._temporary_invalid_task_until[(0, 1)]
 
-        third, order = runner.process_next_event(state, queue, order)
-        self.assertEqual(third.result.reason, "moved")
-        self.assertEqual(robot.pos, (1, 0))
+        robot._now = expires_at - 0.0001
+        robot._expire_temporary_invalid_tasks()
         self.assertIn((0, 1), robot.blocked_cells)
 
-        fourth, order = runner.process_next_event(state, queue, order)
-        self.assertEqual(fourth.result.reason, "turn")
-        self.assertIn((0, 1), robot.blocked_cells)
-
-        fifth, order = runner.process_next_event(state, queue, order)
-        self.assertEqual(fifth.result.reason, "moved")
-        self.assertEqual(robot.pos, (1, 1))
+        robot._now = expires_at
+        robot._expire_temporary_invalid_tasks()
         self.assertNotIn((0, 1), robot.blocked_cells)
 
     def test_completed_task_cell_replacement_is_not_task_churn(self) -> None:

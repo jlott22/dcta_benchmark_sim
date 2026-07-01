@@ -55,7 +55,10 @@ class SimConfig:
     comm_delay_s: float = 0.04
     comm_delay_jitter_s: float = 0.01
     collision_intent_settle_s: float = 0.10
+    collision_goal_backoff_max_s: float = 5.0
+    stalled_allocation_recovery_s: float = 120.0
     debug_max_events: int = 50_000
+    debug_max_stagnant_events: int = 2_000
 
     commitment_horizon: Optional[int] = None
     max_candidate_cells: Optional[int] = None
@@ -75,6 +78,12 @@ class SimConfig:
             raise ValueError("start_positions must contain every robot ID exactly once")
         if set(self.start_headings) != set(self.robot_ids):
             raise ValueError("start_headings must contain every robot ID exactly once")
+        if self.collision_goal_backoff_max_s <= 0:
+            raise ValueError("collision_goal_backoff_max_s must be positive")
+        if self.stalled_allocation_recovery_s <= 0:
+            raise ValueError("stalled_allocation_recovery_s must be positive")
+        if self.debug_max_stagnant_events <= 0:
+            raise ValueError("debug_max_stagnant_events must be positive")
 
     def to_dict(self) -> dict:
         return asdict(self)

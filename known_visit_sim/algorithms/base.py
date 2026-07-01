@@ -60,6 +60,19 @@ class AllocatorBase:
         """Allow an allocator to reset cached paths after local task completion inference."""
         return True
 
+    def recover_stalled_allocation(self, robot: RobotAPI) -> bool:
+        """Clear local allocation consensus after a prolonged no-goal stall.
+
+        This is deliberately local: it emits no recovery, release, refresh, or
+        heartbeat message. The next normal allocation decision may emit the
+        same claim message it would use during ordinary allocation.
+        """
+        reset = getattr(self, "_reset_cbaa_state", None)
+        if not callable(reset):
+            return False
+        reset(robot)
+        return True
+
     def choose_goal(self, robot: RobotAPI) -> AllocationDecision:
         """Return the next active target cell."""
         raise NotImplementedError

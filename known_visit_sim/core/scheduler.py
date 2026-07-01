@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import heapq
+import json
 import random
+from collections import Counter
 from dataclasses import dataclass, field
 from typing import Callable, Dict, List, Optional, Type
 
@@ -76,6 +78,9 @@ class AsyncTrialRunner:
         state = self.new_trial(scenario)
         queue = self.initial_queue(state)
         order = len(queue)
+        last_progress = self._progress_signature(state)
+        stagnant_events = 0
+        reasons: Counter[str] = Counter()
         while queue and not state.done:
             event = heapq.heappop(queue)
             state.clock_s = event.time_s
@@ -83,16 +88,64 @@ class AsyncTrialRunner:
             robot = state.robots[event.rid]
             result = robot.step(state.clock_s, state.planner)
             state.events_processed += 1
+            reasons[result.reason] += 1
             if on_step:
                 on_step(state, robot, result)
             if state.world.all_targets_completed():
                 state.done = True
                 break
+            progress = self._progress_signature(state)
+            if progress == last_progress:
+                stagnant_events += 1
+            else:
+                last_progress = progress
+                stagnant_events = 0
+            if stagnant_events >= self.cfg.debug_max_stagnant_events:
+                raise RuntimeError(
+                    f"Stagnation detected in trial {scenario.trial_id} after "
+                    f"{stagnant_events} events without movement or target completion; "
+                    f"diagnostics={json.dumps(self._diagnostics(state, reasons), sort_keys=True, default=str)}"
+                )
             if state.events_processed >= self.cfg.debug_max_events:
-                raise RuntimeError(f"Debug safety cap reached in trial {scenario.trial_id}")
+                raise RuntimeError(
+                    f"Debug safety cap reached in trial {scenario.trial_id}; "
+                    f"diagnostics={json.dumps(self._diagnostics(state, reasons), sort_keys=True, default=str)}"
+                )
             order += 1
             heapq.heappush(queue, WakeEvent(state.clock_s + self._interval_for(result), order, event.rid))
         return state
+
+    @staticmethod
+    def _progress_signature(state: TrialState) -> tuple:
+        completed = sum(record.completed for record in state.world.target_records.values())
+        positions = tuple((rid, robot.pos) for rid, robot in sorted(state.robots.items()))
+        return completed, positions
+
+    @staticmethod
+    def _diagnostics(state: TrialState, reasons: Counter[str]) -> dict:
+        return {
+            "clock_s": state.clock_s,
+            "events_processed": state.events_processed,
+            "completed_targets": sum(record.completed for record in state.world.target_records.values()),
+            "total_targets": len(state.world.target_records),
+            "event_reasons": dict(reasons),
+            "robots": {
+                rid: {
+                    "pos": robot.pos,
+                    "goal": robot.current_goal,
+                    "active_tasks": len(robot.active_tasks),
+                    "last_event": robot.last_event,
+                    "no_goal_since": robot._no_goal_since,
+                    "stall_recovery_count": robot._stall_recovery_count,
+                    "temporary_invalid_until": {
+                        str(cell): expires
+                        for cell, expires in robot._temporary_invalid_task_until.items()
+                    },
+                    "decision": robot.last_decision_debug,
+                }
+                for rid, robot in sorted(state.robots.items())
+            },
+        }
 
     def _interval_for(self, result: StepResult) -> float:
         if result.reason == "turn":

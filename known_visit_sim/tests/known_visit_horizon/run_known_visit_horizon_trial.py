@@ -10,11 +10,12 @@ import sys
 from pathlib import Path
 from typing import Any, Iterable, List, Tuple
 
-REPO_ROOT = Path(os.environ.get("DCTA_REPO_ROOT", "/home/dcta_benchmark_sim")).expanduser().resolve()
+DEFAULT_REPO_ROOT = Path(__file__).resolve().parents[3]
+REPO_ROOT = Path(os.environ.get("DCTA_REPO_ROOT", DEFAULT_REPO_ROOT)).expanduser().resolve()
 if not (REPO_ROOT / "known_visit_sim").is_dir():
     raise RuntimeError(
         f"known_visit_sim package not found under {REPO_ROOT}; "
-        "clone the repository to /home/dcta_benchmark_sim or set DCTA_REPO_ROOT"
+        "set DCTA_REPO_ROOT to the repository checkout"
     )
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
@@ -70,12 +71,11 @@ def make_comm_model(name: str, level: str | None) -> Any:
         cls = getattr(comm_models, "GilbertElliotModel", None) or getattr(comm_models, "GilbertElliot", None)
         if cls is None:
             raise RuntimeError("known_visit_sim.comms.models has no GilbertElliotModel/GilbertElliot class")
-        p_bad_success = float(level if level not in (None, "") else 0.75)
+        p_good_to_good = float(level if level not in (None, "") else 0.75)
         return _construct(
             cls,
-            ((p_bad_success,), {}),
-            ((), {"p_bad_success": p_bad_success}),
-            ((), {"comm_level": p_bad_success}),
+            ((), {"p_good_to_good": p_good_to_good, "p_bad_to_bad": 1.0 - p_good_to_good}),
+            ((), {"comm_level": p_good_to_good}),
             ((), {}),
         )
     if name in {"rayleigh_style", "rayleigh"}:
@@ -85,7 +85,6 @@ def make_comm_model(name: str, level: str | None) -> Any:
         sensitivity = float(level if level not in (None, "") else -50.66)
         return _construct(
             cls,
-            ((sensitivity,), {}),
             ((), {"sensitivity_dbm": sensitivity}),
             ((), {"comm_level": sensitivity}),
             ((), {}),
@@ -111,10 +110,31 @@ def make_config(args: argparse.Namespace) -> SimConfig:
         comm_delay_s=args.comm_delay_s,
         comm_delay_jitter_s=args.comm_delay_jitter_s,
         collision_intent_settle_s=args.collision_intent_settle_s,
+        stalled_allocation_recovery_s=args.stalled_allocation_recovery_s,
         debug_max_events=args.debug_max_events,
+        debug_max_stagnant_events=args.debug_max_stagnant_events,
         condition_id=args.condition_id,
     )
     return SimConfig(**values)
+
+
+def load_trial_journal(path: Path) -> list[dict[str, Any]]:
+    """Load complete per-trial records; ignore a torn final line after interruption."""
+    records: list[dict[str, Any]] = []
+    if not path.exists():
+        return records
+    with path.open(encoding="utf-8") as handle:
+        for line_number, line in enumerate(handle, start=1):
+            if not line.strip():
+                continue
+            try:
+                record = json.loads(line)
+                if not all(key in record for key in ("trial", "system", "robots", "targets")):
+                    raise ValueError("missing result section")
+                records.append(record)
+            except (json.JSONDecodeError, ValueError) as exc:
+                print(f"[WARN] ignoring invalid journal line {line_number}: {exc}", flush=True)
+    return records
 
 
 def main() -> None:
@@ -136,7 +156,9 @@ def main() -> None:
     parser.add_argument("--comm-delay-s", type=float, default=0.04)
     parser.add_argument("--comm-delay-jitter-s", type=float, default=0.01)
     parser.add_argument("--collision-intent-settle-s", type=float, default=0.10)
-    parser.add_argument("--debug-max-events", type=int, default=800000)
+    parser.add_argument("--debug-max-events", type=int, default=20000)
+    parser.add_argument("--debug-max-stagnant-events", type=int, default=2000)
+    parser.add_argument("--stalled-allocation-recovery-s", type=float, default=120.0)
     args = parser.parse_args()
 
     scenario_path = Path(args.scenario_file)
@@ -157,14 +179,24 @@ def main() -> None:
     cfg = make_config(args)
     comm_level_label = args.comm_level if args.comm_level != "" else "1.0"
 
-    trial_rows: list[dict[str, Any]] = []
-    system_rows: list[dict[str, Any]] = []
-    robot_rows: list[dict[str, Any]] = []
-    target_rows: list[dict[str, Any]] = []
+    out_dir = Path(args.out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    journal_path = out_dir / "_trial_journal.jsonl"
+    journal_records = load_trial_journal(journal_path)
+    trial_rows = [record["trial"] for record in journal_records]
+    system_rows = [record["system"] for record in journal_records]
+    robot_rows = [row for record in journal_records for row in record["robots"]]
+    target_rows = [row for record in journal_records for row in record["targets"]]
+    completed_trial_ids = {int(record["trial"]["trial_id"]) for record in journal_records}
+    if completed_trial_ids:
+        print(f"resuming with {len(completed_trial_ids)}/{len(scenarios)} trials checkpointed", flush=True)
 
     for idx, scenario in enumerate(scenarios):
+        trial_id = int(getattr(scenario, "trial_id", idx))
+        if trial_id in completed_trial_ids:
+            continue
         model = make_comm_model(args.comm_model, args.comm_level)
-        trial_seed = int(args.seed) + int(getattr(scenario, "trial_id", idx))
+        trial_seed = int(args.seed) + trial_id
         state = AsyncTrialRunner(cfg, allocator_cls, model, trial_seed).run_trial(scenario)
         trial, system, robots, targets = build_rows(
             state,
@@ -189,12 +221,14 @@ def main() -> None:
         system_rows.append(system)
         robot_rows.extend(robots)
         target_rows.extend(targets)
+        record = {"trial": trial, "system": system, "robots": robots, "targets": targets}
+        with journal_path.open("a", encoding="utf-8") as journal:
+            journal.write(json.dumps(record, default=str, separators=(",", ":")) + "\n")
+            journal.flush()
+            os.fsync(journal.fileno())
+        completed_trial_ids.add(trial_id)
+        print(f"completed {len(completed_trial_ids)}/{len(scenarios)} trials for {args.algorithm} h{args.commitment_horizon} {args.comm_model} {comm_level_label}", flush=True)
 
-        if (idx + 1) % 25 == 0 or (idx + 1) == len(scenarios):
-            print(f"completed {idx + 1}/{len(scenarios)} trials for {args.algorithm} h{args.commitment_horizon} {args.comm_model} {comm_level_label}", flush=True)
-
-    out_dir = Path(args.out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
     extra_config = {
         "trial_mode": "known_visit",
         "algorithm": args.algorithm,
@@ -210,6 +244,10 @@ def main() -> None:
         "num_targets": args.num_targets,
         "seed": args.seed,
         "condition_id": args.condition_id,
+        "checkpoint_journal": str(journal_path),
+        "debug_max_events": args.debug_max_events,
+        "debug_max_stagnant_events": args.debug_max_stagnant_events,
+        "stalled_allocation_recovery_s": args.stalled_allocation_recovery_s,
     }
     write_outputs(out_dir, trial_rows, system_rows, robot_rows, target_rows, extra_config)
     (out_dir / "_COMPLETE.txt").write_text("complete\n", encoding="utf-8")

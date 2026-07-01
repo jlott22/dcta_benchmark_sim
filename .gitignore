@@ -27,3 +27,14 @@ Thumbs.db
 *.temp
 *.log
 *~
+
+# Transient study execution state (preserve result CSV/JSON and manifests)
+/runs/**/logs/
+/runs/**/parts/
+/runs/**/archive/
+/runs/**/launcher.pid
+/runs/**/monitor_progress.py
+/runs/**/start_all_*.sh
+/runs/**/_trial_journal.jsonl
+/runs/**/_FAILED.txt
+/runs/**/_COMPLETE.txt

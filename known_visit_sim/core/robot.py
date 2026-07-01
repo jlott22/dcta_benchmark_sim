@@ -68,7 +68,9 @@ class RobotShell:
         self.collision_avoidance_active = False
         self._collision_event_counted_since_move = False
         self._blocked_goal_failures: Dict[Cell, int] = {}
-        self._temporary_invalid_task_moves: Dict[Cell, int] = {}
+        self._temporary_invalid_task_until: Dict[Cell, float] = {}
+        self._no_goal_since: Optional[float] = None
+        self._stall_recovery_count = 0
         self._communicated_collision_intent: Optional[Cell] = None
         self._last_published_state_pos: Optional[Cell] = None
         self._now: float = 0.0
@@ -120,7 +122,7 @@ class RobotShell:
 
     @property
     def blocked(self) -> Set[Cell]:
-        return self.known_obstacles | set(self._temporary_invalid_task_moves.keys())
+        return self.known_obstacles | set(self._temporary_invalid_task_until.keys())
 
     @property
     def blocked_cells(self) -> Set[Cell]:
@@ -189,6 +191,7 @@ class RobotShell:
 
     def step(self, now_s: float, planner: AStarPlanner) -> StepResult:
         self._now = now_s
+        self._expire_temporary_invalid_tasks()
         self.bus.pump(now_s)
         if self.pending_actions:
             return self._execute_pending_action(planner)
@@ -222,6 +225,18 @@ class RobotShell:
                     f"{self.allocator.name} selected inactive/non-target goal {decision.goal}"
                 )
             self.current_goal = decision.goal
+            if self.current_goal is None and self._active_tasks:
+                if self._no_goal_since is None:
+                    self._no_goal_since = self._now
+                elif self._now - self._no_goal_since >= self.cfg.stalled_allocation_recovery_s:
+                    recover = getattr(self.allocator, "recover_stalled_allocation", None)
+                    if callable(recover) and recover(self):
+                        self._stall_recovery_count += 1
+                        self._no_goal_since = self._now
+                        decision = self.allocator.choose_goal(self)
+                        self.current_goal = decision.goal
+            if self.current_goal is not None or not self._active_tasks:
+                self._no_goal_since = None
             self.last_decision_debug = decision.debug
             if self.current_goal is not None and self.current_goal != self.last_goal:
                 if previous_task_invalidated:
@@ -358,7 +373,6 @@ class RobotShell:
         self.pos = next_cell
         self._collision_event_counted_since_move = False
         self._blocked_goal_failures.clear()
-        self._age_temporary_invalid_tasks_after_move()
         self.counters.steps_total += 1
         self.publish_state()
 
@@ -430,24 +444,18 @@ class RobotShell:
         if self._blocked_goal_failures[goal] < 2:
             return None
 
-        self._temporary_invalid_task_moves[goal] = 2
+        wait_s = self.bus.rng.uniform(0.0, self.cfg.collision_goal_backoff_max_s)
+        self._temporary_invalid_task_until[goal] = self._now + max(wait_s, 1.0e-3)
         self._blocked_goal_failures.pop(goal, None)
         self.current_goal = None
         self._set_collision_intent(None)
         self.last_event = "blocked_goal_backoff"
-        wait_s = self.bus.rng.uniform(0.0, 5.0)
         return StepResult(reason="blocked_goal_backoff", time_cost_s=wait_s)
 
-    def _age_temporary_invalid_tasks_after_move(self) -> None:
-        expired: List[Cell] = []
-        for cell, moves_left in list(self._temporary_invalid_task_moves.items()):
-            moves_left -= 1
-            if moves_left <= 0:
-                expired.append(cell)
-            else:
-                self._temporary_invalid_task_moves[cell] = moves_left
-        for cell in expired:
-            self._temporary_invalid_task_moves.pop(cell, None)
+    def _expire_temporary_invalid_tasks(self) -> None:
+        for cell, expires_at in list(self._temporary_invalid_task_until.items()):
+            if self._now >= expires_at:
+                self._temporary_invalid_task_until.pop(cell, None)
 
     def _allocation_active(self) -> bool:
         return True
