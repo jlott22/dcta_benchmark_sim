@@ -9,7 +9,7 @@
   "horizon_fields_changed": [
     "COMMITMENT_HORIZON"
   ],
-  "scenario_file": "known_visit_g19_t10_n500.csv",
+  "scenario_file": "scenarios/known_visit_g19_t10_n500.csv",
   "num_trials_requested": 500,
   "max_trials": 500,
   "grid_size": 19,
@@ -17,7 +17,7 @@
   "num_targets": 10,
   "seed": 0,
   "condition_id": "dmchba_rayleigh_style_sens_neg59_4",
-  "checkpoint_journal": "runs/known_visit_core_500/raw/dmchba/rayleigh_style_sens_neg59_4/_trial_journal.jsonl",
+  "checkpoint_journal": "/home/agxorin/dcta_benchmark_sim/runs/known_visit_core_500/raw/dmchba/rayleigh_style_sens_neg59_4/_trial_journal.jsonl",
   "debug_max_events": 20000,
   "debug_max_stagnant_events": 2000,
   "stalled_allocation_recovery_s": 120.0
