@@ -19,7 +19,7 @@ cd "$REPO_ROOT"
 
 NUM_CORES="${1:-8}"
 
-SCENARIO_FILE="final_trial_500.csv"
+SCENARIO_FILE="scenarios/final_trial_500.csv"
 GRID_SIZE=19
 MAX_TRIALS_TOTAL=300
 

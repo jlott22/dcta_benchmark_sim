@@ -6,7 +6,7 @@ import shlex
 from pathlib import Path
 
 REPO_ROOT = Path("/home/jlott/dcta_benchmark_sim")
-SCENARIO_FILE = "final_trial_500.csv"
+SCENARIO_FILE = "scenarios/final_trial_500.csv"
 GRID_SIZE = "19"
 MAX_TRIALS = "50"
 PYTHON_BIN = "${PYTHON_BIN:-python3}"

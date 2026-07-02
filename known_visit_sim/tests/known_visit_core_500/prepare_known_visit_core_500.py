@@ -9,8 +9,9 @@ from pathlib import Path
 
 REPO_ROOT = Path(os.environ.get("DCTA_REPO_ROOT", Path(__file__).resolve().parents[3])).expanduser().resolve()
 ROOT = Path("runs/known_visit_core_500")
+COMBINED_ROOT = Path("known_visit_core_500_combined")
 RUNNER = Path("known_visit_sim/tests/known_visit_horizon/run_known_visit_horizon_trial.py")
-SCENARIO = Path("known_visit_g19_t10_n500.csv")
+SCENARIO = Path("scenarios/known_visit_g19_t10_n500.csv")
 ALGORITHMS = ["CBAA", "ACBBA", "PI", "HIPC", "DMCHBA", "DGA"]
 HORIZON = 8
 TRIALS = 500
@@ -67,7 +68,7 @@ def assign(all_jobs: list[dict], cores: int) -> tuple[list[list[dict]], list[int
 
 
 def write_manifest(all_jobs: list[dict]) -> None:
-    out = REPO_ROOT / ROOT / "combined" / "manifest.csv"
+    out = REPO_ROOT / COMBINED_ROOT / "manifest.csv"
     out.parent.mkdir(parents=True, exist_ok=True)
     fields = ["algorithm", "folder", "model", "label", "level", "run_id", "out_dir"]
     with out.open("w", newline="", encoding="utf-8") as handle:

@@ -6,7 +6,7 @@ set -euo pipefail
 REPO_ROOT="${DCTA_REPO_ROOT:-/home/jlott/dcta_benchmark_sim}"
 RAW_ROOT="$REPO_ROOT/runs/final_500_all/raw/dga"
 COMBINED_ROOT="$REPO_ROOT/runs/final_500_all/combined_dga"
-SCENARIO_FILE="$REPO_ROOT/final_trial_500.csv"
+SCENARIO_FILE="$REPO_ROOT/scenarios/final_trial_500.csv"
 
 if [[ ! -d "$RAW_ROOT" ]]; then
   echo "ERROR: raw DGA output root not found: $RAW_ROOT" >&2
@@ -239,4 +239,3 @@ if all_counts_ok and not missing_rows:
 else:
     print("[DONE WITH GAPS] combined outputs are incomplete; see reports")
 PY
-

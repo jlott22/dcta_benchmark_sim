@@ -16,7 +16,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-robots", type=int, default=4)
     parser.add_argument("--robot-start-layout", choices=["edge_even"], default="edge_even")
     parser.add_argument("--seed", type=int, default=20260630)
-    parser.add_argument("--output", type=Path, default=Path("known_visit_g19_t10_n500.csv"))
+    parser.add_argument("--output", type=Path, default=Path("scenarios/known_visit_g19_t10_n500.csv"))
     return parser.parse_args()
 
 

@@ -1,5 +1,0 @@
-trial_id,algorithm,comm_model,comm_level,robot_id,steps_total,steps_after_first_clue,unique_cells_contributed,system_revisits_by_robot,task_cell_replans,path_replans,collision_prevention_events,messages_sent,protected_messages_sent,unprotected_messages_sent,core_messages_sent,allocation_messages_sent,post_clue_messages_sent,messages_sent_by_topic,messages_delivered_to_robot,messages_dropped_to_robot
-0,ACBBA,rayleigh_style,sens_-55,00,36,36,36,1,1,2,1,463,38,425,76,387,462,acbba_entry:387;clue:2;collision_intent:37;state:36;target:1,1323,15
-0,ACBBA,rayleigh_style,sens_-55,01,36,36,36,1,1,3,3,452,38,414,76,376,451,acbba_entry:376;clue:2;collision_intent:38;state:36,1345,3
-0,ACBBA,rayleigh_style,sens_-55,02,36,35,35,2,0,5,2,446,36,410,74,372,444,acbba_entry:372;clue:2;collision_intent:36;state:36,1348,5
-0,ACBBA,rayleigh_style,sens_-55,03,35,34,30,6,1,3,3,440,38,402,75,365,438,acbba_entry:365;clue:2;collision_intent:38;state:35,1349,11

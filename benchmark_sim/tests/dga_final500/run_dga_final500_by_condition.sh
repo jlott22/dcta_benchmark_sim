@@ -5,7 +5,7 @@ set -uo pipefail
 # Usage: bash benchmark_sim/tests/dga_final500/run_dga_final500_by_condition.sh [max_parallel_conditions]
 
 REPO_ROOT="${DCTA_REPO_ROOT:-/home/jlott/dcta_benchmark_sim}"
-SCENARIO_FILE="$REPO_ROOT/final_trial_500.csv"
+SCENARIO_FILE="$REPO_ROOT/scenarios/final_trial_500.csv"
 RAW_ROOT="$REPO_ROOT/runs/final_500_all/raw/dga"
 LOG_DIR="$RAW_ROOT/_logs"
 STATE_DIR="$RAW_ROOT/_condition_status"

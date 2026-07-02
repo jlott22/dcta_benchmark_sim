@@ -31,6 +31,7 @@ META_COLS = [
     "source_condition_folder",
     "source_out_dir",
 ]
+TARGET_ROWS_PER_PART = 120_000
 
 
 def infer_metadata(csv_file: Path) -> dict:
@@ -68,7 +69,6 @@ def combine_one(filename: str):
     files = find_raw(filename)
     out_dir = ROOT / "combined"
     out_dir.mkdir(parents=True, exist_ok=True)
-    outfile = out_dir / filename
     if not files:
         print(f"[SKIP] no {filename}")
         return
@@ -92,11 +92,27 @@ def combine_one(filename: str):
         if name not in seen:
             seen.add(name)
             fieldnames.append(name)
-    with outfile.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
-        writer.writeheader()
-        writer.writerows(rows)
-    print(f"[OK] wrote {outfile} rows={rows_written}")
+    stem = Path(filename).stem
+    for stale in out_dir.glob(f"{stem}_part*.csv"):
+        stale.unlink()
+    if filename == "target_performance.csv":
+        (out_dir / filename).unlink(missing_ok=True)
+        outputs = []
+        for index, start in enumerate(range(0, len(rows), TARGET_ROWS_PER_PART), start=1):
+            outfile = out_dir / f"{stem}_part{index}.csv"
+            with outfile.open("w", newline="", encoding="utf-8") as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+                writer.writeheader()
+                writer.writerows(rows[start:start + TARGET_ROWS_PER_PART])
+            outputs.append(outfile)
+        print(f"[OK] wrote {len(outputs)} target metric parts rows={rows_written}")
+    else:
+        outfile = out_dir / filename
+        with outfile.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+            writer.writeheader()
+            writer.writerows(rows)
+        print(f"[OK] wrote {outfile} rows={rows_written}")
 
 
 def write_condition_manifest():

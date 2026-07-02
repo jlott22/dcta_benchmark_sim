@@ -89,8 +89,9 @@ known_visit_sim/
   tests/
     test_known_visit.py
     known_visit_horizon/
-final_trial_500.csv
-known_visit_g19_t10_n500.csv
+scenarios/final_trial_500.csv
+scenarios/known_visit_10target_300.csv
+scenarios/known_visit_g19_t10_n500.csv
 README.md
 ```
 
@@ -99,8 +100,8 @@ runtime. This keeps the secondary known-target evaluation from changing the
 main clue-informed benchmark.
 
 Generated result directories at the repository root (`clue_500_combined/`,
-`coverage_100_combined/`, and `clue_sensitivity_test_results/`) contain study data,
-not simulator source.
+`known_visit_core_500_combined/`, `coverage_100_combined/`, and
+`clue_sensitivity_test_results/`) contain study data, not simulator source.
 
 ## Requirements and Setup
 
@@ -174,7 +175,7 @@ In simulator terminology:
 - `object_x/object_y` is the target location
 - `clueN_x/clueN_y` are clue locations
 
-The repository root includes `final_trial_500.csv` (500 trials).
+The `scenarios/` directory includes `final_trial_500.csv` (500 trials).
 
 `benchmark_sim/clue_object_generator_manhat.py` can generate a fixed object
 list or regenerate clue sets around that list. Its current controls
@@ -187,7 +188,7 @@ Example ACBBA run (PowerShell):
 
 ```powershell
 python -m benchmark_sim.run_trials `
-  --scenario-file final_trial_500.csv `
+  --scenario-file scenarios/final_trial_500.csv `
   --algorithm benchmark_sim.algorithms.ACBBA:ACBBAAllocator `
   --comm-model bernoulli `
   --comm-level 0.10 `
@@ -199,7 +200,7 @@ Example DGA run:
 
 ```powershell
 python -m benchmark_sim.run_trials `
-  --scenario-file final_trial_500.csv `
+  --scenario-file scenarios/final_trial_500.csv `
   --algorithm benchmark_sim.algorithms.DGA:DGAAllocator `
   --comm-model ideal `
   --max-trials 10 `
@@ -244,7 +245,7 @@ reference.
 `known_visit_sim` is the secondary pure task-allocation/routing benchmark. All
 task locations are known to every robot at initialization, there are no clues
 or hidden targets, and world truth ends a trial when every task cell has been
-visited. The bundled `known_visit_g19_t10_n500.csv` contains 500 paired
+visited. The bundled `scenarios/known_visit_g19_t10_n500.csv` contains 500 paired
 scenarios with 10 unique task cells on a 19x19 grid, generated with seed
 `20260630`; task cells do not overlap the default robot starts.
 
@@ -258,14 +259,14 @@ python -m known_visit_sim.generate_scenarios `
   --num-trials 500 `
   --robot-start-layout edge_even `
   --seed 20260630 `
-  --output known_visit_g19_t10_n500.csv
+  --output scenarios/known_visit_g19_t10_n500.csv
 ```
 
 Run one algorithm/communication condition:
 
 ```powershell
 python -m known_visit_sim.run_trials `
-  --scenario-file known_visit_g19_t10_n500.csv `
+  --scenario-file scenarios/known_visit_g19_t10_n500.csv `
   --algorithm DGA `
   --comm-model ideal `
   --grid-size 19 `
@@ -334,7 +335,7 @@ Run:
 
 ```powershell
 python -m benchmark_sim.run_viewer `
-  --scenario-file final_trial_500.csv `
+  --scenario-file scenarios/final_trial_500.csv `
   --algorithm benchmark_sim.algorithms.ACBBA:ACBBAAllocator `
   --comm-model bernoulli `
   --comm-level 0.10
