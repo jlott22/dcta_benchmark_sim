@@ -99,7 +99,7 @@ runtime. This keeps the secondary known-target evaluation from changing the
 main clue-informed benchmark.
 
 Generated result directories at the repository root (`clue_500_combined/`,
-`coverage_100_combined/`, and `sensitivity_test_results/`) contain study data,
+`coverage_100_combined/`, and `clue_sensitivity_test_results/`) contain study data,
 not simulator source.
 
 ## Requirements and Setup
@@ -312,13 +312,13 @@ checkpointed so interrupted conditions resume without repeating prior trials:
 ```bash
 cd /path/to/dcta_benchmark_sim
 python3 known_visit_sim/tests/known_visit_horizon/make_known_visit_horizon_sensitivity.py --cores 9
-./runs/sensitivity_known_visit_horizon_300/start_all_known_visit_horizon_parts.sh
+./known_target_sensitivity_test_results/horizon_results/start_all_known_visit_horizon_parts.sh
 bash known_visit_sim/tests/known_visit_horizon/combine_known_visit_horizon_sensitivity_300.sh
 ```
 
 The scenario is generated at the repository root. Worker scripts, manifests,
 logs, raw results, and combined results are written beneath
-`runs/sensitivity_known_visit_horizon_300/`. The launcher opens a separate
+`known_target_sensitivity_test_results/horizon_results/`. The launcher opens a separate
 terminal progress monitor when `gnome-terminal` or `xterm` and a display are
 available; it also prints the command for running the monitor manually.
 

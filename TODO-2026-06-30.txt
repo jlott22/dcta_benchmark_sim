@@ -47,7 +47,7 @@ Horizon Sensitivity Tests
 9. [COMPLETED] Known-target environment
    Commitment-horizon sensitivity testing completed as a 300-trial,
    120-condition study. All 36,000 trials and all combined result tables were
-   validated and saved under runs/sensitivity_known_visit_horizon_300/.
+   validated and saved under known_target_sensitivity_test_results/horizon_results/.
 
 10. [NOT MADE] Coverage environment
    Create and run commitment-horizon sensitivity testing in the coverage environment.
