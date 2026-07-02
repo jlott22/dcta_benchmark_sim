@@ -66,6 +66,19 @@ class DMCHBAAllocator(AllocatorBase):
     # Event-triggered known-target allocation
     # ------------------------------------------------------------------
 
+    def on_task_set_changed(self, robot: Any) -> None:
+        """Record when a peer completion invalidates this robot's committed path."""
+
+        self._ensure_dmchba_state(robot)
+        if getattr(robot, "last_event", None) != "peer_state_at_target":
+            return
+
+        previous = set(getattr(robot, "dmchba_task_signature", ()) or ())
+        current = set(getattr(robot, "active_tasks", set()) or set())
+        removed = previous - current
+        if removed.intersection(self._get_path(robot)):
+            setattr(robot, "dmchba_external_path_invalidated", True)
+
     def _task_set_trigger(self, robot: Any) -> Optional[str]:
         """Return reassignment trigger name, or None if current path should continue."""
 
@@ -76,8 +89,12 @@ class DMCHBAAllocator(AllocatorBase):
         previous_task_signature = getattr(robot, "dmchba_task_signature", None)
         if task_signature != previous_task_signature:
             setattr(robot, "dmchba_task_signature", task_signature)
-            setattr(robot, "dmchba_path", [])
-            return "task_set_changed"
+            if bool(getattr(robot, "dmchba_external_path_invalidated", False)):
+                setattr(robot, "dmchba_external_path_invalidated", False)
+                setattr(robot, "dmchba_path", [])
+                return "external_task_invalidated_path"
+            if not self._get_path(robot):
+                return "task_set_changed"
 
         if self._collision_activation_trigger(robot):
             setattr(robot, "dmchba_path", [])
@@ -371,6 +388,8 @@ class DMCHBAAllocator(AllocatorBase):
             setattr(robot, "dmchba_last_committed_count", len(self._get_path(robot)))
         if not hasattr(robot, "dmchba_stall_self_only"):
             setattr(robot, "dmchba_stall_self_only", False)
+        if not hasattr(robot, "dmchba_external_path_invalidated"):
+            setattr(robot, "dmchba_external_path_invalidated", False)
 
     def _get_path(self, robot: Any) -> List[Cell]:
         path = getattr(robot, "dmchba_path", []) or []

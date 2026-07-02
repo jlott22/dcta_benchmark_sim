@@ -166,6 +166,44 @@ class AllocatorAndOutputTests(unittest.TestCase):
         self.assertEqual(dga.POPULATION_SIZE, 30)
         self.assertEqual(dga.DGA_ITERATIONS_PER_TRIGGER, 25)
 
+    def test_dmchba_preserves_local_suffix_and_replans_external_invalidation(self) -> None:
+        cfg = config(grid_size=7, commitment_horizon=3)
+        scenario = TrialScenario(0, [(2, 0), (3, 0), (4, 0), (5, 0)])
+
+        local_state = AsyncTrialRunner(
+            cfg, load_allocator_class("DMCHBA"), IdealModel(), 17
+        ).new_trial(scenario)
+        local_robot = local_state.robots["00"]
+        first = local_robot.allocator.choose_goal(local_robot)
+        initial_path = list(local_robot.dmchba_path)
+        self.assertGreaterEqual(len(initial_path), 2)
+
+        local_robot._complete_task_locally(initial_path[0], "local_target_visit")
+        second = local_robot.allocator.choose_goal(local_robot)
+        self.assertIsNone(second.debug["dmchba_trigger"])
+        self.assertEqual(local_robot.dmchba_path, initial_path[1:])
+        self.assertEqual(second.goal, initial_path[1])
+
+        peer_state = AsyncTrialRunner(
+            cfg, load_allocator_class("DMCHBA"), IdealModel(), 18
+        ).new_trial(scenario)
+        peer_robot = peer_state.robots["00"]
+        peer_robot.allocator.choose_goal(peer_robot)
+        preserved_path = list(peer_robot.dmchba_path)
+        unrelated_cell = next(iter(peer_robot.active_tasks - set(preserved_path)))
+        peer_robot._complete_task_locally(unrelated_cell, "peer_state_at_target")
+        preserved = peer_robot.allocator.choose_goal(peer_robot)
+        self.assertIsNone(preserved.debug["dmchba_trigger"])
+        self.assertEqual(peer_robot.dmchba_path, preserved_path)
+
+        invalidated_cell = peer_robot.dmchba_path[-1]
+        peer_robot._complete_task_locally(invalidated_cell, "peer_state_at_target")
+        replanned = peer_robot.allocator.choose_goal(peer_robot)
+        self.assertEqual(
+            replanned.debug["dmchba_trigger"], "external_task_invalidated_path"
+        )
+        self.assertNotIn(invalidated_cell, peer_robot.dmchba_path)
+
     def test_metrics_and_all_output_files(self) -> None:
         cfg = config(condition_id="smoke")
         state = AsyncTrialRunner(
