@@ -1,0 +1,24 @@
+{
+  "trial_mode": "known_visit",
+  "study_type": "core",
+  "benchmark_suite": "known_visit_core_500",
+  "algorithm": "DMCHBA",
+  "comm_model": "bernoulli",
+  "comm_level": "0.7",
+  "commitment_horizon": 8,
+  "horizon_fields_changed": [
+    "COMMITMENT_HORIZON"
+  ],
+  "scenario_file": "known_visit_g19_t10_n500.csv",
+  "num_trials_requested": 500,
+  "max_trials": 500,
+  "grid_size": 19,
+  "num_robots": 4,
+  "num_targets": 10,
+  "seed": 0,
+  "condition_id": "dmchba_bernoulli_drop_0_7",
+  "checkpoint_journal": "runs/known_visit_core_500/raw/dmchba/bernoulli_drop_0_7/_trial_journal.jsonl",
+  "debug_max_events": 20000,
+  "debug_max_stagnant_events": 2000,
+  "stalled_allocation_recovery_s": 120.0
+}

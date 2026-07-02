@@ -153,6 +153,8 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--condition-id", default="")
+    parser.add_argument("--study-type", choices=["horizon", "core"], default="horizon")
+    parser.add_argument("--suite-name", default="known_visit_horizon")
     parser.add_argument("--comm-delay-s", type=float, default=0.04)
     parser.add_argument("--comm-delay-jitter-s", type=float, default=0.01)
     parser.add_argument("--collision-intent-settle-s", type=float, default=0.10)
@@ -207,14 +209,19 @@ def main() -> None:
         )
         meta = {
             "trial_mode": "known_visit",
-            "sensitivity_suite": "known_visit_horizon",
-            "sensitivity_parameter": "commitment_horizon",
-            "sensitivity_value": args.commitment_horizon,
-            "sensitivity_label": f"h{args.commitment_horizon}",
+            "benchmark_suite": args.suite_name,
             "condition_id": args.condition_id,
             "num_targets": args.num_targets,
             "num_robots": args.num_robots,
+            "commitment_horizon": args.commitment_horizon,
         }
+        if args.study_type == "horizon":
+            meta.update({
+                "sensitivity_suite": args.suite_name,
+                "sensitivity_parameter": "commitment_horizon",
+                "sensitivity_value": args.commitment_horizon,
+                "sensitivity_label": f"h{args.commitment_horizon}",
+            })
         for row in [trial, system, *robots, *targets]:
             row.update(meta)
         trial_rows.append(trial)
@@ -231,6 +238,8 @@ def main() -> None:
 
     extra_config = {
         "trial_mode": "known_visit",
+        "study_type": args.study_type,
+        "benchmark_suite": args.suite_name,
         "algorithm": args.algorithm,
         "comm_model": args.comm_model,
         "comm_level": comm_level_label,
