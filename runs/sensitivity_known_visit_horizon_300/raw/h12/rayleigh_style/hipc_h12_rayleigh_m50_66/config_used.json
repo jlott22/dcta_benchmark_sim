@@ -1,0 +1,22 @@
+{
+  "trial_mode": "known_visit",
+  "algorithm": "HIPC",
+  "comm_model": "rayleigh_style",
+  "comm_level": "-50.66",
+  "commitment_horizon": 12,
+  "horizon_fields_changed": [
+    "BUNDLE_SIZE"
+  ],
+  "scenario_file": "known_visit_10target_300.csv",
+  "num_trials_requested": 300,
+  "max_trials": 300,
+  "grid_size": 19,
+  "num_robots": 4,
+  "num_targets": 10,
+  "seed": 0,
+  "condition_id": "hipc_h12_rayleigh_m50_66",
+  "checkpoint_journal": "runs/sensitivity_known_visit_horizon_300/raw/h12/rayleigh_style/hipc_h12_rayleigh_m50_66/_trial_journal.jsonl",
+  "debug_max_events": 20000,
+  "debug_max_stagnant_events": 2000,
+  "stalled_allocation_recovery_s": 120.0
+}

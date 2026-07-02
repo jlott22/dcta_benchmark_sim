@@ -1,0 +1,22 @@
+{
+  "trial_mode": "known_visit",
+  "algorithm": "PI",
+  "comm_model": "bernoulli",
+  "comm_level": "0.25",
+  "commitment_horizon": 8,
+  "horizon_fields_changed": [
+    "BUNDLE_SIZE"
+  ],
+  "scenario_file": "known_visit_10target_300.csv",
+  "num_trials_requested": 300,
+  "max_trials": 300,
+  "grid_size": 19,
+  "num_robots": 4,
+  "num_targets": 10,
+  "seed": 0,
+  "condition_id": "pi_h8_bernoulli_025",
+  "checkpoint_journal": "runs/sensitivity_known_visit_horizon_300/raw/h8/bernoulli/pi_h8_bernoulli_025/_trial_journal.jsonl",
+  "debug_max_events": 20000,
+  "debug_max_stagnant_events": 2000,
+  "stalled_allocation_recovery_s": 120.0
+}

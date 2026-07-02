@@ -1,0 +1,22 @@
+{
+  "trial_mode": "known_visit",
+  "algorithm": "DMCHBA",
+  "comm_model": "ideal",
+  "comm_level": "1.0",
+  "commitment_horizon": 1,
+  "horizon_fields_changed": [
+    "COMMITMENT_HORIZON"
+  ],
+  "scenario_file": "known_visit_10target_300.csv",
+  "num_trials_requested": 300,
+  "max_trials": 300,
+  "grid_size": 19,
+  "num_robots": 4,
+  "num_targets": 10,
+  "seed": 0,
+  "condition_id": "dmchba_h1_ideal",
+  "checkpoint_journal": "runs/sensitivity_known_visit_horizon_300/raw/h1/ideal/dmchba_h1_ideal/_trial_journal.jsonl",
+  "debug_max_events": 20000,
+  "debug_max_stagnant_events": 2000,
+  "stalled_allocation_recovery_s": 120.0
+}

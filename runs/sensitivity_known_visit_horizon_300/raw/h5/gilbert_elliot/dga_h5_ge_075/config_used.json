@@ -1,0 +1,22 @@
+{
+  "trial_mode": "known_visit",
+  "algorithm": "DGA",
+  "comm_model": "gilbert_elliot",
+  "comm_level": "0.75",
+  "commitment_horizon": 5,
+  "horizon_fields_changed": [
+    "COMMITMENT_HORIZON"
+  ],
+  "scenario_file": "known_visit_10target_300.csv",
+  "num_trials_requested": 300,
+  "max_trials": 300,
+  "grid_size": 19,
+  "num_robots": 4,
+  "num_targets": 10,
+  "seed": 0,
+  "condition_id": "dga_h5_ge_075",
+  "checkpoint_journal": "runs/sensitivity_known_visit_horizon_300/raw/h5/gilbert_elliot/dga_h5_ge_075/_trial_journal.jsonl",
+  "debug_max_events": 20000,
+  "debug_max_stagnant_events": 2000,
+  "stalled_allocation_recovery_s": 120.0
+}
