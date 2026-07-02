@@ -69,6 +69,7 @@ class RobotShell:
         self._collision_event_counted_since_move = False
         self._blocked_goal_failures: Dict[Cell, int] = {}
         self._temporary_invalid_task_until: Dict[Cell, float] = {}
+        self._blocked_goal_quarantine_level: Dict[Cell, int] = {}
         self._no_goal_since: Optional[float] = None
         self._stall_recovery_count = 0
         self._communicated_collision_intent: Optional[Cell] = None
@@ -369,8 +370,15 @@ class RobotShell:
             return StepResult(reason="path_failed", time_cost_s=self.cfg.replan_delay_s)
 
         move_vec = (next_cell[0] - self.pos[0], next_cell[1] - self.pos[1])
+        goal_before_move = self.current_goal
+        old_pos = self.pos
         self.heading = action.heading or move_vec
         self.pos = next_cell
+        if goal_before_move is not None:
+            old_distance = abs(old_pos[0] - goal_before_move[0]) + abs(old_pos[1] - goal_before_move[1])
+            new_distance = abs(self.pos[0] - goal_before_move[0]) + abs(self.pos[1] - goal_before_move[1])
+            if new_distance < old_distance:
+                self._blocked_goal_quarantine_level.pop(goal_before_move, None)
         self._collision_event_counted_since_move = False
         self._blocked_goal_failures.clear()
         self.counters.steps_total += 1
@@ -444,13 +452,22 @@ class RobotShell:
         if self._blocked_goal_failures[goal] < 2:
             return None
 
-        wait_s = self.bus.rng.uniform(0.0, self.cfg.collision_goal_backoff_max_s)
-        self._temporary_invalid_task_until[goal] = self._now + max(wait_s, 1.0e-3)
+        schedule = self.cfg.collision_goal_quarantine_schedule_s
+        prior_level = int(self._blocked_goal_quarantine_level.get(goal, 0))
+        level = min(prior_level, len(schedule) - 1)
+        quarantine_s = float(schedule[level])
+        self._blocked_goal_quarantine_level[goal] = min(level + 1, len(schedule) - 1)
+        self._temporary_invalid_task_until[goal] = self._now + quarantine_s
+        self.counters.blocked_task_quarantines += 1
+        self.counters.blocked_task_quarantine_time_s += quarantine_s
+        self.counters.maximum_quarantine_level = max(
+            self.counters.maximum_quarantine_level, level + 1
+        )
         self._blocked_goal_failures.pop(goal, None)
         self.current_goal = None
         self._set_collision_intent(None)
         self.last_event = "blocked_goal_backoff"
-        return StepResult(reason="blocked_goal_backoff", time_cost_s=wait_s)
+        return StepResult(reason="blocked_goal_backoff", time_cost_s=self.cfg.replan_delay_s)
 
     def _expire_temporary_invalid_tasks(self) -> None:
         for cell, expires_at in list(self._temporary_invalid_task_until.items()):
@@ -464,6 +481,8 @@ class RobotShell:
         if cell not in self._active_tasks:
             return False
         self._active_tasks.remove(cell)
+        self._blocked_goal_quarantine_level.pop(cell, None)
+        self._temporary_invalid_task_until.pop(cell, None)
         self.last_event = reason
         self.current_goal = None
         self._clear_pending_actions()

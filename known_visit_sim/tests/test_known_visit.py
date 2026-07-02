@@ -60,6 +60,26 @@ class GeneratorTests(unittest.TestCase):
 
 
 class CommunicationAndWorldTests(unittest.TestCase):
+    def test_blocked_goal_quarantine_escalates_without_waiting_to_reallocate(self) -> None:
+        cfg = config(replan_delay_s=0.3)
+        state = AsyncTrialRunner(
+            cfg, load_allocator_class("CBAA"), IdealModel(), 4
+        ).new_trial(TrialScenario(0, [(2, 2)]))
+        robot = state.robots["00"]
+        durations = []
+        for now in (10.0, 20.0, 40.0, 100.0):
+            robot._now = now
+            robot.current_goal = (2, 2)
+            robot._blocked_goal_failures[(2, 2)] = 1
+            result = robot._maybe_temporarily_invalidate_blocked_goal((2, 2))
+            self.assertIsNotNone(result)
+            durations.append(robot._temporary_invalid_task_until[(2, 2)] - now)
+            self.assertEqual(result.time_cost_s, cfg.replan_delay_s)
+        self.assertEqual(durations, [5.0, 15.0, 45.0, 120.0])
+        self.assertEqual(robot.counters.blocked_task_quarantines, 4)
+        self.assertEqual(robot.counters.blocked_task_quarantine_time_s, 185.0)
+        self.assertEqual(robot.counters.maximum_quarantine_level, 4)
+
     def test_stagnation_detector_reports_no_goal_diagnostics(self) -> None:
         class NoGoalAllocator(AllocatorBase):
             name = "NoGoal"

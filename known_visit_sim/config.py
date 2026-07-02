@@ -56,6 +56,7 @@ class SimConfig:
     comm_delay_jitter_s: float = 0.01
     collision_intent_settle_s: float = 0.10
     collision_goal_backoff_max_s: float = 5.0
+    collision_goal_quarantine_schedule_s: Tuple[float, ...] = (5.0, 15.0, 45.0, 120.0)
     stalled_allocation_recovery_s: float = 120.0
     debug_max_events: int = 50_000
     debug_max_stagnant_events: int = 2_000
@@ -80,6 +81,10 @@ class SimConfig:
             raise ValueError("start_headings must contain every robot ID exactly once")
         if self.collision_goal_backoff_max_s <= 0:
             raise ValueError("collision_goal_backoff_max_s must be positive")
+        if not self.collision_goal_quarantine_schedule_s or any(
+            value <= 0 for value in self.collision_goal_quarantine_schedule_s
+        ):
+            raise ValueError("collision_goal_quarantine_schedule_s must contain positive durations")
         if self.stalled_allocation_recovery_s <= 0:
             raise ValueError("stalled_allocation_recovery_s must be positive")
         if self.debug_max_stagnant_events <= 0:

@@ -11,8 +11,15 @@ def write_csv(path: Path, rows: Sequence[dict]) -> None:
     if not rows:
         path.write_text("")
         return
+    fieldnames: list[str] = []
+    seen: set[str] = set()
+    for row in rows:
+        for name in row:
+            if name not in seen:
+                seen.add(name)
+                fieldnames.append(name)
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0].keys()))
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
 

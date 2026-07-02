@@ -15,6 +15,9 @@ class RobotCounters:
     task_cell_replans: int = 0
     path_replans: int = 0
     collision_prevention_events: int = 0
+    blocked_task_quarantines: int = 0
+    blocked_task_quarantine_time_s: float = 0.0
+    maximum_quarantine_level: int = 0
 
 
 @dataclass

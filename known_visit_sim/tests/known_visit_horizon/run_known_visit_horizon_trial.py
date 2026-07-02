@@ -189,6 +189,14 @@ def main() -> None:
     system_rows = [record["system"] for record in journal_records]
     robot_rows = [row for record in journal_records for row in record["robots"]]
     target_rows = [row for record in journal_records for row in record["targets"]]
+    for row in system_rows:
+        row.setdefault("blocked_task_quarantines_total", 0)
+        row.setdefault("blocked_task_quarantine_time_s_total", 0.0)
+        row.setdefault("maximum_quarantine_level", 0)
+    for row in robot_rows:
+        row.setdefault("blocked_task_quarantines", 0)
+        row.setdefault("blocked_task_quarantine_time_s", 0.0)
+        row.setdefault("maximum_quarantine_level", 0)
     completed_trial_ids = {int(record["trial"]["trial_id"]) for record in journal_records}
     if completed_trial_ids:
         print(f"resuming with {len(completed_trial_ids)}/{len(scenarios)} trials checkpointed", flush=True)
