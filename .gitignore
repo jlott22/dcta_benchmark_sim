@@ -28,6 +28,19 @@ Thumbs.db
 *.log
 *~
 
+# Generated figures and image artifacts
+*.fig
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.webp
+*.svg
+*.eps
+
 # Transient study execution state (preserve result CSV/JSON and manifests)
 /runs/**/logs/
 /runs/**/parts/
