@@ -23,6 +23,7 @@ class DMCHBAAllocator(AllocatorBase):
         self._ensure_dmchba_state(robot)
         setattr(robot, "dmchba_path", [])
         setattr(robot, "dmchba_last_assignment_signature", None)
+        setattr(robot, "dmchba_stall_self_only", True)
         return True
 
     # ------------------------------------------------------------------
@@ -57,6 +58,7 @@ class DMCHBAAllocator(AllocatorBase):
                 "dmchba_matrix_n": int(getattr(robot, "dmchba_last_matrix_n", 0)),
                 "dmchba_evaluates_all_candidates": getattr(robot, "max_candidate_cells", None) is None,
                 "dmchba_allocator_messages": False,
+                "dmchba_stall_self_only": bool(getattr(robot, "dmchba_stall_self_only", False)),
             },
         )
 
@@ -367,6 +369,8 @@ class DMCHBAAllocator(AllocatorBase):
             setattr(robot, "dmchba_last_assignment_signature", None)
         if not hasattr(robot, "dmchba_last_committed_count"):
             setattr(robot, "dmchba_last_committed_count", len(self._get_path(robot)))
+        if not hasattr(robot, "dmchba_stall_self_only"):
+            setattr(robot, "dmchba_stall_self_only", False)
 
     def _get_path(self, robot: Any) -> List[Cell]:
         path = getattr(robot, "dmchba_path", []) or []
@@ -433,6 +437,8 @@ class DMCHBAAllocator(AllocatorBase):
         """Return known team agent positions as canonical_rid -> cell."""
 
         team: Dict[str, Cell] = {self._canonical_rid(robot.rid): self._robot_pos(robot)}
+        if bool(getattr(robot, "dmchba_stall_self_only", False)):
+            return team
 
         for rid, cell in self._safe_peer_positions(robot).items():
             key = self._canonical_rid(rid)
