@@ -99,7 +99,7 @@ class ACBBAIntegrationTests(unittest.TestCase):
         self.assertEqual(second_goal, first_goal)
         self.assertEqual(messages, [])
 
-    def test_collision_avoidance_triggers_bundle_reevaluation(self) -> None:
+    def test_collision_state_triggers_bundle_reevaluation(self) -> None:
         state = _state()
         robot = state.robots["00"]
         robot.belief.add_clue((1, 1))
@@ -108,9 +108,7 @@ class ACBBAIntegrationTests(unittest.TestCase):
 
         robot.current_goal = first.goal
         robot.collision_avoidance_active = True
-        robot._notify_allocator_collision_avoidance()
 
-        self.assertIsNone(robot.current_goal)
         second = robot.allocator.choose_goal(robot)
         self.assertEqual(second.debug["acbba_trigger"], "collision_avoidance")
         self.assertGreater(len(robot.acbba_path), 0)

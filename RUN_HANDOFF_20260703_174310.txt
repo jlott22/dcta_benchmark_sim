@@ -1,0 +1,48 @@
+DCTA sensitivity run handoff
+Generated: 2026-07-03T17:43:11
+Repo path on laptop: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim
+Git HEAD before handoff commit: 2f0da1c
+
+What was stopped
+----------------
+All Python processes matching run_current_sensitivity_reruns, benchmark_sim.run_trials, and known_visit_sim.run_trials were stopped on the laptop before this handoff was generated. The currently executing trial inside each stopped condition may not have written a row, but every completed/failed trial already present in CSV is preserved.
+
+Resume model
+------------
+Resume is CSV-based, not process-state based. Each run_trials module reads existing CSVs in its --out-dir, treats recorded trial_id rows as done, and starts at the next missing trial_id. Conditions with _COMPLETE.txt and complete output files are skipped by the orchestrator.
+
+Command to resume on the school computer
+----------------------------------------
+1. Clone/pull this repo on the school computer.
+2. Use the pushed result directories in their existing relative paths.
+3. Run from repo root:
+
+    python -u -m benchmark_sim.tests.run_current_sensitivity_reruns
+
+The orchestrator stage order is:
+1. clue-informed horizon sensitivity, 300 trials per condition
+2. known-target DGA iteration sensitivity, 300 trials per condition
+3. coverage horizon sensitivity, 50 trials per condition
+
+Current clue horizon status at handoff
+--------------------------------------
+Conditions with any clue-horizon output: 19
+Complete clue-horizon conditions: 6
+Partial clue-horizon conditions: 13
+Not-started entries present in current raw tree: 0
+
+Status CSV
+----------
+See: runs/handoff_20260703_174310/handoff_condition_status.csv
+
+Known caveats
+-------------
+- Old archived horizon results are stale after algorithm changes.
+- Old and current clue horizon trial_id values overlap, but scenario geometry differs, so old-vs-current comparisons are not paired evidence.
+- The current result state is partial and intended for resume/tuning, not final paper analysis.
+- Failed trial rows are preserved and count as recorded; the condition continues past them.
+
+Verification notes
+------------------
+Duplicate trial ID issues found: 0
+None.

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from pathlib import Path
 
 from known_visit_sim.algorithms.registry import load_allocator_class
@@ -23,6 +24,47 @@ def candidate_limit(value: str) -> int | None:
     return None if value.lower() == "all" else positive_int(value)
 
 
+def read_existing_csv(path: str | Path) -> list[dict]:
+    csv_path = Path(path)
+    if not csv_path.exists() or csv_path.stat().st_size == 0:
+        return []
+    with csv_path.open(newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def parse_trial_id(row: dict) -> int | None:
+    value = row.get("trial_id")
+    if value in (None, ""):
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def recorded_trial_ids(*row_groups: list[dict]) -> set[int]:
+    recorded: set[int] = set()
+    for rows in row_groups:
+        for row in rows:
+            trial_id = parse_trial_id(row)
+            if trial_id is None:
+                continue
+            status = str(row.get("trial_status", "")).strip().lower()
+            if status in {"", "completed", "failed"}:
+                recorded.add(trial_id)
+    return recorded
+
+
+def load_existing_outputs(out_dir: str | Path) -> tuple[list[dict], list[dict], list[dict], list[dict]]:
+    out = Path(out_dir)
+    return (
+        read_existing_csv(out / "trial_summary.csv"),
+        read_existing_csv(out / "system_performance.csv"),
+        read_existing_csv(out / "robot_performance.csv"),
+        read_existing_csv(out / "target_performance.csv"),
+    )
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run static collaborative known-target visits.")
     parser.add_argument("--scenario-file", required=True)
@@ -41,6 +83,69 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--commitment-horizon", type=positive_int, default=None)
     parser.add_argument("--max-candidate-cells", type=candidate_limit, default=None)
     return parser.parse_args()
+
+
+def failure_rows(scenario, args, cfg, algorithm: str, comm_level: str, exc: BaseException):
+    error_type = type(exc).__name__
+    error_message = str(exc)
+    targets = list(getattr(scenario, "targets", []) or [])
+    common = {
+        "trial_id": scenario.trial_id,
+        "algorithm": algorithm,
+        "comm_model": args.comm_model,
+        "comm_level": comm_level,
+        "grid_size": cfg.grid_size,
+        "grid_cells": cfg.grid_size * cfg.grid_size,
+        "robot_count": len(cfg.robot_ids),
+        "condition_id": cfg.condition_id,
+        "scenario_file": args.scenario_file,
+        "trial_status": "failed",
+        "failure_type": error_type,
+        "failure_message": error_message,
+    }
+    trial = {
+        **common,
+        "target_count": len(targets),
+        "completed_target_count": "",
+        "target_locations": ";".join(f"({x},{y})" for x, y in targets),
+        "robot_start_locations": ";".join(
+            f"{rid}:({cfg.start_positions[rid][0]},{cfg.start_positions[rid][1]})"
+            for rid in cfg.robot_ids
+        ),
+    }
+    system = {
+        **common,
+        "target_count": len(targets),
+        "completed_target_count": "",
+        "total_team_steps": "",
+        "unique_targets_completed": "",
+        "debug_max_events": cfg.debug_max_events,
+    }
+    robots = [
+        {
+            **common,
+            "robot_id": rid,
+            "steps_total": "",
+            "targets_completed": "",
+            "messages_sent": "",
+            "messages_delivered_to_robot": "",
+            "messages_dropped_to_robot": "",
+        }
+        for rid in cfg.robot_ids
+    ]
+    target_rows = [
+        {
+            **common,
+            "target_index": index,
+            "target_x": target[0],
+            "target_y": target[1],
+            "completed": "",
+            "completed_by_robot": "",
+            "completion_time_s": "",
+        }
+        for index, target in enumerate(targets)
+    ]
+    return trial, system, robots, target_rows
 
 
 def main() -> None:
@@ -64,25 +169,66 @@ def main() -> None:
     algorithm = args.algorithm_name or getattr(allocator_cls, "name", allocator_cls.__name__)
     comm = make_comm_model(args.comm_model, args.comm_level)
     comm_level = comm.level_label()
-    trial_rows, system_rows, robot_rows, target_rows = [], [], [], []
-    for scenario in scenarios:
-        state = AsyncTrialRunner(
-            cfg, allocator_cls, make_comm_model(args.comm_model, args.comm_level),
-            args.seed + scenario.trial_id * 1009,
-        ).run_trial(scenario)
-        trial, system, robots, targets = build_rows(
-            state, algorithm, args.comm_model, comm_level, str(Path(args.scenario_file))
+    output_config = {
+        "sim_config": cfg.to_dict(),
+        "algorithm": args.algorithm,
+        "algorithm_name": algorithm,
+        "comm_model": args.comm_model,
+        "comm_level": comm_level,
+        "scenario_file": args.scenario_file,
+        "seed": args.seed,
+    }
+    trial_rows, system_rows, robot_rows, target_rows = load_existing_outputs(args.out_dir)
+    done_trial_ids = recorded_trial_ids(trial_rows, system_rows)
+    total_scenarios = len(scenarios)
+    scenario_ids = {scenario.trial_id for scenario in scenarios}
+    resumed_count = len(done_trial_ids & scenario_ids)
+    if resumed_count:
+        print(
+            f"resuming {args.out_dir}: {resumed_count}/{total_scenarios} trials already recorded",
+            flush=True,
         )
+    for scenario in scenarios:
+        if scenario.trial_id in done_trial_ids:
+            print(f"skipping recorded trial {scenario.trial_id}", flush=True)
+            continue
+        try:
+            state = AsyncTrialRunner(
+                cfg, allocator_cls, make_comm_model(args.comm_model, args.comm_level),
+                args.seed + scenario.trial_id * 1009,
+            ).run_trial(scenario)
+            trial, system, robots, targets = build_rows(
+                state, algorithm, args.comm_model, comm_level, str(Path(args.scenario_file))
+            )
+            trial["trial_status"] = "completed"
+            system["trial_status"] = "completed"
+            for row in robots:
+                row["trial_status"] = "completed"
+            for row in targets:
+                row["trial_status"] = "completed"
+        except Exception as exc:
+            trial, system, robots, targets = failure_rows(scenario, args, cfg, algorithm, comm_level, exc)
         trial_rows.append(trial)
         system_rows.append(system)
         robot_rows.extend(robots)
         target_rows.extend(targets)
-        print(f"completed trial {scenario.trial_id}: targets={system['completed_target_count']}/{system['target_count']} steps={system['total_team_steps']}")
+        done_trial_ids.add(scenario.trial_id)
+        write_outputs(args.out_dir, trial_rows, system_rows, robot_rows, target_rows, output_config)
+        if trial.get("trial_status") == "failed":
+            print(
+                f"failed trial {scenario.trial_id}: {trial['failure_type']}: {trial['failure_message']}",
+                flush=True,
+            )
+        else:
+            print(
+                f"completed trial {scenario.trial_id}: "
+                f"targets={system['completed_target_count']}/{system['target_count']} "
+                f"steps={system['total_team_steps']}",
+                flush=True,
+            )
     write_outputs(
         args.out_dir, trial_rows, system_rows, robot_rows, target_rows,
-        {"sim_config": cfg.to_dict(), "algorithm": args.algorithm,
-         "algorithm_name": algorithm, "comm_model": args.comm_model,
-         "comm_level": comm_level, "scenario_file": args.scenario_file, "seed": args.seed},
+        output_config,
     )
     print(f"outputs written to {args.out_dir}")
 

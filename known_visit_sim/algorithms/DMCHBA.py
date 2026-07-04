@@ -209,8 +209,7 @@ class DMCHBAAllocator(AllocatorBase):
                     continue
 
                 distance = self.manhattan(pos[0], pos[1], cell[0], cell[1])
-                reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
-                cost = float(distance - reward)
+                cost = self._probability_adjusted_cost(robot, distance, cell)
 
                 # Tiny deterministic tie-break. This should only affect exact or
                 # near-exact cost ties, not normal reward-distance decisions.
@@ -239,9 +238,8 @@ class DMCHBAAllocator(AllocatorBase):
             best_score = -1.0e18
 
             for cell in remaining:
-                reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
                 distance = self.manhattan(reference[0], reference[1], cell[0], cell[1])
-                score = float(reward - distance)
+                score = self._probability_adjusted_score(robot, distance, cell)
 
                 if best_cell is None:
                     best_cell = cell

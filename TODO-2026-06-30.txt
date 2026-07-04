@@ -1,78 +1,152 @@
 DCTA Benchmark Simulation TODO
 Date: 2026-06-30
+Updated: 2026-07-03
 
 Status key
 ----------
-[COMPLETED]      Experiment has been run and completed.
+[VALID]          Existing result is still valid under the current algorithm definitions.
+[RERUN NEEDED]   Existing result is stale because algorithm definitions changed.
 [MADE - NOT RUN] Test implementation and scripts exist, but the experiment has not been run.
-[IN PROGRESS]     Experiment is currently running or partially complete.
-[NOT MADE]        Test implementation and scripts still need to be created.
+[RUNNING]        Experiment is currently running with live CSV output.
+[STOPPED]        Experiment was stopped intentionally and is ready to resume.
+[QUEUED]         Experiment is scripted and queued behind the current running stage.
+[PARTIAL]        Some current results exist, but the experiment is not complete.
+[NOT MADE]       Test implementation and scripts still need to be created.
+[NOT CURRENT]    Not part of the current rerun/tuning plan.
+
+
+Current Valid Result
+--------------------
+
+1. [VALID] DGA iteration sensitivity for clue-informed search
+   Keep DGA_ITERATIONS_PER_TRIGGER = 25 from the prior clue-informed DGA
+   iteration sensitivity results. This is the only existing sensitivity result
+   currently treated as valid.
+
+
+Current Rerun Plan
+------------------
+
+2. [STOPPED] Per-algorithm horizon tuning for clue-informed search
+   Running current horizon sensitivity for ACBBA, PI, HIPC, DMCHBA, and DGA
+   using ideal communication and Bernoulli p=0.25 only. Top-K tuning is not
+   included. Outputs are live CSVs in
+   clue_sensitivity_test_results/horizon_results/raw, with resume support.
+   The laptop run was stopped intentionally for transfer after writing the
+   handoff report RUN_HANDOFF_20260703_174310.txt. Resume from the pushed CSVs
+   on the school computer.
+
+3. [RERUN NEEDED] Final clue-informed benchmark
+   Rerun the full clue-informed benchmark for all retained algorithms after
+   horizon choices are locked. Use one frozen commit and one generated manifest.
+   Existing clue_500_combined results are stale/exploratory because algorithm
+   behavior and fairness controls have changed.
 
 
 Grid-Size / Robot-Density Tests
 -------------------------------
 
-1. [MADE - NOT RUN] Coverage environment
-   Run the grid-size / robot-density sensitivity test for the coverage environment.
+4. [RERUN NEEDED] Coverage environment
+   Rerun grid-size / robot-density sensitivity under the current algorithm
+   definitions.
 
-2. [MADE - NOT RUN] Clue-informed search environment
-   Run the grid-size / robot-density sensitivity test for the clue-informed search environment.
+5. [RERUN NEEDED] Clue-informed search environment
+   Rerun grid-size / robot-density sensitivity under the current algorithm
+   definitions.
 
-3. [MADE - NOT RUN] Known-target environment
-   Run the grid-size / robot-density sensitivity test for the known-target environment.
+6. [RERUN NEEDED] Known-target environment
+   Rerun grid-size / robot-density sensitivity under the current algorithm
+   definitions.
 
 
 Core Benchmark Tests
 --------------------
 
-4. [COMPLETED] Core clue-informed search environment trials
-   Core clue-informed search trials are complete for all algorithms except DGA.
+7. [RERUN NEEDED] Core clue-informed search environment
+   Rerun all retained algorithms after horizon tuning is complete.
 
-5. [IN PROGRESS] DGA 500 core trials in the clue-informed search environment
-   Complete the DGA core benchmark over all 500 clue-informed search trials.
+8. [RERUN NEEDED] Core coverage environment
+   Rerun coverage core trials under the current algorithm definitions.
 
-6. [COMPLETED] Core coverage environment trials
-   Core coverage trials are complete.
-
-7. [MADE - NOT RUN] Core known-target environment tests
-   Run the core known-target benchmark with 500 trials for each required algorithm and condition.
+9. [RERUN NEEDED] Core known-target environment
+   Rerun the known-target core benchmark with 500 trials for each required
+   algorithm and condition.
 
 
 Horizon Sensitivity Tests
 -------------------------
 
-8. [COMPLETED] Clue-informed search environment
-   Horizon sensitivity testing is complete for the clue-informed search environment.
+10. [RERUN NEEDED] Clue-informed search environment
+    Existing clue-informed horizon sensitivity is stale because algorithm
+    definitions changed. Replacement run is currently in progress under item 2.
+    Old results are retained only for sanity checks; they do not use the same
+    scenario geometry as the current run, even where trial_id values overlap.
 
-9. [COMPLETED] Known-target environment
-   Commitment-horizon sensitivity testing completed as a 300-trial,
-   120-condition study. All 36,000 trials and all combined result tables were
-   validated and saved under known_target_sensitivity_test_results/horizon_results/.
+11. [RERUN NEEDED] Known-target environment
+    Existing known-target horizon sensitivity is stale under the current
+    algorithm definitions.
 
-10. [NOT MADE] Coverage environment
-   Create and run commitment-horizon sensitivity testing in the coverage environment.
+12. [QUEUED] Coverage environment
+    Coverage horizon sensitivity is scripted in
+    benchmark_sim/tests/run_current_sensitivity_reruns.py and queued after the
+    clue-informed horizon stage and known-target DGA iteration stage. It is set
+    to run 50 trials per condition with live CSV output.
 
 
 Top-K Sensitivity Tests
 -----------------------
 
-Paper note: Top-K sensitivity data will be reserved for the hardware paper.
+13. [NOT CURRENT] Clue-informed search environment
+    Top-K sensitivity is not part of current tuning and has no bearing on the
+    current horizon/DGA-iteration decisions.
 
-11. [COMPLETED] Clue-informed search environment
-   Top-K candidate sensitivity testing is complete for the clue-informed search environment.
-
-12. [NOT MADE] Known-target environment
-   Create and run top-K candidate sensitivity testing in the known-target environment.
+14. [NOT CURRENT] Known-target environment
+    Do not create or run Top-K candidate sensitivity testing for the current
+    rerun plan.
 
 
 DGA Iteration Sensitivity Tests
 -------------------------------
 
-13. [COMPLETED] Clue-informed search environment
-    DGA iteration sensitivity testing is complete for the clue-informed search environment.
+15. [VALID] Clue-informed search environment
+    Prior clue-informed DGA iteration sensitivity remains valid for selecting
+    25 iterations per trigger.
 
-14. [NOT MADE] Known-target environment
-    Create and run DGA iteration sensitivity testing in the known-target environment.
+16. [RERUN NEEDED] Known-target environment
+    Known-target DGA iteration sensitivity is queued after the current
+    clue-informed horizon run. It will run ideal and Bernoulli p=0.25 at
+    iteration settings 1, 2, 5, 10, 25, and 50 using live CSV output and resume
+    support.
 
-15. [NOT MADE] Coverage environment
-    Create and run DGA iteration sensitivity testing in the coverage environment.
+
+Current Run Notes
+-----------------
+
+17. [STOPPED] Current sensitivity rerun orchestrator
+    Script: benchmark_sim/tests/run_current_sensitivity_reruns.py
+    Current stage order:
+    1. clue-informed horizon sensitivity, 300 trials per condition
+    2. known-target DGA iteration sensitivity, 300 trials per condition
+    3. coverage horizon sensitivity, 50 trials per condition
+
+    The runner now writes live CSVs after each trial, resumes from existing CSV
+    trial IDs, and marks individual failed trials without stopping the whole
+    condition. The orchestrator uses a shared work queue and can adopt already
+    running condition processes during restart/handoff. All matching Python
+    processes were stopped on the laptop for Git transfer; resume by running:
+    python -u -m benchmark_sim.tests.run_current_sensitivity_reruns
+
+19. [STOPPED] Laptop-to-school-computer handoff
+    Handoff file: RUN_HANDOFF_20260703_174310.txt
+    Status CSV: runs/handoff_20260703_174310/handoff_condition_status.csv
+    Duplicate trial ID issues found during handoff verification: 0.
+    The transition is CSV-resume based; any trial that had not finished at the
+    moment processes were stopped will be rerun, while already logged trial_id
+    rows are skipped.
+
+18. [PARTIAL] Comparison against old horizon data
+    The archived stale clue horizon data at:
+    C:\Users\lottj\Desktop\research\decentralized benchmark\old results decentralized benchmark\2026-07-03_stale_after_algorithm_changes\clue_sensitivity_test_results\horizon_results
+    has matching condition names and trial_id ranges, but the actual target and
+    clue geometries differ from the current run. Do not use old-vs-current as a
+    paired trial comparison; use it only as a rough sanity check.

@@ -305,11 +305,10 @@ class HIPCAllocator(AllocatorBase):
         setattr(robot, "hipc_pending_snapshot", True)
 
     def _append_bid_for_prefix(self, robot: Any, prefix: List[Cell], cell: Cell) -> float:
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         current_distance = self._route_distance(robot, prefix)
         candidate_distance = self._route_distance(robot, prefix + [cell])
         marginal_distance = max(0.0, candidate_distance - current_distance)
-        return float(reward - marginal_distance)
+        return self._probability_adjusted_score(robot, marginal_distance, cell)
 
     # ------------------------------------------------------------------
     # HIPC communication hooks
@@ -325,8 +324,8 @@ class HIPCAllocator(AllocatorBase):
 
         path = self._get_path(robot)
         current_signature = self._bundle_signature(robot)
-        pending_releases = sorted(getattr(robot, "hipc_pending_releases", set()) or set())
-        if current_signature == getattr(robot, "hipc_last_sent_signature", None) and not pending_releases:
+        previous_signature = getattr(robot, "hipc_last_sent_signature", None)
+        if current_signature == previous_signature:
             setattr(robot, "hipc_pending_snapshot", False)
             return []
 
@@ -334,23 +333,16 @@ class HIPCAllocator(AllocatorBase):
             setattr(robot, "hipc_pending_snapshot", False)
             setattr(robot, "hipc_last_sent_signature", current_signature)
             setattr(robot, "hipc_pending_releases", set())
-            return [
-                {
-                    "type": "hipc_entry",
-                    "alg": "HIPC",
-                    "sender": robot.rid,
-                    "x": cell[0],
-                    "y": cell[1],
-                    "winner": self.NO_WINNER,
-                    "bid": self.NO_BID,
-                    "timestamp": self._next_bid_time(robot),
-                    "order": -1,
-                    "bundle_cells": [],
-                    "bundle_size": 0,
-                    "removed": True,
-                }
-                for cell in pending_releases
-            ]
+            if previous_signature is None:
+                return []
+            return [{
+                "type": "hipc_clear_bundle",
+                "alg": "HIPC",
+                "sender": robot.rid,
+                "timestamp": self._next_bid_time(robot),
+                "bundle_cells": [],
+                "bundle_size": 0,
+            }]
 
         winner_by_cell, winning_bid_by_cell = self._consensus_maps(robot)
         bid_time_by_cell = self._bid_time_map(robot)
@@ -422,7 +414,7 @@ class HIPCAllocator(AllocatorBase):
     def handle_hipc_message(self, robot: Any, message: Any) -> None:
         if not isinstance(message, dict):
             return
-        if message.get("type") != "hipc_entry":
+        if message.get("type") not in {"hipc_entry", "hipc_clear_bundle"}:
             return
 
         self._ensure_hipc_state(robot)
@@ -431,7 +423,7 @@ class HIPCAllocator(AllocatorBase):
         self._merge_hipc_entry(robot, message)
 
     def handle_acbba_message(self, robot: Any, message: Any) -> None:
-        if isinstance(message, dict) and message.get("type") == "hipc_entry":
+        if isinstance(message, dict) and message.get("type") in {"hipc_entry", "hipc_clear_bundle"}:
             self.handle_hipc_message(robot, message)
 
     def handle_cbaa_message(self, robot: Any, message: Any) -> None:
@@ -447,6 +439,14 @@ class HIPCAllocator(AllocatorBase):
         self.handle_acbba_message(robot, message)
 
     def _merge_hipc_entry(self, robot: Any, message: Dict[str, Any]) -> None:
+        if message.get("type") == "hipc_clear_bundle":
+            bundle_cells = self._parse_bundle_cells(message.get("bundle_cells", []))
+            if bundle_cells is not None:
+                self._clear_sender_claims_not_in_bundle(robot, message.get("sender"), bundle_cells)
+                self._repair_bundle_after_consensus(robot)
+                self._sync_current_goal_after_message(robot)
+            return
+
         parsed = self._parse_hipc_entry(message)
         if parsed is None:
             return
@@ -872,9 +872,8 @@ class HIPCAllocator(AllocatorBase):
         return float(distance)
 
     def _bid_from_reference(self, robot: Any, cell: Cell, reference: Cell) -> float:
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         distance = self.manhattan(cell[0], cell[1], reference[0], reference[1])
-        return float(reward - distance)
+        return self._probability_adjusted_score(robot, distance, cell)
 
     def _insert_claim(self, robot: Any, cell: Cell, insertion_index: int, bid: float) -> None:
         self._ensure_hipc_state(robot)

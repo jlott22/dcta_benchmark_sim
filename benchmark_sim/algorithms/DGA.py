@@ -29,11 +29,10 @@ class DGAAllocator(AllocatorBase):
 
     Objective adaptation:
     DGA's primary objective is min-time style, minimizing the maximum route cost
-    across planned robots with a small min-sum tie breaker. In coverage mode,
-    route cost is Manhattan distance. In clue-search mode, the edge cost is
-    ManhattanDistance(prev, cell) - REWARD_FACTOR * target_p[cell], making
-    high-probability cells cheaper and therefore more attractive. Costs are
-    kept finite and scored as:
+    across planned robots with a small min-sum tie breaker. Edge cost uses the
+    shared normalized probability objective:
+    ManhattanDistance(prev, cell) + 8 * (1 - normalized_target_p[cell]).
+    Costs are kept finite and scored as:
     max_route_cost + MIN_SUM_TIE_WEIGHT * total_route_cost.
     """
 
@@ -43,7 +42,6 @@ class DGAAllocator(AllocatorBase):
     DGA_ITERATIONS_PER_TRIGGER = 25
     COMMITMENT_HORIZON = 3
     MAX_CANDIDATE_CELLS = None
-    REWARD_FACTOR = 5.0
     MIN_SUM_TIE_WEIGHT = 0.05
     CROSSOVER_RATE = 0.7
     MUTATION_RATE = 0.3
@@ -236,10 +234,7 @@ class DGAAllocator(AllocatorBase):
         previous = start
         for cell in path:
             distance = self.manhattan(previous[0], previous[1], cell[0], cell[1])
-            if self._coverage_mode(robot):
-                edge_cost = float(distance)
-            else:
-                edge_cost = float(distance) - float(self.REWARD_FACTOR) * self._target_probability(robot, cell)
+            edge_cost = self._probability_adjusted_cost(robot, distance, cell)
             if math.isfinite(edge_cost):
                 cost += edge_cost
             previous = cell
@@ -452,9 +447,7 @@ class DGAAllocator(AllocatorBase):
 
     def _edge_cost(self, robot: Any, previous: Cell, cell: Cell) -> float:
         distance = self.manhattan(previous[0], previous[1], cell[0], cell[1])
-        if self._coverage_mode(robot):
-            return float(distance)
-        return float(distance) - float(self.REWARD_FACTOR) * self._target_probability(robot, cell)
+        return self._probability_adjusted_cost(robot, distance, cell)
 
     def _tournament_select(
         self,
@@ -543,6 +536,16 @@ class DGAAllocator(AllocatorBase):
         return team
 
     def _queue_dga_deltas(self, robot: Any, plan: Dict[str, List[Cell]], fitness: float) -> None:
+        """Queue one-cell DGA messages that fully describe each owner prefix.
+
+        DGA messages remain one path position per published message, matching the
+        other allocation protocols' cell-level drop granularity. For a new
+        solution id, every committed prefix cell is sent, not just the positions
+        changed from an older solution. If an owner has an empty prefix, one
+        explicit clear message is sent so receivers do not carry forward stale
+        cells from that owner.
+        """
+
         solution_id = self._solution_id(plan, int(getattr(robot, "dga_generation", 0)), fitness)
         generation = int(getattr(robot, "dga_generation", 0))
         timestamp = self._next_delta_time(robot)
@@ -553,19 +556,31 @@ class DGAAllocator(AllocatorBase):
             commitment_horizon = self._planning_horizon(robot, self.COMMITMENT_HORIZON)
             prefix = self._normalize_cell_list(plan.get(owner, []))[:commitment_horizon]
             sent_key = self._delta_signature_key(solution_id, owner)
+            already_sent_for_solution = sent_key in last_sent
             previous_prefix = tuple(last_sent.get(sent_key, tuple()) or tuple())
             path_signature = self._path_signature(prefix)
-            if previous_prefix == path_signature:
+            if already_sent_for_solution and previous_prefix == path_signature:
                 continue
 
-            for order in range(max(len(previous_prefix), len(prefix))):
-                old_cell = previous_prefix[order] if order < len(previous_prefix) else None
-                new_cell = prefix[order] if order < len(prefix) else None
-                if old_cell == new_cell and len(previous_prefix) == len(prefix):
-                    continue
-                if old_cell == new_cell and order < len(prefix):
-                    continue
+            if not prefix:
+                pending.append({
+                    "type": "dga_entry",
+                    "alg": "DGA",
+                    "sender": robot.rid,
+                    "solution_id": solution_id,
+                    "generation": generation,
+                    "fitness": float(fitness),
+                    "owner": str(owner),
+                    "order": 0,
+                    "path_size": 0,
+                    "timestamp": float(timestamp),
+                    "x": None,
+                    "y": None,
+                    "removed": True,
+                })
+                continue
 
+            for order, cell in enumerate(prefix):
                 payload = {
                     "type": "dga_entry",
                     "alg": "DGA",
@@ -577,19 +592,10 @@ class DGAAllocator(AllocatorBase):
                     "order": int(order),
                     "path_size": int(len(prefix)),
                     "timestamp": float(timestamp),
+                    "x": int(cell[0]),
+                    "y": int(cell[1]),
+                    "removed": False,
                 }
-                if new_cell is None:
-                    payload.update({
-                        "x": old_cell[0] if old_cell is not None else None,
-                        "y": old_cell[1] if old_cell is not None else None,
-                        "removed": True,
-                    })
-                else:
-                    payload.update({
-                        "x": int(new_cell[0]),
-                        "y": int(new_cell[1]),
-                        "removed": False,
-                    })
                 pending.append(payload)
 
         setattr(robot, "dga_pending_deltas", pending)
@@ -721,14 +727,6 @@ class DGAAllocator(AllocatorBase):
 
     def handle_cbaa_message(self, robot: Any, message: Any) -> None:
         self.handle_dga_message(robot, message)
-
-    def on_clue_set_changed(self, robot: Any) -> bool:
-        self._ensure_dga_state(robot)
-        self._reset_path_state(robot)
-        return True
-
-    def on_collision_avoidance_activated(self, robot: Any) -> bool:
-        return True
 
     def _parse_dga_entry(
         self,
@@ -997,8 +995,10 @@ class DGAAllocator(AllocatorBase):
         self._ensure_dga_state(robot)
         signature = self._clue_signature(robot)
         previous = getattr(robot, "dga_clue_signature", None)
-        if signature != previous:
+        if previous is None:
             self._reset_path_state(robot)
+            setattr(robot, "dga_clue_signature", signature)
+        elif signature != previous:
             setattr(robot, "dga_clue_signature", signature)
 
     def _clear_invalid_or_completed_cells(self, robot: Any) -> None:

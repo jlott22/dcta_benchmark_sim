@@ -22,7 +22,7 @@ from known_visit_sim.tests.known_visit_horizon.run_known_visit_horizon_trial imp
 ALGORITHMS = ("CBAA", "ACBBA", "PI", "HIPC", "DMCHBA", "DGA", "AuctionGreedy")
 ALLOWED_TOPICS = {
     "state", "collision_intent", "cbaa_entry", "acbba_entry", "pi_entry",
-    "pi_clear_path", "hipc_entry", "dga_entry",
+    "pi_clear_path", "hipc_entry", "hipc_clear_bundle", "dga_entry",
 }
 
 
@@ -185,6 +185,43 @@ class AllocatorAndOutputTests(unittest.TestCase):
         self.assertEqual(dga.COMMITMENT_HORIZON, 3)
         self.assertEqual(dga.POPULATION_SIZE, 30)
         self.assertEqual(dga.DGA_ITERATIONS_PER_TRIGGER, 25)
+
+    def test_dga_sends_full_prefix_and_empty_owner_clear(self) -> None:
+        state = AsyncTrialRunner(
+            config(), load_allocator_class("DGA"), IdealModel(), 19
+        ).new_trial(TrialScenario(0, [(2, 0), (2, 4)]))
+        robot = state.robots["00"]
+        allocator = robot.allocator
+        plan = {"00": [(1, 0), (2, 0)], "01": []}
+
+        allocator._queue_dga_deltas(robot, plan, 12.0)
+        messages = allocator.build_dga_messages(robot)
+
+        self.assertEqual([msg["owner"] for msg in messages], ["00", "00", "01"])
+        self.assertEqual([(msg["order"], msg["x"], msg["y"]) for msg in messages[:2]], [(0, 1, 0), (1, 2, 0)])
+        self.assertTrue(messages[2]["removed"])
+        self.assertEqual(messages[2]["path_size"], 0)
+
+    def test_hipc_clear_bundle_clears_sender_claims(self) -> None:
+        state = AsyncTrialRunner(
+            config(), load_allocator_class("HIPC"), IdealModel(), 20
+        ).new_trial(TrialScenario(0, [(2, 0), (2, 4)]))
+        receiver = state.robots["01"]
+        receiver.allocator._ensure_hipc_state(receiver)
+        receiver.hipc_winner_by_cell[(2, 0)] = "00"
+        receiver.hipc_winning_bid_by_cell[(2, 0)] = 3.0
+        receiver.hipc_bid_time_by_cell[(2, 0)] = 1.0
+
+        receiver._deliver_allocator_payload({
+            "type": "hipc_clear_bundle",
+            "sender": "00",
+            "timestamp": 2.0,
+            "bundle_cells": [],
+            "bundle_size": 0,
+        })
+
+        self.assertIsNone(receiver.hipc_winner_by_cell[(2, 0)])
+        self.assertEqual(receiver.hipc_winning_bid_by_cell[(2, 0)], receiver.allocator.NO_BID)
 
     def test_dmchba_preserves_local_suffix_and_replans_external_invalidation(self) -> None:
         cfg = config(grid_size=7, commitment_horizon=3)

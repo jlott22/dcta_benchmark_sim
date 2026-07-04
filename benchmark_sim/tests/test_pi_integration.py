@@ -118,7 +118,7 @@ class PIIntegrationTests(unittest.TestCase):
         self.assertEqual(second_messages, [])
         self.assertFalse(robot.pi_pending_snapshot)
 
-    def test_collision_avoidance_triggers_path_reevaluation(self) -> None:
+    def test_collision_state_triggers_path_reevaluation(self) -> None:
         state = _state()
         robot = state.robots["00"]
         robot.belief.add_clue((1, 1))
@@ -127,9 +127,7 @@ class PIIntegrationTests(unittest.TestCase):
 
         robot.current_goal = first.goal
         robot.collision_avoidance_active = True
-        robot._notify_allocator_collision_avoidance()
 
-        self.assertIsNone(robot.current_goal)
         second = robot.allocator.choose_goal(robot)
         self.assertEqual(second.debug["pi_trigger"], "collision_avoidance")
         self.assertGreater(len(robot.pi_path), 0)
@@ -225,7 +223,7 @@ class PIIntegrationTests(unittest.TestCase):
         robot = state.robots["00"]
         robot.belief.add_clue((1, 1))
         robot.belief.target_p = {(1, 0): float("nan"), (2, 0): float("inf")}
-        robot.allocator.PROB_GAIN = float("inf")
+        robot.allocator.PROBABILITY_ALPHA = float("inf")
         robot.allocator.TASK_SERVICE_COST = float("inf")
 
         route_cost = robot.allocator._route_cost(robot, [(1, 0), (2, 0)])

@@ -217,10 +217,7 @@ class DGAAllocator(AllocatorBase):
         previous = start
         for cell in path:
             distance = self.manhattan(previous[0], previous[1], cell[0], cell[1])
-            if self._coverage_mode(robot):
-                edge_cost = float(distance)
-            else:
-                edge_cost = float(distance) - float(self.REWARD_FACTOR) * self._target_probability(robot, cell)
+            edge_cost = self._probability_adjusted_cost(robot, distance, cell)
             if math.isfinite(edge_cost):
                 cost += edge_cost
             previous = cell
@@ -433,9 +430,7 @@ class DGAAllocator(AllocatorBase):
 
     def _edge_cost(self, robot: Any, previous: Cell, cell: Cell) -> float:
         distance = self.manhattan(previous[0], previous[1], cell[0], cell[1])
-        if self._coverage_mode(robot):
-            return float(distance)
-        return float(distance) - float(self.REWARD_FACTOR) * self._target_probability(robot, cell)
+        return self._probability_adjusted_cost(robot, distance, cell)
 
     def _tournament_select(
         self,
@@ -524,6 +519,16 @@ class DGAAllocator(AllocatorBase):
         return team
 
     def _queue_dga_deltas(self, robot: Any, plan: Dict[str, List[Cell]], fitness: float) -> None:
+        """Queue one-cell DGA messages that fully describe each owner prefix.
+
+        DGA messages remain one path position per published message, matching the
+        other allocation protocols' cell-level drop granularity. For a new
+        solution id, every committed prefix cell is sent, not just positions
+        changed from an older solution. If an owner has an empty prefix, one
+        explicit clear message is sent so receivers do not carry forward stale
+        cells from that owner.
+        """
+
         solution_id = self._solution_id(plan, int(getattr(robot, "dga_generation", 0)), fitness)
         generation = int(getattr(robot, "dga_generation", 0))
         timestamp = self._next_delta_time(robot)
@@ -534,19 +539,31 @@ class DGAAllocator(AllocatorBase):
             commitment_horizon = self._planning_horizon(robot, self.COMMITMENT_HORIZON)
             prefix = self._normalize_cell_list(plan.get(owner, []))[:commitment_horizon]
             sent_key = self._delta_signature_key(solution_id, owner)
+            already_sent_for_solution = sent_key in last_sent
             previous_prefix = tuple(last_sent.get(sent_key, tuple()) or tuple())
             path_signature = self._path_signature(prefix)
-            if previous_prefix == path_signature:
+            if already_sent_for_solution and previous_prefix == path_signature:
                 continue
 
-            for order in range(max(len(previous_prefix), len(prefix))):
-                old_cell = previous_prefix[order] if order < len(previous_prefix) else None
-                new_cell = prefix[order] if order < len(prefix) else None
-                if old_cell == new_cell and len(previous_prefix) == len(prefix):
-                    continue
-                if old_cell == new_cell and order < len(prefix):
-                    continue
+            if not prefix:
+                pending.append({
+                    "type": "dga_entry",
+                    "alg": "DGA",
+                    "sender": robot.rid,
+                    "solution_id": solution_id,
+                    "generation": generation,
+                    "fitness": float(fitness),
+                    "owner": str(owner),
+                    "order": 0,
+                    "path_size": 0,
+                    "timestamp": float(timestamp),
+                    "x": None,
+                    "y": None,
+                    "removed": True,
+                })
+                continue
 
+            for order, cell in enumerate(prefix):
                 payload = {
                     "type": "dga_entry",
                     "alg": "DGA",
@@ -558,19 +575,10 @@ class DGAAllocator(AllocatorBase):
                     "order": int(order),
                     "path_size": int(len(prefix)),
                     "timestamp": float(timestamp),
+                    "x": int(cell[0]),
+                    "y": int(cell[1]),
+                    "removed": False,
                 }
-                if new_cell is None:
-                    payload.update({
-                        "x": old_cell[0] if old_cell is not None else None,
-                        "y": old_cell[1] if old_cell is not None else None,
-                        "removed": True,
-                    })
-                else:
-                    payload.update({
-                        "x": int(new_cell[0]),
-                        "y": int(new_cell[1]),
-                        "removed": False,
-                    })
                 pending.append(payload)
 
         setattr(robot, "dga_pending_deltas", pending)

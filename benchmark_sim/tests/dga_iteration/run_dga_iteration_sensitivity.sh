@@ -19,7 +19,8 @@ cd "$REPO_ROOT"
 
 NUM_CORES="${1:-8}"
 
-SCENARIO_FILE="scenarios/final_trial_500.csv"
+SCENARIO_FILE="runs/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv"
+SCENARIO_SEED=20260702
 GRID_SIZE=19
 MAX_TRIALS_TOTAL=300
 
@@ -56,6 +57,15 @@ fi
 
 mkdir -p "$OUT_ROOT" "$SCRIPT_ROOT" "$PARTITION_DIR" "$WORKER_DIR" "$LOG_DIR" "$WRAPPER_DIR"
 touch benchmark_sim/algorithms/dga_iter_wrappers/__init__.py
+
+echo "[SETUP] Generating an independent tuning scenario set..."
+python3 -m benchmark_sim.tests.generate_clue_sensitivity_scenarios \
+  --output "$SCENARIO_FILE" \
+  --grid-size "$GRID_SIZE" \
+  --num-trials "$MAX_TRIALS_TOTAL" \
+  --num-clues 4 \
+  --num-robots 4 \
+  --seed "$SCENARIO_SEED"
 
 # ------------------------------------------------------------
 # Create DGA wrapper modules for each iteration count

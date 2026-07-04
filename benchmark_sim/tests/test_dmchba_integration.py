@@ -164,7 +164,7 @@ class DMCHBAIntegrationTests(unittest.TestCase):
         self.assertEqual(third.debug["dmchba_trigger"], "path_exhausted")
         self.assertNotEqual(robot.dmchba_path, [])
 
-    def test_shell_hooks_force_replan_for_clue_and_collision_events(self) -> None:
+    def test_clue_keeps_current_goal_and_collision_state_triggers_replan(self) -> None:
         state = _state(grid_size=5)
         robot = state.robots["00"]
         robot.current_goal = (4, 4)
@@ -178,15 +178,13 @@ class DMCHBAIntegrationTests(unittest.TestCase):
             )
         )
 
-        self.assertIsNone(robot.current_goal)
+        self.assertEqual(robot.current_goal, (4, 4))
         decision = robot.allocator.choose_goal(robot)
         self.assertEqual(decision.debug["dmchba_trigger"], "clue_changed")
 
         robot.current_goal = decision.goal
         robot.collision_avoidance_active = True
-        robot._notify_allocator_collision_avoidance()
 
-        self.assertIsNone(robot.current_goal)
         decision = robot.allocator.choose_goal(robot)
         self.assertEqual(decision.debug["dmchba_trigger"], "collision_avoidance")
 

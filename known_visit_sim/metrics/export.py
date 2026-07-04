@@ -19,7 +19,7 @@ def write_csv(path: Path, rows: Sequence[dict]) -> None:
                 seen.add(name)
                 fieldnames.append(name)
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
 

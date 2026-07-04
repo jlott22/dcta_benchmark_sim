@@ -15,8 +15,8 @@ class ACBBAAllocator(AllocatorBase):
     - Post-clue behavior builds a bundle/path of up to B cells.
     - The immediate simulator task cell is the first cell in the current path.
     - Bundle construction evaluates every possible insertion position for each
-      candidate cell. The bid is target probability reward minus the marginal
-      route distance added by inserting that cell into the current path.
+      candidate cell. The bid is the negative shared probability-adjusted
+      marginal cost of inserting that cell into the current path.
     - Communication uses full ACBBA Table 1 asynchronous deconfliction. Outgoing
       acbba_entry messages may represent this robot's own bundle claims/releases
       or rebroadcasted third-party winner/bid information. The sender field is
@@ -31,7 +31,6 @@ class ACBBAAllocator(AllocatorBase):
     name = "ACBBA"
 
     BUNDLE_SIZE = 3
-    REWARD_FACTOR = 5.0
     NO_WINNER = None
     NO_BID = -1.0e18
     EPS = 1.0e-9
@@ -172,7 +171,6 @@ class ACBBAAllocator(AllocatorBase):
     def _best_insertion_bid(self, robot: Any, path: List[Cell], cell: Cell) -> Tuple[int, float]:
         """Return the best insertion index and bid for adding cell to path."""
 
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         current_distance = self._route_distance(robot, path)
         best_index = 0
         best_bid = self.NO_BID
@@ -181,7 +179,7 @@ class ACBBAAllocator(AllocatorBase):
             candidate_path = path[:insertion_index] + [cell] + path[insertion_index:]
             marginal_distance = self._route_distance(robot, candidate_path) - current_distance
             marginal_distance = max(0.0, marginal_distance)
-            bid = float(reward - marginal_distance)
+            bid = self._probability_adjusted_score(robot, marginal_distance, cell)
 
             if bid > best_bid + self.EPS:
                 best_index = insertion_index
@@ -217,9 +215,8 @@ class ACBBAAllocator(AllocatorBase):
         return False
 
     def _bid_from_reference(self, robot: Any, cell: Cell, reference: Cell) -> float:
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         distance = self.manhattan(cell[0], cell[1], reference[0], reference[1])
-        return float(reward - distance)
+        return self._probability_adjusted_score(robot, distance, cell)
 
     def _append_claim(self, robot: Any, cell: Cell, bid: float) -> None:
         self._insert_claim(robot, cell, len(self._get_path(robot)), bid)
@@ -364,9 +361,6 @@ class ACBBAAllocator(AllocatorBase):
 
     def get_outbound_message(self, robot: Any) -> List[dict]:
         return self.build_acbba_messages(robot)
-
-    def on_collision_avoidance_activated(self, robot: Any) -> bool:
-        return True
 
     def handle_acbba_message(self, robot: Any, message: Any) -> None:
         """
@@ -752,11 +746,10 @@ class ACBBAAllocator(AllocatorBase):
         signature = self._clue_signature(robot)
         previous = getattr(robot, "acbba_clue_signature", None)
 
-        if signature != previous:
-            preserve_deltas = previous is not None and bool(self._get_path(robot))
-            if preserve_deltas:
-                self._truncate_bundle_from(robot, 0)
-            self._reset_acbba_state(robot, preserve_deltas=preserve_deltas)
+        if previous is None:
+            self._reset_acbba_state(robot)
+            setattr(robot, "acbba_clue_signature", signature)
+        elif signature != previous:
             setattr(robot, "acbba_clue_signature", signature)
 
     def _consensus_maps(self, robot: Any) -> Tuple[Dict[Cell, Any], Dict[Cell, float]]:

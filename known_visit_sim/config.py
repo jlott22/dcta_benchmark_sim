@@ -58,7 +58,7 @@ class SimConfig:
     collision_goal_backoff_max_s: float = 5.0
     collision_goal_quarantine_schedule_s: Tuple[float, ...] = (5.0, 15.0, 45.0, 120.0)
     stalled_allocation_recovery_s: float = 120.0
-    debug_max_events: int = 50_000
+    debug_max_events: int = 5_000
     debug_max_stagnant_events: int = 2_000
 
     commitment_horizon: Optional[int] = None

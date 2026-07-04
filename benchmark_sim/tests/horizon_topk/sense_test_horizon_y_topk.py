@@ -6,7 +6,9 @@ import shlex
 from pathlib import Path
 
 REPO_ROOT = Path("/home/jlott/dcta_benchmark_sim")
-SCENARIO_FILE = "scenarios/final_trial_500.csv"
+SCENARIO_FILE = "runs/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv"
+SCENARIO_SEED = 20260702
+SCENARIO_TRIALS = 300
 GRID_SIZE = "19"
 MAX_TRIALS = "50"
 PYTHON_BIN = "${PYTHON_BIN:-python3}"
@@ -60,6 +62,27 @@ WEIGHTS = {
 
 def q(x: str | Path) -> str:
     return shlex.quote(str(x))
+
+
+def generate_independent_sensitivity_scenarios() -> None:
+    import sys
+
+    repo_root_text = str(REPO_ROOT)
+    if repo_root_text not in sys.path:
+        sys.path.insert(0, repo_root_text)
+
+    from benchmark_sim.tests.generate_clue_sensitivity_scenarios import generate_scenario_file
+
+    generate_scenario_file(
+        REPO_ROOT / SCENARIO_FILE,
+        grid_size=int(GRID_SIZE),
+        num_trials=SCENARIO_TRIALS,
+        num_clues=4,
+        num_robots=4,
+        seed=SCENARIO_SEED,
+        target_decay_exp=1.0,
+    )
+    print(f"Wrote independent sensitivity scenarios to {REPO_ROOT / SCENARIO_FILE}")
 
 
 def build_jobs(study: str):
@@ -375,6 +398,8 @@ for run_root in RUN_ROOTS:
 
 
 def main():
+    generate_independent_sensitivity_scenarios()
+
     for study, root, n_parts in [
         ("horizon", HORIZON_ROOT, N_HORIZON_PARTS),
         ("topk", TOPK_ROOT, N_TOPK_PARTS),

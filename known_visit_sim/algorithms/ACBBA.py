@@ -147,7 +147,6 @@ class ACBBAAllocator(AllocatorBase):
     def _best_insertion_bid(self, robot: Any, path: List[Cell], cell: Cell) -> Tuple[int, float]:
         """Return the best insertion index and bid for adding cell to path."""
 
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         current_distance = self._route_distance(robot, path)
         best_index = 0
         best_bid = self.NO_BID
@@ -156,7 +155,7 @@ class ACBBAAllocator(AllocatorBase):
             candidate_path = path[:insertion_index] + [cell] + path[insertion_index:]
             marginal_distance = self._route_distance(robot, candidate_path) - current_distance
             marginal_distance = max(0.0, marginal_distance)
-            bid = float(reward - marginal_distance)
+            bid = self._probability_adjusted_score(robot, marginal_distance, cell)
 
             if bid > best_bid + self.EPS:
                 best_index = insertion_index
@@ -192,9 +191,8 @@ class ACBBAAllocator(AllocatorBase):
         return False
 
     def _bid_from_reference(self, robot: Any, cell: Cell, reference: Cell) -> float:
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         distance = self.manhattan(cell[0], cell[1], reference[0], reference[1])
-        return float(reward - distance)
+        return self._probability_adjusted_score(robot, distance, cell)
 
     def _append_claim(self, robot: Any, cell: Cell, bid: float) -> None:
         self._insert_claim(robot, cell, len(self._get_path(robot)), bid)

@@ -106,7 +106,51 @@ class HIPCIntegrationTests(unittest.TestCase):
         self.assertEqual(second_messages, [])
         self.assertFalse(robot.hipc_pending_snapshot)
 
-    def test_collision_avoidance_triggers_bundle_reevaluation(self) -> None:
+    def test_empty_bundle_sends_one_clear_after_previous_bundle(self) -> None:
+        state = _state()
+        robot = state.robots["00"]
+        robot.belief.add_clue((1, 1))
+        robot.allocator.choose_goal(robot)
+
+        first_messages = robot.allocator.make_messages(robot)
+        self.assertGreater(len(first_messages), 0)
+
+        robot.hipc_path = []
+        robot.hipc_bundle = []
+        robot.hipc_pending_snapshot = True
+        clear_messages = robot.allocator.make_messages(robot)
+
+        self.assertEqual(len(clear_messages), 1)
+        self.assertEqual(clear_messages[0]["type"], "hipc_clear_bundle")
+        self.assertEqual(clear_messages[0]["bundle_cells"], [])
+        self.assertEqual(clear_messages[0]["bundle_size"], 0)
+
+    def test_clear_bundle_removes_receiver_stale_sender_claims(self) -> None:
+        state = _state()
+        sender = state.robots["00"]
+        receiver = state.robots["01"]
+        sender.belief.add_clue((1, 1))
+        receiver.belief.add_clue((1, 1))
+        sender.allocator.choose_goal(sender)
+        sender_path = list(sender.hipc_path)
+
+        sender._publish_allocator_messages()
+        state.bus.pump(0.0)
+        claimed = [cell for cell in sender_path if receiver.hipc_winner_by_cell.get(cell) == "00"]
+        self.assertGreater(len(claimed), 0)
+
+        sender.hipc_path = []
+        sender.hipc_bundle = []
+        sender.hipc_pending_snapshot = True
+        sender._publish_allocator_messages()
+        state.bus.pump(0.0)
+
+        for cell in claimed:
+            self.assertIsNone(receiver.hipc_winner_by_cell.get(cell))
+            self.assertEqual(receiver.hipc_winning_bid_by_cell.get(cell), HIPCAllocator.NO_BID)
+            self.assertEqual(receiver.hipc_bid_time_by_cell.get(cell), HIPCAllocator.NO_TIME)
+
+    def test_collision_state_triggers_bundle_reevaluation(self) -> None:
         state = _state()
         robot = state.robots["00"]
         robot.belief.add_clue((1, 1))
@@ -115,9 +159,7 @@ class HIPCIntegrationTests(unittest.TestCase):
 
         robot.current_goal = first.goal
         robot.collision_avoidance_active = True
-        robot._notify_allocator_collision_avoidance()
 
-        self.assertIsNone(robot.current_goal)
         second = robot.allocator.choose_goal(robot)
         self.assertEqual(second.debug["hipc_trigger"], "collision_avoidance")
         self.assertGreater(len(robot.hipc_path), 0)

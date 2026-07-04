@@ -214,7 +214,15 @@ class RobotShell:
                 self._collision_peer_positions[sender] = loc
                 self._collision_peer_intents.pop(sender, None)
             return
-        if category in {"cbaa_entry", "acbba_entry", "pi_entry", "pi_clear_path", "hipc_entry", "dga_entry"}:
+        if category in {
+            "cbaa_entry",
+            "acbba_entry",
+            "pi_entry",
+            "pi_clear_path",
+            "hipc_entry",
+            "hipc_clear_bundle",
+            "dga_entry",
+        }:
             self._deliver_allocator_payload(payload)
             return
         self.allocator.handle_message(self, message)
@@ -501,11 +509,6 @@ class RobotShell:
 
     def _notify_allocator_clue_change(self) -> None:
         handler = getattr(self.allocator, "on_clue_set_changed", None)
-        if callable(handler) and handler(self) is not False:
-            self.current_goal = None
-
-    def _notify_allocator_collision_avoidance(self) -> None:
-        handler = getattr(self.allocator, "on_collision_avoidance_activated", None)
         if callable(handler) and handler(self) is not False:
             self.current_goal = None
 

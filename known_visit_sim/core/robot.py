@@ -185,7 +185,15 @@ class RobotShell:
                 self._collision_peer_positions[sender] = loc
                 self._collision_peer_intents.pop(sender, None)
             return
-        if category in {"cbaa_entry", "acbba_entry", "pi_entry", "pi_clear_path", "hipc_entry", "dga_entry"}:
+        if category in {
+            "cbaa_entry",
+            "acbba_entry",
+            "pi_entry",
+            "pi_clear_path",
+            "hipc_entry",
+            "hipc_clear_bundle",
+            "dga_entry",
+        }:
             self._deliver_allocator_payload(payload)
             return
         self.allocator.handle_message(self, message)

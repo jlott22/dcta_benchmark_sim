@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from pathlib import Path
 
 from benchmark_sim.algorithms.registry import load_allocator_class
@@ -78,6 +79,129 @@ def scenarios_for_args(args: argparse.Namespace) -> list[TrialScenario]:
     return load_scenarios(args.scenario_file, max_trials=args.max_trials)
 
 
+def clue_locations_text(scenario: TrialScenario) -> str:
+    return ";".join(f"({x},{y})" for x, y in scenario.clues)
+
+
+def read_existing_csv(path: str | Path) -> list[dict]:
+    csv_path = Path(path)
+    if not csv_path.exists() or csv_path.stat().st_size == 0:
+        return []
+    with csv_path.open(newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def parse_trial_id(row: dict) -> int | None:
+    value = row.get("trial_id")
+    if value in (None, ""):
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def recorded_trial_ids(*row_groups: list[dict]) -> set[int]:
+    recorded: set[int] = set()
+    for rows in row_groups:
+        for row in rows:
+            trial_id = parse_trial_id(row)
+            if trial_id is None:
+                continue
+            status = str(row.get("trial_status", "")).strip().lower()
+            if status in {"", "completed", "failed"}:
+                recorded.add(trial_id)
+    return recorded
+
+
+def load_existing_outputs(out_dir: str | Path) -> tuple[list[dict], list[dict], list[dict]]:
+    out = Path(out_dir)
+    return (
+        read_existing_csv(out / "trial_summary.csv"),
+        read_existing_csv(out / "system_performance.csv"),
+        read_existing_csv(out / "robot_performance.csv"),
+    )
+
+
+def failure_rows(
+    scenario: TrialScenario,
+    args: argparse.Namespace,
+    cfg: SimConfig,
+    algorithm_name: str,
+    comm_level: str,
+    scenario_file: str,
+    exc: BaseException,
+) -> tuple[dict, dict, list[dict]]:
+    error_type = type(exc).__name__
+    error_message = str(exc)
+    common = {
+        "trial_id": scenario.trial_id,
+        "algorithm": algorithm_name,
+        "comm_model": args.comm_model,
+        "comm_level": comm_level,
+        "grid_size": cfg.grid_size,
+        "grid_cells": cfg.grid_size * cfg.grid_size,
+        "robot_count": len(cfg.robot_ids),
+        "target_cells_per_robot": cfg.target_cells_per_robot,
+        "actual_cells_per_robot": cfg.actual_cells_per_robot,
+        "condition_id": cfg.condition_id,
+        "scenario_file": scenario_file,
+        "trial_mode": cfg.trial_mode,
+        "trial_status": "failed",
+        "failure_type": error_type,
+        "failure_message": error_message,
+    }
+    trial_row = {
+        **common,
+        "target_x": scenario.target[0] if scenario.target else "",
+        "target_y": scenario.target[1] if scenario.target else "",
+        "clue_locations": clue_locations_text(scenario),
+        "first_clue_robot": "",
+        "first_clue_x": "",
+        "first_clue_y": "",
+        "robot_start_locations": ";".join(
+            f"{rid}:({cfg.start_positions[rid][0]},{cfg.start_positions[rid][1]})"
+            for rid in cfg.robot_ids
+        ),
+        "robot_end_locations": "",
+        "clues_detected_by_robot": "",
+        "target_found_by_robot": "",
+    }
+    system_row = {
+        **common,
+        "total_team_steps": "",
+        "steps_before_first_clue": "",
+        "post_clue_steps_to_find": "",
+        "unique_cells_searched": "",
+        "system_revisits": "",
+        "task_cell_replans_total": "",
+        "path_replans_total": "",
+        "collision_prevention_events": "",
+        "messages_sent_total": "",
+        "messages_delivered_total": "",
+        "messages_dropped_total": "",
+        "debug_max_events": cfg.debug_max_events,
+    }
+    robot_rows = [
+        {
+            **common,
+            "robot_id": rid,
+            "steps_total": "",
+            "steps_after_first_clue": "",
+            "unique_cells_contributed": "",
+            "system_revisits_by_robot": "",
+            "task_cell_replans": "",
+            "path_replans": "",
+            "collision_prevention_events": "",
+            "messages_sent": "",
+            "messages_delivered_to_robot": "",
+            "messages_dropped_to_robot": "",
+        }
+        for rid in cfg.robot_ids
+    ]
+    return trial_row, system_row, robot_rows
+
+
 def main() -> None:
     args = parse_args()
     robot_ids = generate_robot_ids(args.num_robots)
@@ -105,47 +229,94 @@ def main() -> None:
     comm_model = make_comm_model(args.comm_model, args.comm_level)
     comm_level = comm_model.level_label()
     scenarios = scenarios_for_args(args)
+    output_config = {
+        "sim_config": cfg.to_dict(),
+        "algorithm": args.algorithm,
+        "algorithm_name": algorithm_name,
+        "comm_model": args.comm_model,
+        "comm_level": comm_level,
+        "scenario_file": str(Path(args.scenario_file)) if args.scenario_file else "",
+        "trial_mode": args.trial_mode,
+        "seed": args.seed,
+    }
 
-    trial_summary_rows = []
-    system_performance_rows = []
-    robot_performance_rows = []
-
-    for i, scenario in enumerate(scenarios):
-        runner = AsyncTrialRunner(cfg=cfg, allocator_cls=allocator_cls, comm_model=comm_model, seed=args.seed + scenario.trial_id * 1009)
-        state = runner.run_trial(scenario)
-        trial_row, system_row, robot_rows = build_rows(
-            state=state,
-            algorithm_name=algorithm_name,
-            comm_model=args.comm_model,
-            comm_level=comm_level,
-            scenario_file=str(Path(args.scenario_file)) if args.scenario_file else "",
+    trial_summary_rows, system_performance_rows, robot_performance_rows = load_existing_outputs(args.out_dir)
+    done_trial_ids = recorded_trial_ids(trial_summary_rows, system_performance_rows)
+    total_scenarios = len(scenarios)
+    scenario_ids = {scenario.trial_id for scenario in scenarios}
+    resumed_count = len(done_trial_ids & scenario_ids)
+    if resumed_count:
+        print(
+            f"resuming {args.out_dir}: {resumed_count}/{total_scenarios} trials already recorded",
+            flush=True,
         )
+
+    scenario_file = str(Path(args.scenario_file)) if args.scenario_file else ""
+    for scenario in scenarios:
+        if scenario.trial_id in done_trial_ids:
+            print(f"skipping recorded trial {scenario.trial_id}", flush=True)
+            continue
+        try:
+            runner = AsyncTrialRunner(cfg=cfg, allocator_cls=allocator_cls, comm_model=comm_model, seed=args.seed + scenario.trial_id * 1009)
+            state = runner.run_trial(scenario)
+            trial_row, system_row, robot_rows = build_rows(
+                state=state,
+                algorithm_name=algorithm_name,
+                comm_model=args.comm_model,
+                comm_level=comm_level,
+                scenario_file=scenario_file,
+            )
+            trial_row["trial_status"] = "completed"
+            system_row["trial_status"] = "completed"
+            for row in robot_rows:
+                row["trial_status"] = "completed"
+        except Exception as exc:
+            trial_row, system_row, robot_rows = failure_rows(
+                scenario=scenario,
+                args=args,
+                cfg=cfg,
+                algorithm_name=algorithm_name,
+                comm_level=comm_level,
+                scenario_file=scenario_file,
+                exc=exc,
+            )
         trial_summary_rows.append(trial_row)
         system_performance_rows.append(system_row)
         robot_performance_rows.extend(robot_rows)
-        if args.trial_mode == "coverage":
+        done_trial_ids.add(scenario.trial_id)
+        write_outputs(
+            out_dir=args.out_dir,
+            trial_summary_rows=trial_summary_rows,
+            system_performance_rows=system_performance_rows,
+            robot_performance_rows=robot_performance_rows,
+            config=output_config,
+            write_parquet=False,
+        )
+        if trial_row.get("trial_status") == "failed":
+            print(
+                f"failed trial {scenario.trial_id}: "
+                f"{trial_row['failure_type']}: {trial_row['failure_message']}",
+                flush=True,
+            )
+        elif args.trial_mode == "coverage":
             print(
                 f"completed trial {scenario.trial_id}: "
-                f"steps={system_row['total_team_steps']} unique={system_row['unique_cells_searched']}"
+                f"steps={system_row['total_team_steps']} unique={system_row['unique_cells_searched']}",
+                flush=True,
             )
         else:
-            print(f"completed trial {scenario.trial_id}: steps={system_row['total_team_steps']} post_clue={system_row['post_clue_steps_to_find']}")
+            print(
+                f"completed trial {scenario.trial_id}: steps={system_row['total_team_steps']} "
+                f"post_clue={system_row['post_clue_steps_to_find']}",
+                flush=True,
+            )
 
     write_outputs(
         out_dir=args.out_dir,
         trial_summary_rows=trial_summary_rows,
         system_performance_rows=system_performance_rows,
         robot_performance_rows=robot_performance_rows,
-        config={
-            "sim_config": cfg.to_dict(),
-            "algorithm": args.algorithm,
-            "algorithm_name": algorithm_name,
-            "comm_model": args.comm_model,
-            "comm_level": comm_level,
-            "scenario_file": str(Path(args.scenario_file)) if args.scenario_file else "",
-            "trial_mode": args.trial_mode,
-            "seed": args.seed,
-        },
+        config=output_config,
         write_parquet=False,
     )
     print(f"outputs written to {args.out_dir}")

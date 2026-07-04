@@ -23,14 +23,14 @@ class PIAllocator(AllocatorBase):
       ordered path/bundle of up to BUNDLE_SIZE search cells.
     - The immediate simulator task cell is the first cell in the current path.
     - Tasks are all currently valid, unsearched, non-obstacle grid cells.
-    - Route objective is nonnegative probability-discounted movement cost:
+    - Route objective is the shared nonnegative probability-adjusted cost:
           effective_move_cost(start -> cell)
               = ManhattanDistance(start, cell)
-                / (1 + PROB_GAIN * normalized_target_p[cell])
+                + 8 * (1 - normalized_target_p[cell])
           cost(path) = effective_move_cost(robot.pos -> path[0])
                      + sum(effective_move_cost(path[k] -> path[k+1]))
-      There is no reward subtraction, so route costs never go negative. High
-      target-probability cells are treated as cheaper to approach.
+      High target-probability cells receive little or no added penalty, while
+      low-probability cells receive up to eight cost units.
     - A task's local PI significance is the amount by which this robot's route
       cost would decrease if that task were removed from its current path:
           significance(cell) = cost(path) - cost(path without cell)
@@ -55,9 +55,8 @@ class PIAllocator(AllocatorBase):
       claims.
 
     Important modeling note:
-    - Clue probability affects PI through discounted movement cost, not through
-      reward subtraction. This keeps the objective as a nonnegative cost while
-      making high-probability cells more attractive after clue discovery.
+    - Clue probability affects PI through the same normalized additive penalty
+      used by the other retained algorithms.
     - normalized_target_p[cell] is computed as target_p[cell] divided by the
       current maximum target probability on the grid and clamped to [0, 1].
     """
@@ -65,7 +64,6 @@ class PIAllocator(AllocatorBase):
     name = "PI"
 
     BUNDLE_SIZE = 3
-    REWARD_FACTOR = 5.0
     NO_OWNER = None
     EPS = 1.0e-9
     INF_SIGNIFICANCE = 1.0e18
@@ -73,11 +71,6 @@ class PIAllocator(AllocatorBase):
     # Increase if each searched cell should carry a fixed service/inspection
     # cost in addition to travel.
     TASK_SERVICE_COST = 0.0
-
-    # Probability discount strength for movement into a candidate cell.
-    # effective_move_cost = manhattan / (1 + PROB_GAIN * normalized_target_p[cell])
-    # PROB_GAIN = 0.0 reduces PI back to pure Manhattan route cost.
-    PROB_GAIN = 5.0
 
     # ------------------------------------------------------------------
     # Main allocator entry point
@@ -408,7 +401,7 @@ class PIAllocator(AllocatorBase):
     # ------------------------------------------------------------------
 
     def _route_cost(self, robot: Any, path: List[Cell]) -> float:
-        """Return nonnegative probability-discounted movement cost for the path."""
+        """Return nonnegative shared probability-adjusted cost for the path."""
 
         if not path:
             return 0.0
@@ -425,27 +418,12 @@ class PIAllocator(AllocatorBase):
 
     def _effective_move_cost(self, robot: Any, start: Cell, dest: Cell) -> float:
         """
-        Return probability-discounted movement cost into dest.
-
-        effective_move_cost = ManhattanDistance(start, dest)
-                              / (1 + PROB_GAIN * normalized_target_p[dest])
-
-        The denominator is always >= 1, so this can reduce travel cost toward
-        high-probability cells but can never make movement cost negative.
+        Return distance + 8 * (1 - normalized_target_probability[dest]).
         """
 
         distance = self._finite_nonnegative(self.manhattan(start[0], start[1], dest[0], dest[1]), 0.0)
-        if distance <= 0.0:
-            return 0.0
-
-        gain = self._finite_nonnegative(getattr(self, "PROB_GAIN", 0.0), 0.0)
-        p_norm = self._normalized_target_probability(robot, dest)
-        denominator = 1.0 + gain * p_norm
-
-        if denominator <= 0.0 or not isfinite(denominator):
-            denominator = 1.0
-
-        return self._finite_nonnegative(distance / denominator, self.INF_SIGNIFICANCE)
+        cost = self._probability_adjusted_cost(robot, distance, dest)
+        return self._finite_nonnegative(cost, self.INF_SIGNIFICANCE)
 
     def _refresh_probability_normalizer(self, robot: Any) -> None:
         """Cache the max target probability used to normalize target_p to [0, 1]."""
@@ -471,6 +449,7 @@ class PIAllocator(AllocatorBase):
             max_p = 1.0
 
         setattr(robot, "pi_probability_normalizer", float(max_p))
+        self._refresh_allocation_probability_normalizer(robot)
 
     def _normalized_target_probability(self, robot: Any, cell: Cell) -> float:
         """Return target_p[cell] / max(target_p) clamped to [0, 1]."""
@@ -488,10 +467,10 @@ class PIAllocator(AllocatorBase):
         if not isfinite(p) or p <= 0.0:
             return 0.0
 
-        return float(max(0.0, min(1.0, p / normalizer)))
+        return self._normalized_allocation_probability(robot, cell)
 
     def _best_insertion(self, robot: Any, path: List[Cell], cell: Cell) -> Tuple[Optional[int], float]:
-        """Find insertion position with smallest probability-discounted cost increase."""
+        """Find insertion position with smallest probability-adjusted cost increase."""
 
         if cell in path:
             return None, self.INF_SIGNIFICANCE
@@ -619,9 +598,6 @@ class PIAllocator(AllocatorBase):
 
     def get_outbound_message(self, robot: Any) -> List[dict]:
         return self.build_pi_messages(robot)
-
-    def on_collision_avoidance_activated(self, robot: Any) -> bool:
-        return True
 
     def handle_pi_message(self, robot: Any, message: Any) -> None:
         if not isinstance(message, dict):
@@ -843,8 +819,10 @@ class PIAllocator(AllocatorBase):
         signature = self._clue_signature(robot)
         previous = getattr(robot, "pi_clue_signature", None)
 
-        if signature != previous:
+        if previous is None:
             self._reset_pi_state(robot)
+            setattr(robot, "pi_clue_signature", signature)
+        elif signature != previous:
             setattr(robot, "pi_clue_signature", signature)
 
     def _consensus_maps(self, robot: Any) -> Tuple[Dict[Cell, Any], Dict[Cell, float]]:

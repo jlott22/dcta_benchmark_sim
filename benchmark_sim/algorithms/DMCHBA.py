@@ -19,7 +19,7 @@ class DMCHBAAllocator(AllocatorBase):
     - Before any clue is known, each robot follows the same fixed banded
       serpentine sweep used by the other benchmark allocators.
     - After a clue is locally known, reassignment is event-triggered only:
-        1. when the local clue set changes,
+        1. on the first post-clue transition,
         2. when collision avoidance newly activates, or
         3. when this robot has exhausted its locally assigned DMCHBA path.
       Ordinary searched/blocked-cell updates do not force immediate global
@@ -34,10 +34,9 @@ class DMCHBAAllocator(AllocatorBase):
     - The assignment phase clones every known robot enough times to cover the
       current task set, adds pseudotasks to make the cost matrix square, and
       runs a Hungarian min-cost assignment.
-    - The min-cost matrix is the negative of the reward-distance bid used by the
-      other benchmark algorithms:
-          score = target_p[cell] * REWARD_FACTOR - ManhattanDistance(robot, cell)
-          cost  = ManhattanDistance(robot, cell) - target_p[cell] * REWARD_FACTOR
+    - The min-cost matrix uses the shared normalized probability objective:
+          cost = ManhattanDistance(robot, cell)
+                 + 8 * (1 - normalized_target_probability[cell])
     - After Hungarian assignment, this robot extracts all cells assigned to its
       clones and orders them greedily by the same reward-distance score from the
       current route reference. Only then is this robot's committed execution path
@@ -62,7 +61,6 @@ class DMCHBAAllocator(AllocatorBase):
 
     name = "DMCHBA"
 
-    REWARD_FACTOR = 5.0
     PSEUDOTASK_COST = 1.0e9
     TIE_EPS = 1.0e-9
     COMMITMENT_HORIZON = 3
@@ -130,10 +128,12 @@ class DMCHBAAllocator(AllocatorBase):
 
         clue_signature = self._clue_signature(robot)
         previous_clue_signature = getattr(robot, "dmchba_clue_signature", None)
-        if clue_signature != previous_clue_signature:
+        if previous_clue_signature is None:
             setattr(robot, "dmchba_clue_signature", clue_signature)
             setattr(robot, "dmchba_path", [])
             return "clue_changed"
+        if clue_signature != previous_clue_signature:
+            setattr(robot, "dmchba_clue_signature", clue_signature)
 
         if self._collision_activation_trigger(robot):
             setattr(robot, "dmchba_path", [])
@@ -248,8 +248,7 @@ class DMCHBAAllocator(AllocatorBase):
                     continue
 
                 distance = self.manhattan(pos[0], pos[1], cell[0], cell[1])
-                reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
-                cost = float(distance - reward)
+                cost = self._probability_adjusted_cost(robot, distance, cell)
 
                 # Tiny deterministic tie-break. This should only affect exact or
                 # near-exact cost ties, not normal reward-distance decisions.
@@ -263,10 +262,7 @@ class DMCHBAAllocator(AllocatorBase):
 
     def _order_assigned_cells(self, robot: Any, cells: Sequence[Cell]) -> List[Cell]:
         """
-        Greedily order this robot's assigned cells by reward-distance score.
-
-        This keeps routing consistent with the other benchmark algorithms:
-            score = target_p[cell] * REWARD_FACTOR - ManhattanDistance(reference, cell)
+        Greedily order this robot's assigned cells by the shared adjusted cost.
         """
 
         remaining = list(dict.fromkeys(self._normalize_cell_list(cells)))
@@ -278,9 +274,8 @@ class DMCHBAAllocator(AllocatorBase):
             best_score = -1.0e18
 
             for cell in remaining:
-                reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
                 distance = self.manhattan(reference[0], reference[1], cell[0], cell[1])
-                score = float(reward - distance)
+                score = self._probability_adjusted_score(robot, distance, cell)
 
                 if best_cell is None:
                     best_cell = cell
@@ -548,12 +543,6 @@ class DMCHBAAllocator(AllocatorBase):
 
     def build_acbba_message(self, robot: Any) -> List[dict]:
         return []
-
-    def on_clue_set_changed(self, robot: Any) -> bool:
-        return True
-
-    def on_collision_avoidance_activated(self, robot: Any) -> bool:
-        return True
 
     def handle_dmchba_message(self, robot: Any, message: Any) -> None:
         return None

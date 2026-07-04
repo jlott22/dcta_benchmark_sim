@@ -34,8 +34,6 @@ class HIPCAllocator(AllocatorBase):
     # Keep bundle depth matched to the other bundle allocators for fair comparison.
     BUNDLE_SIZE = 3
 
-    # Same reward scaling as CBAA/AuctionGreedy.
-    REWARD_FACTOR = 5.0
     NO_WINNER = None
     NO_BID = -1.0e18
     EPS = 1.0e-9
@@ -315,11 +313,10 @@ class HIPCAllocator(AllocatorBase):
         setattr(robot, "hipc_pending_snapshot", True)
 
     def _append_bid_for_prefix(self, robot: Any, prefix: List[Cell], cell: Cell) -> float:
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         current_distance = self._route_distance(robot, prefix)
         candidate_distance = self._route_distance(robot, prefix + [cell])
         marginal_distance = max(0.0, candidate_distance - current_distance)
-        return float(reward - marginal_distance)
+        return self._probability_adjusted_score(robot, marginal_distance, cell)
 
     # ------------------------------------------------------------------
     # HIPC communication hooks
@@ -344,14 +341,24 @@ class HIPCAllocator(AllocatorBase):
 
         path = self._get_path(robot)
         current_signature = self._bundle_signature(robot)
-        if current_signature == getattr(robot, "hipc_last_sent_signature", None):
+        previous_signature = getattr(robot, "hipc_last_sent_signature", None)
+        if current_signature == previous_signature:
             setattr(robot, "hipc_pending_snapshot", False)
             return []
 
         if not path:
             setattr(robot, "hipc_pending_snapshot", False)
             setattr(robot, "hipc_last_sent_signature", current_signature)
-            return []
+            if previous_signature is None:
+                return []
+            return [{
+                "type": "hipc_clear_bundle",
+                "alg": "HIPC",
+                "sender": robot.rid,
+                "timestamp": self._next_bid_time(robot),
+                "bundle_cells": [],
+                "bundle_size": 0,
+            }]
 
         winner_by_cell, winning_bid_by_cell = self._consensus_maps(robot)
         bid_time_by_cell = self._bid_time_map(robot)
@@ -416,13 +423,10 @@ class HIPCAllocator(AllocatorBase):
     def get_outbound_message(self, robot: Any) -> List[dict]:
         return self.build_hipc_messages(robot)
 
-    def on_collision_avoidance_activated(self, robot: Any) -> bool:
-        return True
-
     def handle_hipc_message(self, robot: Any, message: Any) -> None:
         if not isinstance(message, dict):
             return
-        if message.get("type") != "hipc_entry":
+        if message.get("type") not in {"hipc_entry", "hipc_clear_bundle"}:
             return
 
         self._ensure_hipc_state(robot)
@@ -431,7 +435,7 @@ class HIPCAllocator(AllocatorBase):
         self._merge_hipc_entry(robot, message)
 
     def handle_acbba_message(self, robot: Any, message: Any) -> None:
-        if isinstance(message, dict) and message.get("type") == "hipc_entry":
+        if isinstance(message, dict) and message.get("type") in {"hipc_entry", "hipc_clear_bundle"}:
             self.handle_hipc_message(robot, message)
 
     def handle_cbaa_message(self, robot: Any, message: Any) -> None:
@@ -447,6 +451,14 @@ class HIPCAllocator(AllocatorBase):
         self.handle_acbba_message(robot, message)
 
     def _merge_hipc_entry(self, robot: Any, message: Dict[str, Any]) -> None:
+        if message.get("type") == "hipc_clear_bundle":
+            bundle_cells = self._parse_bundle_cells(message.get("bundle_cells", []))
+            if bundle_cells is not None:
+                self._clear_sender_claims_not_in_bundle(robot, message.get("sender"), bundle_cells)
+                self._repair_bundle_after_consensus(robot)
+                self._sync_current_goal_after_message(robot)
+            return
+
         parsed = self._parse_hipc_entry(message)
         if parsed is None:
             return
@@ -707,8 +719,9 @@ class HIPCAllocator(AllocatorBase):
         setattr(robot, "hipc_bid_counter", 0)
         setattr(robot, "hipc_pending_snapshot", False)
         setattr(robot, "hipc_last_sent_signature", None)
-        # Reset HIPC plan state on clue changes, but preserve prediction quality
-        # counts so the robot does not immediately trust peers it was failing to predict.
+        # Reset HIPC plan state on first post-clue entry, but preserve prediction
+        # quality counts so the robot does not immediately trust peers it was
+        # failing to predict.
         setattr(robot, "hipc_last_predicted_peer_first_task", {})
         setattr(robot, "hipc_last_predicted_team_plan", {})
         setattr(robot, "hipc_seen_peer_bundle_signature", {})
@@ -722,8 +735,10 @@ class HIPCAllocator(AllocatorBase):
         signature = self._clue_signature(robot)
         previous = getattr(robot, "hipc_clue_signature", None)
 
-        if signature != previous:
+        if previous is None:
             self._reset_path_state(robot)
+            setattr(robot, "hipc_clue_signature", signature)
+        elif signature != previous:
             setattr(robot, "hipc_clue_signature", signature)
 
     def _consensus_maps(self, robot: Any) -> Tuple[Dict[Cell, Any], Dict[Cell, float]]:
@@ -878,9 +893,8 @@ class HIPCAllocator(AllocatorBase):
         return float(distance)
 
     def _bid_from_reference(self, robot: Any, cell: Cell, reference: Cell) -> float:
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         distance = self.manhattan(cell[0], cell[1], reference[0], reference[1])
-        return float(reward - distance)
+        return self._probability_adjusted_score(robot, distance, cell)
 
     def _insert_claim(self, robot: Any, cell: Cell, insertion_index: int, bid: float) -> None:
         self._ensure_hipc_state(robot)

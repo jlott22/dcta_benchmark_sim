@@ -78,7 +78,7 @@ class SimConfig:
     collision_goal_backoff_max_s: float = 5.0
 
     # Safety cap is for implementation bugs, not an experimental timeout.
-    debug_max_events: int = 50_000
+    debug_max_events: int = 5_000
 
     # Output behavior. Metric exports are CSV-only.
     write_parquet: bool = False

@@ -69,6 +69,29 @@ class CBAAEntryMessageTests(unittest.TestCase):
         self.assertEqual(second_goal, first_goal)
         self.assertEqual(messages, [])
 
+    def test_collision_state_triggers_current_task_reevaluation(self) -> None:
+        state = _state(grid_size=4, robot_ids=["00"])
+        robot = state.robots["00"]
+        robot.belief.add_clue((1, 1))
+        for cell in list(robot.belief.target_p.keys()):
+            robot.belief.target_p[cell] = 0.0
+        robot.allocator.choose_goal(robot)
+
+        stale_task = (3, 3)
+        robot.allocator._claim_cell(robot, stale_task, robot.allocator._bid(robot, stale_task))
+
+        held = robot.allocator.choose_goal(robot)
+        self.assertEqual(held.goal, stale_task)
+        self.assertIsNone(held.debug["cbaa_trigger"])
+
+        robot.collision_avoidance_active = True
+        replanned = robot.allocator.choose_goal(robot)
+
+        self.assertEqual(replanned.debug["cbaa_trigger"], "collision_avoidance")
+        self.assertIsNotNone(replanned.goal)
+        self.assertNotEqual(replanned.goal, stale_task)
+        self.assertEqual(getattr(robot, "cbaa_current_task"), replanned.goal)
+
     def test_switching_task_generates_release_and_new_claim(self) -> None:
         state = _state(grid_size=3)
         robot = state.robots["00"]

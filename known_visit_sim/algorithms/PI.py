@@ -23,10 +23,9 @@ class PIAllocator(AllocatorBase):
     # cost in addition to travel.
     TASK_SERVICE_COST = 0.0
 
-    # Probability discount strength for movement into a candidate cell.
-    # effective_move_cost = manhattan / (1 + PROB_GAIN * normalized_target_p[cell])
-    # PROB_GAIN = 0.0 reduces PI back to pure Manhattan route cost.
-    PROB_GAIN = 5.0
+    # Known-target runs use the same shared cost helper as the clue/coverage
+    # simulator. Because every active known target has target_p=1.0, the helper
+    # reduces to pure route distance.
 
     # ------------------------------------------------------------------
     # Main allocator entry point
@@ -368,27 +367,15 @@ class PIAllocator(AllocatorBase):
 
     def _effective_move_cost(self, robot: Any, start: Cell, dest: Cell) -> float:
         """
-        Return probability-discounted movement cost into dest.
-
-        effective_move_cost = ManhattanDistance(start, dest)
-                              / (1 + PROB_GAIN * normalized_target_p[dest])
-
-        The denominator is always >= 1, so this can reduce travel cost toward
-        high-probability cells but can never make movement cost negative.
+        Return distance + 8 * (1 - normalized_target_probability[dest]).
         """
 
         distance = self._finite_nonnegative(self.manhattan(start[0], start[1], dest[0], dest[1]), 0.0)
         if distance <= 0.0:
             return 0.0
 
-        gain = self._finite_nonnegative(getattr(self, "PROB_GAIN", 0.0), 0.0)
-        p_norm = self._normalized_target_probability(robot, dest)
-        denominator = 1.0 + gain * p_norm
-
-        if denominator <= 0.0 or not isfinite(denominator):
-            denominator = 1.0
-
-        return self._finite_nonnegative(distance / denominator, self.INF_SIGNIFICANCE)
+        cost = self._probability_adjusted_cost(robot, distance, dest)
+        return self._finite_nonnegative(cost, self.INF_SIGNIFICANCE)
 
     def _refresh_probability_normalizer(self, robot: Any) -> None:
         """Cache the max target probability used to normalize target_p to [0, 1]."""
@@ -431,7 +418,7 @@ class PIAllocator(AllocatorBase):
         if not isfinite(p) or p <= 0.0:
             return 0.0
 
-        return float(max(0.0, min(1.0, p / normalizer)))
+        return self._normalized_allocation_probability(robot, cell)
 
     def _best_insertion(self, robot: Any, path: List[Cell], cell: Cell) -> Tuple[Optional[int], float]:
         """Find insertion position with smallest probability-discounted cost increase."""

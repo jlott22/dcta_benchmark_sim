@@ -89,9 +89,8 @@ class CBAAAllocator(AllocatorBase):
     def _bid(self, robot: Any, cell: Cell) -> float:
         """Return this robot's own CBAA bid for a task cell."""
 
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         distance = self.manhattan(cell[0], cell[1], robot.pos[0], robot.pos[1])
-        return float(reward - distance)
+        return self._probability_adjusted_score(robot, distance, cell)
 
     def _can_claim(self, robot: Any, cell: Cell, my_bid: float) -> bool:
         """

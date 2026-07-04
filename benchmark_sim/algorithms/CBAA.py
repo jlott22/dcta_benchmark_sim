@@ -20,17 +20,17 @@ class CBAAAllocator(AllocatorBase):
     - Post-clue, each robot is single-assignment: it claims at most one current
       task cell.
     - For each valid unsearched candidate cell, the robot computes only its own
-      bid:
-          bid = target_probability[cell] * REWARD_FACTOR
-                - ManhattanDistance(my_position, cell)
+      bid as the negative shared probability-adjusted cost:
+          bid = -(ManhattanDistance(my_position, cell)
+                  + 8 * (1 - normalized_target_probability[cell]))
       It can claim the cell only if that bid beats the locally known winning
       bid for the cell.
     - The robot keeps a won current task until it is completed, becomes invalid,
-      is outbid by received consensus information, or clue information changes.
-      It does not continuously abandon a still-won task just because a different
-      cell now has a better local score.
-    - When clue information changes, local CBAA state is reset so bids are based
-      on the new posterior.
+      is outbid by received consensus information, or collision replanning
+      releases it. It does not continuously abandon a still-won task just
+      because a different cell now has a better local score.
+    - The first locally known clue switches CBAA into post-clue allocation.
+      Later clues update belief but do not by themselves reset CBAA state.
     - Communication uses delta-known-table forwarding. Whenever a robot's local
       CBAA winner/bid table changes for a cell, it queues one CBAA entry for
       that cell. The entry sender is the transmitting robot, while the entry
@@ -73,9 +73,6 @@ class CBAAAllocator(AllocatorBase):
 
     name = "CBAA"
 
-    # Same reward scaling name/value as Auction_greedy.py.
-    REWARD_FACTOR = 5.0
-
     NO_WINNER = None
     NO_BID = -1.0e18
     EPS = 1.0e-9
@@ -108,6 +105,7 @@ class CBAAAllocator(AllocatorBase):
                 "alg": self.name,
                 "mode": mode,
                 "cbaa_current_task": self._get_current_task(robot),
+                "cbaa_trigger": getattr(robot, "cbaa_last_reallocation_trigger", None),
                 "cbaa_claims_known": self._count_known_claims(robot),
                 "cbaa_candidate_count_before_filter": int(getattr(robot, "candidate_count_before_filter", 0)),
                 "cbaa_candidate_count_after_filter": int(getattr(robot, "candidate_count_after_filter", 0)),
@@ -123,9 +121,8 @@ class CBAAAllocator(AllocatorBase):
         """
         Post-clue CBAA task-cell selection.
 
-        Each robot computes only its own bid for each valid unsearched cell:
-            bid = target_probability[cell] * REWARD_FACTOR
-                  - ManhattanDistance(my_position, cell)
+        Each robot computes only its own bid for each valid unsearched cell as
+        the negative shared probability-adjusted cost.
 
         The robot may claim a cell only if its own bid beats the current
         locally known winning bid for that cell. Conflict resolution is based
@@ -135,10 +132,15 @@ class CBAAAllocator(AllocatorBase):
         self._ensure_cbaa_state(robot)
         self._clear_invalid_or_completed_cells(robot)
 
+        trigger = "collision_avoidance" if self._collision_activation_trigger(robot) else None
+        setattr(robot, "cbaa_last_reallocation_trigger", trigger)
+        if trigger is not None:
+            self._release_current_task_for_replan(robot)
+
         current = self._resolve_current_task(robot)
         if current is not None:
             # Single-assignment CBAA: keep the won cell until completed,
-            # invalidated, outbid, or a clue-event reset occurs.
+            # invalidated, outbid, or collision replan occurs.
             return current
 
         best_cell: Optional[Cell] = None
@@ -175,9 +177,8 @@ class CBAAAllocator(AllocatorBase):
     def _bid(self, robot: Any, cell: Cell) -> float:
         """Return this robot's own CBAA bid for a task cell."""
 
-        reward = self._target_probability(robot, cell) * self.REWARD_FACTOR
         distance = self.manhattan(cell[0], cell[1], robot.pos[0], robot.pos[1])
-        return float(reward - distance)
+        return self._probability_adjusted_score(robot, distance, cell)
 
     def _can_claim(self, robot: Any, cell: Cell, my_bid: float) -> bool:
         """
@@ -240,6 +241,19 @@ class CBAAAllocator(AllocatorBase):
 
         self._set_table_entry(robot, cell, robot.rid, float(bid))
         setattr(robot, "cbaa_current_task", cell)
+
+    def _release_current_task_for_replan(self, robot: Any) -> None:
+        """Release this robot's single CBAA task so normal bidding can rebuild it."""
+
+        self._ensure_cbaa_state(robot)
+        current = self._get_current_task(robot)
+        if current is None:
+            return
+
+        winner_by_cell, _ = self._consensus_maps(robot)
+        if self._same_robot_id(winner_by_cell.get(current), robot.rid):
+            self._set_table_entry(robot, current, self.NO_WINNER, self.NO_BID)
+        setattr(robot, "cbaa_current_task", None)
 
     def _resolve_current_task(self, robot: Any) -> Optional[Cell]:
         """
@@ -451,6 +465,12 @@ class CBAAAllocator(AllocatorBase):
         if not hasattr(robot, "cbaa_last_sent_signatures") or getattr(robot, "cbaa_last_sent_signatures") is None:
             setattr(robot, "cbaa_last_sent_signatures", {})
 
+        if not hasattr(robot, "cbaa_last_collision_active"):
+            setattr(robot, "cbaa_last_collision_active", False)
+
+        if not hasattr(robot, "cbaa_last_reallocation_trigger"):
+            setattr(robot, "cbaa_last_reallocation_trigger", None)
+
     def _reset_cbaa_state(self, robot: Any) -> None:
         """Clear CBAA allocation state for a new post-clue auction."""
 
@@ -459,23 +479,48 @@ class CBAAAllocator(AllocatorBase):
         setattr(robot, "cbaa_current_task", None)
         setattr(robot, "cbaa_pending_deltas", {})
         setattr(robot, "cbaa_last_sent_signatures", {})
+        setattr(robot, "cbaa_last_reallocation_trigger", None)
 
     def _reset_if_new_clue_information(self, robot: Any) -> None:
         """
-        Reset CBAA tables when this robot's local clue set changes.
+        Initialize CBAA state on the first post-clue entry.
 
-        This keeps pre-clue behavior identical to Auction_greedy.py, then starts
-        a fresh CBAA auction when the robot first learns a clue or when it later
-        receives/detects additional clues that change the belief map.
+        Later clue updates change the belief map but do not clear the active
+        task or force a fresh auction by themselves.
         """
 
         self._ensure_cbaa_state(robot)
         signature = self._clue_signature(robot)
         previous = getattr(robot, "cbaa_clue_signature", None)
 
-        if signature != previous:
+        if previous is None:
             self._reset_cbaa_state(robot)
             setattr(robot, "cbaa_clue_signature", signature)
+        elif signature != previous:
+            setattr(robot, "cbaa_clue_signature", signature)
+
+    def _collision_activation_trigger(self, robot: Any) -> bool:
+        """Return True only on the rising edge of a collision-avoidance flag."""
+
+        active = self._collision_active(robot)
+        previous = bool(getattr(robot, "cbaa_last_collision_active", False))
+        setattr(robot, "cbaa_last_collision_active", active)
+        return bool(active and not previous)
+
+    def _collision_active(self, robot: Any) -> bool:
+        for attr in (
+            "collision_avoidance_active",
+            "avoidance_active",
+            "collision_active",
+            "blocked_by_collision",
+            "collision_blocked",
+            "needs_collision_replan",
+            "collision_replan",
+        ):
+            if bool(getattr(robot, attr, False)):
+                return True
+        state = str(getattr(robot, "collision_state", "")).lower()
+        return state in {"active", "avoid", "avoiding", "blocked", "replan"}
 
     def _consensus_maps(self, robot: Any) -> Tuple[Dict[Cell, Any], Dict[Cell, float]]:
         self._ensure_cbaa_state(robot)

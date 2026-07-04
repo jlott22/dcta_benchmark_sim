@@ -1,0 +1,2 @@
+This directory is intentionally kept for future raw final 500-trial clue-informed runs.
+Stale results were archived outside the repo under old results decentralized benchmark.

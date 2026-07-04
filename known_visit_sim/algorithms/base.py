@@ -40,6 +40,7 @@ class AllocatorBase:
     """
 
     name: str = "base"
+    PROBABILITY_ALPHA: float = 8.0
 
     def initialize(self, robot: RobotAPI) -> None:
         pass
@@ -167,6 +168,82 @@ class AllocatorBase:
         if not isfinite(probability):
             return 0.0
         return max(0.0, probability)
+
+    def _refresh_allocation_probability_normalizer(self, robot: RobotAPI) -> float:
+        """Cache the max active-task target value used by shared allocation cost.
+
+        In known-target runs every active target has target_p=1.0, so this
+        normalizer makes all active targets p_norm=1.0 and the shared cost
+        reduces to pure distance. Keeping the helper here preserves the same
+        algorithm semantics as the clue/coverage simulator without importing
+        clue-specific belief behavior.
+        """
+
+        target_p = getattr(robot, "target_p", {}) or {}
+        candidates = getattr(robot, "active_tasks", set()) or set()
+        max_p = 0.0
+        for cell in candidates:
+            try:
+                value = float(target_p.get(cell, 0.0))
+            except AttributeError:
+                try:
+                    value = float(target_p[cell[1]][cell[0]])
+                except Exception:
+                    value = 0.0
+            except Exception:
+                value = 0.0
+            if isfinite(value) and value > max_p:
+                max_p = value
+        if max_p <= 0.0 or not isfinite(max_p):
+            max_p = 1.0
+        setattr(robot, "_allocation_probability_normalizer", float(max_p))
+        setattr(robot, "_allocation_probability_source_id", id(target_p))
+        return float(max_p)
+
+    def _normalized_allocation_probability(self, robot: RobotAPI, cell: Cell) -> float:
+        target_p = getattr(robot, "target_p", {}) or {}
+        source_id = getattr(robot, "_allocation_probability_source_id", None)
+        normalizer = getattr(robot, "_allocation_probability_normalizer", None)
+        if source_id != id(target_p) or normalizer is None:
+            normalizer = self._refresh_allocation_probability_normalizer(robot)
+
+        try:
+            normalizer = float(normalizer)
+        except Exception:
+            normalizer = 1.0
+        if normalizer <= 0.0 or not isfinite(normalizer):
+            normalizer = self._refresh_allocation_probability_normalizer(robot)
+
+        probability = self._filter_probability(robot, cell)
+        return float(max(0.0, min(1.0, probability / normalizer)))
+
+    def _probability_penalty(self, robot: RobotAPI, cell: Cell) -> float:
+        """Return alpha * (1 - normalized probability) with shared alpha=8."""
+
+        try:
+            alpha = float(getattr(self, "PROBABILITY_ALPHA", AllocatorBase.PROBABILITY_ALPHA))
+        except Exception:
+            alpha = AllocatorBase.PROBABILITY_ALPHA
+        if alpha < 0.0 or not isfinite(alpha):
+            alpha = AllocatorBase.PROBABILITY_ALPHA
+        probability = self._normalized_allocation_probability(robot, cell)
+        return float(alpha * (1.0 - probability))
+
+    def _probability_adjusted_cost(self, robot: RobotAPI, distance: float, cell: Cell) -> float:
+        """Return distance + 8 * (1 - normalized target probability)."""
+
+        try:
+            base_distance = float(distance)
+        except Exception:
+            base_distance = 0.0
+        if base_distance < 0.0 or not isfinite(base_distance):
+            base_distance = 0.0
+        return float(base_distance + self._probability_penalty(robot, cell))
+
+    def _probability_adjusted_score(self, robot: RobotAPI, distance: float, cell: Cell) -> float:
+        """Return the higher-is-better negative of the shared adjusted cost."""
+
+        return -self._probability_adjusted_cost(robot, distance, cell)
 
     def _normalize_filter_cell(self, cell: Any) -> Optional[Cell]:
         try:
