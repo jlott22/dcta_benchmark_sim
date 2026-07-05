@@ -8,7 +8,6 @@ Status key
 [RERUN NEEDED]   Existing result is stale because algorithm definitions changed.
 [MADE - NOT RUN] Test implementation and scripts exist, but the experiment has not been run.
 [RUNNING]        Experiment is currently running with live CSV output.
-[STOPPED]        Experiment was stopped intentionally and is ready to resume.
 [QUEUED]         Experiment is scripted and queued behind the current running stage.
 [PARTIAL]        Some current results exist, but the experiment is not complete.
 [NOT MADE]       Test implementation and scripts still need to be created.
@@ -27,14 +26,12 @@ Current Valid Result
 Current Rerun Plan
 ------------------
 
-2. [STOPPED] Per-algorithm horizon tuning for clue-informed search
-   Running current horizon sensitivity for ACBBA, PI, HIPC, DMCHBA, and DGA
-   using ideal communication and Bernoulli p=0.25 only. Top-K tuning is not
-   included. Outputs are live CSVs in
-   clue_sensitivity_test_results/horizon_results/raw, with resume support.
-   The laptop run was stopped intentionally for transfer after writing the
-   handoff report RUN_HANDOFF_20260703_174310.txt. Resume from the pushed CSVs
-   on the school computer.
+2. [PARTIAL] Per-algorithm horizon tuning for clue-informed search
+   Current horizon sensitivity for ACBBA, PI, HIPC, DMCHBA, and DGA uses ideal
+   communication and Bernoulli p=0.25 only. Top-K tuning is not included.
+   Imported partial/complete outputs are in
+   clue_sensitivity_test_results/horizon_results/raw and combined summaries are
+   in clue_sensitivity_test_results/horizon_results/combined.
 
 3. [RERUN NEEDED] Final clue-informed benchmark
    Rerun the full clue-informed benchmark for all retained algorithms after
@@ -122,7 +119,7 @@ DGA Iteration Sensitivity Tests
 Current Run Notes
 -----------------
 
-17. [STOPPED] Current sensitivity rerun orchestrator
+17. [PARTIAL] Current sensitivity rerun orchestrator
     Script: benchmark_sim/tests/run_current_sensitivity_reruns.py
     Current stage order:
     1. clue-informed horizon sensitivity, 300 trials per condition
@@ -132,17 +129,8 @@ Current Run Notes
     The runner now writes live CSVs after each trial, resumes from existing CSV
     trial IDs, and marks individual failed trials without stopping the whole
     condition. The orchestrator uses a shared work queue and can adopt already
-    running condition processes during restart/handoff. All matching Python
-    processes were stopped on the laptop for Git transfer; resume by running:
+    running condition processes during restart. Resume by running:
     python -u -m benchmark_sim.tests.run_current_sensitivity_reruns
-
-19. [STOPPED] Laptop-to-school-computer handoff
-    Handoff file: RUN_HANDOFF_20260703_174310.txt
-    Status CSV: runs/handoff_20260703_174310/handoff_condition_status.csv
-    Duplicate trial ID issues found during handoff verification: 0.
-    The transition is CSV-resume based; any trial that had not finished at the
-    moment processes were stopped will be rerun, while already logged trial_id
-    rows are skipped.
 
 18. [PARTIAL] Comparison against old horizon data
     The archived stale clue horizon data at:
