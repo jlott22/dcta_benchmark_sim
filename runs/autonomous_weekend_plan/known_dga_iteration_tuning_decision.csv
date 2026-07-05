@@ -1,0 +1,7 @@
+stage,algorithm_key,candidate,final_score,ideal_mean,bernoulli_mean,gap_from_best,within_plateau,chosen,n_ideal_paired,n_bernoulli_paired,plateau_epsilon
+known_dga_iteration,dga,1,1.15045891,1.13929172,1.16162609,0.00000000,True,True,300,300,0.005
+known_dga_iteration,dga,2,1.17504415,1.15990008,1.19018822,0.02458524,False,False,300,300,0.005
+known_dga_iteration,dga,5,1.16943366,1.14559776,1.19326957,0.01897476,False,False,300,300,0.005
+known_dga_iteration,dga,10,1.17104149,1.14647639,1.19560659,0.02058258,False,False,300,300,0.005
+known_dga_iteration,dga,25,1.15978607,1.13157603,1.18799610,0.00932716,False,False,300,300,0.005
+known_dga_iteration,dga,50,1.17257703,1.13424145,1.21091261,0.02211812,False,False,300,300,0.005

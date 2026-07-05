@@ -1,0 +1,17 @@
+{
+  "clue_dga_iterations": 25,
+  "coverage_dga_iterations": 25,
+  "horizons": {
+    "clue": {
+      "acbba": 1,
+      "dga": 5,
+      "dmchba": 3,
+      "hipc": 5,
+      "pi": 1
+    },
+    "coverage": {},
+    "known": {}
+  },
+  "known_dga_iterations": 1,
+  "plateau_epsilon": 0.005
+}
