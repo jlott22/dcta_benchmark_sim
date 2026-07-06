@@ -11,7 +11,7 @@
 clear; clc;
 
 scriptDir = fileparts(mfilename('fullpath'));
-inputFile = fullfile(scriptDir, 'combined', 'system_performance.csv');
+inputFile = fullfile(scriptDir, 'dga_iteration', 'combined', 'system_performance.csv');
 metricName = 'total_team_steps';
 
 T = readtable(inputFile, 'TextType', 'string');
@@ -31,6 +31,12 @@ valid = ~isnan(T.metric_value) & ~isnan(T.iter_value) & ~isnan(double(T.trial_id
 T = T(valid, :);
 
 comms = unique(T.comm_plot, 'stable');
+overlayData = struct( ...
+    'comm', {}, ...
+    'iterations', {}, ...
+    'avgPctDiff', {}, ...
+    'usedTrials', {}, ...
+    'droppedTrials', {});
 fprintf('Input: %s\n', inputFile);
 fprintf('Metric: %s\n\n', metricName);
 
@@ -99,6 +105,35 @@ for ci = 1:numel(comms)
 
     fprintf('%s: used_trials=%d dropped_trials=%d\n', comm, usedTrials, droppedTrials);
     disp(table(iterations(:), y(:), 'VariableNames', {'iteration', 'avg_pct_diff'}));
+
+    overlayData(end + 1).comm = comm; %#ok<SAGROW>
+    overlayData(end).iterations = iterations;
+    overlayData(end).avgPctDiff = y;
+    overlayData(end).usedTrials = usedTrials;
+    overlayData(end).droppedTrials = droppedTrials;
+end
+
+if ~isempty(overlayData)
+    figure('Name', 'DGA iteration / all communication modes');
+    hold on;
+    allIterations = [];
+    legendLabels = strings(1, numel(overlayData));
+    for i = 1:numel(overlayData)
+        entry = overlayData(i);
+        plot(entry.iterations, entry.avgPctDiff, '-o', 'LineWidth', 1.5);
+        allIterations = [allIterations, entry.iterations]; %#ok<AGROW>
+        legendLabels(i) = entry.comm;
+    end
+    yline(0, '-', 'Color', [0.6 0.6 0.6], 'HandleVisibility', 'off');
+    hold off;
+    grid on;
+    xlabel('DGA iterations per trigger');
+    ylabel(sprintf('Average %% difference from per-trial mean %s', metricName), 'Interpreter', 'none');
+    title('DGA iteration / all communication modes', 'Interpreter', 'none');
+    xticks(sort(unique(allIterations)));
+    legend(legendLabels, 'Interpreter', 'none', 'Location', 'best');
+
+    fprintf('DGA iteration / all communication modes: plotted_conditions=%d\n', numel(overlayData));
 end
 
 function iter = extractIteration(T)

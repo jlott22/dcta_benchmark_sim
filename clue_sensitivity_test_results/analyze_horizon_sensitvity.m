@@ -11,7 +11,7 @@
 clear; clc;
 
 scriptDir = fileparts(mfilename('fullpath'));
-inputFile = fullfile(scriptDir, 'combined', 'system_performance.csv');
+inputFile = fullfile(scriptDir, 'horizon_results', 'combined', 'system_performance.csv');
 metricName = 'post_clue_steps_to_find';
 
 T = readtable(inputFile, 'TextType', 'string');
@@ -36,6 +36,13 @@ valid = ~isnan(T.metric_value) & ~isnan(T.h_value) & ~isnan(double(T.trial_id));
 T = T(valid, :);
 
 algorithms = unique(T.algorithm_plot, 'stable');
+overlayData = struct( ...
+    'comm', {}, ...
+    'algorithm', {}, ...
+    'horizons', {}, ...
+    'avgPctDiff', {}, ...
+    'usedTrials', {}, ...
+    'droppedTrials', {});
 fprintf('Input: %s\n', inputFile);
 fprintf('Metric: %s\n\n', metricName);
 
@@ -108,6 +115,47 @@ for ai = 1:numel(algorithms)
 
         fprintf('%s / %s: used_trials=%d dropped_trials=%d\n', alg, comm, usedTrials, droppedTrials);
         disp(table(horizons(:), y(:), 'VariableNames', {'h', 'avg_pct_diff'}));
+
+        overlayData(end + 1).comm = comm; %#ok<SAGROW>
+        overlayData(end).algorithm = alg;
+        overlayData(end).horizons = horizons;
+        overlayData(end).avgPctDiff = y;
+        overlayData(end).usedTrials = usedTrials;
+        overlayData(end).droppedTrials = droppedTrials;
+    end
+end
+
+if ~isempty(overlayData)
+    overlayComms = strings(1, numel(overlayData));
+    for i = 1:numel(overlayData)
+        overlayComms(i) = overlayData(i).comm;
+    end
+    comms = unique(overlayComms, 'stable');
+
+    for ci = 1:numel(comms)
+        comm = comms(ci);
+        idx = find(overlayComms == comm);
+
+        figure('Name', sprintf('All algorithms / %s', comm));
+        hold on;
+        allHorizons = [];
+        legendLabels = strings(1, numel(idx));
+        for ii = 1:numel(idx)
+            entry = overlayData(idx(ii));
+            plot(entry.horizons, entry.avgPctDiff, '-o', 'LineWidth', 1.5);
+            allHorizons = [allHorizons, entry.horizons]; %#ok<AGROW>
+            legendLabels(ii) = entry.algorithm;
+        end
+        yline(0, '-', 'Color', [0.6 0.6 0.6], 'HandleVisibility', 'off');
+        hold off;
+        grid on;
+        xlabel('Commitment horizon h');
+        ylabel(sprintf('Average %% difference from per-trial mean %s', metricName), 'Interpreter', 'none');
+        title(sprintf('All algorithms / %s', comm), 'Interpreter', 'none');
+        xticks(sort(unique(allHorizons)));
+        legend(legendLabels, 'Interpreter', 'none', 'Location', 'best');
+
+        fprintf('All algorithms / %s: plotted_algorithms=%d\n', comm, numel(idx));
     end
 end
 
