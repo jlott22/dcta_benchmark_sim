@@ -1,0 +1,65 @@
+DCTA paired metric analysis
+Date/time: 14-Jul-2026 22:08:35
+MATLAB version: 25.2.0.3123386 (R2025b) Update 3
+Project root: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim
+Analysis directory: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\analysis
+Bootstrap iterations: 10000
+RNG seed: 20260714
+Script path: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\analysis\build_dcta_paired_metric_results.m
+Second candidate folder inspected: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\coverage_100_combined
+Second candidate files: KEEP_OPEN.txt
+Bayesian clue-informed search source folder: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\clue_500_combined
+Bayesian clue-informed search system trial_mode values: clue_search
+Bayesian clue-informed search trial environment values: clue
+Bayesian clue-informed search manifest stage values: clue_core
+Bayesian clue-informed search manifest communication labels: ideal_1_0, bernoulli_drop_0_05, bernoulli_drop_0_1, bernoulli_drop_0_2, bernoulli_drop_0_3, bernoulli_drop_0_4, bernoulli_drop_0_5, bernoulli_drop_0_6, bernoulli_drop_0_7, gilbert_elliot_pGG_0_3_pBB_0_7, gilbert_elliot_pGG_0_4_pBB_0_6, gilbert_elliot_pGG_0_5_pBB_0_5, gilbert_elliot_pGG_0_6_pBB_0_4, gilbert_elliot_pGG_0_7_pBB_0_3, gilbert_elliot_pGG_0_8_pBB_0_2, gilbert_elliot_pGG_0_9_pBB_0_1, gilbert_elliot_pGG_0_95_pBB_0_05, rayleigh_style_sens_neg32_58, rayleigh_style_sens_neg37_79, rayleigh_style_sens_neg42_16, rayleigh_style_sens_neg46_04, rayleigh_style_sens_neg49_17, rayleigh_style_sens_neg52_15, rayleigh_style_sens_neg56_04, rayleigh_style_sens_neg59_4
+Collaborative known-target visit source folder: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\known_visit_core_500_combined
+Collaborative known-target visit system trial_mode values: known_visit
+Collaborative known-target visit trial environment values: known
+Collaborative known-target visit manifest stage values: known_core
+Collaborative known-target visit manifest communication labels: ideal_1_0, bernoulli_drop_0_05, bernoulli_drop_0_1, bernoulli_drop_0_2, bernoulli_drop_0_3, bernoulli_drop_0_4, bernoulli_drop_0_5, bernoulli_drop_0_6, bernoulli_drop_0_7, gilbert_elliot_pGG_0_3_pBB_0_7, gilbert_elliot_pGG_0_4_pBB_0_6, gilbert_elliot_pGG_0_5_pBB_0_5, gilbert_elliot_pGG_0_6_pBB_0_4, gilbert_elliot_pGG_0_7_pBB_0_3, gilbert_elliot_pGG_0_8_pBB_0_2, gilbert_elliot_pGG_0_9_pBB_0_1, gilbert_elliot_pGG_0_95_pBB_0_05, rayleigh_style_sens_neg32_58, rayleigh_style_sens_neg37_79, rayleigh_style_sens_neg42_16, rayleigh_style_sens_neg46_04, rayleigh_style_sens_neg49_17, rayleigh_style_sens_neg52_15, rayleigh_style_sens_neg56_04, rayleigh_style_sens_neg59_4
+Bayesian clue-informed search algorithms found: CBAA, ACBBA, PI, HIPC, DMCHBA, DGA
+Collaborative known-target visit algorithms found: CBAA, ACBBA, PI, HIPC, DMCHBA, DGA
+Bayesian clue-informed search duplicate system primary keys: 0
+Collaborative known-target visit duplicate system primary keys: 0
+Exact clue-first eligibility rule selected: trial_status == completed, system row completed, and nonempty first_clue_robot in trial_summary.
+Collaborative eligibility rule selected: trial_status == completed, all_targets_visited true, completed_target_count == target_count, and required metric data present.
+Message counting selected: messages_sent_total for team publish count; robot_performance.messages_sent max for max_agent_messages when system max is absent.
+Task-replan definition selected: team_task_replans uses task_cell_replans_total, which increments when a current task/goal is invalidated and replaced.
+Path-replan definition selected: team_path_replans uses path_replans_total, which counts path-planner replans from blocked, infeasible, collision, or navigation-friction conditions.
+Rayleigh nominal mapping selected: -59.40,-56.04,-52.15,-49.17,-46.04,-42.16,-37.79,-32.58 -> 5,10,20,30,40,50,60,70 percent. Worst Rayleigh condition is labeled 70%.
+Validation: total metric-ready rows: 150000
+Validation: scenarios present: Bayesian clue-informed search, Collaborative known-target visit
+Validation: communication models present: bernoulli, gilbert_elliot, ideal, rayleigh_style
+Validation: algorithms present: ACBBA, CBAA, DGA, DMCHBA, HIPC, PI
+Bayesian clue-informed search ideal nominal levels present: 0
+Bayesian clue-informed search bernoulli nominal levels present: [5 10 20 30 40 50 60 70]
+Bayesian clue-informed search gilbert_elliot nominal levels present: [5 10 20 30 40 50 60 70]
+Bayesian clue-informed search rayleigh_style nominal levels present: [5 10 20 30 40 50 60 70]
+Collaborative known-target visit ideal nominal levels present: 0
+Collaborative known-target visit bernoulli nominal levels present: [5 10 20 30 40 50 60 70]
+Collaborative known-target visit gilbert_elliot nominal levels present: [5 10 20 30 40 50 60 70]
+Collaborative known-target visit rayleigh_style nominal levels present: [5 10 20 30 40 50 60 70]
+Bayesian clue-informed search total system rows: 75000
+Bayesian clue-informed search bernoulli condition count: 24000 rows, 500 trials
+Bayesian clue-informed search gilbert_elliot condition count: 24000 rows, 500 trials
+Bayesian clue-informed search ideal condition count: 3000 rows, 500 trials
+Bayesian clue-informed search rayleigh_style condition count: 24000 rows, 500 trials
+Bayesian clue-informed search balanced degradation curves for bernoulli: min=383 max=383
+Bayesian clue-informed search balanced degradation curves for gilbert_elliot: min=382 max=382
+Bayesian clue-informed search balanced degradation curves for rayleigh_style: min=383 max=383
+Collaborative known-target visit total system rows: 75000
+Collaborative known-target visit bernoulli condition count: 24000 rows, 500 trials
+Collaborative known-target visit gilbert_elliot condition count: 24000 rows, 500 trials
+Collaborative known-target visit ideal condition count: 3000 rows, 500 trials
+Collaborative known-target visit rayleigh_style condition count: 24000 rows, 500 trials
+Collaborative known-target visit balanced degradation curves for bernoulli: min=500 max=500
+Collaborative known-target visit balanced degradation curves for gilbert_elliot: min=500 max=500
+Collaborative known-target visit balanced degradation curves for rayleigh_style: min=500 max=500
+Main result rows by type: condition_metric=3000 prda=360 prds=360
+Output metric CSV: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\analysis\dcta_metric_results.csv
+Output statistical test CSV: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\analysis\dcta_statistical_tests.csv
+Output analysis log: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\analysis\dcta_metric_analysis_log.txt
+Final validation metrics found: duplicate_target_visits, max_agent_messages, max_agent_steps, messages_per_target, messages_per_unique_cell, system_cell_revisits, target_completion_gini, team_messages_per_step, team_path_replans, team_task_replans, total_team_steps, unique_cell_contribution_gini
+Final validation statistical families: 620
+Final validation omnibus rows: 620 pairwise rows: 9300
