@@ -10,6 +10,7 @@ EAST: Heading = (1, 0)
 NORTH: Heading = (0, 1)
 SOUTH: Heading = (0, -1)
 WEST: Heading = (-1, 0)
+LOGIC_REVISION = "dcta_parity_v1"
 
 
 def generate_robot_ids(num_robots: int) -> List[str]:
@@ -86,6 +87,12 @@ class SimConfig:
     # Optional sensitivity-study controls. None preserves allocator defaults.
     commitment_horizon: Optional[int] = None
     max_candidate_cells: Optional[int] = None
+
+    # Additive run-provenance fields.
+    logic_revision: str = LOGIC_REVISION
+    study_profile: str = "custom"
+    scenario_file_sha256: str = ""
+    scenario_selection_sha256: str = ""
 
     def __post_init__(self) -> None:
         if not self.robot_ids:

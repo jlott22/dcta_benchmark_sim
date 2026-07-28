@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Tuple
 
-from known_visit_sim.algorithms.base import AllocatorBase
+from known_visit_sim.algorithms.base import AllocatorBase, timed_candidate_filter
 from known_visit_sim.core.types import AllocationDecision, Cell
 
 
@@ -120,6 +120,7 @@ class ACBBAAllocator(AllocatorBase):
         if changed:
             setattr(robot, "acbba_pending_snapshot", True)
 
+    @timed_candidate_filter
     def _candidate_cells(self, robot: Any) -> List[Cell]:
         grid_size = self._grid_size(robot)
         cells: List[Cell] = []

@@ -11,6 +11,7 @@ from benchmark_sim.comms.models import CommunicationModel
 from benchmark_sim.config import SimConfig
 from .planner import AStarPlanner
 from .robot import RobotShell, StepResult
+from .scenario_loader import validate_scenario
 from .types import TrialScenario
 from .world import World
 
@@ -57,6 +58,12 @@ class AsyncTrialRunner:
         self.seed = seed
 
     def new_trial(self, scenario: TrialScenario) -> TrialState:
+        validate_scenario(
+            scenario,
+            grid_size=self.cfg.grid_size,
+            start_positions=self.cfg.start_positions,
+            trial_mode=self.cfg.trial_mode,
+        )
         bus = MessageBus(
             model=self.comm_model,
             delay_s=self.cfg.comm_delay_s,
@@ -84,6 +91,8 @@ class AsyncTrialRunner:
                 bus=bus,
                 allocator=allocator,
             )
+        for robot in robots.values():
+            robot.observe_initial_cell(0.0)
         return TrialState(cfg=self.cfg, scenario=scenario, world=world, robots=robots, bus=bus, planner=planner)
 
     def initial_queue(self, state: TrialState) -> List[WakeEvent]:

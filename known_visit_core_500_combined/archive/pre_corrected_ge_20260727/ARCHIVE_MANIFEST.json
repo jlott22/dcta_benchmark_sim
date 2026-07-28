@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "suite": "known",
+  "archive_tag": "pre_corrected_ge_20260727",
+  "created_utc": "2026-07-28T00:42:49.407915+00:00",
+  "reason": "Pre-corrected-GE snapshot; files are preserved byte-for-byte.",
+  "files": [
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/condition_manifest.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/condition_manifest.csv",
+      "bytes": 121665,
+      "data_rows": 150,
+      "sha256": "8c3d7c0aee298a8e41090bb9f5ca560fe3c453d2ff52bd91b94518603550c272"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/robot_performance.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/robot_performance.csv",
+      "bytes": 96185298,
+      "data_rows": 300000,
+      "sha256": "2cefeff86300910de8c6e4a30bbf84c098d21c6e2d21f1e68e5d756ed11fe28e"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/system_performance_known.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/system_performance_known.csv",
+      "bytes": 36873912,
+      "data_rows": 75000,
+      "sha256": "7542526f7e32c42f0b5c921f45e32b95b4f05c82c50946465cfbcabe72b0357a"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_001.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_001.csv",
+      "bytes": 45880633,
+      "data_rows": 140000,
+      "sha256": "65e9a21529dbd3c7528419e560088dfb0b0c55f950e7140d5e32c75978b7717c"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_002.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_002.csv",
+      "bytes": 46362671,
+      "data_rows": 140000,
+      "sha256": "66f68d7423119fa668197b6187f26ade89d05da847727a5fcacec0523d3192ad"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_003.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_003.csv",
+      "bytes": 45152037,
+      "data_rows": 140000,
+      "sha256": "936c511e0dc5879b05abe07499d34ace978eb84a363a51e9e946576eef5a7f62"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_004.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_004.csv",
+      "bytes": 47506141,
+      "data_rows": 140000,
+      "sha256": "9a9599f2fe1ddbf316a3a7f245a557e473a745aa53317b2f00f9e68d19ae2548"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_005.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_005.csv",
+      "bytes": 47345071,
+      "data_rows": 140000,
+      "sha256": "0a82d868bd17ae79d4cca214499dae0f4401b13167657822d9993053013d0aad"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_006.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_006.csv",
+      "bytes": 17411491,
+      "data_rows": 50000,
+      "sha256": "28840f313e0059b9d3338fc4124109dcc973c1d643ee4790eb0062973225db78"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_parts_manifest.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_parts_manifest.csv",
+      "bytes": 260,
+      "data_rows": 6,
+      "sha256": "d2df7dd1b59efa4d64d5abd6d3da1a9df0cf581a841ed65ac1bcb411617bd9a7"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/trial_summary.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/trial_summary.csv",
+      "bytes": 35594793,
+      "data_rows": 75000,
+      "sha256": "2e8b60bb97e4071dfe77964ff9e2b6478d6d67baec501bdcf9cc7bb25dc011b5"
+    }
+  ]
+}

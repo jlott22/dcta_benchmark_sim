@@ -4,14 +4,24 @@
 % The script intentionally writes only into analysisDir. It produces one
 % graph-ready long-format CSV, a source manifest, and a text analysis log.
 
-clear; clc;
+if ~exist("dctaAnalysisRunMode", "var")
+    dctaAnalysisRunMode = "full";
+end
+dctaAnalysisRunMode = string(dctaAnalysisRunMode);
+validRunModes = ["coverage_append_only","full"];
+if ~ismember(dctaAnalysisRunMode, validRunModes)
+    error("Unsupported dctaAnalysisRunMode '%s'. Expected one of: %s", ...
+        dctaAnalysisRunMode, strjoin(validRunModes, ", "));
+end
+clc;
 
 %% Configuration
-projectRoot = "C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim";
-analysisDir = fullfile(projectRoot, "analysis");
+analysisDir = string(fileparts(mfilename("fullpath")));
+projectRoot = string(fileparts(analysisDir));
 bayesianCandidateDir = fullfile(projectRoot, "clue_500_combined");
-secondCandidateDir = fullfile(projectRoot, "coverage_100_combined");
+coverageCandidateDir = fullfile(projectRoot, "coverage_100_combined");
 collaborativeDir = fullfile(projectRoot, "known_visit_core_500_combined");
+coverageScenario = "Coverage area search";
 
 algorithmOrder = ["CBAA","ACBBA","PI","HIPC","DMCHBA","DGA"];
 nominalLevels = [0 5 10 20 30 40 50 60 70];
@@ -38,82 +48,101 @@ logLine(logFid, "Date/time: %s", string(datetime("now")));
 logLine(logFid, "MATLAB version: %s", version);
 logLine(logFid, "Project root: %s", projectRoot);
 logLine(logFid, "Analysis directory: %s", analysisDir);
+logLine(logFid, "Run mode: %s", dctaAnalysisRunMode);
 logLine(logFid, "Bootstrap iterations: %d", bootstrapIterations);
 logLine(logFid, "RNG seed: %d", rngSeed);
 logLine(logFid, "Script path: %s", scriptPath);
+
+if dctaAnalysisRunMode == "coverage_append_only" && (~isfile(metricCsvPath) || ~isfile(statCsvPath))
+    error("coverage_append_only requires existing %s and %s. Set dctaAnalysisRunMode = ""full"" to rebuild all scenarios.", ...
+        metricCsvPath, statCsvPath);
+end
 
 fprintf("Reading DCTA benchmark sources...\n");
 
 %% Read and normalize source data
 manifestRows = {};
 
-coverageFiles = dir(fullfile(secondCandidateDir, "*"));
+coverageFiles = dir(fullfile(coverageCandidateDir, "*"));
 coverageNames = string({coverageFiles(~[coverageFiles.isdir]).name});
-logLine(logFid, "Second candidate folder inspected: %s", secondCandidateDir);
-logLine(logFid, "Second candidate files: %s", strjoin(coverageNames, ", "));
+logLine(logFid, "Coverage source folder inspected: %s", coverageCandidateDir);
+logLine(logFid, "Coverage source files: %s", strjoin(coverageNames, ", "));
 
-[clueSystem, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-    "system_performance", fullfile(bayesianCandidateDir, "system_performance.csv"), true, ...
-    "Primary Bayesian system metrics and message publish counts");
-[clueTrial, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-    "trial_summary", fullfile(bayesianCandidateDir, "trial_summary.csv"), true, ...
-    "Bayesian clue-first eligibility and trial identity checks");
-[clueRobot, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-    "robot_performance", fullfile(bayesianCandidateDir, "robot_performance.csv"), true, ...
-    "Robot-level max message and metric validation");
-[clueManifest, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-    "condition_manifest", fullfile(bayesianCandidateDir, "condition_manifest.csv"), true, ...
-    "Bayesian condition definitions and nominal communication labels");
+if dctaAnalysisRunMode == "full"
+    [clueSystem, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
+        "system_performance", fullfile(bayesianCandidateDir, "system_performance_bay.csv"), true, ...
+        "Primary Bayesian system metrics and message publish counts");
+    [clueTrial, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
+        "trial_summary", fullfile(bayesianCandidateDir, "trial_summary.csv"), true, ...
+        "Bayesian clue-first eligibility and trial identity checks");
+    [clueRobot, manifestRows] = readSourceTableParts(manifestRows, "Bayesian clue-informed search", ...
+        "robot_performance_part", bayesianCandidateDir, "robot_performance_part_*.csv", true, ...
+        "Robot-level max message and metric validation");
+    [clueManifest, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
+        "condition_manifest", fullfile(bayesianCandidateDir, "condition_manifest.csv"), true, ...
+        "Bayesian condition definitions and nominal communication labels");
 
-[knownSystem, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-    "system_performance", fullfile(collaborativeDir, "system_performance.csv"), true, ...
-    "Primary known-target system metrics and target completion status");
-[knownTrial, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-    "trial_summary", fullfile(collaborativeDir, "trial_summary.csv"), true, ...
-    "Known-target scenario identity and mission completion checks");
-[knownRobot, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-    "robot_performance", fullfile(collaborativeDir, "robot_performance.csv"), true, ...
-    "Robot-level max message and target completion balance validation");
-[knownManifest, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-    "condition_manifest", fullfile(collaborativeDir, "condition_manifest.csv"), true, ...
-    "Known-target condition definitions and nominal communication labels");
+    [knownSystem, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
+        "system_performance", fullfile(collaborativeDir, "system_performance_known.csv"), true, ...
+        "Primary known-target system metrics and target completion status");
+    [knownTrial, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
+        "trial_summary", fullfile(collaborativeDir, "trial_summary.csv"), true, ...
+        "Known-target scenario identity and mission completion checks");
+    [knownRobot, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
+        "robot_performance", fullfile(collaborativeDir, "robot_performance.csv"), true, ...
+        "Robot-level max message and target completion balance validation");
+    [knownManifest, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
+        "condition_manifest", fullfile(collaborativeDir, "condition_manifest.csv"), true, ...
+        "Known-target condition definitions and nominal communication labels");
 
-targetPartFiles = dir(fullfile(collaborativeDir, "target_performance_part_*.csv"));
-for k = 1:numel(targetPartFiles)
-    partPath = fullfile(targetPartFiles(k).folder, targetPartFiles(k).name);
-    manifestRows = addManifestRow(manifestRows, "Collaborative known-target visit", ...
-        "target_performance_part", partPath, NaN, NaN, false, ...
-        "Not loaded for metric calculation because duplicate visits and first-completion balance are available in validated system/robot summaries", ...
-        "first_finder_robot_id,total_visits,duplicate_visits,completed", false, ...
-        "Part files are documented but not appended to avoid unnecessary duplication of summary metrics.");
+    targetPartFiles = dir(fullfile(collaborativeDir, "target_performance_part_*.csv"));
+    for k = 1:numel(targetPartFiles)
+        partPath = fullfile(targetPartFiles(k).folder, targetPartFiles(k).name);
+        manifestRows = addManifestRow(manifestRows, "Collaborative known-target visit", ...
+            "target_performance_part", partPath, NaN, NaN, false, ...
+            "Not loaded for metric calculation because duplicate visits and first-completion balance are available in validated system/robot summaries", ...
+            "first_finder_robot_id,total_visits,duplicate_visits,completed", false, ...
+            "Part files are documented but not appended to avoid unnecessary duplication of summary metrics.");
+    end
+
+    clueSystem = normalizeSourceTable(clueSystem);
+    clueTrial = normalizeSourceTable(clueTrial);
+    clueRobot = normalizeSourceTable(clueRobot);
+    clueManifest = normalizeSourceTable(clueManifest);
+    knownSystem = normalizeSourceTable(knownSystem);
+    knownTrial = normalizeSourceTable(knownTrial);
+    knownRobot = normalizeSourceTable(knownRobot);
+    knownManifest = normalizeSourceTable(knownManifest);
+
+    logScenarioIdentity(logFid, "Bayesian clue-informed search", bayesianCandidateDir, clueSystem, clueTrial, clueManifest);
+    logScenarioIdentity(logFid, "Collaborative known-target visit", collaborativeDir, knownSystem, knownTrial, knownManifest);
+
+    assertAlgorithms(logFid, "Bayesian clue-informed search", clueManifest, algorithmOrder);
+    assertAlgorithms(logFid, "Collaborative known-target visit", knownManifest, algorithmOrder);
 end
 
-coverageKeepOpen = fullfile(secondCandidateDir, "KEEP_OPEN.txt");
-if isfile(coverageKeepOpen)
-    manifestRows = addManifestRow(manifestRows, "Coverage candidate", "inspected_unused", ...
-        coverageKeepOpen, NaN, NaN, false, ...
-        "coverage_100_combined did not contain analyzable combined CSVs; excluded to prevent coverage from entering analysis", ...
-        "", false, "Excluded candidate folder.");
-end
+[coverageSystem, manifestRows] = readSourceTable(manifestRows, coverageScenario, ...
+    "system_performance", fullfile(coverageCandidateDir, "system_performance.csv"), true, ...
+    "Primary coverage system metrics: steps, revisits, messages, replans, and workload balance");
+[coverageTrial, manifestRows] = readSourceTable(manifestRows, coverageScenario, ...
+    "trial_summary", fullfile(coverageCandidateDir, "trial_summary.csv"), true, ...
+    "Coverage trial identity and completion checks; clue and target fields are intentionally ignored");
+[coverageRobot, manifestRows] = readSourceTable(manifestRows, coverageScenario, ...
+    "robot_performance", fullfile(coverageCandidateDir, "robot_performance.csv"), true, ...
+    "Coverage robot-level max message, max step, and workload validation");
+[coverageManifest, manifestRows] = readSourceTable(manifestRows, coverageScenario, ...
+    "condition_manifest", fullfile(coverageCandidateDir, "condition_manifest.csv"), true, ...
+    "Coverage condition definitions and nominal communication labels");
 
-clueSystem = normalizeSourceTable(clueSystem);
-clueTrial = normalizeSourceTable(clueTrial);
-clueRobot = normalizeSourceTable(clueRobot);
-clueManifest = normalizeSourceTable(clueManifest);
-knownSystem = normalizeSourceTable(knownSystem);
-knownTrial = normalizeSourceTable(knownTrial);
-knownRobot = normalizeSourceTable(knownRobot);
-knownManifest = normalizeSourceTable(knownManifest);
+coverageSystem = normalizeSourceTable(coverageSystem);
+coverageTrial = normalizeSourceTable(coverageTrial);
+coverageRobot = normalizeSourceTable(coverageRobot);
+coverageManifest = normalizeSourceTable(coverageManifest);
 
-logScenarioIdentity(logFid, "Bayesian clue-informed search", bayesianCandidateDir, clueSystem, clueTrial, clueManifest);
-logScenarioIdentity(logFid, "Collaborative known-target visit", collaborativeDir, knownSystem, knownTrial, knownManifest);
-
-assertAlgorithms(logFid, "Bayesian clue-informed search", clueManifest, algorithmOrder);
-assertAlgorithms(logFid, "Collaborative known-target visit", knownManifest, algorithmOrder);
+logScenarioIdentity(logFid, coverageScenario, coverageCandidateDir, coverageSystem, coverageTrial, coverageManifest);
+assertAlgorithms(logFid, coverageScenario, coverageManifest, algorithmOrder);
 
 %% Build metric-ready tables
-clueData = buildMetricData("Bayesian clue-informed search", clueSystem, clueTrial, clueRobot, algorithmOrder, logFid);
-knownData = buildMetricData("Collaborative known-target visit", knownSystem, knownTrial, knownRobot, algorithmOrder, logFid);
 analysisVars = ["scenario","trial_id","algorithm","comm_model","comm_level_raw","comm_level_pct","is_ideal","base_eligible", ...
     "messages_sent_total_metric","total_team_steps_metric","max_agent_steps","max_agent_messages", ...
     "unique_cell_contribution_gini","target_completion_gini","duplicate_target_visits", ...
@@ -121,10 +150,20 @@ analysisVars = ["scenario","trial_id","algorithm","comm_model","comm_level_raw",
     "metric_max_agent_messages","metric_messages_per_unique_cell","metric_unique_cell_contribution_gini", ...
     "metric_team_task_replans","metric_team_path_replans","metric_system_cell_revisits","metric_duplicate_target_visits", ...
     "metric_target_completion_gini","metric_messages_per_target"];
-allData = [clueData(:, analysisVars); knownData(:, analysisVars)];
+dataParts = {};
+if dctaAnalysisRunMode == "full"
+    clueData = buildMetricData("Bayesian clue-informed search", clueSystem, clueTrial, clueRobot, algorithmOrder, logFid);
+    knownData = buildMetricData("Collaborative known-target visit", knownSystem, knownTrial, knownRobot, algorithmOrder, logFid);
+    dataParts{end+1} = clueData(:, analysisVars); %#ok<SAGROW>
+    dataParts{end+1} = knownData(:, analysisVars); %#ok<SAGROW>
+end
+coverageData = buildMetricData(coverageScenario, coverageSystem, coverageTrial, coverageRobot, algorithmOrder, logFid);
+dataParts{end+1} = coverageData(:, analysisVars);
+allData = vertcat(dataParts{:});
 
 logLine(logFid, "Exact clue-first eligibility rule selected: trial_status == completed, system row completed, and nonempty first_clue_robot in trial_summary.");
 logLine(logFid, "Collaborative eligibility rule selected: trial_status == completed, all_targets_visited true, completed_target_count == target_count, and required metric data present.");
+logLine(logFid, "Coverage eligibility rule selected: completed coverage trial in system and trial summaries; no clue or target domain fields are used.");
 logLine(logFid, "Message counting selected: messages_sent_total for team publish count; robot_performance.messages_sent max for max_agent_messages when system max is absent.");
 logLine(logFid, "Task-replan definition selected: team_task_replans uses task_cell_replans_total, which increments when a current task/goal is invalidated and replaced.");
 logLine(logFid, "Path-replan definition selected: team_path_replans uses path_replans_total, which counts path-planner replans from blocked, infeasible, collision, or navigation-friction conditions.");
@@ -200,12 +239,29 @@ end
 %% Write outputs
 metricTable = rowsToMetricTable(metricRows, metricCols);
 statTable = rowsToStatTable(statRows, statCols);
+manifestTable = rowsToManifestTable(manifestRows);
+
+if dctaAnalysisRunMode == "coverage_append_only"
+    existingMetricTable = readtable(metricCsvPath, "TextType", "string");
+    existingStatTable = readtable(statCsvPath, "TextType", "string");
+    existingMetricTable = existingMetricTable(~contains(lower(existingMetricTable.scenario), "coverage"), :);
+    existingStatTable = existingStatTable(~contains(lower(existingStatTable.scenario), "coverage"), :);
+    metricTable = [existingMetricTable; metricTable];
+    statTable = [existingStatTable; statTable];
+    logLine(logFid, "Preserved existing non-coverage metric rows: %d", height(existingMetricTable));
+    logLine(logFid, "Preserved existing non-coverage statistical rows: %d", height(existingStatTable));
+    logLine(logFid, "Appended refreshed coverage metric rows: %d", height(metricTable) - height(existingMetricTable));
+    logLine(logFid, "Appended refreshed coverage statistical rows: %d", height(statTable) - height(existingStatTable));
+end
+
 writetable(metricTable, metricCsvPath);
 writetable(statTable, statCsvPath);
+writetable(manifestTable, manifestPath);
 
 logCounts(logFid, allData, metricTable, algorithmOrder, nominalLevels);
 logLine(logFid, "Output metric CSV: %s", metricCsvPath);
 logLine(logFid, "Output statistical test CSV: %s", statCsvPath);
+logLine(logFid, "Output source manifest CSV: %s", manifestPath);
 logLine(logFid, "Output analysis log: %s", logPath);
 
 %% Required final validation
@@ -243,7 +299,7 @@ fprintf("  %s\n", metricCsvPath);
 fprintf("  %s\n", statCsvPath);
 fprintf("  %s\n", logPath);
 
-if validation.coverageRows ~= 0 || validation.metricFoundCount ~= numel(metricNames) || ...
+if validation.coverageRows <= 0 || validation.metricFoundCount ~= numel(metricNames) || ...
         validation.familyStructureValid ~= 1 || validation.numericRangesValid ~= 1 || ...
         validation.noTostRows ~= 1 || validation.manualSpotChecks ~= 4
     error("Generated output validation failed. See %s.", logPath);
@@ -258,6 +314,32 @@ function [T, manifestRows] = readSourceTable(manifestRows, scenario, role, path,
     important = strjoin(string(T.Properties.VariableNames), ",");
     manifestRows = addManifestRow(manifestRows, scenario, role, path, height(T), width(T), ...
         selected, reason, important, false, "");
+end
+
+function [T, manifestRows] = readSourceTableParts(manifestRows, scenario, role, folder, pattern, selected, reason)
+    files = dir(fullfile(folder, pattern));
+    if isempty(files)
+        error("No source parts matched %s", fullfile(folder, pattern));
+    end
+    [~, order] = sort(string({files.name}));
+    files = files(order);
+    tables = cell(numel(files), 1);
+    expectedVars = strings(0, 1);
+    for k = 1:numel(files)
+        path = fullfile(files(k).folder, files(k).name);
+        tables{k} = readtable(path, "FileType", "text", "Delimiter", ",", ...
+            "ReadVariableNames", true, "NumHeaderLines", 0, "TextType", "string");
+        vars = string(tables{k}.Properties.VariableNames);
+        if k == 1
+            expectedVars = vars;
+        elseif ~isequal(vars, expectedVars)
+            error("CSV part header mismatch in %s", path);
+        end
+        manifestRows = addManifestRow(manifestRows, scenario, role, path, ...
+            height(tables{k}), width(tables{k}), selected, reason, ...
+            strjoin(vars, ","), false, "Ordered CSV part");
+    end
+    T = vertcat(tables{:});
 end
 
 function rows = addManifestRow(rows, scenario, role, path, rowCount, colCount, selected, reason, important, duplicate, notes)
@@ -427,6 +509,12 @@ function data = buildMetricData(scenario, systemT, trialT, robotT, algorithmOrde
         clueFirst = ~ismissing(data.trial_first_clue_robot) & strlength(strtrim(data.trial_first_clue_robot)) > 0;
         data.base_eligible = lower(string(data.trial_status)) == "completed" & ...
             lower(string(data.trial_trial_status)) == "completed" & clueFirst;
+    elseif scenario == "Coverage area search"
+        trialKeep = trialT(:, [keyVarsWithScenario, "trial_status"]);
+        trialKeep.Properties.VariableNames(end) = "trial_trial_status";
+        data = outerjoin(data, trialKeep, "Keys", keyVarsWithScenario, "MergeKeys", true, "Type", "left");
+        data.base_eligible = lower(string(data.trial_status)) == "completed" & ...
+            lower(string(data.trial_trial_status)) == "completed";
     else
         data.base_eligible = lower(string(data.trial_status)) == "completed" & ...
             toLogical(data.all_targets_visited) & ...
@@ -439,7 +527,7 @@ function data = buildMetricData(scenario, systemT, trialT, robotT, algorithmOrde
     data.team_messages_per_step = safeDivide(data.messages_sent_total_metric, data.total_team_steps_metric);
     data.max_agent_messages = selectFirstNumeric(data, ["derived_max_messages_any_robot","max_messages_any_robot"]);
 
-    if scenario == "Bayesian clue-informed search"
+    if scenario == "Bayesian clue-informed search" || scenario == "Coverage area search"
         data.messages_per_unique_cell_metric = selectFirstNumeric(data, ["messages_per_unique_cell"]);
         missingMsgUnique = isnan(data.messages_per_unique_cell_metric);
         data.messages_per_unique_cell_metric(missingMsgUnique) = safeDivide(data.messages_sent_total_metric(missingMsgUnique), toDouble(data.unique_cells_searched(missingMsgUnique)));
@@ -548,8 +636,13 @@ function validateMetricData(fid, data, algorithmOrder)
             error("%s missing algorithms after metric normalization: %s", s, strjoin(missing, ","));
         end
     end
-    if any(contains(lower(data.scenario), "coverage"))
-        error("Coverage scenario entered metric data.");
+    coverageRows = data.scenario == "Coverage area search";
+    if any(coverageRows)
+        coverageTargetVals = [data.metric_duplicate_target_visits(coverageRows), ...
+            data.metric_target_completion_gini(coverageRows), data.metric_messages_per_target(coverageRows)];
+        if any(isfinite(coverageTargetVals), "all")
+            error("Coverage scenario contains target-domain metric values.");
+        end
     end
 end
 
@@ -557,7 +650,7 @@ function metrics = metricsForScenario(scenario)
     shared = ["max_agent_steps","total_team_steps","team_messages_per_step", ...
         "max_agent_messages","messages_per_unique_cell","unique_cell_contribution_gini", ...
         "team_task_replans","team_path_replans"];
-    if scenario == "Bayesian clue-informed search"
+    if scenario == "Bayesian clue-informed search" || scenario == "Coverage area search"
         metrics = [shared, "system_cell_revisits"];
     else
         metrics = [shared, "duplicate_target_visits","target_completion_gini","messages_per_target"];
@@ -1067,7 +1160,7 @@ function offset = metricOffset(metric)
 end
 
 function src = metricSourceColumn(scenario, metric)
-    if scenario == "Bayesian clue-informed search"
+    if scenario == "Bayesian clue-informed search" || scenario == "Coverage area search"
         switch string(metric)
             case "max_agent_steps"
                 src = "max_steps_any_robot";
@@ -1123,6 +1216,8 @@ end
 function rule = conditionInclusionRule(scenario)
     if scenario == "Bayesian clue-informed search"
         rule = "All six algorithms present and eligible for the exact trial and communication condition; completed and first_clue_robot nonempty.";
+    elseif scenario == "Coverage area search"
+        rule = "All six algorithms present and eligible for the exact trial and communication condition; completed in system and trial summaries; clue and target fields ignored.";
     else
         rule = "All six algorithms present and eligible for the exact trial and communication condition; completed, all targets visited, and completed_target_count equals target_count.";
     end

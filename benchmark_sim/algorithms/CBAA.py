@@ -623,8 +623,6 @@ class CBAAAllocator(AllocatorBase):
             return False
         if not self._same_robot_id(local_winner, released_winner):
             return False
-        if released_bid == self.NO_BID:
-            return True
         return float(local_bid) <= float(released_bid) + self.EPS
 
     def _get_current_task(self, robot: Any) -> Optional[Cell]:

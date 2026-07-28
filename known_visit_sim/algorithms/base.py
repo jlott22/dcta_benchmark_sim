@@ -1,11 +1,30 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from functools import wraps
 from math import isfinite
+from time import perf_counter_ns
 from typing import Any, Dict, List, Optional, Protocol, Sequence, Set, Tuple
 
 from known_visit_sim.core.types import AllocationDecision, Cell, Observation
 from known_visit_sim.comms.message import Message
+
+
+def timed_candidate_filter(method):
+    """Record complete candidate discovery, ranking, and truncation calls."""
+
+    @wraps(method)
+    def wrapper(self, robot, *args, **kwargs):
+        started_ns = perf_counter_ns()
+        try:
+            return method(self, robot, *args, **kwargs)
+        finally:
+            counters = getattr(robot, "counters", None)
+            samples = getattr(counters, "candidate_filter_time_ns_samples", None)
+            if samples is not None:
+                samples.append(max(0, perf_counter_ns() - started_ns))
+
+    return wrapper
 
 
 class RobotAPI(Protocol):

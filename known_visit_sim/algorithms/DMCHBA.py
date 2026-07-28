@@ -3,7 +3,7 @@ from __future__ import annotations
 import math
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
-from known_visit_sim.algorithms.base import AllocatorBase
+from known_visit_sim.algorithms.base import AllocatorBase, timed_candidate_filter
 from known_visit_sim.core.types import AllocationDecision
 
 Cell = Tuple[int, int]
@@ -436,6 +436,7 @@ class DMCHBAAllocator(AllocatorBase):
     # Task set and team state
     # ------------------------------------------------------------------
 
+    @timed_candidate_filter
     def _candidate_cells(self, robot: Any) -> List[Cell]:
         """Return all valid unsearched cells in deterministic grid order."""
 

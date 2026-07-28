@@ -68,16 +68,8 @@ def make_comm_model(name: str, level: str | None) -> Any:
         drop = float(level if level not in (None, "") else 0.0)
         return comm_models.BernoulliModel(drop)
     if name in {"gilbert_elliot", "ge", "gilbert-elliot"}:
-        cls = getattr(comm_models, "GilbertElliotModel", None) or getattr(comm_models, "GilbertElliot", None)
-        if cls is None:
-            raise RuntimeError("known_visit_sim.comms.models has no GilbertElliotModel/GilbertElliot class")
-        p_good_to_good = float(level if level not in (None, "") else 0.75)
-        return _construct(
-            cls,
-            ((), {"p_good_to_good": p_good_to_good, "p_bad_to_bad": 1.0 - p_good_to_good}),
-            ((), {"comm_level": p_good_to_good}),
-            ((), {}),
-        )
+        delivery_prob = float(level if level not in (None, "") else 0.75)
+        return comm_models.make_comm_model("gilbert_elliot", delivery_prob)
     if name in {"rayleigh_style", "rayleigh"}:
         cls = getattr(comm_models, "RayleighStyleModel", None) or getattr(comm_models, "RayleighModel", None)
         if cls is None:

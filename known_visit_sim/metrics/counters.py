@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict
+from typing import Dict, List
 
 
 @dataclass
@@ -18,6 +18,9 @@ class RobotCounters:
     blocked_task_quarantines: int = 0
     blocked_task_quarantine_time_s: float = 0.0
     maximum_quarantine_level: int = 0
+    allocator_time_ns_samples: List[int] = field(default_factory=list)
+    allocator_solve_time_ns_samples: List[int] = field(default_factory=list)
+    candidate_filter_time_ns_samples: List[int] = field(default_factory=list)
 
 
 @dataclass

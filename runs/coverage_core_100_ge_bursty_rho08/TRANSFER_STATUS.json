@@ -1,0 +1,49 @@
+{
+  "campaign": "corrected_ge_coverage_100",
+  "packed_at_local": "2026-07-27 16:50:19 Pacific Daylight Time",
+  "canonical": {
+    "expected": 4800,
+    "recorded": 3816,
+    "completed": 3508,
+    "failed": 308,
+    "missing": 984
+  },
+  "validated_shards": {
+    "missing": {
+      "validated": 69,
+      "statuses": {
+        "completed": 63,
+        "failed": 6
+      },
+      "caps": {
+        "50000": 69
+      }
+    },
+    "retry": {
+      "validated": 619,
+      "statuses": {
+        "completed": 321,
+        "failed": 298
+      },
+      "caps": {
+        "75000": 619
+      }
+    },
+    "retry_100000": {
+      "validated": 298,
+      "statuses": {
+        "failed": 298
+      },
+      "caps": {
+        "100000": 298
+      }
+    }
+  },
+  "effective_missing_trials_to_compute": 915,
+  "next_stage": "missing DGA/DMCHBA, then 10 handoff failure retries",
+  "workers_used_before_transfer": 12,
+  "initial_cap": 50000,
+  "quick_algorithm_terminal_failure_cap": 100000,
+  "quick_algorithm_terminal_failures": 298,
+  "running_processes_expected": 0
+}

@@ -181,7 +181,19 @@ class AllocatorBase:
         if maximum <= 0.0 or not isfinite(maximum):
             maximum = 1.0
 
+        belief = getattr(robot, "belief", None)
+        belief_revision = getattr(belief, "revision", None)
         setattr(robot, "_allocation_probability_source_id", id(target_p))
+        setattr(
+            robot,
+            "_allocation_probability_belief_id",
+            id(belief) if belief_revision is not None else None,
+        )
+        setattr(
+            robot,
+            "_allocation_probability_belief_revision",
+            belief_revision,
+        )
         setattr(robot, "_allocation_probability_normalizer", float(maximum))
         return float(maximum)
 
@@ -191,7 +203,26 @@ class AllocatorBase:
         target_p = getattr(robot, "target_p", {}) or {}
         source_id = getattr(robot, "_allocation_probability_source_id", None)
         normalizer = getattr(robot, "_allocation_probability_normalizer", None)
-        if source_id != id(target_p) or normalizer is None:
+        belief = getattr(robot, "belief", None)
+        belief_revision = getattr(belief, "revision", None)
+        if belief_revision is None:
+            cache_is_current = source_id == id(target_p)
+        else:
+            cache_is_current = (
+                getattr(
+                    robot,
+                    "_allocation_probability_belief_id",
+                    None,
+                )
+                == id(belief)
+                and getattr(
+                    robot,
+                    "_allocation_probability_belief_revision",
+                    None,
+                )
+                == belief_revision
+            )
+        if not cache_is_current or normalizer is None:
             normalizer = self._refresh_allocation_probability_normalizer(robot)
 
         try:

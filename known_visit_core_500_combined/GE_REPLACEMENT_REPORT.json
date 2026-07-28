@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "suite": "known",
+  "suite_label": "known-target",
+  "created_utc": "2026-07-28T00:42:49.407915+00:00",
+  "operation": "Archived the prior combined files and replaced only gilbert_elliot rows.",
+  "archive_tag": "pre_corrected_ge_20260727",
+  "corrected_source": "known_visit_core_500_ge_bursty_rho08_combined",
+  "coverage_touched": false,
+  "file_counts": {
+    "condition_manifest.csv": {
+      "non_ge_preserved": 102,
+      "old_ge_removed": 48,
+      "corrected_ge_added": 48,
+      "total": 150
+    },
+    "trial_summary.csv": {
+      "non_ge_preserved": 51000,
+      "old_ge_removed": 24000,
+      "corrected_ge_added": 24000,
+      "total": 75000
+    },
+    "system_performance_known.csv": {
+      "non_ge_preserved": 51000,
+      "old_ge_removed": 24000,
+      "corrected_ge_added": 24000,
+      "total": 75000
+    },
+    "robot_performance.csv": {
+      "non_ge_preserved": 204000,
+      "old_ge_removed": 96000,
+      "corrected_ge_added": 96000,
+      "total": 300000
+    },
+    "target_performance_parts": {
+      "non_ge_preserved": 510000,
+      "old_ge_removed": 240000,
+      "corrected_ge_added": 240000,
+      "total": 750000
+    }
+  },
+  "validation": {
+    "trial_summary.csv": {
+      "corrected_ge_rows": 24000,
+      "failed_ge_rows": 0,
+      "non_ge_rows": 51000,
+      "non_ge_sha256": "655f87d7e3eb02331210f26136d058d59565a342b8d8ec9773daab7f0ebcebce"
+    },
+    "system_performance_known.csv": {
+      "corrected_ge_rows": 24000,
+      "failed_ge_rows": 0,
+      "non_ge_rows": 51000,
+      "non_ge_sha256": "724d0a334a11d3d40a99c6bf6a02fd33c1ac27d4c269cab43c9030fb9f90cec1"
+    },
+    "robot_performance.csv": {
+      "corrected_ge_rows": 96000,
+      "failed_ge_rows": 0,
+      "non_ge_rows": 204000,
+      "non_ge_sha256": "9d2e408d9aa363434717909b505bebc601f751da03bd973dda37722ba06223ad"
+    },
+    "target_performance_parts": {
+      "corrected_ge_rows": 240000,
+      "failed_ge_rows": 0,
+      "non_ge_rows": 510000,
+      "non_ge_sha256": "6adc3a01c56fafd0f92eaa5a2fb73869503f9965c4fde8087f7db2a3858aed2c"
+    },
+    "condition_manifest.csv": {
+      "non_ge_rows": 102,
+      "non_ge_sha256": "b3b9a841b3701e1a29675cf83c32a11d9c8c93a9f49a123a455e1a6d26ef0829",
+      "corrected_ge_rows": 48
+    }
+  },
+  "archived_files": [
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/condition_manifest.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/condition_manifest.csv",
+      "bytes": 121665,
+      "data_rows": 150,
+      "sha256": "8c3d7c0aee298a8e41090bb9f5ca560fe3c453d2ff52bd91b94518603550c272"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/robot_performance.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/robot_performance.csv",
+      "bytes": 96185298,
+      "data_rows": 300000,
+      "sha256": "2cefeff86300910de8c6e4a30bbf84c098d21c6e2d21f1e68e5d756ed11fe28e"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/system_performance_known.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/system_performance_known.csv",
+      "bytes": 36873912,
+      "data_rows": 75000,
+      "sha256": "7542526f7e32c42f0b5c921f45e32b95b4f05c82c50946465cfbcabe72b0357a"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_001.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_001.csv",
+      "bytes": 45880633,
+      "data_rows": 140000,
+      "sha256": "65e9a21529dbd3c7528419e560088dfb0b0c55f950e7140d5e32c75978b7717c"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_002.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_002.csv",
+      "bytes": 46362671,
+      "data_rows": 140000,
+      "sha256": "66f68d7423119fa668197b6187f26ade89d05da847727a5fcacec0523d3192ad"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_003.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_003.csv",
+      "bytes": 45152037,
+      "data_rows": 140000,
+      "sha256": "936c511e0dc5879b05abe07499d34ace978eb84a363a51e9e946576eef5a7f62"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_004.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_004.csv",
+      "bytes": 47506141,
+      "data_rows": 140000,
+      "sha256": "9a9599f2fe1ddbf316a3a7f245a557e473a745aa53317b2f00f9e68d19ae2548"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_005.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_005.csv",
+      "bytes": 47345071,
+      "data_rows": 140000,
+      "sha256": "0a82d868bd17ae79d4cca214499dae0f4401b13167657822d9993053013d0aad"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_part_006.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_part_006.csv",
+      "bytes": 17411491,
+      "data_rows": 50000,
+      "sha256": "28840f313e0059b9d3338fc4124109dcc973c1d643ee4790eb0062973225db78"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/target_performance_parts_manifest.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/target_performance_parts_manifest.csv",
+      "bytes": 260,
+      "data_rows": 6,
+      "sha256": "d2df7dd1b59efa4d64d5abd6d3da1a9df0cf581a841ed65ac1bcb411617bd9a7"
+    },
+    {
+      "suite": "known",
+      "original_path": "known_visit_core_500_combined/trial_summary.csv",
+      "archived_path": "known_visit_core_500_combined/archive/pre_corrected_ge_20260727/trial_summary.csv",
+      "bytes": 35594793,
+      "data_rows": 75000,
+      "sha256": "2e8b60bb97e4071dfe77964ff9e2b6478d6d67baec501bdcf9cc7bb25dc011b5"
+    }
+  ],
+  "new_csv_files": [
+    {
+      "path": "known_visit_core_500_combined/condition_manifest.csv",
+      "bytes": 130453,
+      "data_rows": 150,
+      "sha256": "2174a81d373adafddf5f8084bad4140810eaeb99c0458125a1c28aacfb6b279d"
+    },
+    {
+      "path": "known_visit_core_500_combined/corrected_ge_condition_manifest.csv",
+      "bytes": 63118,
+      "data_rows": 48,
+      "sha256": "d3197bac7c62295b1f5db4e19b49e8e378c72f8cedc1b1aae0c5f415dfd67374"
+    },
+    {
+      "path": "known_visit_core_500_combined/robot_performance.csv",
+      "bytes": 98783310,
+      "data_rows": 300000,
+      "sha256": "aef15df3c49ab7ad384cd349571d51060f83e5858587a9d45c35ea8154a7c4a8"
+    },
+    {
+      "path": "known_visit_core_500_combined/system_performance_known.csv",
+      "bytes": 37523739,
+      "data_rows": 75000,
+      "sha256": "86a5db8763347590ac065da9727a8cec67e2e077ec18c46030373924b8a06717"
+    },
+    {
+      "path": "known_visit_core_500_combined/target_performance_part_001.csv",
+      "bytes": 44433951,
+      "data_rows": 140000,
+      "sha256": "ed58b2b27461ecccd9ef6a9314481779cdd420d99b5ae64a5496d4d97b0cbcc4"
+    },
+    {
+      "path": "known_visit_core_500_combined/target_performance_part_002.csv",
+      "bytes": 44465785,
+      "data_rows": 140000,
+      "sha256": "aeab0160ce34f0f59b49b7a0320ae457739d13706c379def273123e0dcf8052d"
+    },
+    {
+      "path": "known_visit_core_500_combined/target_performance_part_003.csv",
+      "bytes": 46429701,
+      "data_rows": 140000,
+      "sha256": "84e114c17131ce358c0028246afbda9c8f091b8c0831613c307339677ec28ec1"
+    },
+    {
+      "path": "known_visit_core_500_combined/target_performance_part_004.csv",
+      "bytes": 48216999,
+      "data_rows": 140000,
+      "sha256": "a4efd1012b908050e218c0dd28d5824ac01e3aea1189ee3bba5315372c17729a"
+    },
+    {
+      "path": "known_visit_core_500_combined/target_performance_part_005.csv",
+      "bytes": 53853807,
+      "data_rows": 140000,
+      "sha256": "2877dd75514454675a646bf7710d94053b93609b6d620ed4feef887203127d35"
+    },
+    {
+      "path": "known_visit_core_500_combined/target_performance_part_006.csv",
+      "bytes": 18741847,
+      "data_rows": 50000,
+      "sha256": "65312220b78b98bde9a4bcc38a65082b7a8fef074fee9ff86bdf2867ced9aee4"
+    },
+    {
+      "path": "known_visit_core_500_combined/target_performance_parts_manifest.csv",
+      "bytes": 260,
+      "data_rows": 6,
+      "sha256": "d2df7dd1b59efa4d64d5abd6d3da1a9df0cf581a841ed65ac1bcb411617bd9a7"
+    },
+    {
+      "path": "known_visit_core_500_combined/trial_summary.csv",
+      "bytes": 36246202,
+      "data_rows": 75000,
+      "sha256": "52832cc3d319efa4dd8c761546ebdbc231dc7700875c2ed6819a2478394591b3"
+    }
+  ]
+}

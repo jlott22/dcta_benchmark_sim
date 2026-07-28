@@ -59,21 +59,45 @@ class GilbertElliotModel(CommunicationModel):
     """Two-state burst-loss model per directed link.
 
     GOOD links deliver every non-protected message and BAD links drop every
-    non-protected message. p_good_to_good and p_bad_to_bad control burst
-    persistence.
+    non-protected message. ``p_good_to_good`` and ``p_bad_to_bad`` independently
+    control GOOD- and BAD-run persistence.
+
+    The defaults have stationary delivery probability 0.9 and lag-one state
+    correlation 0.8. Use :func:`make_comm_model` to construct a model whose
+    requested communication level is the stationary delivery probability.
     """
 
     p_good_success: float = 1.0
     p_bad_success: float = 0.0
-    p_good_to_good: float = 0.90
-    p_bad_to_bad: float = 0.10
+    p_good_to_good: float = 0.98
+    p_bad_to_bad: float = 0.82
     initial_good_prob: float = 0.90
     name: str = "gilbert_elliot"
     states: Dict[Tuple[str, str], bool] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
+        for name, value in (
+            ("p_good_to_good", self.p_good_to_good),
+            ("p_bad_to_bad", self.p_bad_to_bad),
+            ("initial_good_prob", self.initial_good_prob),
+        ):
+            if not 0.0 <= value <= 1.0:
+                raise ValueError(f"{name} must be in [0, 1], got {value}")
         self.p_good_success = 1.0
         self.p_bad_success = 0.0
+
+    @property
+    def stationary_delivery_prob(self) -> float:
+        """Stationary GOOD-state probability for the directed-link chain."""
+        denominator = 2.0 - self.p_good_to_good - self.p_bad_to_bad
+        if denominator <= 0.0:
+            return self.initial_good_prob
+        return (1.0 - self.p_bad_to_bad) / denominator
+
+    @property
+    def state_correlation(self) -> float:
+        """Lag-one correlation/eigenvalue of the binary link-state chain."""
+        return self.p_good_to_good + self.p_bad_to_bad - 1.0
 
     def _state(self, link_key: Tuple[str, str], rng: random.Random) -> bool:
         if link_key not in self.states:
@@ -132,11 +156,28 @@ def make_comm_model(name: str, level: float | None = None, **kwargs) -> Communic
     if norm == "bernoulli":
         return BernoulliModel(drop_prob=0.0 if level is None else float(level))
     if norm in {"ge", "gilbert", "gilbert_elliot"}:
-        # Interpret level as GOOD-state persistence if supplied.
+        # Interpret level as the stationary delivery probability.  A fixed
+        # positive state correlation creates genuine success/loss bursts while
+        # keeping levels comparable with Bernoulli delivery rates.
         if level is not None:
-            p_good_to_good = float(level)
-            kwargs.setdefault("p_good_to_good", p_good_to_good)
-            kwargs.setdefault("p_bad_to_bad", 1.0 - p_good_to_good)
+            delivery_prob = float(level)
+            if not 0.0 <= delivery_prob <= 1.0:
+                raise ValueError(f"Gilbert-Elliott communication level must be in [0, 1], got {delivery_prob}")
+            state_correlation = float(kwargs.pop("state_correlation", 0.8))
+            if not 0.0 <= state_correlation < 1.0:
+                raise ValueError(
+                    "Gilbert-Elliott state_correlation must be in [0, 1) "
+                    f"for bursty communication, got {state_correlation}"
+                )
+            kwargs.setdefault(
+                "p_good_to_good",
+                delivery_prob + state_correlation * (1.0 - delivery_prob),
+            )
+            kwargs.setdefault(
+                "p_bad_to_bad",
+                (1.0 - delivery_prob) + state_correlation * delivery_prob,
+            )
+            kwargs.setdefault("initial_good_prob", delivery_prob)
         return GilbertElliotModel(**kwargs)
     if norm in {"rayleigh", "rayleigh_style", "rayleigh_fading"}:
         # Interpret level as sensitivity threshold if supplied.

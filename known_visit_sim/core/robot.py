@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import deque
 from dataclasses import dataclass
+from time import perf_counter_ns
 from typing import Any, Deque, Dict, List, Optional, Set, Tuple
 
 from known_visit_sim.algorithms.base import AllocatorBase
@@ -207,6 +208,22 @@ class RobotShell:
 
         return self._plan_next_action(planner)
 
+    def _choose_goal_with_metrics(self):
+        """Time one allocator call and separate nested candidate-filter work."""
+        started_ns = perf_counter_ns()
+        filter_sample_index = len(self.counters.candidate_filter_time_ns_samples)
+        try:
+            return self.allocator.choose_goal(self)
+        finally:
+            elapsed_ns = max(0, perf_counter_ns() - started_ns)
+            nested_filter_ns = sum(
+                self.counters.candidate_filter_time_ns_samples[filter_sample_index:]
+            )
+            self.counters.allocator_time_ns_samples.append(elapsed_ns)
+            self.counters.allocator_solve_time_ns_samples.append(
+                max(0, elapsed_ns - nested_filter_ns)
+            )
+
     def _plan_next_action(self, planner: AStarPlanner) -> StepResult:
         (
             plan_peer_positions,
@@ -225,7 +242,7 @@ class RobotShell:
             self.current_goal = None
             self._active_peer_positions = plan_peer_positions
             try:
-                decision = self.allocator.choose_goal(self)
+                decision = self._choose_goal_with_metrics()
             finally:
                 self._active_peer_positions = None
                 self.collision_avoidance_active = False
@@ -242,7 +259,7 @@ class RobotShell:
                     if callable(recover) and recover(self):
                         self._stall_recovery_count += 1
                         self._no_goal_since = self._now
-                        decision = self.allocator.choose_goal(self)
+                        decision = self._choose_goal_with_metrics()
                         self.current_goal = decision.goal
             if self.current_goal is not None or not self._active_tasks:
                 self._no_goal_since = None

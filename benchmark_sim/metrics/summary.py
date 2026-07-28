@@ -56,6 +56,10 @@ def build_rows(state: TrialState, algorithm_name: str, comm_model: str, comm_lev
 
     common_metadata = {
         "trial_id": world.scenario.trial_id,
+        "logic_revision": state.cfg.logic_revision,
+        "study_profile": state.cfg.study_profile,
+        "scenario_file_sha256": state.cfg.scenario_file_sha256,
+        "scenario_selection_sha256": state.cfg.scenario_selection_sha256,
         "algorithm": algorithm_name,
         "comm_model": comm_model,
         "comm_level": comm_level,

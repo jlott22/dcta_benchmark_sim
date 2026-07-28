@@ -51,3 +51,27 @@ Thumbs.db
 /runs/**/_trial_journal.jsonl
 /runs/**/_FAILED.txt
 /runs/**/_COMPLETE.txt
+
+# Corrected-GE transfer working directories (recoverable from the shard archive)
+/runs/coverage_core_100_ge_bursty_rho08/_transferred_shards/
+/runs/coverage_core_100_ge_bursty_rho08/_paused_quarantine/
+/runs/coverage_core_100_ge_bursty_rho08/*.pid
+
+# Completed corrected-GE source campaigns are retained locally. Their accepted
+# clue/known results now live in the canonical combined directories, and the
+# coverage campaign has its own compact transfer checkpoint below runs/.
+/runs/clue_core_500_ge_bursty_rho08/
+/runs/known_visit_core_500_ge_bursty_rho08/
+/runs/preflight_known_visit_ge_bursty/
+/runs/checkpoint_backups/
+/runs/corrected_ge_core_sequence.pid
+/runs/corrected_ge_core_sequence_state.json
+
+# Corrected-GE-only combined tables are local merge intermediates. The
+# canonical combined directories contain the same accepted GE rows.
+/clue_500_ge_bursty_rho08_combined/
+/known_visit_core_500_ge_bursty_rho08_combined/
+
+# Generated comparison artifacts can be recreated from canonical results.
+/analysis/known_visit_ge_old_vs_bursty/
+/analysis/known_visit_ge_trial_mean_relative/

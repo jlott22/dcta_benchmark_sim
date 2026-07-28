@@ -88,18 +88,7 @@ def make_comm_model(model_name: str, comm_level: str, seed: int) -> Any:
         return _instantiate(cls, level, drop_prob=level, seed=rng_seed)
 
     if name == "gilbert_elliot":
-        for cls_name in ("GilbertElliotModel", "GilbertElliotLossModel", "GilbertElliot"):
-            cls = getattr(models, cls_name, None)
-            if cls is not None:
-                return _instantiate(
-                    cls,
-                    level,
-                    p_bad_success=level,
-                    p_good_to_good=level,
-                    comm_level=level,
-                    seed=rng_seed,
-                )
-        raise RuntimeError("known_visit_sim.comms.models has no Gilbert-Elliot model class")
+        return models.make_comm_model("gilbert_elliot", level)
 
     if name == "rayleigh_style":
         for cls_name in ("RayleighStyleModel", "RayleighModel", "RayleighFadingModel"):

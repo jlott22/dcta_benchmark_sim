@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-from known_visit_sim.algorithms.base import AllocatorBase
+from known_visit_sim.algorithms.base import AllocatorBase, timed_candidate_filter
 from known_visit_sim.core.types import AllocationDecision, Cell
 
 
@@ -120,6 +120,7 @@ class HIPCAllocator(AllocatorBase):
 
         self._replace_own_bundle_if_changed(robot, new_path)
 
+    @timed_candidate_filter
     def _candidate_cells(self, robot: Any) -> List[Cell]:
         """Return every valid unsearched cell, ordered by probability and distance."""
 

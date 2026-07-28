@@ -6,7 +6,7 @@ import hashlib
 from copy import deepcopy
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-from known_visit_sim.algorithms.base import AllocatorBase
+from known_visit_sim.algorithms.base import AllocatorBase, timed_candidate_filter
 from known_visit_sim.core.types import AllocationDecision, Cell
 
 
@@ -478,6 +478,7 @@ class DGAAllocator(AllocatorBase):
     # Candidate cells and local team construction
     # ------------------------------------------------------------------
 
+    @timed_candidate_filter
     def _candidate_cells(self, robot: Any) -> List[Cell]:
         grid_size = self._grid_size(robot)
         origin = self._robot_pos(robot)

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from math import ceil
+from statistics import median
 from typing import Dict, List
 
 from known_visit_sim.core.scheduler import TrialState
@@ -20,6 +22,29 @@ def gini(values: List[float]) -> float:
     n, total = len(ordered), sum(ordered)
     weighted = sum((index + 1) * value for index, value in enumerate(ordered))
     return (2.0 * weighted) / (n * total) - (n + 1.0) / n
+
+
+def _runtime_stats_ms(samples_ns: List[int]) -> dict:
+    samples_ms = sorted(max(0, value) / 1_000_000.0 for value in samples_ns)
+    if not samples_ms:
+        return {
+            "calls": 0,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.0,
+        }
+    total = sum(samples_ms)
+    p95_index = max(0, ceil(0.95 * len(samples_ms)) - 1)
+    return {
+        "calls": len(samples_ms),
+        "total": total,
+        "mean": total / len(samples_ms),
+        "median": float(median(samples_ms)),
+        "p95": samples_ms[p95_index],
+        "max": samples_ms[-1],
+    }
 
 
 def build_rows(state: TrialState, algorithm: str, comm_model: str,
@@ -105,11 +130,50 @@ def build_rows(state: TrialState, algorithm: str, comm_model: str,
         "workload_gini_unique_cells_contributed": gini([
             robot.counters.unique_cells_contributed for robot in robots.values()
         ]),
+        "allocator_calls_total": sum(
+            len(robot.counters.allocator_time_ns_samples) for robot in robots.values()
+        ),
+        "allocator_time_ms_team_total": sum(
+            sum(robot.counters.allocator_time_ns_samples) for robot in robots.values()
+        ) / 1_000_000.0,
+        "allocator_time_ms_team_max": max(
+            (
+                max(robot.counters.allocator_time_ns_samples, default=0)
+                for robot in robots.values()
+            ),
+            default=0,
+        ) / 1_000_000.0,
+        "allocator_solve_time_ms_team_total": sum(
+            sum(robot.counters.allocator_solve_time_ns_samples) for robot in robots.values()
+        ) / 1_000_000.0,
+        "allocator_solve_time_ms_team_max": max(
+            (
+                max(robot.counters.allocator_solve_time_ns_samples, default=0)
+                for robot in robots.values()
+            ),
+            default=0,
+        ) / 1_000_000.0,
+        "candidate_filter_calls_total": sum(
+            len(robot.counters.candidate_filter_time_ns_samples) for robot in robots.values()
+        ),
+        "candidate_filter_time_ms_team_total": sum(
+            sum(robot.counters.candidate_filter_time_ns_samples) for robot in robots.values()
+        ) / 1_000_000.0,
+        "candidate_filter_time_ms_team_max": max(
+            (
+                max(robot.counters.candidate_filter_time_ns_samples, default=0)
+                for robot in robots.values()
+            ),
+            default=0,
+        ) / 1_000_000.0,
     }
 
     robot_rows = []
     for rid, robot in sorted(robots.items()):
         counters = robot.counters
+        allocator = _runtime_stats_ms(counters.allocator_time_ns_samples)
+        solve = _runtime_stats_ms(counters.allocator_solve_time_ns_samples)
+        candidate_filter = _runtime_stats_ms(counters.candidate_filter_time_ns_samples)
         robot_rows.append({
             **common,
             "robot_id": rid,
@@ -130,6 +194,23 @@ def build_rows(state: TrialState, algorithm: str, comm_model: str,
             "allocation_messages_sent": bus.allocation_sent_by_robot.get(rid, 0),
             "messages_delivered_to_robot": bus.delivered_to_robot.get(rid, 0),
             "messages_dropped_to_robot": bus.dropped_to_robot.get(rid, 0),
+            "allocator_calls": allocator["calls"],
+            "allocator_time_ms_total": allocator["total"],
+            "allocator_time_ms_mean": allocator["mean"],
+            "allocator_time_ms_median": allocator["median"],
+            "allocator_time_ms_p95": allocator["p95"],
+            "allocator_time_ms_max": allocator["max"],
+            "allocator_solve_time_ms_total": solve["total"],
+            "allocator_solve_time_ms_mean": solve["mean"],
+            "allocator_solve_time_ms_median": solve["median"],
+            "allocator_solve_time_ms_p95": solve["p95"],
+            "allocator_solve_time_ms_max": solve["max"],
+            "candidate_filter_calls": candidate_filter["calls"],
+            "candidate_filter_time_ms_total": candidate_filter["total"],
+            "candidate_filter_time_ms_mean": candidate_filter["mean"],
+            "candidate_filter_time_ms_median": candidate_filter["median"],
+            "candidate_filter_time_ms_p95": candidate_filter["p95"],
+            "candidate_filter_time_ms_max": candidate_filter["max"],
         })
 
     target_rows = []

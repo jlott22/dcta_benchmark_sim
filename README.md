@@ -17,6 +17,47 @@ The simulator provides:
 - pygame live visualization
 - a static 10-target collaborative-visit benchmark
 
+## Active Corrected-GE Coverage Handoff
+
+The authoritative corrected Gilbert–Elliott coverage campaign has been
+stopped for transfer to another computer. Its compact, checksum-verified
+checkpoint is under
+[`runs/coverage_core_100_ge_bursty_rho08/`](runs/coverage_core_100_ge_bursty_rho08/).
+That campaign README contains the exact clone, verification, dry-run, resume,
+monitoring, and finalization commands.
+
+Current checkpoint: 3,816 of 4,800 trials are recorded. There are 69 reusable
+unmerged outputs, leaving 915 DGA/DMCHBA missing-stage trials to compute,
+followed by 10 explicitly scoped long-algorithm retries. The 298
+ACBBA/CBAA/HIPC/PI trials that remained incomplete at the final 100,000-event
+cap are retained as terminal failures and will not be retried.
+
+The Git checkout stores canonical results, a frozen runtime, and compact
+archives. Extracted per-trial shards are restored automatically only when the
+resume wrapper runs, so the repository does not contain thousands of loose
+shard files.
+
+## Canonical Combined Results
+
+The canonical clue-search and known-target combined datasets now retain the
+original ideal, Bernoulli, and Rayleigh rows and use the completed corrected
+bursty Gilbert-Elliott campaign (`rho = 0.8`) for all GE rows:
+
+- [`clue_500_combined/`](clue_500_combined/) contains 500 trials for each of
+  150 conditions.
+- [`known_visit_core_500_combined/`](known_visit_core_500_combined/) contains
+  500 trials for each of 150 conditions, including ten target rows per trial.
+
+The exact combined files from before this replacement are stored in each
+directory under `archive/pre_corrected_ge_20260727/`, with byte counts and
+SHA-256 hashes in `ARCHIVE_MANIFEST.json`. Each canonical directory also has a
+GE replacement report and a 48-row corrected-GE condition manifest containing
+the target drop rate, stationary delivery probability, transition
+probabilities, and source command.
+
+The coverage combined dataset has not been updated because its corrected GE
+campaign is incomplete.
+
 ## Current Benchmark Assumptions
 
 - Default grid is `19 x 19`.
@@ -27,10 +68,17 @@ The simulator provides:
   - `02` starts at `(0, 12)`
   - `03` starts at `(0, 18)`
 - All robots start facing east.
+- Every start cell is sensed at logical time zero after all robots and
+  allocators are registered. A start-cell clue is valid and does not add a
+  movement step or duplicate visit.
 - Movement is asynchronous with configurable timing jitter.
 - Target and clue detection are perfect when a robot reaches the cell.
 - Target-found messages are protected and are never dropped.
 - Collision-intent messages are protected and are never dropped.
+- Protected collision state stores a peer's advertised current cell separately
+  from its intended next cell. Delivered normal-state positions block A*
+  routes; protected current cells and intents are used by the immediate safety
+  check.
 - State, clue, and allocation messages are subject to the selected communication model.
 - Belief uses target probability only: `target_p`.
 - Pre-clue coverage behavior is owned by each algorithm implementation.
@@ -161,6 +209,15 @@ All other algorithm-published messages are allocation messages.
 
 Clue-search mode uses CSV or JSON scenario files.
 
+Scenario loading fails before execution for non-integer IDs or coordinates,
+duplicate IDs or target/clue cells, out-of-bounds cells, incomplete clue
+coordinates, target cells on robot starts, and declared count/grid mismatches.
+Run provenance includes SHA-256 values for both the source file and the
+canonical ordered scenario selection.
+Use `--expected-scenario-sha256 <hash>` to fail before execution unless the
+ordered selected IDs, targets, and clues reproduce a previously approved
+selection.
+
 The bundled generator-style CSV format is:
 
 ```text
@@ -176,6 +233,27 @@ In simulator terminology:
 - `clueN_x/clueN_y` are clue locations
 
 The `scenarios/` directory includes `final_trial_500.csv` (500 trials).
+Start-cell clues are sensed at logical time zero after every robot and
+allocator is registered, without adding a movement step or duplicate visit.
+The finding robot first updates belief, then invokes its allocator observation
+hook, publishes the clue, and finally publishes allocator output. Duplicate
+reports of an already searched peer cell do not trigger another belief
+normalization.
+The protected intent protocol sends one current-cell/no-next clear the first
+time a robot has no goal or route, then deduplicates unchanged later clears.
+CBAA releases require a matching winner and
+`local_bid <= released_bid + 1e-9`; a missing or `NO_BID` released bid is not a
+wildcard. DGA sends only changed first-three-cell owner prefixes, emits an empty
+clear for a disappeared owner, and preserves omitted unchanged owner prefixes
+at receivers.
+
+The repaired file's raw SHA-256 is
+`9139f6a4fa259016f0e650489d605333758491b62151a742e406cc17dd5df085`.
+Its canonical ordered selection hash is
+`823213c90703fd83224ad7122ee730ba64af3769ea517af252103bddd907f681`
+for all 500 trials and
+`33ddd00e9e07f86e272c4a946f91c9a9c4ee08ae6e902309b63caa0c5a8d5fa4`
+for the first 300.
 
 `benchmark_sim/clue_object_generator_manhat.py` can generate a fixed object
 list or regenerate clue sets around that list. Its current controls
@@ -303,6 +381,11 @@ total and maximum robot steps, unique cells visited, replans, communication
 counts, messages per completed target, event counts, local stall-recovery
 counts, workload Gini values, and per-target
 first-finder/completion records.
+
+`robot_performance.csv` also records separate host-clock candidate-filter,
+allocator-solve (filter excluded), and end-to-end allocator timings with call
+counts and total, mean, median, 95th-percentile, and maximum milliseconds.
+`system_performance.csv` contains the corresponding team totals.
 
 ### AGX Orin Known-Visit Horizon Study
 

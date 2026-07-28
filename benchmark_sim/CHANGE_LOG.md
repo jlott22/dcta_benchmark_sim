@@ -16,6 +16,42 @@ For each change, add:
 
 ## Change Entries
 
+### 2026-07-24 - Aligned Protected-Collision Timing and Empty DGA Clears
+
+- Area: simulation architecture, collision safety, DGA, tests
+- Files changed: `core/robot.py`, `algorithms/DGA.py`, `tests/test_async_movement.py`, `tests/test_dga_integration.py`, and the corresponding Top-K-study files
+- Summary: Moved the protected current-position/intent recheck to the post-intent safety boundary and made empty DGA plans publish finite, receiver-valid prefix clears.
+- Rationale: The shared physical protocol publishes a changed intent, turns, services communications for its settle window, and only then performs the protected recheck. The earlier simulator precheck skipped the attempted intent. DGA peers reject non-finite fitness, so an infinite-fitness empty clear could not clear a prior prefix.
+- Behavior impact: When droppable peer state is absent but a protected conflict is known, the simulator now advertises the attempted transition and then the alternate transition. A first conflict with no alternate route emits a no-path clear, retains the goal and failure state, and makes a distinct second protected attempt before collision backoff. Empty DGA plans use fitness `0.0`, emit changed owner-prefix clears, and are accepted by receivers.
+- Follow-up notes: Controlled regressions assert the protected intent sequence, two-conflict backoff, finite DGA clear reception, and parity with the Top-K study simulator.
+
+### 2026-07-24 - Made Belief Normalization Cache-Safe
+
+- Area: algorithm, belief state, configuration, tests
+- Files changed: `core/belief.py`, `algorithms/base.py`, `config.py`, probability-consistency tests, and the corresponding Top-K-study files
+- Summary: Added a monotonic belief revision to every posterior rebuild and keyed the allocator's full-map maximum cache by belief object plus revision. Standardized the shared logic-revision token as `dcta_parity_v1`.
+- Rationale: CPython may reuse a discarded probability dictionary's object ID, so caching only by `id(target_p)` could reuse a stale maximum after a miss or clue. The shared revision also needs to be safe when carried by the study hardware's delimiter-based transport.
+- Behavior impact: Every belief mutation now refreshes the exact full-map normalization maximum used by `q(c)` and therefore by `J(a,c)`. The two simulator repositories retain the same corrected provenance token.
+- Follow-up notes: Regression tests cover consecutive belief mutations and full-map maximum refresh.
+
+### 2026-07-24 - Aligned Startup, Scenario, and Consensus Parity
+
+- Area: simulation architecture, algorithm, configuration, scenarios, tests, documentation
+- Files changed: `core/robot.py`, `core/scheduler.py`, `core/scenario_loader.py`, `algorithms/CBAA.py`, `algorithms/DGA.py`, `algorithms/PI.py`, `config.py`, `run_trials.py`, startup/algorithm tests, `../scenarios/final_trial_500.csv`, and `../README.md`
+- Summary: Added deterministic time-zero start-cell sensing after full robot registration, strict scenario validation, ordered selection hashes with an optional required-hash preflight, strict CBAA release-bid matching, PI path-head goal synchronization and exact positive-maximum normalization, exact DGA `(sender, generation, solution_id)` prediction assessment and owner-prefix delta/clear semantics, separate protected peer current-position/intent storage, duplicate searched-cell suppression, and an explicit unpublished collision-intent state.
+- Rationale: The canonical simulator and hardware-oriented study need the same valid scenario set, startup observation semantics, provenance, consensus goals, prediction-strike lifecycle, and collision snapshot.
+- Behavior impact: Start-cell clues are now detected at time zero without a step or second visit, in the order belief update, allocator observation hook, clue publication, and allocator publication; duplicate reports of a searched peer cell no longer recompute belief; the first no-goal/no-route condition sends one protected current-cell/no-next clear while later unchanged clears remain deduplicated; targets on starts and non-integer/duplicate/out-of-bounds scenario data fail before execution; a CBAA release now requires the same winner and `local_bid <= released_bid + EPS`, so a missing/`NO_BID` field is not a wildcard; PI immediately follows a repaired path head and retains any finite positive full-map maximum even below `EPS`; distinct same-generation DGA solutions are each assessed once, unchanged owner prefixes are omitted across solution IDs, disappeared owners receive one empty clear, and exclusion remains permanent after three strikes; protected collision safety uses the advertised current cell rather than misclassifying the next intent as the current position. Target-on-start trials 172, 203, and 494 in `final_trial_500.csv` were replaced.
+- Follow-up notes: The repaired scenario file raw SHA-256 is `9139f6a4fa259016f0e650489d605333758491b62151a742e406cc17dd5df085`; ordered-selection hashes are `823213c90703fd83224ad7122ee730ba64af3769ea517af252103bddd907f681` for all 500 and `33ddd00e9e07f86e272c4a946f91c9a9c4ee08ae6e902309b63caa0c5a8d5fa4` for the first 300. Headless outputs carry the logic revision plus raw and selection hashes. Physical hardware gates are documented in the Top-K study repository.
+
+### 2026-07-21 - Corrected Gilbert-Elliott Burst Persistence
+
+- Area: communication, configuration, tests, documentation
+- Files changed: `comms/models.py`, `run_trials.py`, `tests/test_comm_models.py`, corresponding `known_visit_sim` communication and runner files
+- Summary: Reparameterized Gilbert-Elliott communication so `comm-level=q` is the stationary delivery probability and a fixed lag-one state correlation of 0.8 creates genuine GOOD/BAD runs. The transition probabilities are now `pGG=q+0.8(1-q)` and `pBB=(1-q)+0.8q`, with each directed link initialized from its stationary distribution.
+- Rationale: The prior mapping `pGG=q`, `pBB=1-q` made both transition-matrix rows identical, giving zero temporal correlation and reducing the purported burst model to independent loss after initialization.
+- Behavior impact: Long-run loss remains approximately `1-q`, preserving level comparability with earlier condition definitions, but losses and successes are now temporally clustered. Existing Gilbert-Elliott results were generated by the old non-bursty implementation and must be rerun before being described as burst-loss results.
+- Follow-up notes: The default correlation 0.8 gives expected GOOD and BAD run lengths `1/(1-pGG)` and `1/(1-pBB)`, respectively. Verified with deterministic parameter tests and a seeded 200,000-attempt rate/autocorrelation test.
+
 ### 2026-06-20 - Made Metric Exports CSV-Only
 
 - Area: metrics, configuration, documentation

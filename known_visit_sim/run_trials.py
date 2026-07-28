@@ -120,6 +120,14 @@ def failure_rows(scenario, args, cfg, algorithm: str, comm_level: str, exc: Base
         "total_team_steps": "",
         "unique_targets_completed": "",
         "debug_max_events": cfg.debug_max_events,
+        "allocator_calls_total": "",
+        "allocator_time_ms_team_total": "",
+        "allocator_time_ms_team_max": "",
+        "allocator_solve_time_ms_team_total": "",
+        "allocator_solve_time_ms_team_max": "",
+        "candidate_filter_calls_total": "",
+        "candidate_filter_time_ms_team_total": "",
+        "candidate_filter_time_ms_team_max": "",
     }
     robots = [
         {
@@ -130,6 +138,23 @@ def failure_rows(scenario, args, cfg, algorithm: str, comm_level: str, exc: Base
             "messages_sent": "",
             "messages_delivered_to_robot": "",
             "messages_dropped_to_robot": "",
+            "allocator_calls": "",
+            "allocator_time_ms_total": "",
+            "allocator_time_ms_mean": "",
+            "allocator_time_ms_median": "",
+            "allocator_time_ms_p95": "",
+            "allocator_time_ms_max": "",
+            "allocator_solve_time_ms_total": "",
+            "allocator_solve_time_ms_mean": "",
+            "allocator_solve_time_ms_median": "",
+            "allocator_solve_time_ms_p95": "",
+            "allocator_solve_time_ms_max": "",
+            "candidate_filter_calls": "",
+            "candidate_filter_time_ms_total": "",
+            "candidate_filter_time_ms_mean": "",
+            "candidate_filter_time_ms_median": "",
+            "candidate_filter_time_ms_p95": "",
+            "candidate_filter_time_ms_max": "",
         }
         for rid in cfg.robot_ids
     ]

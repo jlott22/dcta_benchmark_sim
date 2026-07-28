@@ -2,12 +2,15 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
+import json
+import re
 from pathlib import Path
 
 from benchmark_sim.algorithms.registry import load_allocator_class
 from benchmark_sim.comms.models import make_comm_model
-from benchmark_sim.config import EAST, SimConfig, edge_even_start_positions, generate_robot_ids
-from benchmark_sim.core.scenario_loader import load_scenarios
+from benchmark_sim.config import EAST, LOGIC_REVISION, SimConfig, edge_even_start_positions, generate_robot_ids
+from benchmark_sim.core.scenario_loader import load_scenarios, validate_scenarios
 from benchmark_sim.core.scheduler import AsyncTrialRunner
 from benchmark_sim.core.types import TrialScenario
 from benchmark_sim.metrics.export import write_outputs
@@ -30,17 +33,79 @@ def parse_max_candidate_cells(value: str) -> int | None:
     return parse_positive_int(value)
 
 
+def file_sha256(path: str | Path) -> str:
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def scenario_selection_sha256(scenarios: list[TrialScenario]) -> str:
+    selection = [
+        {
+            "trial_id": str(scenario.trial_id),
+            "target": list(scenario.target) if scenario.target is not None else None,
+            "clues": [list(clue) for clue in scenario.clues],
+        }
+        for scenario in scenarios
+    ]
+    payload = json.dumps(selection, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def parse_sha256(value: str) -> str:
+    normalized = str(value).strip().lower()
+    if re.fullmatch(r"[0-9a-f]{64}", normalized) is None:
+        raise argparse.ArgumentTypeError("must be exactly 64 hexadecimal characters")
+    return normalized
+
+
+def enforce_expected_scenario_sha256(actual: str, expected: str | None) -> None:
+    if expected is None:
+        return
+    try:
+        normalized = parse_sha256(expected)
+    except argparse.ArgumentTypeError as exc:
+        raise ValueError(f"invalid expected scenario SHA-256: {expected!r}") from exc
+    if str(actual).strip().lower() != normalized:
+        raise ValueError(
+            "scenario selection SHA-256 mismatch: "
+            f"expected {normalized}, got {actual}"
+        )
+
+
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Run DCTA benchmark trials.")
     p.add_argument("--scenario-file", default=None, help="CSV/JSON scenario file from clue-object generator.")
+    p.add_argument(
+        "--expected-scenario-sha256",
+        type=parse_sha256,
+        default=None,
+        help=(
+            "fail before execution unless the canonical ordered selected-scenario "
+            "manifest has this SHA-256"
+        ),
+    )
     p.add_argument("--trial-mode", default="clue_search", choices=["clue_search", "coverage"])
     p.add_argument("--num-trials", type=int, default=1, help="Number of generated trials for coverage mode.")
     p.add_argument("--algorithm", required=True, help="Allocator class as module.path:ClassName.")
     p.add_argument("--algorithm-name", default=None, help="Optional display name for outputs.")
     p.add_argument("--comm-model", default="ideal", choices=["ideal", "bernoulli", "gilbert_elliot", "rayleigh_style"])
     p.add_argument("--comm-level", type=float, default=None,
-                   help="Model-specific level: Bernoulli drop probability, GE bad-state success, or Rayleigh sensitivity dBm.")
-    p.add_argument("--max-trials", type=int, default=None)
+                   help="Model-specific level: Bernoulli drop probability, GE long-run delivery probability, or Rayleigh sensitivity dBm.")
+    p.add_argument("--max-trials", type=parse_positive_int, default=None)
+    p.add_argument(
+        "--debug-max-events",
+        type=parse_positive_int,
+        default=5_000,
+        help="Abort a non-progressing trial after this many scheduled events (default: 5000).",
+    )
+    p.add_argument(
+        "--retry-failed",
+        action="store_true",
+        help="Remove previously recorded failed rows and rerun only those trial IDs.",
+    )
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--out-dir", default="runs/default")
     p.add_argument("--grid-size", type=parse_positive_int, default=19)
@@ -136,6 +201,10 @@ def failure_rows(
     error_message = str(exc)
     common = {
         "trial_id": scenario.trial_id,
+        "logic_revision": cfg.logic_revision,
+        "study_profile": cfg.study_profile,
+        "scenario_file_sha256": cfg.scenario_file_sha256,
+        "scenario_selection_sha256": cfg.scenario_selection_sha256,
         "algorithm": algorithm_name,
         "comm_model": args.comm_model,
         "comm_level": comm_level,
@@ -204,12 +273,16 @@ def failure_rows(
 
 def main() -> None:
     args = parse_args()
+    scenario_file_hash = file_sha256(args.scenario_file) if args.scenario_file else ""
     robot_ids = generate_robot_ids(args.num_robots)
     if args.robot_start_layout == "edge_even":
         start_positions = edge_even_start_positions(args.grid_size, robot_ids)
     else:  # argparse choices make this defensive branch unreachable.
         raise ValueError(f"unsupported robot start layout: {args.robot_start_layout}")
     cfg = SimConfig(
+        logic_revision=LOGIC_REVISION,
+        study_profile="custom",
+        scenario_file_sha256=scenario_file_hash,
         trial_mode=args.trial_mode,
         grid_size=args.grid_size,
         robot_ids=robot_ids,
@@ -223,14 +296,32 @@ def main() -> None:
         write_parquet=False,
         commitment_horizon=args.commitment_horizon,
         max_candidate_cells=args.max_candidate_cells,
+        debug_max_events=args.debug_max_events,
     )
     allocator_cls = load_allocator_class(args.algorithm)
     algorithm_name = args.algorithm_name or getattr(allocator_cls, "name", allocator_cls.__name__)
     comm_model = make_comm_model(args.comm_model, args.comm_level)
     comm_level = comm_model.level_label()
     scenarios = scenarios_for_args(args)
+    validate_scenarios(
+        scenarios,
+        grid_size=cfg.grid_size,
+        start_positions=cfg.start_positions,
+        trial_mode=cfg.trial_mode,
+        expected_count=args.num_trials if args.trial_mode == "coverage" else args.max_trials,
+    )
+    cfg.scenario_selection_sha256 = scenario_selection_sha256(scenarios)
+    enforce_expected_scenario_sha256(
+        cfg.scenario_selection_sha256,
+        args.expected_scenario_sha256,
+    )
     output_config = {
         "sim_config": cfg.to_dict(),
+        "logic_revision": cfg.logic_revision,
+        "study_profile": cfg.study_profile,
+        "scenario_file_sha256": cfg.scenario_file_sha256,
+        "scenario_selection_sha256": cfg.scenario_selection_sha256,
+        "expected_scenario_sha256": args.expected_scenario_sha256 or "",
         "algorithm": args.algorithm,
         "algorithm_name": algorithm_name,
         "comm_model": args.comm_model,
@@ -238,9 +329,33 @@ def main() -> None:
         "scenario_file": str(Path(args.scenario_file)) if args.scenario_file else "",
         "trial_mode": args.trial_mode,
         "seed": args.seed,
+        "retry_failed": bool(args.retry_failed),
     }
 
     trial_summary_rows, system_performance_rows, robot_performance_rows = load_existing_outputs(args.out_dir)
+    if args.retry_failed:
+        failed_trial_ids = {
+            trial_id
+            for rows in (trial_summary_rows, system_performance_rows, robot_performance_rows)
+            for row in rows
+            if str(row.get("trial_status", "")).strip().lower() == "failed"
+            if (trial_id := parse_trial_id(row)) is not None
+        }
+        if failed_trial_ids:
+            trial_summary_rows = [
+                row for row in trial_summary_rows if parse_trial_id(row) not in failed_trial_ids
+            ]
+            system_performance_rows = [
+                row for row in system_performance_rows if parse_trial_id(row) not in failed_trial_ids
+            ]
+            robot_performance_rows = [
+                row for row in robot_performance_rows if parse_trial_id(row) not in failed_trial_ids
+            ]
+            print(
+                f"retrying {len(failed_trial_ids)} failed trial(s) from {args.out_dir} "
+                f"with debug_max_events={cfg.debug_max_events}",
+                flush=True,
+            )
     done_trial_ids = recorded_trial_ids(trial_summary_rows, system_performance_rows)
     total_scenarios = len(scenarios)
     scenario_ids = {scenario.trial_id for scenario in scenarios}

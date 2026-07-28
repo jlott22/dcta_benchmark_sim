@@ -94,8 +94,10 @@ class CommunicationAndWorldTests(unittest.TestCase):
 
     def test_horizon_runner_applies_communication_levels_to_the_right_fields(self) -> None:
         ge = make_comm_model("gilbert_elliot", "0.75")
-        self.assertEqual(ge.p_good_to_good, 0.75)
-        self.assertEqual(ge.p_bad_to_bad, 0.25)
+        self.assertAlmostEqual(ge.p_good_to_good, 0.95)
+        self.assertAlmostEqual(ge.p_bad_to_bad, 0.85)
+        self.assertAlmostEqual(ge.stationary_delivery_prob, 0.75)
+        self.assertAlmostEqual(ge.state_correlation, 0.8)
         rayleigh = make_comm_model("rayleigh_style", "-50.66")
         self.assertEqual(rayleigh.sensitivity_dbm, -50.66)
         self.assertEqual(rayleigh.tx_power_dbm, 30.0)
