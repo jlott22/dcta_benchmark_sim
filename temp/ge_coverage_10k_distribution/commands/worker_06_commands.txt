@@ -1,0 +1,42 @@
+GE Coverage 10k Worker 06 Commands
+===================================
+
+1. Clone and start this worker in PowerShell:
+
+cd C:\Users\elec
+git clone https://github.com/jlott22/dcta_benchmark_sim.git dcta_ge_worker_06
+cd dcta_ge_worker_06
+git checkout temp/ge-coverage-10k-distributed
+python temp\ge_coverage_10k_distribution\run_worker.py --worker 06 --workers 10
+
+If python is not found, use this run command instead:
+
+py -3 temp\ge_coverage_10k_distribution\run_worker.py --worker 06 --workers 10
+
+2. Pause safely if needed:
+
+Ctrl+C
+
+3. Resume after pausing:
+
+cd C:\Users\elec\dcta_ge_worker_06
+python temp\ge_coverage_10k_distribution\run_worker.py --worker 06 --workers 10
+
+4. Validate and upload after the worker finishes OR after you pause it:
+
+cd C:\Users\elec\dcta_ge_worker_06
+python temp\ge_coverage_10k_distribution\pack_results.py --worker 06
+git checkout -B temp/ge-coverage-10k-results-worker-06
+git add temp/ge_coverage_10k_distribution/results/worker_06
+git commit -m "Add GE 10k worker 06 results"
+git push -u origin temp/ge-coverage-10k-results-worker-06 --force-with-lease
+
+If python is not found, use this validation command instead:
+
+py -3 temp\ge_coverage_10k_distribution\pack_results.py --worker 06
+
+Notes:
+- Use this file only on the computer assigned worker 06.
+- It is okay to upload partial results after Ctrl+C.
+- It is okay to run the same upload commands again after more trials finish.
+- GitHub may ask you to log in during clone or push.
