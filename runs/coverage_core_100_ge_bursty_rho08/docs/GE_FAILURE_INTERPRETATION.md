@@ -181,7 +181,5 @@ the hardest failed trials.
   `runs/coverage_core_100_ge_bursty_rho08/runtime/legacy_ge_20260723/benchmark_sim/algorithms/ACBBA.py`
 - HIPC change-only bundle messages:
   `runs/coverage_core_100_ge_bursty_rho08/runtime/legacy_ge_20260723/benchmark_sim/algorithms/HIPC.py`
-- 75,000-event retry shards:
-  `runs/coverage_core_100_ge_bursty_rho08/artifacts/validated_shards.zip`
-- 100,000-event final retry shards:
+- Historical cap-escalation shard archive:
   `runs/coverage_core_100_ge_bursty_rho08/artifacts/validated_shards.zip`

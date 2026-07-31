@@ -1,0 +1,21 @@
+{
+  "created_at_unix": 1785517260.1908574,
+  "created_from": "runs/coverage_core_100_ge_bursty_rho08/raw",
+  "description": "Partial combined GE coverage base after merging existing shard files into raw. This intentionally includes failed rows and incomplete conditions.",
+  "combined_rows": {
+    "trial_summary.csv": 4125,
+    "system_performance.csv": 4125,
+    "robot_performance.csv": 16500
+  },
+  "conditions": 48,
+  "complete_conditions": 38,
+  "total_trial_rows": 4125,
+  "total_system_rows": 4125,
+  "total_robot_rows": 16500,
+  "total_failed_trial_rows": 365,
+  "total_missing_trial_rows": 675,
+  "active_policy": "no_retry_after_event_cap",
+  "future_cap_hits_are_final_failures": true,
+  "historical_cap_escalation_archive": "runs/coverage_core_100_ge_bursty_rho08/artifacts/validated_shards.zip",
+  "note": "Historical cap-escalation shards were merged into raw as provenance from the prior workflow; future 10k work should run missing trials only."
+}

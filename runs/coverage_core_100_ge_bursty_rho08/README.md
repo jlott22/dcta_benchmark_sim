@@ -4,6 +4,21 @@ This directory is the authoritative checkpoint for the 100-trial-per-condition
 corrected Gilbert–Elliott coverage campaign. It is self-contained and intended
 to be cloned from GitHub onto the destination computer.
 
+## Current policy
+
+As of 2026-07-31, this campaign no longer retries simulations after they reach
+an event cap. A cap hit is a final failed trial row. Historical cap-escalation
+outputs are preserved for provenance in the tracked shard archive under
+`artifacts/validated_shards.zip`.
+
+The current solid base is:
+
+- `raw/`: canonical per-condition CSVs after merging all existing shard files.
+- `combined_partial/`: combined partial CSVs plus `completeness_report.csv`.
+
+Future distributed work should run only still-missing trials, with the new
+10,000-event cap, in a separate temporary result directory.
+
 ## Transfer checkpoint
 
 Packed on 2026-07-27 after the source computer shut down unexpectedly. No
@@ -25,6 +40,9 @@ actual remaining computation from 984 to **915 trials** (637 DGA and 278
 DMCHBA) in the missing stage. Ten older DGA/DMCHBA failures are queued for a
 separate 50,000-event retry afterward. The other shard outputs preserve the
 full retry history.
+
+That paragraph describes the original handoff plan. It has been superseded:
+do not run the 50,000-event follow-up. Cap hits remain failed rows.
 
 The 298 ACBBA/CBAA/HIPC/PI failures are final outcomes after remaining
 incomplete through both 75,000 and 100,000 scheduler events. Do not retry or
@@ -114,19 +132,16 @@ The coordinator:
 - accepts only one trial row, one system row, and four robot rows for an ID;
 - merges atomically only after the missing stage finishes.
 
-After the missing stage is merged, dry-run and then execute the follow-up for
-the 10 DGA/DMCHBA IDs that were already failed at handoff:
+Historical handoff note only: the original plan included a follow-up for the
+10 DGA/DMCHBA IDs that were already failed at handoff:
 
 ```powershell
-python analysis/coverage_transfer.py retry-long --workers 12
-python analysis/coverage_transfer.py retry-long --workers 12 --execute
+# Historical only. Do not run under the current no-retry policy.
+# python analysis/coverage_transfer.py retry-long --workers 12
+# python analysis/coverage_transfer.py retry-long --workers 12 --execute
 ```
 
-This command is restricted to the handoff failure-ID lists and a 50,000-event
-cap. It cannot select the 298 finalized quick-algorithm failures, and it does
-not select new missing-stage trials that already reached the 50,000-event cap.
-If any of the 10 still fail, their validated failed rows remain the final
-record.
+Under the current policy, failed cap-hit rows remain the final record.
 
 After a completed run, preserve all new shards and run the packing command
 again before another transfer:
