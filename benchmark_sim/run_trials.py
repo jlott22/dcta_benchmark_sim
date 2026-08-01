@@ -96,6 +96,12 @@ def parse_args() -> argparse.Namespace:
                    help="Model-specific level: Bernoulli drop probability, GE long-run delivery probability, or Rayleigh sensitivity dBm.")
     p.add_argument("--max-trials", type=parse_positive_int, default=None)
     p.add_argument(
+        "--trial-id-start",
+        type=int,
+        default=0,
+        help="First generated trial_id for coverage mode. Ignored for scenario-file modes.",
+    )
+    p.add_argument(
         "--debug-max-events",
         type=parse_positive_int,
         default=5_000,
@@ -135,9 +141,11 @@ def scenarios_for_args(args: argparse.Namespace) -> list[TrialScenario]:
     if args.trial_mode == "coverage":
         if args.num_trials < 1:
             raise ValueError("--num-trials must be at least 1 for coverage mode")
+        if args.trial_id_start < 0:
+            raise ValueError("--trial-id-start must be nonnegative")
         return [
             TrialScenario(trial_id=i, target=None, clues=[], metadata={"generated": "coverage"})
-            for i in range(args.num_trials)
+            for i in range(args.trial_id_start, args.trial_id_start + args.num_trials)
         ]
     if not args.scenario_file:
         raise ValueError("--scenario-file is required for clue_search mode")

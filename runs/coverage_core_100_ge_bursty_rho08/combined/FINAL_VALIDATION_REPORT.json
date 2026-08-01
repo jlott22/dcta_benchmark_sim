@@ -1,0 +1,16 @@
+{
+  "complete": true,
+  "expected_worker_tasks": 675,
+  "final_counts": {
+    "conditions": 48,
+    "robot_rows": 19200,
+    "status_counts": {
+      "completed": 4376,
+      "failed": 424
+    },
+    "system_rows": 4800,
+    "trial_rows": 4800
+  },
+  "valid_worker_results": 675,
+  "worker_validation_errors": []
+}

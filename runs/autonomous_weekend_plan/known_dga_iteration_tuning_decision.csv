@@ -1,7 +1,0 @@
-stage,algorithm_key,candidate,metric_column,robust_score,average_improvement_pct,ideal_improvement_pct,bernoulli_improvement_pct,comm_disagreement_penalty,bad_comm_penalty,local_steepness,gap_from_best,within_plateau,chosen,ineligible_reason,n_ideal_paired,n_bernoulli_paired,excluded_all_zero_groups,incomplete_groups,plateau_epsilon,robust_disagreement_weight,robust_bad_comm_weight,robust_steepness_weight
-known_dga_iteration,dga,1,total_team_steps,-0.01715063,1.23819726,0.27253078,2.20386373,1.93133294,0.00000000,2.89681413,0.14407935,False,False,,300,300,0,0,0.05,0.5,0.5,0.1
-known_dga_iteration,dga,2,total_team_steps,-2.33650042,-0.76972129,-1.43500770,-0.10443488,1.33057282,1.43500770,1.83988864,2.46342914,False,False,,300,300,0,0,0.05,0.5,0.5,0.1
-known_dga_iteration,dga,5,total_team_steps,-0.50736836,-0.25429670,-0.20216123,-0.30643216,0.10427093,0.30643216,0.47720118,0.63429709,False,False,,300,300,0,0,0.05,0.5,0.5,0.1
-known_dga_iteration,dga,10,total_team_steps,-0.73605809,-0.37312931,-0.29664784,-0.44961077,0.15296293,0.44961077,0.61641931,0.86298681,False,False,,300,300,0,0,0.05,0.5,0.5,0.1
-known_dga_iteration,dga,25,total_team_steps,0.12692872,0.59942113,0.94383121,0.25501106,0.68882015,0.00000000,1.28082338,0.00000000,True,True,,300,300,0,0,0.05,0.5,0.5,0.1
-known_dga_iteration,dga,50,total_team_steps,-2.54762019,-0.44047109,0.71745479,-1.59839697,2.31585176,1.59839697,1.50024736,2.67454891,False,False,,300,300,0,0,0.05,0.5,0.5,0.1

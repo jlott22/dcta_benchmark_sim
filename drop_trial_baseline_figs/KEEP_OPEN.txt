@@ -1,2 +1,0 @@
-This directory is intentionally kept for future drop-trial baseline figures.
-Stale results were archived outside the repo under old results decentralized benchmark.

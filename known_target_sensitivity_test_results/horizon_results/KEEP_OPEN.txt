@@ -1,2 +1,0 @@
-This directory is intentionally kept for future known-target horizon sensitivity results.
-Stale results were archived outside the repo under old results decentralized benchmark.
