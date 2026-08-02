@@ -17,27 +17,29 @@ clc;
 
 %% Configuration
 analysisDir = string(fileparts(mfilename("fullpath")));
-projectRoot = string(fileparts(analysisDir));
-bayesianCandidateDir = fullfile(projectRoot, "clue_500_combined");
-coverageCandidateDir = fullfile(projectRoot, "coverage_100_combined");
-collaborativeDir = fullfile(projectRoot, "known_visit_core_500_combined");
+projectRoot = string(fileparts(fileparts(analysisDir)));
+resultsRoot = fullfile(projectRoot, "results");
+bayesianCandidateDir = fullfile(resultsRoot, "clue_search_core_500", "combined");
+coverageCandidateDir = fullfile(resultsRoot, "coverage_core_100", "combined");
+collaborativeDir = fullfile(resultsRoot, "known_target_visit_core_500", "combined");
 coverageScenario = "Coverage area search";
 
 algorithmOrder = ["CBAA","ACBBA","PI","HIPC","DMCHBA","DGA"];
 nominalLevels = [0 5 10 20 30 40 50 60 70];
 degradedLevels = nominalLevels(2:end);
-degradationModels = ["bernoulli","gilbert_elliot","rayleigh_style"];
+degradationModels = ["bernoulli","gilbert_elliott","rayleigh_style"];
 bootstrapIterations = 10000;
 rngSeed = 20260714;
 
-if ~isfolder(analysisDir)
-    mkdir(analysisDir);
+tablesDir = fullfile(analysisDir, "tables");
+if ~isfolder(tablesDir)
+    mkdir(tablesDir);
 end
 
-metricCsvPath = fullfile(analysisDir, "dcta_metric_results.csv");
-statCsvPath = fullfile(analysisDir, "dcta_statistical_tests.csv");
-manifestPath = fullfile(analysisDir, "dcta_metric_source_manifest.csv");
-logPath = fullfile(analysisDir, "dcta_metric_analysis_log.txt");
+metricCsvPath = fullfile(tablesDir, "dcta_metric_results.csv");
+statCsvPath = fullfile(tablesDir, "dcta_statistical_tests.csv");
+manifestPath = fullfile(tablesDir, "dcta_metric_source_manifest.csv");
+logPath = fullfile(tablesDir, "dcta_metric_analysis_log.txt");
 scriptPath = mfilename("fullpath") + ".m";
 
 rng(rngSeed, "twister");
@@ -70,20 +72,20 @@ logLine(logFid, "Coverage source files: %s", strjoin(coverageNames, ", "));
 
 if dctaAnalysisRunMode == "full"
     [clueSystem, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-        "system_performance", fullfile(bayesianCandidateDir, "system_performance_bay.csv"), true, ...
+        "system_performance", fullfile(bayesianCandidateDir, "system_performance.csv"), true, ...
         "Primary Bayesian system metrics and message publish counts");
     [clueTrial, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
         "trial_summary", fullfile(bayesianCandidateDir, "trial_summary.csv"), true, ...
         "Bayesian clue-first eligibility and trial identity checks");
-    [clueRobot, manifestRows] = readSourceTableParts(manifestRows, "Bayesian clue-informed search", ...
-        "robot_performance_part", bayesianCandidateDir, "robot_performance_part_*.csv", true, ...
+    [clueRobot, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
+        "robot_performance", fullfile(bayesianCandidateDir, "robot_performance.csv"), true, ...
         "Robot-level max message and metric validation");
     [clueManifest, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
         "condition_manifest", fullfile(bayesianCandidateDir, "condition_manifest.csv"), true, ...
         "Bayesian condition definitions and nominal communication labels");
 
     [knownSystem, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-        "system_performance", fullfile(collaborativeDir, "system_performance_known.csv"), true, ...
+        "system_performance", fullfile(collaborativeDir, "system_performance.csv"), true, ...
         "Primary known-target system metrics and target completion status");
     [knownTrial, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
         "trial_summary", fullfile(collaborativeDir, "trial_summary.csv"), true, ...
@@ -425,7 +427,7 @@ function pct = nominalCommPct(model, raw, label)
             pct(i) = 0;
         elseif m == "bernoulli"
             pct(i) = round(100 * r);
-        elseif m == "gilbert_elliot"
+        elseif m == "gilbert_elliott"
             pct(i) = round(100 * (1 - r));
         elseif m == "rayleigh_style"
             [delta, idx] = min(abs(rayRaw - r));
@@ -624,7 +626,7 @@ function validateMetricData(fid, data, algorithmOrder)
     end
     for s = unique(data.scenario, "stable")'
         sub = data(data.scenario == s, :);
-        for model = ["ideal","bernoulli","gilbert_elliot","rayleigh_style"]
+        for model = ["ideal","bernoulli","gilbert_elliott","rayleigh_style"]
             if any(sub.comm_model == model)
                 levels = unique(sub.comm_level_pct(sub.comm_model == model))';
                 logLine(fid, "%s %s nominal levels present: %s", s, model, mat2str(levels));
@@ -1490,7 +1492,7 @@ function logCounts(fid, data, resultTable, algorithmOrder, nominalLevels)
             msub = sub(sub.comm_model == model, :);
             logLine(fid, "%s %s condition count: %d rows, %d trials", scenario, model, height(msub), numel(unique(msub.trial_id)));
         end
-        for model = ["bernoulli","gilbert_elliot","rayleigh_style"]
+        for model = ["bernoulli","gilbert_elliott","rayleigh_style"]
             balancedRows = resultTable(resultTable.scenario == scenario & resultTable.result_type == "prda" & ...
                 resultTable.comm_model == model, :);
             if ~isempty(balancedRows)

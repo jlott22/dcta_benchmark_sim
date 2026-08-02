@@ -2,12 +2,7 @@
 * text=auto
 *.zip binary
 
-# Preserve the research checkpoint byte-for-byte on Windows and Linux so the
-# published SHA-256 transfer manifest remains portable.
-/runs/coverage_core_100_ge_bursty_rho08/** -text
-
-# Preserve result and archive hashes across Windows and Linux checkouts.
-/clue_500_combined/*.csv -text
-/clue_500_combined/archive/** -text
-/known_visit_core_500_combined/*.csv -text
-/known_visit_core_500_combined/archive/** -text
+# Preserve canonical result and provenance bytes across Windows and Linux.
+/results/**/combined/*.csv -text
+/results/**/artifacts/** -text
+/results/analysis/archive/** -text

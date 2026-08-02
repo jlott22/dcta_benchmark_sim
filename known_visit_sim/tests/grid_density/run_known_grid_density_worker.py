@@ -87,8 +87,8 @@ def make_comm_model(model_name: str, comm_level: str, seed: int) -> Any:
         cls = getattr(models, "BernoulliModel")
         return _instantiate(cls, level, drop_prob=level, seed=rng_seed)
 
-    if name == "gilbert_elliot":
-        return models.make_comm_model("gilbert_elliot", level)
+    if name == "gilbert_elliott":
+        return models.make_comm_model("gilbert_elliott", level)
 
     if name == "rayleigh_style":
         for cls_name in ("RayleighStyleModel", "RayleighModel", "RayleighFadingModel"):

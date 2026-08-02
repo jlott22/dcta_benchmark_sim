@@ -12,7 +12,7 @@ EXPECTED_CONDITIONS = 5 * 7 * 4 * 6
 
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/runs/sensitivity_grid_density_50")
+    p.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/results/sensitivity_clue_search_grid_density_50")
     return p.parse_args()
 
 

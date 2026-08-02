@@ -9,7 +9,7 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
-RUN_ROOT="$REPO_ROOT/runs/sensitivity_grid_density_coverage_50"
+RUN_ROOT="$REPO_ROOT/results/sensitivity_coverage_grid_density_50"
 MANIFEST="$RUN_ROOT/condition_manifest.csv"
 LOG_DIR="$RUN_ROOT/worker_logs"
 

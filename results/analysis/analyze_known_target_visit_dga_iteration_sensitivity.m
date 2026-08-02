@@ -11,7 +11,8 @@
 clear; clc;
 
 scriptDir = fileparts(mfilename('fullpath'));
-inputFile = fullfile(scriptDir, 'dga_iteration', 'combined', 'system_performance.csv');
+repoRoot = fileparts(fileparts(scriptDir));
+inputFile = fullfile(repoRoot, 'results', 'sensitivity_known_target_visit_dga_iteration_300', 'combined', 'system_performance.csv');
 metricName = 'total_team_steps';
 
 T = readtable(inputFile, 'TextType', 'string');

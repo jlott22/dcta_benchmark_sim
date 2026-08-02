@@ -185,7 +185,7 @@ For each change, add:
 - Summary: Changed the default `collision_intent_settle_s` from `0.05` to `0.10`.
 - Rationale: The protected collision-intent settle window should wait slightly longer before move actions when intent settling is enabled.
 - Behavior impact: New runs using default configuration will allow more time for collision-intent synchronization before robots evaluate move conflicts. Tests and historical run configs with explicit overrides are unchanged.
-- Follow-up notes: Historical `config_used.json` files under `runs/` still show the previous value used for those runs.
+- Follow-up notes: Historical `config_used.json` files under `results/` still show the previous value used for those runs.
 
 ### 2026-06-18 - Reduced Initial Async Wake Spread
 
@@ -194,7 +194,7 @@ For each change, add:
 - Summary: Changed the default `async_initial_spread_s` from `1.0` to `0.10`.
 - Rationale: The default initial wake-time spread should be smaller so robot starts are less widely staggered.
 - Behavior impact: New runs using default configuration will initialize robot wake events over a narrower fraction of the async step interval. Tests and historical run configs with explicit overrides are unchanged.
-- Follow-up notes: Historical `config_used.json` files under `runs/` still show the old default used for those runs.
+- Follow-up notes: Historical `config_used.json` files under `results/` still show the old default used for those runs.
 
 ### 2026-06-17 - Added Allocation Message Rate Metrics
 
@@ -221,7 +221,7 @@ For each change, add:
 - Summary: Made `task_cell_replans`, `path_replans`, and `collision_prevention_events` increment only after the team's first clue has been found.
 - Rationale: Churn metrics should reflect algorithm behavior after clue-driven task allocation begins, not predetermined pre-clue sweep behavior.
 - Behavior impact: Pre-clue path failures, task-cell replacements, and collision-avoidance replans still affect robot behavior, but they no longer increment churn/safety metric counters. System-level totals inherit the same post-clue-only definition because they sum these counters.
-- Follow-up notes: Historical CSV files under `runs/` may include whole-trial churn counts from before this change.
+- Follow-up notes: Historical CSV files under `results/` may include whole-trial churn counts from before this change.
 
 ### 2026-06-17 - Made Unique Cell Contribution Team-Truth Based
 
@@ -239,7 +239,7 @@ For each change, add:
 - Summary: Removed the per-robot `individual_revisits` counter and output column.
 - Rationale: The project is retaining system-level revisit metrics and per-robot system revisit attribution while reducing redundant or less central search-effort metrics.
 - Behavior impact: Robot performance outputs no longer include `individual_revisits`. `system_revisits_by_robot` remains unchanged.
-- Follow-up notes: Historical CSV files under `runs/` may still contain `individual_revisits`.
+- Follow-up notes: Historical CSV files under `results/` may still contain `individual_revisits`.
 
 ### 2026-06-17 - Renamed Max Robot Step Metric
 
@@ -248,7 +248,7 @@ For each change, add:
 - Summary: Renamed the system performance output column `max_distance_any_robot` to `max_steps_any_robot`.
 - Rationale: The metric is computed from per-robot step counts, not a separate distance calculation.
 - Behavior impact: New system performance outputs use the clearer `max_steps_any_robot` column.
-- Follow-up notes: Historical CSV files under `runs/` may still contain `max_distance_any_robot`.
+- Follow-up notes: Historical CSV files under `results/` may still contain `max_distance_any_robot`.
 
 ### 2026-06-17 - Removed Duplicate Search Effort Metric
 
@@ -257,7 +257,7 @@ For each change, add:
 - Summary: Removed `duplicate_search_effort` from system performance output and deleted `World.duplicate_search_effort()`.
 - Rationale: `duplicate_search_effort` was exactly the same value as `system_revisits`, so keeping both columns duplicated the same concept.
 - Behavior impact: New system performance outputs keep `system_revisits` as the single metric for repeated team visits to already searched cells.
-- Follow-up notes: Historical CSV files under `runs/` may still contain the old `duplicate_search_effort` column.
+- Follow-up notes: Historical CSV files under `results/` may still contain the old `duplicate_search_effort` column.
 
 ### 2026-06-17 - Distilled Churn Metrics
 
@@ -266,7 +266,7 @@ For each change, add:
 - Summary: Removed `goals_selected`, `goal_churn_total`, `reservation_conflicts`, and `assignment_conflicts` from live metric output. Renamed `goal_replans` to `task_cell_replans`.
 - Rationale: Churn should measure replacement of an uncompleted task cell, not normal task progression or final-state diagnostics.
 - Behavior impact: `task_cell_replans` increments only when a robot selects a different task cell after its previous task cell was invalidated or abandoned before being searched. Selecting a new task cell after completing/searching the previous task cell no longer counts as churn. `path_replans` and `collision_prevention_events` remain available for path-level churn and collision-safety attribution.
-- Follow-up notes: Historical CSV files under `runs/` may still contain old metric columns.
+- Follow-up notes: Historical CSV files under `results/` may still contain old metric columns.
 
 ### 2026-06-17 - Removed Redundant Yield Metric
 
@@ -275,7 +275,7 @@ For each change, add:
 - Summary: Removed the `yields` robot counter and `yield_total`/`yields` output columns. Renamed `yield_delay_s` to `replan_delay_s` because the remaining delay is used for path-failure/replan waits, not a distinct yield event.
 - Rationale: After collision avoidance was changed to immediate pre-move replanning, `collision_prevention_events` became the only meaningful collision-safety counter. The `yields` counter was no longer incremented and had no distinct interpretation.
 - Behavior impact: Metrics now report collision safety through `collision_prevention_events` and path changes through `path_replans`. Output schemas for new runs no longer include `yield_total` or per-robot `yields`.
-- Follow-up notes: Historical CSV files under `runs/` may still contain old yield columns from earlier runs.
+- Follow-up notes: Historical CSV files under `results/` may still contain old yield columns from earlier runs.
 
 ### 2026-06-17 - Made A* Use Droppable Peer Positions Before Protected Collision Replans
 

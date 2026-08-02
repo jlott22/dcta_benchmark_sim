@@ -19,12 +19,12 @@ cd "$REPO_ROOT"
 
 NUM_CORES="${1:-8}"
 
-SCENARIO_FILE="runs/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv"
+SCENARIO_FILE="results/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv"
 SCENARIO_SEED=20260702
 GRID_SIZE=19
 MAX_TRIALS_TOTAL=300
 
-OUT_ROOT="runs/sensitivity_dga_iterations"
+OUT_ROOT="results/sensitivity_clue_search_dga_iteration"
 OVERWRITE_PREVIOUS=1
 SCRIPT_ROOT="benchmark_sim/tests/dga_iteration/dga_iteration_sensitivity_generated"
 PARTITION_DIR="$SCRIPT_ROOT/scenario_partitions"
@@ -38,7 +38,7 @@ ITERATIONS=(1 2 5 10 25 50)
 COMM_CONDITIONS=(
   "ideal|ideal|0"
   "bernoulli_025|bernoulli|0.25"
-  "ge_075|gilbert_elliot|0.75"
+  "ge_075|gilbert_elliott|0.75"
   "rayleigh_m50p66|rayleigh_style|-50.66"
 )
 

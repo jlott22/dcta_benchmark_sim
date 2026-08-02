@@ -27,7 +27,7 @@ BACKFILL_COLS = [
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/runs/sensitivity_grid_density_50")
+    parser.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/results/sensitivity_clue_search_grid_density_50")
     return parser.parse_args()
 
 

@@ -6,7 +6,7 @@ set -euo pipefail
 
 cd /home/jlott/dcta_benchmark_sim
 
-OUT_ROOT="runs/sensitivity_dga_iterations"
+OUT_ROOT="results/sensitivity_clue_search_dga_iteration"
 COMBINED_DIR="$OUT_ROOT/combined"
 mkdir -p "$COMBINED_DIR"
 
@@ -14,7 +14,7 @@ python3 - <<'PY'
 import csv
 from pathlib import Path
 
-out_root = Path("runs/sensitivity_dga_iterations")
+out_root = Path("results/sensitivity_clue_search_dga_iteration")
 combined_dir = out_root / "combined"
 combined_dir.mkdir(parents=True, exist_ok=True)
 

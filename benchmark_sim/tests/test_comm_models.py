@@ -20,7 +20,7 @@ class _Receiver:
 
 class GilbertElliottModelTests(unittest.TestCase):
     def test_factory_preserves_requested_stationary_delivery_rate_with_bursts(self) -> None:
-        model = make_comm_model("gilbert_elliot", 0.75)
+        model = make_comm_model("gilbert_elliott", 0.75)
 
         self.assertIsInstance(model, GilbertElliotModel)
         self.assertAlmostEqual(model.p_good_to_good, 0.95)
@@ -30,7 +30,7 @@ class GilbertElliottModelTests(unittest.TestCase):
         self.assertAlmostEqual(model.state_correlation, 0.8)
 
     def test_seeded_sequence_has_expected_rate_and_positive_lag_correlation(self) -> None:
-        model = make_comm_model("gilbert_elliot", 0.75)
+        model = make_comm_model("gilbert_elliott", 0.75)
         rng = random.Random(314159)
         message = Message("00", "robot/00/state", {}, 0.0)
         outcomes = [
@@ -50,7 +50,7 @@ class GilbertElliottModelTests(unittest.TestCase):
         self.assertAlmostEqual(lag_one_correlation, 0.8, delta=0.02)
 
     def test_directed_links_keep_separate_states(self) -> None:
-        model = make_comm_model("gilbert_elliot", 0.75)
+        model = make_comm_model("gilbert_elliott", 0.75)
         rng = random.Random(7)
         message = Message("00", "robot/00/state", {}, 0.0)
 
@@ -60,7 +60,7 @@ class GilbertElliottModelTests(unittest.TestCase):
         self.assertEqual(set(model.states), {("00", "01"), ("00", "02")})
 
     def test_protected_messages_bypass_bad_link_without_advancing_it(self) -> None:
-        model = make_comm_model("gilbert_elliot", 0.75)
+        model = make_comm_model("gilbert_elliott", 0.75)
         model.states[("00", "01")] = False
         bus = MessageBus(model=model, delay_s=0.0, delay_jitter_s=0.0, rng=random.Random(1))
         sender = _Receiver("00")
@@ -78,11 +78,15 @@ class GilbertElliottModelTests(unittest.TestCase):
 
     def test_invalid_factory_parameters_are_rejected(self) -> None:
         with self.assertRaises(ValueError):
-            make_comm_model("gilbert_elliot", -0.1)
+            make_comm_model("gilbert_elliott", -0.1)
         with self.assertRaises(ValueError):
-            make_comm_model("gilbert_elliot", 1.1)
+            make_comm_model("gilbert_elliott", 1.1)
         with self.assertRaises(ValueError):
-            make_comm_model("gilbert_elliot", 0.75, state_correlation=1.0)
+            make_comm_model("gilbert_elliott", 0.75, state_correlation=1.0)
+
+    def test_legacy_factory_alias_emits_the_canonical_name(self) -> None:
+        model = make_comm_model("gilbert_elliot", 0.75)
+        self.assertEqual(model.name, "gilbert_elliott")
 
 
 if __name__ == "__main__":

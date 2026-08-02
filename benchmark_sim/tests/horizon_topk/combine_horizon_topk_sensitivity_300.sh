@@ -9,11 +9,11 @@ cd "$REPO_ROOT" || exit 1
 # It DOES NOT rerun simulations. It only reads raw CSV outputs and writes labeled combined CSVs.
 #
 # Labels are inferred from folder names:
-#   runs/sensitivity_horizon_300/raw/h3/bernoulli/<condition>/system_performance.csv
+#   results/sensitivity_clue_search_horizon_300/raw/h3/bernoulli/<condition>/system_performance.csv
 #       -> sensitivity_suite=horizon, sensitivity_parameter=commitment_horizon, sensitivity_value=3
-#   runs/sensitivity_topk_300/raw/k100/ideal/<condition>/system_performance.csv
+#   results/sensitivity_clue_search_topk_300/raw/k100/ideal/<condition>/system_performance.csv
 #       -> sensitivity_suite=topk, sensitivity_parameter=max_candidate_cells, sensitivity_value=100
-#   runs/sensitivity_topk_300/raw/kall/ideal/<condition>/system_performance.csv
+#   results/sensitivity_clue_search_topk_300/raw/kall/ideal/<condition>/system_performance.csv
 #       -> sensitivity_suite=topk, sensitivity_parameter=max_candidate_cells, sensitivity_value=all
 
 PYTHON_BIN="${PYTHON_BIN:-python3}"
@@ -24,8 +24,8 @@ import os
 from pathlib import Path
 
 ROOTS = [
-    Path("runs/sensitivity_horizon_300"),
-    Path("runs/sensitivity_topk_300"),
+    Path("results/sensitivity_clue_search_horizon_300"),
+    Path("results/sensitivity_clue_search_topk_300"),
 ]
 FILENAMES = [
     "system_performance.csv",
@@ -54,7 +54,7 @@ def infer_metadata(root: Path, csv_file: Path) -> dict:
         raise ValueError(f"Unexpected path under {root}: {csv_file}")
 
     label = parts[1]              # h3, h12, k100, kall, etc.
-    comm_folder = parts[2]        # ideal, bernoulli, gilbert_elliot, rayleigh_style
+    comm_folder = parts[2]        # ideal, bernoulli, gilbert_elliott, rayleigh_style
     condition_folder = parts[3]   # dga_h3_ideal, acbba_k100_bernoulli_025, etc.
     out_dir = csv_file.parent
 

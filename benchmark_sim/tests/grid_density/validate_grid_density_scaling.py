@@ -118,7 +118,7 @@ def run_validation(output_root: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run the quick grid-density scaling validation matrix.")
-    parser.add_argument("--out-dir", type=Path, default=Path("runs/grid_density_validation"))
+    parser.add_argument("--out-dir", type=Path, default=Path("results/grid_density_validation"))
     args = parser.parse_args()
     run_validation(args.out_dir.resolve())
 

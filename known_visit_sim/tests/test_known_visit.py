@@ -93,7 +93,7 @@ class CommunicationAndWorldTests(unittest.TestCase):
             runner.run_trial(TrialScenario(99, [(2, 2)]))
 
     def test_horizon_runner_applies_communication_levels_to_the_right_fields(self) -> None:
-        ge = make_comm_model("gilbert_elliot", "0.75")
+        ge = make_comm_model("gilbert_elliott", "0.75")
         self.assertAlmostEqual(ge.p_good_to_good, 0.95)
         self.assertAlmostEqual(ge.p_bad_to_bad, 0.85)
         self.assertAlmostEqual(ge.stationary_delivery_prob, 0.75)

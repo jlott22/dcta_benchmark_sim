@@ -8,9 +8,9 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-ROOT = REPO_ROOT / "runs" / "known_visit_core_500"
+ROOT = REPO_ROOT / "results" / "known_target_visit_core_500"
 RAW = ROOT / "raw"
-COMBINED = REPO_ROOT / "known_visit_core_500_combined"
+COMBINED = ROOT / "combined"
 METRIC_FILES = (
     "system_performance.csv",
     "trial_summary.csv",

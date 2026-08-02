@@ -72,7 +72,7 @@ class GilbertElliotModel(CommunicationModel):
     p_good_to_good: float = 0.98
     p_bad_to_bad: float = 0.82
     initial_good_prob: float = 0.90
-    name: str = "gilbert_elliot"
+    name: str = "gilbert_elliott"
     states: Dict[Tuple[str, str], bool] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
@@ -155,7 +155,7 @@ def make_comm_model(name: str, level: float | None = None, **kwargs) -> Communic
         return IdealModel()
     if norm == "bernoulli":
         return BernoulliModel(drop_prob=0.0 if level is None else float(level))
-    if norm in {"ge", "gilbert", "gilbert_elliot"}:
+    if norm in {"ge", "gilbert", "gilbert_elliott", "gilbert_elliot"}:
         # Interpret level as the stationary delivery probability.  A fixed
         # positive state correlation creates genuine success/loss bursts while
         # keeping levels comparable with Bernoulli delivery rates.

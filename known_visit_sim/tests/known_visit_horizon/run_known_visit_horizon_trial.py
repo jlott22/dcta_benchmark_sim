@@ -67,9 +67,9 @@ def make_comm_model(name: str, level: str | None) -> Any:
     if name == "bernoulli":
         drop = float(level if level not in (None, "") else 0.0)
         return comm_models.BernoulliModel(drop)
-    if name in {"gilbert_elliot", "ge", "gilbert-elliot"}:
+    if name in {"gilbert_elliott", "gilbert_elliot", "ge", "gilbert-elliot"}:
         delivery_prob = float(level if level not in (None, "") else 0.75)
-        return comm_models.make_comm_model("gilbert_elliot", delivery_prob)
+        return comm_models.make_comm_model("gilbert_elliott", delivery_prob)
     if name in {"rayleigh_style", "rayleigh"}:
         cls = getattr(comm_models, "RayleighStyleModel", None) or getattr(comm_models, "RayleighModel", None)
         if cls is None:
@@ -139,7 +139,7 @@ def main() -> None:
     parser.add_argument("--grid-size", type=int, default=19)
     parser.add_argument("--num-robots", type=int, default=4)
     parser.add_argument("--algorithm", required=True, help="Known-visit algorithm name, e.g. ACBBA, PI, HIPC, DMCHBA, DGA")
-    parser.add_argument("--comm-model", required=True, choices=["ideal", "bernoulli", "gilbert_elliot", "rayleigh_style"])
+    parser.add_argument("--comm-model", required=True, choices=["ideal", "bernoulli", "gilbert_elliott", "gilbert_elliot", "rayleigh_style"])
     parser.add_argument("--comm-level", default="")
     parser.add_argument("--commitment-horizon", type=int, required=True)
     parser.add_argument("--seed", type=int, default=0)

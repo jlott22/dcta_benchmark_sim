@@ -8,8 +8,8 @@ import shlex
 from pathlib import Path
 
 REPO_ROOT = Path(os.environ.get("DCTA_REPO_ROOT", Path(__file__).resolve().parents[3])).expanduser().resolve()
-ROOT = Path("runs/known_visit_core_500")
-COMBINED_ROOT = Path("known_visit_core_500_combined")
+ROOT = Path("results/known_target_visit_core_500")
+COMBINED_ROOT = ROOT / "combined"
 RUNNER = Path("known_visit_sim/tests/known_visit_horizon/run_known_visit_horizon_trial.py")
 SCENARIO = Path("scenarios/known_visit_g19_t10_n500.csv")
 ALGORITHMS = ["CBAA", "ACBBA", "PI", "HIPC", "DMCHBA", "DGA"]
@@ -20,8 +20,8 @@ CONDITIONS = [
     ("ideal_1_0", "ideal", "1.0", ""),
     *[(f"bernoulli_drop_{str(v).replace('.', '_')}", "bernoulli", f"drop_{v}", str(v))
       for v in (0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7)],
-    *[(f"gilbert_elliot_pGG_{str(v).replace('.', '_')}_pBB_{str(round(1-v, 2)).replace('.', '_')}",
-       "gilbert_elliot", f"pGG_{v}_pBB_{round(1-v, 2)}", str(v))
+    *[(f"gilbert_elliott_pGG_{str(v).replace('.', '_')}_pBB_{str(round(1-v, 2)).replace('.', '_')}",
+       "gilbert_elliott", f"pGG_{v}_pBB_{round(1-v, 2)}", str(v))
       for v in (0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95)],
     *[(f"rayleigh_style_sens_neg{str(abs(v)).replace('.', '_')}", "rayleigh_style", f"sens_{v}", str(v))
       for v in (-32.58, -37.79, -42.16, -46.04, -49.17, -52.15, -56.04, -59.4)],
@@ -46,7 +46,7 @@ def jobs() -> list[dict]:
                 "--algorithm", algorithm, "--comm-model", model,
                 "--commitment-horizon", str(HORIZON), "--seed", "0",
                 "--out-dir", str(out_dir), "--condition-id", run_id,
-                "--study-type", "core", "--suite-name", "known_visit_core_500",
+                "--study-type", "core", "--suite-name", "known_target_visit_core_500",
             ]
             if level:
                 args.extend(["--comm-level", level])

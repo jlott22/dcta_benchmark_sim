@@ -56,7 +56,7 @@ def validate_run(out_dir: Path, robot_count: int, target_count: int) -> None:
 def main() -> None:
     package_dir = Path(__file__).resolve().parents[2]
     repo_root = package_dir.parent
-    output_root = repo_root / "runs" / "known_visit_grid_density_validation"
+    output_root = repo_root / "results" / "known_target_visit_grid_density_validation"
     output_root.mkdir(parents=True, exist_ok=True)
 
     for condition in CONDITIONS:

@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
-RUN_ROOT="$REPO_ROOT/runs/sensitivity_grid_density_50"
+RUN_ROOT="$REPO_ROOT/results/sensitivity_clue_search_grid_density_50"
 
 cd "$REPO_ROOT"
 python3 "$SCRIPT_DIR/combine_grid_density_sensitivity.py" --run-root "$RUN_ROOT"

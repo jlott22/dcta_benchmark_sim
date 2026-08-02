@@ -4,8 +4,8 @@ set -euo pipefail
 # Combine condition-partitioned DGA final-500 outputs and verify completeness.
 
 REPO_ROOT="${DCTA_REPO_ROOT:-/home/jlott/dcta_benchmark_sim}"
-RAW_ROOT="$REPO_ROOT/runs/final_500_all/raw/dga"
-COMBINED_ROOT="$REPO_ROOT/runs/final_500_all/combined_dga"
+RAW_ROOT="$REPO_ROOT/results/clue_search_core_500/raw/dga"
+COMBINED_ROOT="$REPO_ROOT/results/clue_search_core_500/combined_dga"
 SCENARIO_FILE="$REPO_ROOT/scenarios/final_trial_500.csv"
 
 if [[ ! -d "$RAW_ROOT" ]]; then
@@ -40,14 +40,14 @@ conditions = [
     ("bernoulli_drop_0_5", "bernoulli", "drop_0.5"),
     ("bernoulli_drop_0_6", "bernoulli", "drop_0.6"),
     ("bernoulli_drop_0_7", "bernoulli", "drop_0.7"),
-    ("gilbert_elliot_pGG_0_3_pBB_0_7", "gilbert_elliot", "pGG_0.3_pBB_0.7"),
-    ("gilbert_elliot_pGG_0_4_pBB_0_6", "gilbert_elliot", "pGG_0.4_pBB_0.6"),
-    ("gilbert_elliot_pGG_0_5_pBB_0_5", "gilbert_elliot", "pGG_0.5_pBB_0.5"),
-    ("gilbert_elliot_pGG_0_6_pBB_0_4", "gilbert_elliot", "pGG_0.6_pBB_0.4"),
-    ("gilbert_elliot_pGG_0_7_pBB_0_3", "gilbert_elliot", "pGG_0.7_pBB_0.3"),
-    ("gilbert_elliot_pGG_0_8_pBB_0_2", "gilbert_elliot", "pGG_0.8_pBB_0.2"),
-    ("gilbert_elliot_pGG_0_9_pBB_0_1", "gilbert_elliot", "pGG_0.9_pBB_0.1"),
-    ("gilbert_elliot_pGG_0_95_pBB_0_05", "gilbert_elliot", "pGG_0.95_pBB_0.05"),
+    ("gilbert_elliott_pGG_0_3_pBB_0_7", "gilbert_elliott", "pGG_0.3_pBB_0.7"),
+    ("gilbert_elliott_pGG_0_4_pBB_0_6", "gilbert_elliott", "pGG_0.4_pBB_0.6"),
+    ("gilbert_elliott_pGG_0_5_pBB_0_5", "gilbert_elliott", "pGG_0.5_pBB_0.5"),
+    ("gilbert_elliott_pGG_0_6_pBB_0_4", "gilbert_elliott", "pGG_0.6_pBB_0.4"),
+    ("gilbert_elliott_pGG_0_7_pBB_0_3", "gilbert_elliott", "pGG_0.7_pBB_0.3"),
+    ("gilbert_elliott_pGG_0_8_pBB_0_2", "gilbert_elliott", "pGG_0.8_pBB_0.2"),
+    ("gilbert_elliott_pGG_0_9_pBB_0_1", "gilbert_elliott", "pGG_0.9_pBB_0.1"),
+    ("gilbert_elliott_pGG_0_95_pBB_0_05", "gilbert_elliott", "pGG_0.95_pBB_0.05"),
     ("rayleigh_style_sens_neg32_58", "rayleigh_style", "sens_-32.58"),
     ("rayleigh_style_sens_neg37_79", "rayleigh_style", "sens_-37.79"),
     ("rayleigh_style_sens_neg42_16", "rayleigh_style", "sens_-42.16"),

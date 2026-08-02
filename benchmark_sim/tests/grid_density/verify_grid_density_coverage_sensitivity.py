@@ -12,7 +12,7 @@ CSV_TYPES = ["system_performance.csv", "trial_summary.csv", "robot_performance.c
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/runs/sensitivity_grid_density_coverage_50")
+    parser.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/results/sensitivity_coverage_grid_density_50")
     parser.add_argument("--combined", action="store_true", help="Also verify combined CSV totals.")
     return parser.parse_args()
 

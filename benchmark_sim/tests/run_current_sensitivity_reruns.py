@@ -19,14 +19,14 @@ PYTHON = sys.executable
 N_WORKERS = 12
 HEARTBEAT_S = 120
 
-CLUE_SCENARIO = Path("runs/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv")
+CLUE_SCENARIO = Path("results/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv")
 KNOWN_SCENARIO = Path("scenarios/known_visit_10target_300.csv")
 MAX_TRIALS = "300"
 GRID_SIZE = "19"
 
-CLUE_HORIZON_ROOT = Path("clue_sensitivity_test_results/horizon_results")
-KNOWN_DGA_ITER_ROOT = Path("known_target_sensitivity_test_results/dga_iteration")
-COVERAGE_HORIZON_ROOT = Path("coverage_sensitivity_test_results/horizon_results")
+CLUE_HORIZON_ROOT = Path("results/sensitivity_clue_search_horizon_300")
+KNOWN_DGA_ITER_ROOT = Path("results/sensitivity_known_target_visit_dga_iteration_300")
+COVERAGE_HORIZON_ROOT = Path("results/sensitivity_coverage_horizon_50")
 COVERAGE_TRIALS = "50"
 
 HORIZONS = [1, 2, 3, 5, 8, 12]

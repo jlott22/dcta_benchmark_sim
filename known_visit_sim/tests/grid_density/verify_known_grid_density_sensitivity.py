@@ -16,7 +16,7 @@ EXPECTED_CONDITIONS = EXPECTED_GRIDS * EXPECTED_DENSITIES * EXPECTED_COMMS * EXP
 
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/runs/known_visit_sensitivity_grid_density_50")
+    p.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/results/sensitivity_known_target_visit_grid_density_50")
     return p.parse_args()
 
 

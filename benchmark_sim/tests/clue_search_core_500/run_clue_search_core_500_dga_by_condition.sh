@@ -2,11 +2,11 @@
 set -uo pipefail
 
 # Run one complete DGA final-500 job per communication condition.
-# Usage: bash benchmark_sim/tests/dga_final500/run_dga_final500_by_condition.sh [max_parallel_conditions]
+# Usage: bash benchmark_sim/tests/clue_search_core_500_dga/run_clue_search_core_500_dga_by_condition.sh [max_parallel_conditions]
 
 REPO_ROOT="${DCTA_REPO_ROOT:-/home/jlott/dcta_benchmark_sim}"
 SCENARIO_FILE="$REPO_ROOT/scenarios/final_trial_500.csv"
-RAW_ROOT="$REPO_ROOT/runs/final_500_all/raw/dga"
+RAW_ROOT="$REPO_ROOT/results/clue_search_core_500/raw/dga"
 LOG_DIR="$RAW_ROOT/_logs"
 STATE_DIR="$RAW_ROOT/_condition_status"
 MAX_PARALLEL="${1:-1}"
@@ -27,14 +27,14 @@ CONDITIONS=(
   "bernoulli_drop_0_5|bernoulli|drop_0.5|0.5"
   "bernoulli_drop_0_6|bernoulli|drop_0.6|0.6"
   "bernoulli_drop_0_7|bernoulli|drop_0.7|0.7"
-  "gilbert_elliot_pGG_0_3_pBB_0_7|gilbert_elliot|pGG_0.3_pBB_0.7|0.3"
-  "gilbert_elliot_pGG_0_4_pBB_0_6|gilbert_elliot|pGG_0.4_pBB_0.6|0.4"
-  "gilbert_elliot_pGG_0_5_pBB_0_5|gilbert_elliot|pGG_0.5_pBB_0.5|0.5"
-  "gilbert_elliot_pGG_0_6_pBB_0_4|gilbert_elliot|pGG_0.6_pBB_0.4|0.6"
-  "gilbert_elliot_pGG_0_7_pBB_0_3|gilbert_elliot|pGG_0.7_pBB_0.3|0.7"
-  "gilbert_elliot_pGG_0_8_pBB_0_2|gilbert_elliot|pGG_0.8_pBB_0.2|0.8"
-  "gilbert_elliot_pGG_0_9_pBB_0_1|gilbert_elliot|pGG_0.9_pBB_0.1|0.9"
-  "gilbert_elliot_pGG_0_95_pBB_0_05|gilbert_elliot|pGG_0.95_pBB_0.05|0.95"
+  "gilbert_elliott_pGG_0_3_pBB_0_7|gilbert_elliott|pGG_0.3_pBB_0.7|0.3"
+  "gilbert_elliott_pGG_0_4_pBB_0_6|gilbert_elliott|pGG_0.4_pBB_0.6|0.4"
+  "gilbert_elliott_pGG_0_5_pBB_0_5|gilbert_elliott|pGG_0.5_pBB_0.5|0.5"
+  "gilbert_elliott_pGG_0_6_pBB_0_4|gilbert_elliott|pGG_0.6_pBB_0.4|0.6"
+  "gilbert_elliott_pGG_0_7_pBB_0_3|gilbert_elliott|pGG_0.7_pBB_0.3|0.7"
+  "gilbert_elliott_pGG_0_8_pBB_0_2|gilbert_elliott|pGG_0.8_pBB_0.2|0.8"
+  "gilbert_elliott_pGG_0_9_pBB_0_1|gilbert_elliott|pGG_0.9_pBB_0.1|0.9"
+  "gilbert_elliott_pGG_0_95_pBB_0_05|gilbert_elliott|pGG_0.95_pBB_0.05|0.95"
   "rayleigh_style_sens_neg32_58|rayleigh_style|sens_-32.58|-32.58"
   "rayleigh_style_sens_neg37_79|rayleigh_style|sens_-37.79|-37.79"
   "rayleigh_style_sens_neg42_16|rayleigh_style|sens_-42.16|-42.16"
@@ -309,17 +309,17 @@ def write_report(path, fieldnames, rows):
         writer.writerows(rows)
 
 write_report(
-    raw_root / "dga_final500_raw_self_check.csv",
+    raw_root / "clue_search_core_500_dga_raw_self_check.csv",
     list(self_check_rows[0].keys()),
     self_check_rows,
 )
 write_report(
-    raw_root / "dga_final500_missing_trials_to_rerun.csv",
+    raw_root / "clue_search_core_500_dga_missing_trials_to_rerun.csv",
     ["comm_model", "comm_level", "cli_value", "condition_folder", "trial_id", "missing_outputs"],
     missing_rows,
 )
 write_report(
-    raw_root / "dga_final500_failed_conditions.csv",
+    raw_root / "clue_search_core_500_dga_failed_conditions.csv",
     ["comm_model", "comm_level", "cli_value", "condition_folder", "exit_code", "reason", "log_file"],
     failed_rows,
 )
@@ -331,9 +331,9 @@ else:
     for row in missing_rows:
         print(f"{row['comm_model']},{row['comm_level']},trial_id={row['trial_id']},missing={row['missing_outputs']}")
 
-print(f"\n[REPORT] {raw_root / 'dga_final500_raw_self_check.csv'}")
-print(f"[REPORT] {raw_root / 'dga_final500_missing_trials_to_rerun.csv'}")
-print(f"[REPORT] {raw_root / 'dga_final500_failed_conditions.csv'}")
+print(f"\n[REPORT] {raw_root / 'clue_search_core_500_dga_raw_self_check.csv'}")
+print(f"[REPORT] {raw_root / 'clue_search_core_500_dga_missing_trials_to_rerun.csv'}")
+print(f"[REPORT] {raw_root / 'clue_search_core_500_dga_failed_conditions.csv'}")
 if failed_rows:
     print(f"[DONE WITH FAILURES] {len(failed_rows)} of {len(conditions)} conditions failed validation")
 else:

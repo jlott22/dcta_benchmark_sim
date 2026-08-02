@@ -6,15 +6,15 @@ import shlex
 from pathlib import Path
 
 REPO_ROOT = Path("/home/jlott/dcta_benchmark_sim")
-SCENARIO_FILE = "runs/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv"
+SCENARIO_FILE = "results/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv"
 SCENARIO_SEED = 20260702
 SCENARIO_TRIALS = 300
 GRID_SIZE = "19"
 MAX_TRIALS = "50"
 PYTHON_BIN = "${PYTHON_BIN:-python3}"
 
-HORIZON_ROOT = Path("runs/sensitivity_horizon_50")
-TOPK_ROOT = Path("runs/sensitivity_topk_50")
+HORIZON_ROOT = Path("results/sensitivity_clue_search_horizon_50")
+TOPK_ROOT = Path("results/sensitivity_clue_search_topk_50")
 
 N_HORIZON_PARTS = 8
 N_TOPK_PARTS = 8
@@ -25,7 +25,7 @@ DGA_MODULE = "benchmark_sim.algorithms.DGA:DGAAllocator"
 CONDITIONS = [
     ("ideal", "0%", "ideal", ""),
     ("bernoulli_025", "25%", "bernoulli", "0.25"),
-    ("ge_075", "25%", "gilbert_elliot", "0.75"),
+    ("ge_075", "25%", "gilbert_elliott", "0.75"),
     ("rayleigh_m50_66", "25%", "rayleigh_style", "-50.66"),
 ]
 
@@ -266,7 +266,7 @@ def write_part_script(root: Path, study: str, part_idx: int, jobs):
 
 
 def write_start_script():
-    script_path = REPO_ROOT / "runs" / "start_all_sensitivity_parts.sh"
+    script_path = REPO_ROOT / "results" / "start_all_sensitivity_parts.sh"
     script_path.parent.mkdir(parents=True, exist_ok=True)
 
     lines = [
@@ -275,17 +275,17 @@ def write_start_script():
         "set -o pipefail",
         "",
         f'cd "{REPO_ROOT}" || exit 1',
-        'mkdir -p runs/sensitivity_logs',
+        'mkdir -p results/sensitivity_logs',
         "",
         "echo \"Starting all 16 sensitivity part scripts at $(date -Is)\"",
         "",
     ]
 
     for i in range(N_HORIZON_PARTS):
-        lines.append(f'./{HORIZON_ROOT}/parts/horizon_core_{i}.sh > runs/sensitivity_logs/horizon_core_{i}.master.log 2>&1 &')
+        lines.append(f'./{HORIZON_ROOT}/parts/horizon_core_{i}.sh > results/sensitivity_logs/horizon_core_{i}.master.log 2>&1 &')
 
     for i in range(N_TOPK_PARTS):
-        lines.append(f'./{TOPK_ROOT}/parts/topk_core_{i}.sh > runs/sensitivity_logs/topk_core_{i}.master.log 2>&1 &')
+        lines.append(f'./{TOPK_ROOT}/parts/topk_core_{i}.sh > results/sensitivity_logs/topk_core_{i}.master.log 2>&1 &')
 
     lines += [
         "",
@@ -300,7 +300,7 @@ def write_start_script():
 
 
 def write_combine_script():
-    script_path = REPO_ROOT / "runs" / "combine_sensitivity_results.py"
+    script_path = REPO_ROOT / "results" / "combine_sensitivity_results.py"
 
     script = f'''#!/usr/bin/env python3
 from __future__ import annotations
@@ -419,8 +419,8 @@ def main():
 
     print("")
     print("Done. Next commands:")
-    print("  ./runs/start_all_sensitivity_parts.sh")
-    print("  python3 runs/combine_sensitivity_results.py")
+    print("  ./results/start_all_sensitivity_parts.sh")
+    print("  python3 results/combine_sensitivity_results.py")
 
 
 if __name__ == "__main__":

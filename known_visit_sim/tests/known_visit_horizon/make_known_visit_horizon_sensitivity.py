@@ -12,7 +12,7 @@ REPO_ROOT = Path(os.environ.get("DCTA_REPO_ROOT", DEFAULT_REPO_ROOT)).expanduser
 PYTHON_BIN = "${PYTHON_BIN:-python3}"
 RUNNER_REL = Path("known_visit_sim/tests/known_visit_horizon/run_known_visit_horizon_trial.py")
 SCENARIO_FILE = Path("scenarios/known_visit_10target_300.csv")
-ROOT = Path("known_target_sensitivity_test_results/horizon_results")
+ROOT = Path("results/sensitivity_known_target_visit_horizon_300")
 GRID_SIZE = 19
 NUM_ROBOTS = 4
 NUM_TARGETS = 10
@@ -26,7 +26,7 @@ ALGORITHMS = ["ACBBA", "PI", "HIPC", "DMCHBA", "DGA"]
 CONDITIONS = [
     ("ideal", "ideal", ""),
     ("bernoulli_025", "bernoulli", "0.25"),
-    ("ge_075", "gilbert_elliot", "0.75"),
+    ("ge_075", "gilbert_elliott", "0.75"),
     ("rayleigh_m50_66", "rayleigh_style", "-50.66"),
 ]
 WEIGHTS = {"DGA": 4, "DMCHBA": 4, "HIPC": 2, "PI": 2, "ACBBA": 2}

@@ -42,7 +42,7 @@ COMM_ENVS = [
     # label, comm_model, comm_level
     ("ideal", "ideal", "1.0"),
     ("bernoulli_drop_0_10", "bernoulli", "0.1"),
-    ("gilbert_elliot_0_90", "gilbert_elliot", "0.9"),
+    ("gilbert_elliott_0_90", "gilbert_elliott", "0.9"),
     ("rayleigh_sens_-59_4", "rayleigh_style", "-59.4"),
 ]
 
@@ -61,7 +61,7 @@ ALGORITHMS = [
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", default="/home/jlott/dcta_benchmark_sim")
-    parser.add_argument("--run-root", default=None, help="Default: <repo-root>/runs/known_visit_sensitivity_grid_density_50")
+    parser.add_argument("--run-root", default=None, help="Default: <repo-root>/results/sensitivity_known_target_visit_grid_density_50")
     parser.add_argument("--num-trials", type=int, default=50)
     parser.add_argument("--num-targets", type=int, default=10, help="Keep this at 10 for the known-target benchmark.")
     parser.add_argument("--scenario-seed", type=int, default=20260701)
@@ -130,7 +130,7 @@ def generate_known_target_scenarios_for_grid(
 def main() -> None:
     args = parse_args()
     repo_root = Path(args.repo_root).resolve()
-    run_root = Path(args.run_root).resolve() if args.run_root else repo_root / "runs" / "known_visit_sensitivity_grid_density_50"
+    run_root = Path(args.run_root).resolve() if args.run_root else repo_root / "results" / "sensitivity_known_target_visit_grid_density_50"
     scenario_dir = run_root / "scenarios"
     raw_dir = run_root / "raw"
     combined_dir = run_root / "combined"

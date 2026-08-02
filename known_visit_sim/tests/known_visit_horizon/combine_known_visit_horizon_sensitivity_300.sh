@@ -15,7 +15,7 @@ PYTHON_BIN="${PYTHON_BIN:-python3}"
 import csv
 from pathlib import Path
 
-ROOT = Path("known_target_sensitivity_test_results/horizon_results")
+ROOT = Path("results/sensitivity_known_target_visit_horizon_300")
 FILENAMES = [
     "system_performance.csv",
     "trial_summary.csv",

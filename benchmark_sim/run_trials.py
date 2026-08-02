@@ -91,7 +91,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--num-trials", type=int, default=1, help="Number of generated trials for coverage mode.")
     p.add_argument("--algorithm", required=True, help="Allocator class as module.path:ClassName.")
     p.add_argument("--algorithm-name", default=None, help="Optional display name for outputs.")
-    p.add_argument("--comm-model", default="ideal", choices=["ideal", "bernoulli", "gilbert_elliot", "rayleigh_style"])
+    p.add_argument(
+        "--comm-model",
+        default="ideal",
+        choices=["ideal", "bernoulli", "gilbert_elliott", "gilbert_elliot", "rayleigh_style"],
+        help="Communication model; gilbert_elliot is accepted as a legacy alias.",
+    )
     p.add_argument("--comm-level", type=float, default=None,
                    help="Model-specific level: Bernoulli drop probability, GE long-run delivery probability, or Rayleigh sensitivity dBm.")
     p.add_argument("--max-trials", type=parse_positive_int, default=None)
@@ -113,7 +118,7 @@ def parse_args() -> argparse.Namespace:
         help="Remove previously recorded failed rows and rerun only those trial IDs.",
     )
     p.add_argument("--seed", type=int, default=0)
-    p.add_argument("--out-dir", default="runs/default")
+    p.add_argument("--out-dir", default="results/default")
     p.add_argument("--grid-size", type=parse_positive_int, default=19)
     p.add_argument("--num-robots", type=parse_positive_int, default=4)
     p.add_argument("--robot-start-layout", default="edge_even", choices=["edge_even"])
@@ -309,6 +314,7 @@ def main() -> None:
     allocator_cls = load_allocator_class(args.algorithm)
     algorithm_name = args.algorithm_name or getattr(allocator_cls, "name", allocator_cls.__name__)
     comm_model = make_comm_model(args.comm_model, args.comm_level)
+    args.comm_model = comm_model.name
     comm_level = comm_model.level_label()
     scenarios = scenarios_for_args(args)
     validate_scenarios(

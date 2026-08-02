@@ -11,7 +11,8 @@
 clear; clc;
 
 scriptDir = fileparts(mfilename('fullpath'));
-inputFile = fullfile(scriptDir, 'horizon_results', 'combined', 'system_performance.csv');
+repoRoot = fileparts(fileparts(scriptDir));
+inputFile = fullfile(repoRoot, 'results', 'sensitivity_clue_search_horizon_300', 'combined', 'system_performance.csv');
 metricName = 'post_clue_steps_to_find';
 
 T = readtable(inputFile, 'TextType', 'string');

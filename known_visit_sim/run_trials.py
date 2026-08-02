@@ -70,12 +70,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--scenario-file", required=True)
     parser.add_argument("--algorithm", required=True)
     parser.add_argument("--algorithm-name", default=None)
-    parser.add_argument("--comm-model", default="ideal",
-                        choices=["ideal", "bernoulli", "gilbert_elliot", "rayleigh_style"])
+    parser.add_argument(
+        "--comm-model",
+        default="ideal",
+        choices=["ideal", "bernoulli", "gilbert_elliott", "gilbert_elliot", "rayleigh_style"],
+        help="Communication model; gilbert_elliot is accepted as a legacy alias.",
+    )
     parser.add_argument("--comm-level", type=float, default=None)
     parser.add_argument("--max-trials", type=int, default=None)
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--out-dir", default="runs/known_visit/default")
+    parser.add_argument("--out-dir", default="results/known_target_visit/default")
     parser.add_argument("--grid-size", type=positive_int, default=19)
     parser.add_argument("--num-robots", type=positive_int, default=4)
     parser.add_argument("--robot-start-layout", choices=["edge_even"], default="edge_even")
@@ -193,6 +197,7 @@ def main() -> None:
     allocator_cls = load_allocator_class(args.algorithm)
     algorithm = args.algorithm_name or getattr(allocator_cls, "name", allocator_cls.__name__)
     comm = make_comm_model(args.comm_model, args.comm_level)
+    args.comm_model = comm.name
     comm_level = comm.level_label()
     output_config = {
         "sim_config": cfg.to_dict(),
