@@ -6,6 +6,22 @@ from typing import Dict, List, Optional, Tuple
 Cell = Tuple[int, int]
 Heading = Tuple[int, int]
 EAST: Heading = (1, 0)
+DEBUG_CAP_REFERENCE_EVENTS = 10_000
+DEBUG_CAP_REFERENCE_GRID_SIZE = 19
+DEBUG_CAP_REFERENCE_ROBOTS = 4
+DEBUG_CAP_MIN_EVENTS = 5_000
+
+
+def adaptive_debug_max_events(grid_size: int, num_robots: int) -> int:
+    """Scale the event cap with grid cells and robot count."""
+    if grid_size <= 0:
+        raise ValueError("grid_size must be positive")
+    if num_robots <= 0:
+        raise ValueError("num_robots must be positive")
+    numerator = DEBUG_CAP_REFERENCE_EVENTS * grid_size * grid_size * num_robots
+    denominator = DEBUG_CAP_REFERENCE_GRID_SIZE**2 * DEBUG_CAP_REFERENCE_ROBOTS
+    scaled = (numerator + denominator - 1) // denominator
+    return max(DEBUG_CAP_MIN_EVENTS, scaled)
 
 
 def generate_robot_ids(num_robots: int) -> List[str]:
@@ -58,7 +74,7 @@ class SimConfig:
     collision_goal_backoff_max_s: float = 5.0
     collision_goal_quarantine_schedule_s: Tuple[float, ...] = (5.0, 15.0, 45.0, 120.0)
     stalled_allocation_recovery_s: float = 120.0
-    debug_max_events: int = 5_000
+    debug_max_events: Optional[int] = None
     debug_max_stagnant_events: int = 2_000
 
     commitment_horizon: Optional[int] = None
@@ -69,6 +85,10 @@ class SimConfig:
             raise ValueError("grid_size must be positive")
         if not self.robot_ids or len(self.robot_ids) > self.grid_size:
             raise ValueError("edge_even requires 1 <= num_robots <= grid_size")
+        if self.debug_max_events is None:
+            self.debug_max_events = adaptive_debug_max_events(self.grid_size, len(self.robot_ids))
+        elif self.debug_max_events <= 0:
+            raise ValueError("debug_max_events must be positive")
         if len(set(self.robot_ids)) != len(self.robot_ids):
             raise ValueError("robot_ids must be unique")
         if not self.start_positions:

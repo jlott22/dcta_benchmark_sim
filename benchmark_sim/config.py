@@ -11,6 +11,22 @@ NORTH: Heading = (0, 1)
 SOUTH: Heading = (0, -1)
 WEST: Heading = (-1, 0)
 LOGIC_REVISION = "dcta_parity_v1"
+DEBUG_CAP_REFERENCE_EVENTS = 10_000
+DEBUG_CAP_REFERENCE_GRID_SIZE = 19
+DEBUG_CAP_REFERENCE_ROBOTS = 4
+DEBUG_CAP_MIN_EVENTS = 5_000
+
+
+def adaptive_debug_max_events(grid_size: int, num_robots: int) -> int:
+    """Scale the event cap with grid cells and robot count."""
+    if grid_size <= 0:
+        raise ValueError("grid_size must be positive")
+    if num_robots <= 0:
+        raise ValueError("num_robots must be positive")
+    numerator = DEBUG_CAP_REFERENCE_EVENTS * grid_size * grid_size * num_robots
+    denominator = DEBUG_CAP_REFERENCE_GRID_SIZE**2 * DEBUG_CAP_REFERENCE_ROBOTS
+    scaled = (numerator + denominator - 1) // denominator
+    return max(DEBUG_CAP_MIN_EVENTS, scaled)
 
 
 def generate_robot_ids(num_robots: int) -> List[str]:
@@ -78,8 +94,8 @@ class SimConfig:
     collision_intent_settle_s: float = 0.10
     collision_goal_backoff_max_s: float = 5.0
 
-    # Safety cap is for implementation bugs, not an experimental timeout.
-    debug_max_events: int = 5_000
+    # None selects the grid/robot-scaled safety cap; an integer is an explicit override.
+    debug_max_events: Optional[int] = None
 
     # Output behavior. Metric exports are CSV-only.
     write_parquet: bool = False
@@ -97,6 +113,10 @@ class SimConfig:
     def __post_init__(self) -> None:
         if not self.robot_ids:
             raise ValueError("at least one robot is required")
+        if self.debug_max_events is None:
+            self.debug_max_events = adaptive_debug_max_events(self.grid_size, len(self.robot_ids))
+        elif self.debug_max_events <= 0:
+            raise ValueError("debug_max_events must be positive")
         if not self.start_positions:
             if self.robot_start_layout != "edge_even":
                 raise ValueError(f"unsupported robot start layout: {self.robot_start_layout}")

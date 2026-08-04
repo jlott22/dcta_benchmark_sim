@@ -84,6 +84,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-robots", type=positive_int, default=4)
     parser.add_argument("--robot-start-layout", choices=["edge_even"], default="edge_even")
     parser.add_argument("--condition-id", default="")
+    parser.add_argument(
+        "--debug-max-events",
+        type=positive_int,
+        default=None,
+        help=(
+            "Abort a non-progressing trial after this many scheduled events. "
+            "By default, scale from 10000 events at grid 19 with 4 robots."
+        ),
+    )
     parser.add_argument("--commitment-horizon", type=positive_int, default=None)
     parser.add_argument("--max-candidate-cells", type=candidate_limit, default=None)
     return parser.parse_args()
@@ -188,6 +197,7 @@ def main() -> None:
         start_headings={rid: EAST for rid in robot_ids},
         robot_start_layout=args.robot_start_layout,
         condition_id=args.condition_id,
+        debug_max_events=args.debug_max_events,
         commitment_horizon=args.commitment_horizon,
         max_candidate_cells=args.max_candidate_cells,
     )

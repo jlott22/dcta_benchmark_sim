@@ -109,8 +109,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--debug-max-events",
         type=parse_positive_int,
-        default=5_000,
-        help="Abort a non-progressing trial after this many scheduled events (default: 5000).",
+        default=None,
+        help=(
+            "Abort a non-progressing trial after this many scheduled events. "
+            "By default, scale from 10000 events at grid 19 with 4 robots."
+        ),
     )
     p.add_argument(
         "--retry-failed",
