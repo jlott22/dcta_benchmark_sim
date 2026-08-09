@@ -1,0 +1,577 @@
+stage,condition_id,grid_size,target_cells_per_robot,robot_count,comm_label,algorithm_key,expected_trials,completed_trials,failed_trials,reported_failures,incomplete_trials,missing_trials,failure_types,failed_trial_ids
+grid_clue,g14_d220_ideal_cbaa,14,220,1,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g14_d220_ideal_acbba,14,220,1,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g14_d220_ideal_dmchba,14,220,1,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g14_d220_ideal_hipc,14,220,1,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g14_d220_ideal_pi,14,220,1,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g14_d220_ideal_dga,14,220,1,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g14_d220_bernoulli_025_cbaa,14,220,1,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g14_d220_bernoulli_025_acbba,14,220,1,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g14_d220_bernoulli_025_dmchba,14,220,1,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g14_d220_bernoulli_025_hipc,14,220,1,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g14_d220_bernoulli_025_pi,14,220,1,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g14_d220_bernoulli_025_dga,14,220,1,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g14_d140_ideal_cbaa,14,140,2,ideal,cbaa,50,49,1,1,0,0,"{""RuntimeError"": 1}",48
+grid_clue,g14_d140_ideal_acbba,14,140,2,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g14_d140_ideal_dmchba,14,140,2,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g14_d140_ideal_hipc,14,140,2,ideal,hipc,50,49,1,1,0,0,"{""RuntimeError"": 1}",2
+grid_clue,g14_d140_ideal_pi,14,140,2,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g14_d140_ideal_dga,14,140,2,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g14_d140_bernoulli_025_cbaa,14,140,2,bernoulli_025,cbaa,50,47,3,3,0,0,"{""RuntimeError"": 3}",2 47 48
+grid_clue,g14_d140_bernoulli_025_acbba,14,140,2,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g14_d140_bernoulli_025_dmchba,14,140,2,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g14_d140_bernoulli_025_hipc,14,140,2,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g14_d140_bernoulli_025_pi,14,140,2,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g14_d140_bernoulli_025_dga,14,140,2,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g14_d85_ideal_cbaa,14,85,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g14_d85_ideal_acbba,14,85,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g14_d85_ideal_dmchba,14,85,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g14_d85_ideal_hipc,14,85,3,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g14_d85_ideal_pi,14,85,3,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g14_d85_ideal_dga,14,85,3,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g14_d85_bernoulli_025_cbaa,14,85,3,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g14_d85_bernoulli_025_acbba,14,85,3,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g14_d85_bernoulli_025_dmchba,14,85,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g14_d85_bernoulli_025_hipc,14,85,3,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g14_d85_bernoulli_025_pi,14,85,3,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g14_d85_bernoulli_025_dga,14,85,3,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g14_d50_ideal_cbaa,14,50,4,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g14_d50_ideal_acbba,14,50,4,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g14_d50_ideal_dmchba,14,50,4,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g14_d50_ideal_hipc,14,50,4,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g14_d50_ideal_pi,14,50,4,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g14_d50_ideal_dga,14,50,4,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g14_d50_bernoulli_025_cbaa,14,50,4,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g14_d50_bernoulli_025_acbba,14,50,4,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g14_d50_bernoulli_025_dmchba,14,50,4,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g14_d50_bernoulli_025_hipc,14,50,4,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g14_d50_bernoulli_025_pi,14,50,4,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g14_d50_bernoulli_025_dga,14,50,4,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g19_d220_ideal_cbaa,19,220,2,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g19_d220_ideal_acbba,19,220,2,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g19_d220_ideal_dmchba,19,220,2,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g19_d220_ideal_hipc,19,220,2,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g19_d220_ideal_pi,19,220,2,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g19_d220_ideal_dga,19,220,2,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g19_d220_bernoulli_025_cbaa,19,220,2,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g19_d220_bernoulli_025_acbba,19,220,2,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g19_d220_bernoulli_025_dmchba,19,220,2,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g19_d220_bernoulli_025_hipc,19,220,2,bernoulli_025,hipc,50,49,1,1,0,0,"{""RuntimeError"": 1}",40
+grid_clue,g19_d220_bernoulli_025_pi,19,220,2,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g19_d220_bernoulli_025_dga,19,220,2,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g19_d140_ideal_cbaa,19,140,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g19_d140_ideal_acbba,19,140,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g19_d140_ideal_dmchba,19,140,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g19_d140_ideal_hipc,19,140,3,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g19_d140_ideal_pi,19,140,3,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g19_d140_ideal_dga,19,140,3,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g19_d140_bernoulli_025_cbaa,19,140,3,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g19_d140_bernoulli_025_acbba,19,140,3,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g19_d140_bernoulli_025_dmchba,19,140,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g19_d140_bernoulli_025_hipc,19,140,3,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g19_d140_bernoulli_025_pi,19,140,3,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g19_d140_bernoulli_025_dga,19,140,3,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g19_d85_ideal_cbaa,19,85,5,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g19_d85_ideal_acbba,19,85,5,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g19_d85_ideal_dmchba,19,85,5,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g19_d85_ideal_hipc,19,85,5,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g19_d85_ideal_pi,19,85,5,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g19_d85_ideal_dga,19,85,5,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g19_d85_bernoulli_025_cbaa,19,85,5,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g19_d85_bernoulli_025_acbba,19,85,5,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g19_d85_bernoulli_025_dmchba,19,85,5,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g19_d85_bernoulli_025_hipc,19,85,5,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g19_d85_bernoulli_025_pi,19,85,5,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g19_d85_bernoulli_025_dga,19,85,5,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g19_d50_ideal_cbaa,19,50,8,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g19_d50_ideal_acbba,19,50,8,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g19_d50_ideal_dmchba,19,50,8,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g19_d50_ideal_hipc,19,50,8,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g19_d50_ideal_pi,19,50,8,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g19_d50_ideal_dga,19,50,8,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g19_d50_bernoulli_025_cbaa,19,50,8,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g19_d50_bernoulli_025_acbba,19,50,8,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g19_d50_bernoulli_025_dmchba,19,50,8,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g19_d50_bernoulli_025_hipc,19,50,8,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g19_d50_bernoulli_025_pi,19,50,8,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g19_d50_bernoulli_025_dga,19,50,8,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g25_d220_ideal_cbaa,25,220,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g25_d220_ideal_acbba,25,220,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g25_d220_ideal_dmchba,25,220,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g25_d220_ideal_hipc,25,220,3,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g25_d220_ideal_pi,25,220,3,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g25_d220_ideal_dga,25,220,3,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g25_d220_bernoulli_025_cbaa,25,220,3,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g25_d220_bernoulli_025_acbba,25,220,3,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g25_d220_bernoulli_025_dmchba,25,220,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g25_d220_bernoulli_025_hipc,25,220,3,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g25_d220_bernoulli_025_pi,25,220,3,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g25_d220_bernoulli_025_dga,25,220,3,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g25_d140_ideal_cbaa,25,140,5,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g25_d140_ideal_acbba,25,140,5,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g25_d140_ideal_dmchba,25,140,5,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g25_d140_ideal_hipc,25,140,5,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g25_d140_ideal_pi,25,140,5,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g25_d140_ideal_dga,25,140,5,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g25_d140_bernoulli_025_cbaa,25,140,5,bernoulli_025,cbaa,50,48,2,2,0,0,"{""RuntimeError"": 2}",24 48
+grid_clue,g25_d140_bernoulli_025_acbba,25,140,5,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g25_d140_bernoulli_025_dmchba,25,140,5,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g25_d140_bernoulli_025_hipc,25,140,5,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g25_d140_bernoulli_025_pi,25,140,5,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g25_d140_bernoulli_025_dga,25,140,5,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g25_d85_ideal_cbaa,25,85,8,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g25_d85_ideal_acbba,25,85,8,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g25_d85_ideal_dmchba,25,85,8,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g25_d85_ideal_hipc,25,85,8,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g25_d85_ideal_pi,25,85,8,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g25_d85_ideal_dga,25,85,8,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g25_d85_bernoulli_025_cbaa,25,85,8,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g25_d85_bernoulli_025_acbba,25,85,8,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g25_d85_bernoulli_025_dmchba,25,85,8,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g25_d85_bernoulli_025_hipc,25,85,8,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g25_d85_bernoulli_025_pi,25,85,8,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g25_d85_bernoulli_025_dga,25,85,8,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g25_d50_ideal_cbaa,25,50,13,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g25_d50_ideal_acbba,25,50,13,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g25_d50_ideal_dmchba,25,50,13,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g25_d50_ideal_hipc,25,50,13,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g25_d50_ideal_pi,25,50,13,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g25_d50_ideal_dga,25,50,13,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g25_d50_bernoulli_025_cbaa,25,50,13,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_clue,g25_d50_bernoulli_025_acbba,25,50,13,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_clue,g25_d50_bernoulli_025_dmchba,25,50,13,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g25_d50_bernoulli_025_hipc,25,50,13,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_clue,g25_d50_bernoulli_025_pi,25,50,13,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_clue,g25_d50_bernoulli_025_dga,25,50,13,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g34_d220_ideal_cbaa,34,220,6,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g34_d220_ideal_acbba,34,220,6,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g34_d220_ideal_dmchba,34,220,6,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g34_d220_ideal_hipc,34,220,6,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g34_d220_ideal_pi,34,220,6,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g34_d220_ideal_dga,34,220,6,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g34_d220_bernoulli_025_cbaa,34,220,6,bernoulli_025,cbaa,50,45,5,5,0,0,"{""RuntimeError"": 5}",13 18 33 35 38
+grid_clue,g34_d220_bernoulli_025_acbba,34,220,6,bernoulli_025,acbba,50,49,1,1,0,0,"{""RuntimeError"": 1}",38
+grid_clue,g34_d220_bernoulli_025_dmchba,34,220,6,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g34_d220_bernoulli_025_hipc,34,220,6,bernoulli_025,hipc,50,47,3,3,0,0,"{""RuntimeError"": 3}",13 35 38
+grid_clue,g34_d220_bernoulli_025_pi,34,220,6,bernoulli_025,pi,50,47,3,3,0,0,"{""RuntimeError"": 3}",13 18 38
+grid_clue,g34_d220_bernoulli_025_dga,34,220,6,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g34_d140_ideal_cbaa,34,140,9,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g34_d140_ideal_acbba,34,140,9,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g34_d140_ideal_dmchba,34,140,9,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g34_d140_ideal_hipc,34,140,9,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g34_d140_ideal_pi,34,140,9,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g34_d140_ideal_dga,34,140,9,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g34_d140_bernoulli_025_cbaa,34,140,9,bernoulli_025,cbaa,50,46,4,4,0,0,"{""RuntimeError"": 4}",11 13 24 38
+grid_clue,g34_d140_bernoulli_025_acbba,34,140,9,bernoulli_025,acbba,50,48,2,2,0,0,"{""RuntimeError"": 2}",13 24
+grid_clue,g34_d140_bernoulli_025_dmchba,34,140,9,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g34_d140_bernoulli_025_hipc,34,140,9,bernoulli_025,hipc,50,47,3,3,0,0,"{""RuntimeError"": 3}",13 26 38
+grid_clue,g34_d140_bernoulli_025_pi,34,140,9,bernoulli_025,pi,50,47,3,3,0,0,"{""RuntimeError"": 3}",13 24 38
+grid_clue,g34_d140_bernoulli_025_dga,34,140,9,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_clue,g34_d85_ideal_cbaa,34,85,14,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g34_d85_ideal_acbba,34,85,14,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g34_d85_ideal_dmchba,34,85,14,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g34_d85_ideal_hipc,34,85,14,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g34_d85_ideal_pi,34,85,14,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g34_d85_ideal_dga,34,85,14,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g34_d85_bernoulli_025_cbaa,34,85,14,bernoulli_025,cbaa,50,41,9,9,0,0,"{""RuntimeError"": 9}",7 11 13 15 18 35 38 40 43
+grid_clue,g34_d85_bernoulli_025_acbba,34,85,14,bernoulli_025,acbba,50,46,4,4,0,0,"{""RuntimeError"": 4}",7 13 18 38
+grid_clue,g34_d85_bernoulli_025_dmchba,34,85,14,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g34_d85_bernoulli_025_hipc,34,85,14,bernoulli_025,hipc,50,43,7,7,0,0,"{""RuntimeError"": 7}",7 13 15 18 35 38 40
+grid_clue,g34_d85_bernoulli_025_pi,34,85,14,bernoulli_025,pi,50,45,5,5,0,0,"{""RuntimeError"": 5}",7 13 18 38 40
+grid_clue,g34_d85_bernoulli_025_dga,34,85,14,bernoulli_025,dga,50,48,2,2,0,0,"{""RuntimeError"": 2}",35 40
+grid_clue,g34_d50_ideal_cbaa,34,50,24,ideal,cbaa,50,50,0,0,0,0,{},
+grid_clue,g34_d50_ideal_acbba,34,50,24,ideal,acbba,50,50,0,0,0,0,{},
+grid_clue,g34_d50_ideal_dmchba,34,50,24,ideal,dmchba,50,50,0,0,0,0,{},
+grid_clue,g34_d50_ideal_hipc,34,50,24,ideal,hipc,50,50,0,0,0,0,{},
+grid_clue,g34_d50_ideal_pi,34,50,24,ideal,pi,50,50,0,0,0,0,{},
+grid_clue,g34_d50_ideal_dga,34,50,24,ideal,dga,50,50,0,0,0,0,{},
+grid_clue,g34_d50_bernoulli_025_cbaa,34,50,24,bernoulli_025,cbaa,50,37,13,13,0,0,"{""RuntimeError"": 13}",4 5 7 9 11 13 15 18 34 35 38 40 48
+grid_clue,g34_d50_bernoulli_025_acbba,34,50,24,bernoulli_025,acbba,50,43,7,7,0,0,"{""RuntimeError"": 7}",5 7 13 15 18 38 40
+grid_clue,g34_d50_bernoulli_025_dmchba,34,50,24,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_clue,g34_d50_bernoulli_025_hipc,34,50,24,bernoulli_025,hipc,50,41,9,9,0,0,"{""RuntimeError"": 9}",4 7 11 13 15 18 35 38 40
+grid_clue,g34_d50_bernoulli_025_pi,34,50,24,bernoulli_025,pi,50,39,11,11,0,0,"{""RuntimeError"": 11}",5 7 9 11 13 15 18 34 35 38 40
+grid_clue,g34_d50_bernoulli_025_dga,34,50,24,bernoulli_025,dga,50,49,1,1,0,0,"{""RuntimeError"": 1}",40
+grid_known,g14_d220_t10_ideal_cbaa,14,220,1,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_ideal_acbba,14,220,1,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_ideal_dmchba,14,220,1,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_ideal_hipc,14,220,1,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_ideal_pi,14,220,1,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_ideal_dga,14,220,1,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_bernoulli_025_cbaa,14,220,1,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_bernoulli_025_acbba,14,220,1,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_bernoulli_025_dmchba,14,220,1,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_bernoulli_025_hipc,14,220,1,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_bernoulli_025_pi,14,220,1,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g14_d220_t10_bernoulli_025_dga,14,220,1,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_ideal_cbaa,14,140,2,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_ideal_acbba,14,140,2,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_ideal_dmchba,14,140,2,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_ideal_hipc,14,140,2,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_ideal_pi,14,140,2,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_ideal_dga,14,140,2,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_bernoulli_025_cbaa,14,140,2,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_bernoulli_025_acbba,14,140,2,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_bernoulli_025_dmchba,14,140,2,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_bernoulli_025_hipc,14,140,2,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_bernoulli_025_pi,14,140,2,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g14_d140_t10_bernoulli_025_dga,14,140,2,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_ideal_cbaa,14,85,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_ideal_acbba,14,85,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_ideal_dmchba,14,85,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_ideal_hipc,14,85,3,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_ideal_pi,14,85,3,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_ideal_dga,14,85,3,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_bernoulli_025_cbaa,14,85,3,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_bernoulli_025_acbba,14,85,3,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_bernoulli_025_dmchba,14,85,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_bernoulli_025_hipc,14,85,3,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_bernoulli_025_pi,14,85,3,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g14_d85_t10_bernoulli_025_dga,14,85,3,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_ideal_cbaa,14,50,4,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_ideal_acbba,14,50,4,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_ideal_dmchba,14,50,4,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_ideal_hipc,14,50,4,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_ideal_pi,14,50,4,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_ideal_dga,14,50,4,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_bernoulli_025_cbaa,14,50,4,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_bernoulli_025_acbba,14,50,4,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_bernoulli_025_dmchba,14,50,4,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_bernoulli_025_hipc,14,50,4,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_bernoulli_025_pi,14,50,4,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g14_d50_t10_bernoulli_025_dga,14,50,4,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_ideal_cbaa,19,220,2,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_ideal_acbba,19,220,2,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_ideal_dmchba,19,220,2,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_ideal_hipc,19,220,2,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_ideal_pi,19,220,2,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_ideal_dga,19,220,2,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_bernoulli_025_cbaa,19,220,2,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_bernoulli_025_acbba,19,220,2,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_bernoulli_025_dmchba,19,220,2,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_bernoulli_025_hipc,19,220,2,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_bernoulli_025_pi,19,220,2,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g19_d220_t10_bernoulli_025_dga,19,220,2,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_ideal_cbaa,19,140,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_ideal_acbba,19,140,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_ideal_dmchba,19,140,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_ideal_hipc,19,140,3,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_ideal_pi,19,140,3,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_ideal_dga,19,140,3,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_bernoulli_025_cbaa,19,140,3,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_bernoulli_025_acbba,19,140,3,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_bernoulli_025_dmchba,19,140,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_bernoulli_025_hipc,19,140,3,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_bernoulli_025_pi,19,140,3,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g19_d140_t10_bernoulli_025_dga,19,140,3,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_ideal_cbaa,19,85,5,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_ideal_acbba,19,85,5,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_ideal_dmchba,19,85,5,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_ideal_hipc,19,85,5,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_ideal_pi,19,85,5,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_ideal_dga,19,85,5,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_bernoulli_025_cbaa,19,85,5,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_bernoulli_025_acbba,19,85,5,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_bernoulli_025_dmchba,19,85,5,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_bernoulli_025_hipc,19,85,5,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_bernoulli_025_pi,19,85,5,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g19_d85_t10_bernoulli_025_dga,19,85,5,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_ideal_cbaa,19,50,8,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_ideal_acbba,19,50,8,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_ideal_dmchba,19,50,8,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_ideal_hipc,19,50,8,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_ideal_pi,19,50,8,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_ideal_dga,19,50,8,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_bernoulli_025_cbaa,19,50,8,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_bernoulli_025_acbba,19,50,8,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_bernoulli_025_dmchba,19,50,8,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_bernoulli_025_hipc,19,50,8,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_bernoulli_025_pi,19,50,8,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g19_d50_t10_bernoulli_025_dga,19,50,8,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_ideal_cbaa,25,220,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_ideal_acbba,25,220,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_ideal_dmchba,25,220,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_ideal_hipc,25,220,3,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_ideal_pi,25,220,3,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_ideal_dga,25,220,3,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_bernoulli_025_cbaa,25,220,3,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_bernoulli_025_acbba,25,220,3,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_bernoulli_025_dmchba,25,220,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_bernoulli_025_hipc,25,220,3,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_bernoulli_025_pi,25,220,3,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g25_d220_t10_bernoulli_025_dga,25,220,3,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_ideal_cbaa,25,140,5,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_ideal_acbba,25,140,5,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_ideal_dmchba,25,140,5,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_ideal_hipc,25,140,5,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_ideal_pi,25,140,5,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_ideal_dga,25,140,5,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_bernoulli_025_cbaa,25,140,5,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_bernoulli_025_acbba,25,140,5,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_bernoulli_025_dmchba,25,140,5,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_bernoulli_025_hipc,25,140,5,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_bernoulli_025_pi,25,140,5,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g25_d140_t10_bernoulli_025_dga,25,140,5,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_ideal_cbaa,25,85,8,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_ideal_acbba,25,85,8,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_ideal_dmchba,25,85,8,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_ideal_hipc,25,85,8,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_ideal_pi,25,85,8,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_ideal_dga,25,85,8,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_bernoulli_025_cbaa,25,85,8,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_bernoulli_025_acbba,25,85,8,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_bernoulli_025_dmchba,25,85,8,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_bernoulli_025_hipc,25,85,8,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_bernoulli_025_pi,25,85,8,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g25_d85_t10_bernoulli_025_dga,25,85,8,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_ideal_cbaa,25,50,13,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_ideal_acbba,25,50,13,ideal,acbba,50,48,2,2,0,0,"{""RuntimeError"": 2}",27 39
+grid_known,g25_d50_t10_ideal_dmchba,25,50,13,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_ideal_hipc,25,50,13,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_ideal_pi,25,50,13,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_ideal_dga,25,50,13,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_bernoulli_025_cbaa,25,50,13,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_bernoulli_025_acbba,25,50,13,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_bernoulli_025_dmchba,25,50,13,bernoulli_025,dmchba,50,49,1,1,0,0,"{""RuntimeError"": 1}",33
+grid_known,g25_d50_t10_bernoulli_025_hipc,25,50,13,bernoulli_025,hipc,50,49,1,1,0,0,"{""RuntimeError"": 1}",12
+grid_known,g25_d50_t10_bernoulli_025_pi,25,50,13,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g25_d50_t10_bernoulli_025_dga,25,50,13,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_ideal_cbaa,34,220,6,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_ideal_acbba,34,220,6,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_ideal_dmchba,34,220,6,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_ideal_hipc,34,220,6,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_ideal_pi,34,220,6,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_ideal_dga,34,220,6,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_bernoulli_025_cbaa,34,220,6,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_bernoulli_025_acbba,34,220,6,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_bernoulli_025_dmchba,34,220,6,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_bernoulli_025_hipc,34,220,6,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_bernoulli_025_pi,34,220,6,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g34_d220_t10_bernoulli_025_dga,34,220,6,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_ideal_cbaa,34,140,9,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_ideal_acbba,34,140,9,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_ideal_dmchba,34,140,9,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_ideal_hipc,34,140,9,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_ideal_pi,34,140,9,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_ideal_dga,34,140,9,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_bernoulli_025_cbaa,34,140,9,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_bernoulli_025_acbba,34,140,9,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_bernoulli_025_dmchba,34,140,9,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_bernoulli_025_hipc,34,140,9,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_bernoulli_025_pi,34,140,9,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g34_d140_t10_bernoulli_025_dga,34,140,9,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_ideal_cbaa,34,85,14,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_ideal_acbba,34,85,14,ideal,acbba,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_ideal_dmchba,34,85,14,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_ideal_hipc,34,85,14,ideal,hipc,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_ideal_pi,34,85,14,ideal,pi,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_ideal_dga,34,85,14,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_bernoulli_025_cbaa,34,85,14,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_bernoulli_025_acbba,34,85,14,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_bernoulli_025_dmchba,34,85,14,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_bernoulli_025_hipc,34,85,14,bernoulli_025,hipc,50,44,6,6,0,0,"{""RuntimeError"": 6}",3 4 9 13 25 49
+grid_known,g34_d85_t10_bernoulli_025_pi,34,85,14,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_known,g34_d85_t10_bernoulli_025_dga,34,85,14,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_known,g34_d50_t10_ideal_cbaa,34,50,24,ideal,cbaa,50,50,0,0,0,0,{},
+grid_known,g34_d50_t10_ideal_acbba,34,50,24,ideal,acbba,50,49,1,1,0,0,"{""RuntimeError"": 1}",7
+grid_known,g34_d50_t10_ideal_dmchba,34,50,24,ideal,dmchba,50,50,0,0,0,0,{},
+grid_known,g34_d50_t10_ideal_hipc,34,50,24,ideal,hipc,50,38,12,12,0,0,"{""RuntimeError"": 12}",6 9 23 24 25 26 33 36 40 42 46 47
+grid_known,g34_d50_t10_ideal_pi,34,50,24,ideal,pi,50,35,15,15,0,0,"{""RuntimeError"": 15}",3 13 14 17 20 23 25 27 30 33 34 35 37 40 41
+grid_known,g34_d50_t10_ideal_dga,34,50,24,ideal,dga,50,50,0,0,0,0,{},
+grid_known,g34_d50_t10_bernoulli_025_cbaa,34,50,24,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_known,g34_d50_t10_bernoulli_025_acbba,34,50,24,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_known,g34_d50_t10_bernoulli_025_dmchba,34,50,24,bernoulli_025,dmchba,50,49,1,1,0,0,"{""RuntimeError"": 1}",12
+grid_known,g34_d50_t10_bernoulli_025_hipc,34,50,24,bernoulli_025,hipc,50,34,16,16,0,0,"{""RuntimeError"": 16}",9 11 12 13 14 15 17 25 26 27 31 32 33 34 36 39
+grid_known,g34_d50_t10_bernoulli_025_pi,34,50,24,bernoulli_025,pi,50,42,8,8,0,0,"{""RuntimeError"": 8}",1 5 11 14 24 34 46 49
+grid_known,g34_d50_t10_bernoulli_025_dga,34,50,24,bernoulli_025,dga,50,49,1,1,0,0,"{""RuntimeError"": 1}",21
+grid_coverage,coverage_g14_d220_ideal_cbaa,14,220,1,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_ideal_acbba,14,220,1,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_ideal_dmchba,14,220,1,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_ideal_hipc,14,220,1,ideal,hipc,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_ideal_pi,14,220,1,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_ideal_dga,14,220,1,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_bernoulli_025_cbaa,14,220,1,bernoulli_025,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_bernoulli_025_acbba,14,220,1,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_bernoulli_025_dmchba,14,220,1,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_bernoulli_025_hipc,14,220,1,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_bernoulli_025_pi,14,220,1,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d220_bernoulli_025_dga,14,220,1,bernoulli_025,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d140_ideal_cbaa,14,140,2,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d140_ideal_acbba,14,140,2,ideal,acbba,50,49,1,1,0,0,"{""RuntimeError"": 1}",9
+grid_coverage,coverage_g14_d140_ideal_dmchba,14,140,2,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d140_ideal_hipc,14,140,2,ideal,hipc,50,49,1,1,0,0,"{""RuntimeError"": 1}",42
+grid_coverage,coverage_g14_d140_ideal_pi,14,140,2,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d140_ideal_dga,14,140,2,ideal,dga,50,47,3,3,0,0,"{""RuntimeError"": 3}",2 35 42
+grid_coverage,coverage_g14_d140_bernoulli_025_cbaa,14,140,2,bernoulli_025,cbaa,50,37,13,13,0,0,"{""RuntimeError"": 13}",0 3 7 14 15 17 25 27 37 46 47 48 49
+grid_coverage,coverage_g14_d140_bernoulli_025_acbba,14,140,2,bernoulli_025,acbba,50,48,2,2,0,0,"{""RuntimeError"": 2}",15 42
+grid_coverage,coverage_g14_d140_bernoulli_025_dmchba,14,140,2,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d140_bernoulli_025_hipc,14,140,2,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d140_bernoulli_025_pi,14,140,2,bernoulli_025,pi,50,47,3,3,0,0,"{""RuntimeError"": 3}",2 34 46
+grid_coverage,coverage_g14_d140_bernoulli_025_dga,14,140,2,bernoulli_025,dga,50,46,4,4,0,0,"{""RuntimeError"": 4}",9 24 44 45
+grid_coverage,coverage_g14_d85_ideal_cbaa,14,85,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d85_ideal_acbba,14,85,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d85_ideal_dmchba,14,85,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d85_ideal_hipc,14,85,3,ideal,hipc,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d85_ideal_pi,14,85,3,ideal,pi,50,49,1,1,0,0,"{""RuntimeError"": 1}",12
+grid_coverage,coverage_g14_d85_ideal_dga,14,85,3,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d85_bernoulli_025_cbaa,14,85,3,bernoulli_025,cbaa,50,43,7,7,0,0,"{""RuntimeError"": 7}",7 8 14 26 29 36 37
+grid_coverage,coverage_g14_d85_bernoulli_025_acbba,14,85,3,bernoulli_025,acbba,50,48,2,2,0,0,"{""RuntimeError"": 2}",12 40
+grid_coverage,coverage_g14_d85_bernoulli_025_dmchba,14,85,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d85_bernoulli_025_hipc,14,85,3,bernoulli_025,hipc,50,49,1,1,0,0,"{""RuntimeError"": 1}",20
+grid_coverage,coverage_g14_d85_bernoulli_025_pi,14,85,3,bernoulli_025,pi,50,49,1,1,0,0,"{""RuntimeError"": 1}",23
+grid_coverage,coverage_g14_d85_bernoulli_025_dga,14,85,3,bernoulli_025,dga,50,49,1,1,0,0,"{""RuntimeError"": 1}",26
+grid_coverage,coverage_g14_d50_ideal_cbaa,14,50,4,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d50_ideal_acbba,14,50,4,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d50_ideal_dmchba,14,50,4,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d50_ideal_hipc,14,50,4,ideal,hipc,50,48,2,2,0,0,"{""RuntimeError"": 2}",40 49
+grid_coverage,coverage_g14_d50_ideal_pi,14,50,4,ideal,pi,50,49,1,1,0,0,"{""RuntimeError"": 1}",34
+grid_coverage,coverage_g14_d50_ideal_dga,14,50,4,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d50_bernoulli_025_cbaa,14,50,4,bernoulli_025,cbaa,50,46,4,4,0,0,"{""RuntimeError"": 4}",14 40 41 44
+grid_coverage,coverage_g14_d50_bernoulli_025_acbba,14,50,4,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d50_bernoulli_025_dmchba,14,50,4,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d50_bernoulli_025_hipc,14,50,4,bernoulli_025,hipc,50,49,1,1,0,0,"{""RuntimeError"": 1}",0
+grid_coverage,coverage_g14_d50_bernoulli_025_pi,14,50,4,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g14_d50_bernoulli_025_dga,14,50,4,bernoulli_025,dga,50,49,1,1,0,0,"{""RuntimeError"": 1}",38
+grid_coverage,coverage_g19_d220_ideal_cbaa,19,220,2,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d220_ideal_acbba,19,220,2,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d220_ideal_dmchba,19,220,2,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d220_ideal_hipc,19,220,2,ideal,hipc,50,47,3,3,0,0,"{""RuntimeError"": 3}",22 28 35
+grid_coverage,coverage_g19_d220_ideal_pi,19,220,2,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d220_ideal_dga,19,220,2,ideal,dga,50,47,3,3,0,0,"{""RuntimeError"": 3}",1 26 27
+grid_coverage,coverage_g19_d220_bernoulli_025_cbaa,19,220,2,bernoulli_025,cbaa,50,31,19,19,0,0,"{""RuntimeError"": 19}",1 2 3 4 8 11 12 13 15 17 19 24 27 30 32 34 35 40 46
+grid_coverage,coverage_g19_d220_bernoulli_025_acbba,19,220,2,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d220_bernoulli_025_dmchba,19,220,2,bernoulli_025,dmchba,50,49,1,1,0,0,"{""RuntimeError"": 1}",44
+grid_coverage,coverage_g19_d220_bernoulli_025_hipc,19,220,2,bernoulli_025,hipc,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d220_bernoulli_025_pi,19,220,2,bernoulli_025,pi,50,45,5,5,0,0,"{""RuntimeError"": 5}",6 23 25 39 47
+grid_coverage,coverage_g19_d220_bernoulli_025_dga,19,220,2,bernoulli_025,dga,50,42,8,8,0,0,"{""RuntimeError"": 8}",1 10 12 15 17 33 34 37
+grid_coverage,coverage_g19_d140_ideal_cbaa,19,140,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d140_ideal_acbba,19,140,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d140_ideal_dmchba,19,140,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d140_ideal_hipc,19,140,3,ideal,hipc,50,46,4,4,0,0,"{""RuntimeError"": 4}",17 29 37 46
+grid_coverage,coverage_g19_d140_ideal_pi,19,140,3,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d140_ideal_dga,19,140,3,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d140_bernoulli_025_cbaa,19,140,3,bernoulli_025,cbaa,50,48,2,2,0,0,"{""RuntimeError"": 2}",3 30
+grid_coverage,coverage_g19_d140_bernoulli_025_acbba,19,140,3,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d140_bernoulli_025_dmchba,19,140,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d140_bernoulli_025_hipc,19,140,3,bernoulli_025,hipc,50,48,2,2,0,0,"{""RuntimeError"": 2}",15 32
+grid_coverage,coverage_g19_d140_bernoulli_025_pi,19,140,3,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d140_bernoulli_025_dga,19,140,3,bernoulli_025,dga,50,48,2,2,0,0,"{""RuntimeError"": 2}",19 33
+grid_coverage,coverage_g19_d85_ideal_cbaa,19,85,5,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d85_ideal_acbba,19,85,5,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d85_ideal_dmchba,19,85,5,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d85_ideal_hipc,19,85,5,ideal,hipc,50,47,3,3,0,0,"{""RuntimeError"": 3}",14 34 44
+grid_coverage,coverage_g19_d85_ideal_pi,19,85,5,ideal,pi,50,47,3,3,0,0,"{""RuntimeError"": 3}",3 13 34
+grid_coverage,coverage_g19_d85_ideal_dga,19,85,5,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d85_bernoulli_025_cbaa,19,85,5,bernoulli_025,cbaa,50,48,2,2,0,0,"{""RuntimeError"": 2}",12 13
+grid_coverage,coverage_g19_d85_bernoulli_025_acbba,19,85,5,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d85_bernoulli_025_dmchba,19,85,5,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d85_bernoulli_025_hipc,19,85,5,bernoulli_025,hipc,50,49,1,1,0,0,"{""RuntimeError"": 1}",35
+grid_coverage,coverage_g19_d85_bernoulli_025_pi,19,85,5,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d85_bernoulli_025_dga,19,85,5,bernoulli_025,dga,50,49,1,1,0,0,"{""RuntimeError"": 1}",15
+grid_coverage,coverage_g19_d50_ideal_cbaa,19,50,8,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d50_ideal_acbba,19,50,8,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d50_ideal_dmchba,19,50,8,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d50_ideal_hipc,19,50,8,ideal,hipc,50,46,4,4,0,0,"{""RuntimeError"": 4}",0 2 19 29
+grid_coverage,coverage_g19_d50_ideal_pi,19,50,8,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d50_ideal_dga,19,50,8,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d50_bernoulli_025_cbaa,19,50,8,bernoulli_025,cbaa,50,48,2,2,0,0,"{""RuntimeError"": 2}",18 46
+grid_coverage,coverage_g19_d50_bernoulli_025_acbba,19,50,8,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d50_bernoulli_025_dmchba,19,50,8,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d50_bernoulli_025_hipc,19,50,8,bernoulli_025,hipc,50,47,3,3,0,0,"{""RuntimeError"": 3}",13 17 31
+grid_coverage,coverage_g19_d50_bernoulli_025_pi,19,50,8,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g19_d50_bernoulli_025_dga,19,50,8,bernoulli_025,dga,50,49,1,1,0,0,"{""RuntimeError"": 1}",35
+grid_coverage,coverage_g25_d220_ideal_cbaa,25,220,3,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d220_ideal_acbba,25,220,3,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d220_ideal_dmchba,25,220,3,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d220_ideal_hipc,25,220,3,ideal,hipc,50,48,2,2,0,0,"{""RuntimeError"": 2}",20 49
+grid_coverage,coverage_g25_d220_ideal_pi,25,220,3,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d220_ideal_dga,25,220,3,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d220_bernoulli_025_cbaa,25,220,3,bernoulli_025,cbaa,50,44,6,6,0,0,"{""RuntimeError"": 6}",3 5 6 8 38 43
+grid_coverage,coverage_g25_d220_bernoulli_025_acbba,25,220,3,bernoulli_025,acbba,50,49,1,1,0,0,"{""RuntimeError"": 1}",4
+grid_coverage,coverage_g25_d220_bernoulli_025_dmchba,25,220,3,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d220_bernoulli_025_hipc,25,220,3,bernoulli_025,hipc,50,49,1,1,0,0,"{""RuntimeError"": 1}",6
+grid_coverage,coverage_g25_d220_bernoulli_025_pi,25,220,3,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d220_bernoulli_025_dga,25,220,3,bernoulli_025,dga,50,45,5,5,0,0,"{""RuntimeError"": 5}",0 4 5 16 22
+grid_coverage,coverage_g25_d140_ideal_cbaa,25,140,5,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_ideal_acbba,25,140,5,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_ideal_dmchba,25,140,5,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_ideal_hipc,25,140,5,ideal,hipc,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_ideal_pi,25,140,5,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_ideal_dga,25,140,5,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_bernoulli_025_cbaa,25,140,5,bernoulli_025,cbaa,50,40,10,10,0,0,"{""RuntimeError"": 10}",13 17 20 24 26 27 31 34 37 48
+grid_coverage,coverage_g25_d140_bernoulli_025_acbba,25,140,5,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_bernoulli_025_dmchba,25,140,5,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_bernoulli_025_hipc,25,140,5,bernoulli_025,hipc,50,48,2,2,0,0,"{""RuntimeError"": 2}",13 44
+grid_coverage,coverage_g25_d140_bernoulli_025_pi,25,140,5,bernoulli_025,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d140_bernoulli_025_dga,25,140,5,bernoulli_025,dga,50,40,10,6,0,4,"{""RuntimeError"": 6, ""missing_trial_result"": 4}",1 9 13 26 27 28 29 32 33 36
+grid_coverage,coverage_g25_d85_ideal_cbaa,25,85,8,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d85_ideal_acbba,25,85,8,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d85_ideal_dmchba,25,85,8,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d85_ideal_hipc,25,85,8,ideal,hipc,50,42,8,8,0,0,"{""RuntimeError"": 8}",8 12 23 30 33 41 43 44
+grid_coverage,coverage_g25_d85_ideal_pi,25,85,8,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d85_ideal_dga,25,85,8,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d85_bernoulli_025_cbaa,25,85,8,bernoulli_025,cbaa,50,33,17,17,0,0,"{""RuntimeError"": 17}",1 6 7 10 17 21 26 27 28 34 36 39 42 43 44 47 48
+grid_coverage,coverage_g25_d85_bernoulli_025_acbba,25,85,8,bernoulli_025,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d85_bernoulli_025_dmchba,25,85,8,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d85_bernoulli_025_hipc,25,85,8,bernoulli_025,hipc,50,47,3,3,0,0,"{""RuntimeError"": 3}",0 9 46
+grid_coverage,coverage_g25_d85_bernoulli_025_pi,25,85,8,bernoulli_025,pi,50,48,2,2,0,0,"{""RuntimeError"": 2}",10 38
+grid_coverage,coverage_g25_d85_bernoulli_025_dga,25,85,8,bernoulli_025,dga,50,42,8,8,0,0,"{""RuntimeError"": 8}",10 12 15 21 22 23 31 40
+grid_coverage,coverage_g25_d50_ideal_cbaa,25,50,13,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d50_ideal_acbba,25,50,13,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d50_ideal_dmchba,25,50,13,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d50_ideal_hipc,25,50,13,ideal,hipc,50,43,7,7,0,0,"{""RuntimeError"": 7}",14 16 19 20 32 36 43
+grid_coverage,coverage_g25_d50_ideal_pi,25,50,13,ideal,pi,50,46,4,4,0,0,"{""RuntimeError"": 4}",8 11 14 47
+grid_coverage,coverage_g25_d50_ideal_dga,25,50,13,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d50_bernoulli_025_cbaa,25,50,13,bernoulli_025,cbaa,50,15,35,35,0,0,"{""RuntimeError"": 35}",0 2 3 4 5 6 7 8 11 12 13 16 17 18 19 20 22 23 25 26 28 29 30 31 33 35 38 39 40 41 42 43 44 48 49
+grid_coverage,coverage_g25_d50_bernoulli_025_acbba,25,50,13,bernoulli_025,acbba,50,47,3,3,0,0,"{""RuntimeError"": 3}",31 33 40
+grid_coverage,coverage_g25_d50_bernoulli_025_dmchba,25,50,13,bernoulli_025,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g25_d50_bernoulli_025_hipc,25,50,13,bernoulli_025,hipc,50,46,4,4,0,0,"{""RuntimeError"": 4}",1 10 21 26
+grid_coverage,coverage_g25_d50_bernoulli_025_pi,25,50,13,bernoulli_025,pi,50,47,3,3,0,0,"{""RuntimeError"": 3}",22 40 49
+grid_coverage,coverage_g25_d50_bernoulli_025_dga,25,50,13,bernoulli_025,dga,50,48,2,2,0,0,"{""RuntimeError"": 2}",41 42
+grid_coverage,coverage_g34_d220_ideal_cbaa,34,220,6,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d220_ideal_acbba,34,220,6,ideal,acbba,50,49,1,1,0,0,"{""RuntimeError"": 1}",40
+grid_coverage,coverage_g34_d220_ideal_dmchba,34,220,6,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d220_ideal_hipc,34,220,6,ideal,hipc,50,48,2,2,0,0,"{""RuntimeError"": 2}",34 43
+grid_coverage,coverage_g34_d220_ideal_pi,34,220,6,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d220_ideal_dga,34,220,6,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d220_bernoulli_025_cbaa,34,220,6,bernoulli_025,cbaa,50,21,29,29,0,0,"{""RuntimeError"": 29}",7 12 16 20 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d220_bernoulli_025_acbba,34,220,6,bernoulli_025,acbba,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d220_bernoulli_025_dmchba,34,220,6,bernoulli_025,dmchba,50,48,2,2,0,0,"{""RuntimeError"": 2}",0 1
+grid_coverage,coverage_g34_d220_bernoulli_025_hipc,34,220,6,bernoulli_025,hipc,50,20,30,30,0,0,"{""RuntimeError"": 30}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d220_bernoulli_025_pi,34,220,6,bernoulli_025,pi,50,36,14,14,0,0,"{""RuntimeError"": 14}",20 21 22 23 24 25 26 27 28 29 40 41 42 49
+grid_coverage,coverage_g34_d220_bernoulli_025_dga,34,220,6,bernoulli_025,dga,50,45,5,3,0,2,"{""RuntimeError"": 3, ""missing_trial_result"": 2}",19 32 34 40 47
+grid_coverage,coverage_g34_d140_ideal_cbaa,34,140,9,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d140_ideal_acbba,34,140,9,ideal,acbba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d140_ideal_dmchba,34,140,9,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d140_ideal_hipc,34,140,9,ideal,hipc,50,47,3,3,0,0,"{""RuntimeError"": 3}",2 7 37
+grid_coverage,coverage_g34_d140_ideal_pi,34,140,9,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d140_ideal_dga,34,140,9,ideal,dga,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d140_bernoulli_025_cbaa,34,140,9,bernoulli_025,cbaa,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d140_bernoulli_025_acbba,34,140,9,bernoulli_025,acbba,50,27,23,23,0,0,"{""RuntimeError"": 23}",0 1 2 3 4 5 6 7 8 9 10 11 12 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d140_bernoulli_025_dmchba,34,140,9,bernoulli_025,dmchba,50,47,3,3,0,0,"{""RuntimeError"": 3}",0 20 21
+grid_coverage,coverage_g34_d140_bernoulli_025_hipc,34,140,9,bernoulli_025,hipc,50,38,12,12,0,0,"{""RuntimeError"": 12}",1 10 20 21 22 23 24 25 26 27 28 29
+grid_coverage,coverage_g34_d140_bernoulli_025_pi,34,140,9,bernoulli_025,pi,50,40,10,10,0,0,"{""RuntimeError"": 10}",10 11 12 13 14 15 16 17 18 19
+grid_coverage,coverage_g34_d140_bernoulli_025_dga,34,140,9,bernoulli_025,dga,50,40,10,1,0,9,"{""RuntimeError"": 1, ""missing_trial_result"": 9}",0 3 4 5 16 17 18 19 34 44
+grid_coverage,coverage_g34_d85_ideal_cbaa,34,85,14,ideal,cbaa,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d85_ideal_acbba,34,85,14,ideal,acbba,50,38,12,12,0,0,"{""RuntimeError"": 12}",8 12 13 14 16 17 21 24 27 37 40 48
+grid_coverage,coverage_g34_d85_ideal_dmchba,34,85,14,ideal,dmchba,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d85_ideal_hipc,34,85,14,ideal,hipc,50,34,16,16,0,0,"{""RuntimeError"": 16}",0 6 13 14 15 16 19 20 25 33 36 43 45 46 48 49
+grid_coverage,coverage_g34_d85_ideal_pi,34,85,14,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d85_ideal_dga,34,85,14,ideal,dga,50,49,1,1,0,0,"{""RuntimeError"": 1}",40
+grid_coverage,coverage_g34_d85_bernoulli_025_cbaa,34,85,14,bernoulli_025,cbaa,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d85_bernoulli_025_acbba,34,85,14,bernoulli_025,acbba,50,48,2,2,0,0,"{""RuntimeError"": 2}",20 21
+grid_coverage,coverage_g34_d85_bernoulli_025_dmchba,34,85,14,bernoulli_025,dmchba,50,46,4,4,0,0,"{""RuntimeError"": 4}",0 20 30 40
+grid_coverage,coverage_g34_d85_bernoulli_025_hipc,34,85,14,bernoulli_025,hipc,50,38,12,12,0,0,"{""RuntimeError"": 12}",10 11 12 13 14 15 16 17 18 19 29 39
+grid_coverage,coverage_g34_d85_bernoulli_025_pi,34,85,14,bernoulli_025,pi,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d85_bernoulli_025_dga,34,85,14,bernoulli_025,dga,50,39,11,1,0,10,"{""RuntimeError"": 1, ""missing_trial_result"": 10}",9 13 14 28 29 32 33 34 38 39 40
+grid_coverage,coverage_g34_d50_ideal_cbaa,34,50,24,ideal,cbaa,50,36,14,14,0,0,"{""RuntimeError"": 14}",0 1 13 15 16 19 25 32 36 38 40 44 47 48
+grid_coverage,coverage_g34_d50_ideal_acbba,34,50,24,ideal,acbba,50,9,41,41,0,0,"{""RuntimeError"": 41}",0 2 3 4 5 8 9 10 11 13 14 15 16 17 19 20 21 22 24 25 26 27 28 30 31 32 34 35 36 37 38 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d50_ideal_dmchba,34,50,24,ideal,dmchba,50,49,1,1,0,0,"{""RuntimeError"": 1}",1
+grid_coverage,coverage_g34_d50_ideal_hipc,34,50,24,ideal,hipc,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d50_ideal_pi,34,50,24,ideal,pi,50,50,0,0,0,0,{},
+grid_coverage,coverage_g34_d50_ideal_dga,34,50,24,ideal,dga,50,49,1,0,0,1,"{""missing_trial_result"": 1}",19
+grid_coverage,coverage_g34_d50_bernoulli_025_cbaa,34,50,24,bernoulli_025,cbaa,50,25,25,25,0,0,"{""RuntimeError"": 25}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+grid_coverage,coverage_g34_d50_bernoulli_025_acbba,34,50,24,bernoulli_025,acbba,50,40,10,10,0,0,"{""RuntimeError"": 10}",10 11 12 13 14 15 16 17 18 19
+grid_coverage,coverage_g34_d50_bernoulli_025_dmchba,34,50,24,bernoulli_025,dmchba,50,49,1,1,0,0,"{""RuntimeError"": 1}",0
+grid_coverage,coverage_g34_d50_bernoulli_025_hipc,34,50,24,bernoulli_025,hipc,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d50_bernoulli_025_pi,34,50,24,bernoulli_025,pi,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+grid_coverage,coverage_g34_d50_bernoulli_025_dga,34,50,24,bernoulli_025,dga,50,29,21,1,0,20,"{""RuntimeError"": 1, ""missing_trial_result"": 20}",4 7 8 9 13 14 19 23 24 29 30 32 33 34 38 39 43 44 47 48 49
