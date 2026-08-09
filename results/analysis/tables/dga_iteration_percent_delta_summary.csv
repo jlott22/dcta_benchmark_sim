@@ -1,0 +1,13 @@
+scenario,comm_label,dga_iterations,mean_percent_difference_from_trial_iteration_mean,fully_paired_trials,dropped_incomplete_trials,selected_for_main_benchmark
+Collaborative Visit (CV),ideal,1,-0.272530783493982,300,0,0
+Collaborative Visit (CV),ideal,2,1.43500770444983,300,0,0
+Collaborative Visit (CV),ideal,5,0.202161231742407,300,0,0
+Collaborative Visit (CV),ideal,10,0.296647839705405,300,0,0
+Collaborative Visit (CV),ideal,25,-0.943831206831196,300,0,1
+Collaborative Visit (CV),ideal,50,-0.717454785572466,300,0,0
+Collaborative Visit (CV),bernoulli_025,1,-2.20386372841271,300,0,0
+Collaborative Visit (CV),bernoulli_025,2,0.10443488105762,300,0,0
+Collaborative Visit (CV),bernoulli_025,5,0.306432164264647,300,0,0
+Collaborative Visit (CV),bernoulli_025,10,0.449610771714585,300,0,0
+Collaborative Visit (CV),bernoulli_025,25,-0.255011058823766,300,0,1
+Collaborative Visit (CV),bernoulli_025,50,1.59839697019962,300,0,0

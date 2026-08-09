@@ -1,0 +1,88 @@
+DCTA paired metric analysis
+Date/time: 09-Aug-2026 11:26:13
+MATLAB version: 25.2.0.3123386 (R2025b) Update 3
+Project root: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim
+Analysis directory: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\analysis
+Run mode: full
+Bootstrap iterations: 10000
+RNG seed: 20260714
+Script path: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\analysis\build_dcta_paired_metric_results.m
+Coverage source folder inspected: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\coverage_core_100\combined
+Coverage source files: coverage_core_100_combined_condition_manifest.csv, coverage_core_100_combined_robot_performance.csv, coverage_core_100_combined_system_performance.csv, coverage_core_100_combined_trial_summary.csv
+Clue-Informed Probabilistic Search (CLIPS) source folder: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\clue_search_core_500\combined
+Clue-Informed Probabilistic Search (CLIPS) system trial_mode values: clue_search
+Clue-Informed Probabilistic Search (CLIPS) trial environment values: clue
+Clue-Informed Probabilistic Search (CLIPS) manifest stage values: clue_core
+Clue-Informed Probabilistic Search (CLIPS) manifest communication labels: ideal_1_0, bernoulli_drop_0_05, bernoulli_drop_0_1, bernoulli_drop_0_2, bernoulli_drop_0_3, bernoulli_drop_0_4, bernoulli_drop_0_5, bernoulli_drop_0_6, bernoulli_drop_0_7, rayleigh_style_sens_neg32_58, rayleigh_style_sens_neg37_79, rayleigh_style_sens_neg42_16, rayleigh_style_sens_neg46_04, rayleigh_style_sens_neg49_17, rayleigh_style_sens_neg52_15, rayleigh_style_sens_neg56_04, rayleigh_style_sens_neg59_4, gilbert_elliott_drop_0_70_rho_0_8, gilbert_elliott_drop_0_60_rho_0_8, gilbert_elliott_drop_0_50_rho_0_8, gilbert_elliott_drop_0_40_rho_0_8, gilbert_elliott_drop_0_30_rho_0_8, gilbert_elliott_drop_0_20_rho_0_8, gilbert_elliott_drop_0_10_rho_0_8, gilbert_elliott_drop_0_05_rho_0_8
+Collaborative Visit (CV) source folder: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\known_target_visit_core_500\combined
+Collaborative Visit (CV) system trial_mode values: known_visit
+Collaborative Visit (CV) trial environment values: known
+Collaborative Visit (CV) manifest stage values: known_core
+Collaborative Visit (CV) manifest communication labels: ideal_1_0, bernoulli_drop_0_05, bernoulli_drop_0_1, bernoulli_drop_0_2, bernoulli_drop_0_3, bernoulli_drop_0_4, bernoulli_drop_0_5, bernoulli_drop_0_6, bernoulli_drop_0_7, rayleigh_style_sens_neg32_58, rayleigh_style_sens_neg37_79, rayleigh_style_sens_neg42_16, rayleigh_style_sens_neg46_04, rayleigh_style_sens_neg49_17, rayleigh_style_sens_neg52_15, rayleigh_style_sens_neg56_04, rayleigh_style_sens_neg59_4, gilbert_elliott_drop_0_05_rho_0_8, gilbert_elliott_drop_0_10_rho_0_8, gilbert_elliott_drop_0_20_rho_0_8, gilbert_elliott_drop_0_30_rho_0_8, gilbert_elliott_drop_0_40_rho_0_8, gilbert_elliott_drop_0_50_rho_0_8, gilbert_elliott_drop_0_60_rho_0_8, gilbert_elliott_drop_0_70_rho_0_8
+Clue-Informed Probabilistic Search (CLIPS) algorithms found: CBAA, ACBBA, PI, HIPC, DMCHBA, DGA
+Collaborative Visit (CV) algorithms found: CBAA, ACBBA, PI, HIPC, DMCHBA, DGA
+Full Grid Search (FGS) source folder: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\coverage_core_100\combined
+Full Grid Search (FGS) system trial_mode values: coverage
+Full Grid Search (FGS) trial environment values: coverage
+Full Grid Search (FGS) manifest stage values: coverage_core
+Full Grid Search (FGS) manifest communication labels: ideal_1_0, bernoulli_drop_0_05, bernoulli_drop_0_1, bernoulli_drop_0_2, bernoulli_drop_0_3, bernoulli_drop_0_4, bernoulli_drop_0_5, bernoulli_drop_0_6, bernoulli_drop_0_7, gilbert_elliott_drop_0_05_rho_0_8, gilbert_elliott_drop_0_10_rho_0_8, gilbert_elliott_drop_0_20_rho_0_8, gilbert_elliott_drop_0_30_rho_0_8, gilbert_elliott_drop_0_40_rho_0_8, gilbert_elliott_drop_0_50_rho_0_8, gilbert_elliott_drop_0_60_rho_0_8, gilbert_elliott_drop_0_70_rho_0_8, rayleigh_style_sens_neg32_58, rayleigh_style_sens_neg37_79, rayleigh_style_sens_neg42_16, rayleigh_style_sens_neg46_04, rayleigh_style_sens_neg49_17, rayleigh_style_sens_neg52_15, rayleigh_style_sens_neg56_04, rayleigh_style_sens_neg59_4
+Full Grid Search (FGS) algorithms found: CBAA, ACBBA, HIPC, PI, DMCHBA, DGA
+Clue-Informed Probabilistic Search (CLIPS) duplicate system primary keys: 0
+Collaborative Visit (CV) duplicate system primary keys: 0
+Full Grid Search (FGS) duplicate system primary keys: 0
+Exact clue-first eligibility rule selected: trial_status == completed, system row completed, and nonempty first_clue_robot in trial_summary.
+Collaborative eligibility rule selected: trial_status == completed, all_targets_visited true, completed_target_count == target_count, and required metric data present.
+Coverage eligibility rule selected: completed coverage trial in system and trial summaries; no clue or target domain fields are used.
+Message counting selected: messages_sent_total for team publish count; robot_performance.messages_sent max for max_agent_messages when system max is absent.
+Task-replan definition selected: team_task_replans uses task_cell_replans_total, which increments when a current task/goal is invalidated and replaced.
+Path-replan definition selected: team_path_replans uses path_replans_total, which counts path-planner replans from blocked, infeasible, collision, or navigation-friction conditions.
+Rayleigh nominal mapping selected: -59.40,-56.04,-52.15,-49.17,-46.04,-42.16,-37.79,-32.58 -> 5,10,20,30,40,50,60,70 percent. Worst Rayleigh condition is labeled 70%.
+Validation: total metric-ready rows: 165000
+Validation: scenarios present: Clue-Informed Probabilistic Search (CLIPS), Collaborative Visit (CV), Full Grid Search (FGS)
+Validation: communication models present: bernoulli, gilbert_elliott, ideal, rayleigh_style
+Validation: algorithms present: ACBBA, CBAA, DGA, DMCHBA, HIPC, PI
+Clue-Informed Probabilistic Search (CLIPS) ideal nominal levels present: 0
+Clue-Informed Probabilistic Search (CLIPS) bernoulli nominal levels present: [5 10 20 30 40 50 60 70]
+Clue-Informed Probabilistic Search (CLIPS) gilbert_elliott nominal levels present: [5 10 20 30 40 50 60 70]
+Clue-Informed Probabilistic Search (CLIPS) rayleigh_style nominal levels present: [5 10 20 30 40 50 60 70]
+Collaborative Visit (CV) ideal nominal levels present: 0
+Collaborative Visit (CV) bernoulli nominal levels present: [5 10 20 30 40 50 60 70]
+Collaborative Visit (CV) gilbert_elliott nominal levels present: [5 10 20 30 40 50 60 70]
+Collaborative Visit (CV) rayleigh_style nominal levels present: [5 10 20 30 40 50 60 70]
+Full Grid Search (FGS) ideal nominal levels present: 0
+Full Grid Search (FGS) bernoulli nominal levels present: [5 10 20 30 40 50 60 70]
+Full Grid Search (FGS) gilbert_elliott nominal levels present: [5 10 20 30 40 50 60 70]
+Full Grid Search (FGS) rayleigh_style nominal levels present: [5 10 20 30 40 50 60 70]
+Clue-Informed Probabilistic Search (CLIPS) total system rows: 75000
+Clue-Informed Probabilistic Search (CLIPS) bernoulli condition count: 24000 rows, 500 trials
+Clue-Informed Probabilistic Search (CLIPS) gilbert_elliott condition count: 24000 rows, 500 trials
+Clue-Informed Probabilistic Search (CLIPS) ideal condition count: 3000 rows, 500 trials
+Clue-Informed Probabilistic Search (CLIPS) rayleigh_style condition count: 24000 rows, 500 trials
+Clue-Informed Probabilistic Search (CLIPS) balanced degradation curves for bernoulli: min=383 max=383
+Clue-Informed Probabilistic Search (CLIPS) balanced degradation curves for gilbert_elliott: min=383 max=383
+Clue-Informed Probabilistic Search (CLIPS) balanced degradation curves for rayleigh_style: min=383 max=383
+Collaborative Visit (CV) total system rows: 75000
+Collaborative Visit (CV) bernoulli condition count: 24000 rows, 500 trials
+Collaborative Visit (CV) gilbert_elliott condition count: 24000 rows, 500 trials
+Collaborative Visit (CV) ideal condition count: 3000 rows, 500 trials
+Collaborative Visit (CV) rayleigh_style condition count: 24000 rows, 500 trials
+Collaborative Visit (CV) balanced degradation curves for bernoulli: min=500 max=500
+Collaborative Visit (CV) balanced degradation curves for gilbert_elliott: min=500 max=500
+Collaborative Visit (CV) balanced degradation curves for rayleigh_style: min=500 max=500
+Full Grid Search (FGS) total system rows: 15000
+Full Grid Search (FGS) bernoulli condition count: 4800 rows, 100 trials
+Full Grid Search (FGS) gilbert_elliott condition count: 4800 rows, 100 trials
+Full Grid Search (FGS) ideal condition count: 600 rows, 100 trials
+Full Grid Search (FGS) rayleigh_style condition count: 4800 rows, 100 trials
+Full Grid Search (FGS) balanced degradation curves for bernoulli: min=100 max=100
+Full Grid Search (FGS) balanced degradation curves for gilbert_elliott: min=3 max=3
+Full Grid Search (FGS) balanced degradation curves for rayleigh_style: min=100 max=100
+Main result rows by type: condition_metric=4350 prda=522 prds=522
+Output metric CSV: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\analysis\tables\dcta_metric_results.csv
+Output statistical test CSV: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\analysis\tables\dcta_statistical_tests.csv
+Output source manifest CSV: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\analysis\tables\dcta_metric_source_manifest.csv
+Output analysis log: C:\Users\lottj\Desktop\research\decentralized benchmark\dcta_benchmark_sim\results\analysis\tables\dcta_metric_analysis_log.txt
+Final validation metrics found: duplicate_target_visits, max_agent_messages, max_agent_steps, messages_per_target, messages_per_unique_cell, system_cell_revisits, target_completion_gini, team_messages_per_step, team_path_replans, team_task_replans, total_team_steps, unique_cell_contribution_gini
+Final validation statistical families: 899
+Final validation omnibus rows: 899 pairwise rows: 13485
+Final validation status: PASS

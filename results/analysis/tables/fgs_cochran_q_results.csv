@@ -1,0 +1,26 @@
+mission,comm_model,comm_label,degradation_pct,matched_trial_n,algorithm_count,cochran_q,df,p_value,significant_0_05,test_method
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_05,5,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_1,10,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_2,20,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_3,30,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_4,40,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_5,50,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_6,60,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_7,70,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_05_rho_0_8,5,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_10_rho_0_8,10,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_20_rho_0_8,20,100,6,8,5,0.156235627577721,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_30_rho_0_8,30,100,6,12.8205128205128,5,0.0251200882026042,True,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_40_rho_0_8,40,100,6,29.1732283464567,5,2.14418531482635e-05,True,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_50_rho_0_8,50,100,6,44.0476190476191,5,2.26523675411085e-08,True,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_60_rho_0_8,60,100,6,82.1939736346516,5,2.91498892892461e-16,True,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_70_rho_0_8,70,100,6,56.8524590163934,5,5.42371842334467e-11,True,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),ideal,ideal_1_0,0,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg59_4,5,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg56_04,10,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg52_15,20,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg49_17,30,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg46_04,40,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg42_16,50,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg37_79,60,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg32_58,70,100,6,0,5,1,False,Cochran's Q; chi-square reference distribution

@@ -22,7 +22,9 @@ resultsRoot = fullfile(projectRoot, "results");
 bayesianCandidateDir = fullfile(resultsRoot, "clue_search_core_500", "combined");
 coverageCandidateDir = fullfile(resultsRoot, "coverage_core_100", "combined");
 collaborativeDir = fullfile(resultsRoot, "known_target_visit_core_500", "combined");
-coverageScenario = "Coverage area search";
+clipsScenario = "Clue-Informed Probabilistic Search (CLIPS)";
+cvScenario = "Collaborative Visit (CV)";
+coverageScenario = "Full Grid Search (FGS)";
 
 algorithmOrder = ["CBAA","ACBBA","PI","HIPC","DMCHBA","DGA"];
 nominalLevels = [0 5 10 20 30 40 50 60 70];
@@ -71,36 +73,36 @@ logLine(logFid, "Coverage source folder inspected: %s", coverageCandidateDir);
 logLine(logFid, "Coverage source files: %s", strjoin(coverageNames, ", "));
 
 if dctaAnalysisRunMode == "full"
-    [clueSystem, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-        "system_performance", fullfile(bayesianCandidateDir, "system_performance.csv"), true, ...
-        "Primary Bayesian system metrics and message publish counts");
-    [clueTrial, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-        "trial_summary", fullfile(bayesianCandidateDir, "trial_summary.csv"), true, ...
-        "Bayesian clue-first eligibility and trial identity checks");
-    [clueRobot, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-        "robot_performance", fullfile(bayesianCandidateDir, "robot_performance.csv"), true, ...
+    [clueSystem, manifestRows] = readSourceTable(manifestRows, clipsScenario, ...
+        "system_performance", fullfile(bayesianCandidateDir, "clue_search_core_500_combined_system_performance.csv"), true, ...
+        "Primary CLIPS system metrics and message publish counts");
+    [clueTrial, manifestRows] = readSourceTable(manifestRows, clipsScenario, ...
+        "trial_summary", fullfile(bayesianCandidateDir, "clue_search_core_500_combined_trial_summary.csv"), true, ...
+        "CLIPS clue-first eligibility and trial identity checks");
+    [clueRobot, manifestRows] = readSourceTable(manifestRows, clipsScenario, ...
+        "robot_performance", fullfile(bayesianCandidateDir, "clue_search_core_500_combined_robot_performance.csv"), true, ...
         "Robot-level max message and metric validation");
-    [clueManifest, manifestRows] = readSourceTable(manifestRows, "Bayesian clue-informed search", ...
-        "condition_manifest", fullfile(bayesianCandidateDir, "condition_manifest.csv"), true, ...
-        "Bayesian condition definitions and nominal communication labels");
+    [clueManifest, manifestRows] = readSourceTable(manifestRows, clipsScenario, ...
+        "condition_manifest", fullfile(bayesianCandidateDir, "clue_search_core_500_combined_condition_manifest.csv"), true, ...
+        "CLIPS condition definitions and nominal communication labels");
 
-    [knownSystem, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-        "system_performance", fullfile(collaborativeDir, "system_performance.csv"), true, ...
+    [knownSystem, manifestRows] = readSourceTable(manifestRows, cvScenario, ...
+        "system_performance", fullfile(collaborativeDir, "known_target_visit_core_500_combined_system_performance.csv"), true, ...
         "Primary known-target system metrics and target completion status");
-    [knownTrial, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-        "trial_summary", fullfile(collaborativeDir, "trial_summary.csv"), true, ...
+    [knownTrial, manifestRows] = readSourceTable(manifestRows, cvScenario, ...
+        "trial_summary", fullfile(collaborativeDir, "known_target_visit_core_500_combined_trial_summary.csv"), true, ...
         "Known-target scenario identity and mission completion checks");
-    [knownRobot, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-        "robot_performance", fullfile(collaborativeDir, "robot_performance.csv"), true, ...
+    [knownRobot, manifestRows] = readSourceTable(manifestRows, cvScenario, ...
+        "robot_performance", fullfile(collaborativeDir, "known_target_visit_core_500_combined_robot_performance.csv"), true, ...
         "Robot-level max message and target completion balance validation");
-    [knownManifest, manifestRows] = readSourceTable(manifestRows, "Collaborative known-target visit", ...
-        "condition_manifest", fullfile(collaborativeDir, "condition_manifest.csv"), true, ...
+    [knownManifest, manifestRows] = readSourceTable(manifestRows, cvScenario, ...
+        "condition_manifest", fullfile(collaborativeDir, "known_target_visit_core_500_combined_condition_manifest.csv"), true, ...
         "Known-target condition definitions and nominal communication labels");
 
     targetPartFiles = dir(fullfile(collaborativeDir, "target_performance_part_*.csv"));
     for k = 1:numel(targetPartFiles)
         partPath = fullfile(targetPartFiles(k).folder, targetPartFiles(k).name);
-        manifestRows = addManifestRow(manifestRows, "Collaborative known-target visit", ...
+        manifestRows = addManifestRow(manifestRows, cvScenario, ...
             "target_performance_part", partPath, NaN, NaN, false, ...
             "Not loaded for metric calculation because duplicate visits and first-completion balance are available in validated system/robot summaries", ...
             "first_finder_robot_id,total_visits,duplicate_visits,completed", false, ...
@@ -116,24 +118,24 @@ if dctaAnalysisRunMode == "full"
     knownRobot = normalizeSourceTable(knownRobot);
     knownManifest = normalizeSourceTable(knownManifest);
 
-    logScenarioIdentity(logFid, "Bayesian clue-informed search", bayesianCandidateDir, clueSystem, clueTrial, clueManifest);
-    logScenarioIdentity(logFid, "Collaborative known-target visit", collaborativeDir, knownSystem, knownTrial, knownManifest);
+    logScenarioIdentity(logFid, clipsScenario, bayesianCandidateDir, clueSystem, clueTrial, clueManifest);
+    logScenarioIdentity(logFid, cvScenario, collaborativeDir, knownSystem, knownTrial, knownManifest);
 
-    assertAlgorithms(logFid, "Bayesian clue-informed search", clueManifest, algorithmOrder);
-    assertAlgorithms(logFid, "Collaborative known-target visit", knownManifest, algorithmOrder);
+    assertAlgorithms(logFid, clipsScenario, clueManifest, algorithmOrder);
+    assertAlgorithms(logFid, cvScenario, knownManifest, algorithmOrder);
 end
 
 [coverageSystem, manifestRows] = readSourceTable(manifestRows, coverageScenario, ...
-    "system_performance", fullfile(coverageCandidateDir, "system_performance.csv"), true, ...
+    "system_performance", fullfile(coverageCandidateDir, "coverage_core_100_combined_system_performance.csv"), true, ...
     "Primary coverage system metrics: steps, revisits, messages, replans, and workload balance");
 [coverageTrial, manifestRows] = readSourceTable(manifestRows, coverageScenario, ...
-    "trial_summary", fullfile(coverageCandidateDir, "trial_summary.csv"), true, ...
+    "trial_summary", fullfile(coverageCandidateDir, "coverage_core_100_combined_trial_summary.csv"), true, ...
     "Coverage trial identity and completion checks; clue and target fields are intentionally ignored");
 [coverageRobot, manifestRows] = readSourceTable(manifestRows, coverageScenario, ...
-    "robot_performance", fullfile(coverageCandidateDir, "robot_performance.csv"), true, ...
+    "robot_performance", fullfile(coverageCandidateDir, "coverage_core_100_combined_robot_performance.csv"), true, ...
     "Coverage robot-level max message, max step, and workload validation");
 [coverageManifest, manifestRows] = readSourceTable(manifestRows, coverageScenario, ...
-    "condition_manifest", fullfile(coverageCandidateDir, "condition_manifest.csv"), true, ...
+    "condition_manifest", fullfile(coverageCandidateDir, "coverage_core_100_combined_condition_manifest.csv"), true, ...
     "Coverage condition definitions and nominal communication labels");
 
 coverageSystem = normalizeSourceTable(coverageSystem);
@@ -154,8 +156,8 @@ analysisVars = ["scenario","trial_id","algorithm","comm_model","comm_level_raw",
     "metric_target_completion_gini","metric_messages_per_target"];
 dataParts = {};
 if dctaAnalysisRunMode == "full"
-    clueData = buildMetricData("Bayesian clue-informed search", clueSystem, clueTrial, clueRobot, algorithmOrder, logFid);
-    knownData = buildMetricData("Collaborative known-target visit", knownSystem, knownTrial, knownRobot, algorithmOrder, logFid);
+    clueData = buildMetricData(clipsScenario, clueSystem, clueTrial, clueRobot, algorithmOrder, logFid);
+    knownData = buildMetricData(cvScenario, knownSystem, knownTrial, knownRobot, algorithmOrder, logFid);
     dataParts{end+1} = clueData(:, analysisVars); %#ok<SAGROW>
     dataParts{end+1} = knownData(:, analysisVars); %#ok<SAGROW>
 end
@@ -278,7 +280,7 @@ fprintf("  Statistical rows: %d\n", height(statGenerated));
 fprintf("  Statistical families: %d\n", validation.familyCount);
 fprintf("  Friedman omnibus rows: %d\n", validation.omnibusRows);
 fprintf("  Wilcoxon pairwise rows: %d\n", validation.pairwiseRows);
-fprintf("  Coverage rows: %d\n", validation.coverageRows);
+fprintf("  FGS rows: %d\n", validation.coverageRows);
 fprintf("  Requested metrics found: %d of %d\n", validation.metricFoundCount, numel(metricNames));
 fprintf("  Family structure valid: %d\n", validation.familyStructureValid);
 fprintf("  Manual spot checks completed: %d\n", validation.manualSpotChecks);
@@ -307,12 +309,20 @@ if validation.coverageRows <= 0 || validation.metricFoundCount ~= numel(metricNa
     error("Generated output validation failed. See %s.", logPath);
 end
 
+logLine(logFid, "Final validation status: PASS");
 fprintf("DCTA paired metric analysis completed successfully.\n");
 
 %% Local helper functions
 function [T, manifestRows] = readSourceTable(manifestRows, scenario, role, path, selected, reason)
-    T = readtable(path, "FileType", "text", "Delimiter", ",", "ReadVariableNames", true, ...
-        "NumHeaderLines", 0, "TextType", "string");
+    opts = detectImportOptions(path, "FileType", "text", "Delimiter", ",", "TextType", "string");
+    if any(string(opts.VariableNames) == "comm_level")
+        % comm_level is numeric in most campaigns but intentionally textual
+        % in corrected Gilbert-Elliott data (pGG/pBB pairs). Force string
+        % import so mixed-format columns do not silently turn those rows into
+        % missing values during type inference.
+        opts = setvartype(opts, "comm_level", "string");
+    end
+    T = readtable(path, opts);
     important = strjoin(string(T.Properties.VariableNames), ",");
     manifestRows = addManifestRow(manifestRows, scenario, role, path, height(T), width(T), ...
         selected, reason, important, false, "");
@@ -329,8 +339,11 @@ function [T, manifestRows] = readSourceTableParts(manifestRows, scenario, role, 
     expectedVars = strings(0, 1);
     for k = 1:numel(files)
         path = fullfile(files(k).folder, files(k).name);
-        tables{k} = readtable(path, "FileType", "text", "Delimiter", ",", ...
-            "ReadVariableNames", true, "NumHeaderLines", 0, "TextType", "string");
+        opts = detectImportOptions(path, "FileType", "text", "Delimiter", ",", "TextType", "string");
+        if any(string(opts.VariableNames) == "comm_level")
+            opts = setvartype(opts, "comm_level", "string");
+        end
+        tables{k} = readtable(path, opts);
         vars = string(tables{k}.Properties.VariableNames);
         if k == 1
             expectedVars = vars;
@@ -370,6 +383,7 @@ function T = normalizeSourceTable(T)
     end
     if any(vars == "comm_model")
         T.comm_model = lower(string(T.comm_model));
+        T.comm_model(T.comm_model == "gilbert_elliot") = "gilbert_elliott";
     end
     if any(vars == "comm_level")
         T.comm_level_raw = normalizeCommRaw(T.comm_level, T.comm_model);
@@ -410,7 +424,16 @@ function raw = normalizeCommRaw(level, model)
             if model(i) == "ideal" || ismissing(level(i)) || strlength(strtrim(level(i))) == 0
                 raw(i) = "ideal";
             else
-                raw(i) = stripZeros(str2double(level(i)));
+                numericLevel = str2double(level(i));
+                if isnan(numericLevel)
+                    % Corrected Gilbert-Elliott campaigns encode both state
+                    % transition probabilities in comm_level (for example,
+                    % "pGG_0.99_pBB_0.81"). Preserve that text so distinct
+                    % degradation conditions retain distinct primary keys.
+                    raw(i) = lower(strtrim(level(i)));
+                else
+                    raw(i) = stripZeros(numericLevel);
+                end
             end
         end
     end
@@ -428,7 +451,14 @@ function pct = nominalCommPct(model, raw, label)
         elseif m == "bernoulli"
             pct(i) = round(100 * r);
         elseif m == "gilbert_elliott"
-            pct(i) = round(100 * (1 - r));
+            if ~isnan(r)
+                pct(i) = round(100 * (1 - r));
+            else
+                % Bursty-rho campaigns store pGG/pBB in comm_level and the
+                % nominal drop percentage in labels such as
+                % "gilbert_elliott_drop_0_70_rho_0_8".
+                pct(i) = parseDropPctFromLabel(label(i));
+            end
         elseif m == "rayleigh_style"
             [delta, idx] = min(abs(rayRaw - r));
             if delta < 0.02
@@ -439,6 +469,16 @@ function pct = nominalCommPct(model, raw, label)
         else
             pct(i) = NaN;
         end
+    end
+end
+
+function out = parseDropPctFromLabel(label)
+    label = string(label);
+    tokens = regexp(label, "drop_0_(\d+)", "tokens", "once");
+    if isempty(tokens)
+        out = parsePctFromLabel(label);
+    else
+        out = str2double(tokens{1});
     end
 end
 
@@ -504,14 +544,14 @@ function data = buildMetricData(scenario, systemT, trialT, robotT, algorithmOrde
     robotAgg = aggregateRobotMetrics(robotT, keyVarsWithScenario);
     data = outerjoin(systemT, robotAgg, "Keys", keyVarsWithScenario, "MergeKeys", true, "Type", "left");
 
-    if scenario == "Bayesian clue-informed search"
+    if scenario == "Clue-Informed Probabilistic Search (CLIPS)"
         trialKeep = trialT(:, [keyVarsWithScenario, "first_clue_robot", "trial_status"]);
         trialKeep.Properties.VariableNames(end-1:end) = ["trial_first_clue_robot","trial_trial_status"];
         data = outerjoin(data, trialKeep, "Keys", keyVarsWithScenario, "MergeKeys", true, "Type", "left");
         clueFirst = ~ismissing(data.trial_first_clue_robot) & strlength(strtrim(data.trial_first_clue_robot)) > 0;
         data.base_eligible = lower(string(data.trial_status)) == "completed" & ...
             lower(string(data.trial_trial_status)) == "completed" & clueFirst;
-    elseif scenario == "Coverage area search"
+    elseif scenario == "Full Grid Search (FGS)"
         trialKeep = trialT(:, [keyVarsWithScenario, "trial_status"]);
         trialKeep.Properties.VariableNames(end) = "trial_trial_status";
         data = outerjoin(data, trialKeep, "Keys", keyVarsWithScenario, "MergeKeys", true, "Type", "left");
@@ -529,7 +569,7 @@ function data = buildMetricData(scenario, systemT, trialT, robotT, algorithmOrde
     data.team_messages_per_step = safeDivide(data.messages_sent_total_metric, data.total_team_steps_metric);
     data.max_agent_messages = selectFirstNumeric(data, ["derived_max_messages_any_robot","max_messages_any_robot"]);
 
-    if scenario == "Bayesian clue-informed search" || scenario == "Coverage area search"
+    if scenario == "Clue-Informed Probabilistic Search (CLIPS)" || scenario == "Full Grid Search (FGS)"
         data.messages_per_unique_cell_metric = selectFirstNumeric(data, ["messages_per_unique_cell"]);
         missingMsgUnique = isnan(data.messages_per_unique_cell_metric);
         data.messages_per_unique_cell_metric(missingMsgUnique) = safeDivide(data.messages_sent_total_metric(missingMsgUnique), toDouble(data.unique_cells_searched(missingMsgUnique)));
@@ -638,7 +678,7 @@ function validateMetricData(fid, data, algorithmOrder)
             error("%s missing algorithms after metric normalization: %s", s, strjoin(missing, ","));
         end
     end
-    coverageRows = data.scenario == "Coverage area search";
+    coverageRows = data.scenario == "Full Grid Search (FGS)";
     if any(coverageRows)
         coverageTargetVals = [data.metric_duplicate_target_visits(coverageRows), ...
             data.metric_target_completion_gini(coverageRows), data.metric_messages_per_target(coverageRows)];
@@ -652,7 +692,7 @@ function metrics = metricsForScenario(scenario)
     shared = ["max_agent_steps","total_team_steps","team_messages_per_step", ...
         "max_agent_messages","messages_per_unique_cell","unique_cell_contribution_gini", ...
         "team_task_replans","team_path_replans"];
-    if scenario == "Bayesian clue-informed search" || scenario == "Coverage area search"
+    if scenario == "Clue-Informed Probabilistic Search (CLIPS)" || scenario == "Full Grid Search (FGS)"
         metrics = [shared, "system_cell_revisits"];
     else
         metrics = [shared, "duplicate_target_visits","target_completion_gini","messages_per_target"];
@@ -1162,7 +1202,7 @@ function offset = metricOffset(metric)
 end
 
 function src = metricSourceColumn(scenario, metric)
-    if scenario == "Bayesian clue-informed search" || scenario == "Coverage area search"
+    if scenario == "Clue-Informed Probabilistic Search (CLIPS)" || scenario == "Full Grid Search (FGS)"
         switch string(metric)
             case "max_agent_steps"
                 src = "max_steps_any_robot";
@@ -1216,9 +1256,9 @@ function src = metricSourceColumn(scenario, metric)
 end
 
 function rule = conditionInclusionRule(scenario)
-    if scenario == "Bayesian clue-informed search"
+    if scenario == "Clue-Informed Probabilistic Search (CLIPS)"
         rule = "All six algorithms present and eligible for the exact trial and communication condition; completed and first_clue_robot nonempty.";
-    elseif scenario == "Coverage area search"
+    elseif scenario == "Full Grid Search (FGS)"
         rule = "All six algorithms present and eligible for the exact trial and communication condition; completed in system and trial summaries; clue and target fields ignored.";
     else
         rule = "All six algorithms present and eligible for the exact trial and communication condition; completed, all targets visited, and completed_target_count equals target_count.";
@@ -1506,7 +1546,8 @@ function logCounts(fid, data, resultTable, algorithmOrder, nominalLevels)
 end
 
 function validation = validateTwoFileOutputs(metricT, statT, metricNames, algorithmOrder, fid)
-    validation.coverageRows = sum(contains(lower(metricT.scenario), "coverage")) + sum(contains(lower(statT.scenario), "coverage"));
+    validation.coverageRows = sum(metricT.scenario == "Full Grid Search (FGS)") + ...
+        sum(statT.scenario == "Full Grid Search (FGS)");
     foundMetrics = union(unique(metricT.metric), unique(statT.metric));
     validation.metricFoundCount = sum(ismember(metricNames, foundMetrics));
     validation.familyCount = numel(unique(statT.family_id));
@@ -1530,7 +1571,7 @@ function validation = validateTwoFileOutputs(metricT, statT, metricNames, algori
             validation.numericRangesValid = 0;
         end
     end
-    bayesDeg = metricT(metricT.scenario == "Bayesian clue-informed search" & ismember(metricT.result_type, ["prda","prds"]), :);
+    bayesDeg = metricT(metricT.scenario == "Clue-Informed Probabilistic Search (CLIPS)" & ismember(metricT.result_type, ["prda","prds"]), :);
     if any(bayesDeg.total_trial_count ~= 500) || any(bayesDeg.excluded_trials ~= 500 - bayesDeg.eligible_paired_trials)
         validation.numericRangesValid = 0;
     end
@@ -1625,13 +1666,13 @@ function count = manualSpotChecks(statT)
 end
 
 function validation = validateGeneratedResults(T, metricNames, fid)
-    validation.bayesianConditionRows = sum(T.scenario == "Bayesian clue-informed search" & T.result_type == "condition_metric");
-    validation.knownConditionRows = sum(T.scenario == "Collaborative known-target visit" & T.result_type == "condition_metric");
-    validation.bayesianPrdaRows = sum(T.scenario == "Bayesian clue-informed search" & T.result_type == "prda");
-    validation.bayesianPrdsRows = sum(T.scenario == "Bayesian clue-informed search" & T.result_type == "prds");
-    validation.knownPrdaRows = sum(T.scenario == "Collaborative known-target visit" & T.result_type == "prda");
-    validation.knownPrdsRows = sum(T.scenario == "Collaborative known-target visit" & T.result_type == "prds");
-    validation.coverageRows = sum(contains(lower(T.scenario), "coverage"));
+    validation.bayesianConditionRows = sum(T.scenario == "Clue-Informed Probabilistic Search (CLIPS)" & T.result_type == "condition_metric");
+    validation.knownConditionRows = sum(T.scenario == "Collaborative Visit (CV)" & T.result_type == "condition_metric");
+    validation.bayesianPrdaRows = sum(T.scenario == "Clue-Informed Probabilistic Search (CLIPS)" & T.result_type == "prda");
+    validation.bayesianPrdsRows = sum(T.scenario == "Clue-Informed Probabilistic Search (CLIPS)" & T.result_type == "prds");
+    validation.knownPrdaRows = sum(T.scenario == "Collaborative Visit (CV)" & T.result_type == "prda");
+    validation.knownPrdsRows = sum(T.scenario == "Collaborative Visit (CV)" & T.result_type == "prds");
+    validation.coverageRows = sum(T.scenario == "Full Grid Search (FGS)");
     validation.metricFoundCount = sum(ismember(metricNames, unique(T.metric)));
     validation.fieldMeanRows = sum(T.comparison_type == "vs_field_mean");
     [checks, maxErr] = reciprocalCheck(T);

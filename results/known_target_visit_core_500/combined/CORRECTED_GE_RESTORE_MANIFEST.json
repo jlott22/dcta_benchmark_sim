@@ -1,0 +1,174 @@
+{
+  "restored_utc": "2026-08-09T17:58:49.836702+00:00",
+  "source_revision": "f898015",
+  "bundle": "CV",
+  "active_directory": "results/known_target_visit_core_500/combined",
+  "archived_directory": "results/known_target_visit_core_500/combined/archive/pre_corrected_active_20260809",
+  "archived_files": [
+    {
+      "name": "known_target_visit_core_500_combined_condition_manifest.csv",
+      "bytes": 121713,
+      "sha256": "0ab5a9755637cefb6bb60db4ee11f1ed0c8a5c3f3f57ac00122e29e58d5b98bb"
+    },
+    {
+      "name": "known_target_visit_core_500_combined_robot_performance.csv",
+      "bytes": 96281298,
+      "sha256": "2c795a0edcbac7ea178550f8fe6c310f43b68090081baa923377bfcf530c9d09"
+    },
+    {
+      "name": "known_target_visit_core_500_combined_system_performance.csv",
+      "bytes": 36897912,
+      "sha256": "50813994484693f7cbd86e038e0501986f074c9a2b9709cb35c3a52a373db972"
+    },
+    {
+      "name": "known_target_visit_core_500_combined_trial_summary.csv",
+      "bytes": 35618793,
+      "sha256": "4fd3bc4368827c09b2d248058ad3ba885a7ecabd8920bfb2e0afafa945c90024"
+    },
+    {
+      "name": "target_performance_part_001.csv",
+      "bytes": 41508751,
+      "sha256": "d505597b22796470a4d71013dcc2ed0ce726738a6a44ca8496096ff6d1861189"
+    },
+    {
+      "name": "target_performance_part_002.csv",
+      "bytes": 42254857,
+      "sha256": "57889180146e05aad3edd7a841f19480fbf6c7b9b2f9ed7d8180a5487bc5702a"
+    },
+    {
+      "name": "target_performance_part_003.csv",
+      "bytes": 40366805,
+      "sha256": "6cdecfbbdbb33575d9a2df0ad2aa1ce0b69948d248731c259070b78c4cbb52a5"
+    },
+    {
+      "name": "target_performance_part_004.csv",
+      "bytes": 41618407,
+      "sha256": "0800594969aa854760b83a6ba21892b8b2fb85aa467224ad823e32853f04be58"
+    },
+    {
+      "name": "target_performance_part_005.csv",
+      "bytes": 42886259,
+      "sha256": "e9ca507ff19c7cc03eeee52f0991fd993c769be32ef4dddc5c2ec3c7fda57a43"
+    },
+    {
+      "name": "target_performance_part_006.csv",
+      "bytes": 41262965,
+      "sha256": "7b852506eb27da75982870797c75f7d3e00098ec22bbea1a220e6781a00c33f0"
+    },
+    {
+      "name": "target_performance_parts_manifest.csv",
+      "bytes": 314,
+      "sha256": "c1731daaad4bfc488e4418e7ff60979addf1c440342af055529b5b2914d0f868"
+    }
+  ],
+  "restored_files": [
+    {
+      "destination_name": "known_target_visit_core_500_combined_condition_manifest.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/condition_manifest.csv"
+      ],
+      "rows": 150,
+      "bytes": 130453,
+      "sha256": "2174a81d373adafddf5f8084bad4140810eaeb99c0458125a1c28aacfb6b279d"
+    },
+    {
+      "destination_name": "known_target_visit_core_500_combined_system_performance.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/system_performance_known.csv"
+      ],
+      "rows": 75000,
+      "bytes": 37523739,
+      "sha256": "86a5db8763347590ac065da9727a8cec67e2e077ec18c46030373924b8a06717"
+    },
+    {
+      "destination_name": "known_target_visit_core_500_combined_trial_summary.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/trial_summary.csv"
+      ],
+      "rows": 75000,
+      "bytes": 36246202,
+      "sha256": "52832cc3d319efa4dd8c761546ebdbc231dc7700875c2ed6819a2478394591b3"
+    },
+    {
+      "destination_name": "known_target_visit_core_500_combined_robot_performance.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/robot_performance.csv"
+      ],
+      "rows": 300000,
+      "bytes": 98783310,
+      "sha256": "aef15df3c49ab7ad384cd349571d51060f83e5858587a9d45c35ea8154a7c4a8"
+    },
+    {
+      "destination_name": "target_performance_part_001.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/target_performance_part_001.csv"
+      ],
+      "rows": 140000,
+      "bytes": 44433951,
+      "sha256": "ed58b2b27461ecccd9ef6a9314481779cdd420d99b5ae64a5496d4d97b0cbcc4"
+    },
+    {
+      "destination_name": "target_performance_part_002.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/target_performance_part_002.csv"
+      ],
+      "rows": 140000,
+      "bytes": 44465785,
+      "sha256": "aeab0160ce34f0f59b49b7a0320ae457739d13706c379def273123e0dcf8052d"
+    },
+    {
+      "destination_name": "target_performance_part_003.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/target_performance_part_003.csv"
+      ],
+      "rows": 140000,
+      "bytes": 46429701,
+      "sha256": "84e114c17131ce358c0028246afbda9c8f091b8c0831613c307339677ec28ec1"
+    },
+    {
+      "destination_name": "target_performance_part_004.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/target_performance_part_004.csv"
+      ],
+      "rows": 140000,
+      "bytes": 48216999,
+      "sha256": "a4efd1012b908050e218c0dd28d5824ac01e3aea1189ee3bba5315372c17729a"
+    },
+    {
+      "destination_name": "target_performance_part_005.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/target_performance_part_005.csv"
+      ],
+      "rows": 140000,
+      "bytes": 53853807,
+      "sha256": "2877dd75514454675a646bf7710d94053b93609b6d620ed4feef887203127d35"
+    },
+    {
+      "destination_name": "target_performance_part_006.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/target_performance_part_006.csv"
+      ],
+      "rows": 50000,
+      "bytes": 18741847,
+      "sha256": "65312220b78b98bde9a4bcc38a65082b7a8fef074fee9ff86bdf2867ced9aee4"
+    },
+    {
+      "destination_name": "target_performance_parts_manifest.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/target_performance_parts_manifest.csv"
+      ],
+      "rows": 6,
+      "bytes": 253,
+      "sha256": "59190f78ad98cb5b37a439bf91e890d442e07eb30d20c3d5a11bf17c2e03db9c"
+    },
+    {
+      "destination_name": "known_target_visit_core_500_corrected_ge_condition_manifest.csv",
+      "git_sources": [
+        "known_visit_core_500_combined/corrected_ge_condition_manifest.csv"
+      ],
+      "rows": 48,
+      "bytes": 63118,
+      "sha256": "d3197bac7c62295b1f5db4e19b49e8e378c72f8cedc1b1aae0c5f415dfd67374"
+    }
+  ]
+}

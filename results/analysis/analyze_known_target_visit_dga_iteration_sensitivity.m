@@ -12,8 +12,18 @@ clear; clc;
 
 scriptDir = fileparts(mfilename('fullpath'));
 repoRoot = fileparts(fileparts(scriptDir));
-inputFile = fullfile(repoRoot, 'results', 'sensitivity_known_target_visit_dga_iteration_300', 'combined', 'system_performance.csv');
+outDir = fullfile(scriptDir, 'figures');
+if ~exist(outDir, 'dir')
+    mkdir(outDir);
+end
+tableDir = fullfile(scriptDir, 'tables');
+if ~exist(tableDir, 'dir')
+    mkdir(tableDir);
+end
+inputFile = fullfile(repoRoot, 'results', 'sensitivity_known_target_visit_dga_iteration_300', 'combined', ...
+    'sensitivity_known_target_visit_dga_iteration_300_combined_system_performance.csv');
 metricName = 'total_team_steps';
+selectedIterations = 25;
 
 T = readtable(inputFile, 'TextType', 'string');
 if ~ismember(metricName, T.Properties.VariableNames)
@@ -38,6 +48,12 @@ overlayData = struct( ...
     'avgPctDiff', {}, ...
     'usedTrials', {}, ...
     'droppedTrials', {});
+summaryRows = table(strings(0, 1), strings(0, 1), zeros(0, 1), zeros(0, 1), ...
+    zeros(0, 1), zeros(0, 1), false(0, 1), ...
+    'VariableNames', {'scenario', 'comm_label', 'dga_iterations', ...
+    'mean_percent_difference_from_trial_iteration_mean', ...
+    'fully_paired_trials', 'dropped_incomplete_trials', ...
+    'selected_for_main_benchmark'});
 fprintf('Input: %s\n', inputFile);
 fprintf('Metric: %s\n\n', metricName);
 
@@ -112,29 +128,81 @@ for ci = 1:numel(comms)
     overlayData(end).avgPctDiff = y;
     overlayData(end).usedTrials = usedTrials;
     overlayData(end).droppedTrials = droppedTrials;
+
+    summaryRows = [summaryRows; table( ... %#ok<AGROW>
+        repmat("Collaborative Visit (CV)", numel(iterations), 1), ...
+        repmat(comm, numel(iterations), 1), iterations(:), y(:), ...
+        repmat(usedTrials, numel(iterations), 1), ...
+        repmat(droppedTrials, numel(iterations), 1), ...
+        iterations(:) == selectedIterations, ...
+        'VariableNames', summaryRows.Properties.VariableNames)];
 end
 
+summaryFile = fullfile(tableDir, 'dga_iteration_percent_delta_summary.csv');
+writetable(summaryRows, summaryFile);
+fprintf('Summary written to: %s\n', summaryFile);
+
 if ~isempty(overlayData)
-    figure('Name', 'DGA iteration / all communication modes');
+    figure('Name', 'DGA iteration / all communication modes', 'Color', 'w', ...
+        'Units', 'inches', 'Position', [1, 1, 3.5, 2.8]);
     hold on;
     allIterations = [];
     legendLabels = strings(1, numel(overlayData));
+    colors = lines(numel(overlayData));
+    lineHandles = gobjects(1, numel(overlayData));
     for i = 1:numel(overlayData)
         entry = overlayData(i);
-        plot(entry.iterations, entry.avgPctDiff, '-o', 'LineWidth', 1.5);
+        lineHandles(i) = plot(entry.iterations, entry.avgPctDiff, '-o', ...
+            'Color', colors(i, :), 'LineWidth', 1.5);
+        selectedIndex = find(entry.iterations == selectedIterations, 1);
+        if isempty(selectedIndex)
+            error('Selected DGA iteration count %d is absent from %s.', ...
+                selectedIterations, entry.comm);
+        end
+        plot(selectedIterations, entry.avgPctDiff(selectedIndex), ...
+            'LineStyle', 'none', ...
+            'Marker', 'p', ...
+            'MarkerSize', 8, ...
+            'MarkerFaceColor', colors(i, :), ...
+            'MarkerEdgeColor', [0 0 0], ...
+            'LineWidth', 0.8, ...
+            'HandleVisibility', 'off');
         allIterations = [allIterations, entry.iterations]; %#ok<AGROW>
-        legendLabels(i) = entry.comm;
+        if entry.comm == "ideal"
+            legendLabels(i) = "Ideal";
+        elseif entry.comm == "bernoulli_025"
+            legendLabels(i) = "Bernoulli p=0.25";
+        else
+            legendLabels(i) = entry.comm;
+        end
     end
     yline(0, '-', 'Color', [0.6 0.6 0.6], 'HandleVisibility', 'off');
+    selectedHandle = plot(nan, nan, 'kp', ...
+        'MarkerFaceColor', [1 1 1], 'MarkerSize', 9, ...
+        'LineStyle', 'none', 'DisplayName', sprintf('Selected k=%d', selectedIterations));
     hold off;
     grid on;
     xlabel('DGA iterations per trigger');
-    ylabel(sprintf('Average %% difference from per-trial mean %s', metricName), 'Interpreter', 'none');
-    title('DGA iteration / all communication modes', 'Interpreter', 'none');
+    ylabel('Mean total-step deviation (%)');
+    title('CV DGA iteration sensitivity', 'FontWeight', 'normal', 'FontSize', 8);
     xticks(sort(unique(allIterations)));
-    legend(legendLabels, 'Interpreter', 'none', 'Location', 'best');
+    set(gca, 'FontSize', 7);
+    legend([lineHandles, selectedHandle], ...
+        [legendLabels, "Selected k=" + string(selectedIterations)], ...
+        'Interpreter', 'none', 'Location', 'best', 'FontSize', 6.5);
 
     fprintf('DGA iteration / all communication modes: plotted_conditions=%d\n', numel(overlayData));
+
+    pngFile = fullfile(outDir, 'DGA_iteration.png');
+    figFile = fullfile(outDir, 'DGA_iteration.fig');
+    try
+        exportgraphics(gcf, pngFile, 'Resolution', 600);
+    catch
+        print(gcf, pngFile, '-dpng', '-r600');
+    end
+    savefig(gcf, figFile);
+    fprintf('Figure written to: %s\n', pngFile);
+    fprintf('MATLAB figure written to: %s\n', figFile);
 end
 
 function iter = extractIteration(T)

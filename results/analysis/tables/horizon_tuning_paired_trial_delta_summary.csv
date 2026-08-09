@@ -1,181 +1,181 @@
-scenario,metric,algorithm_key,comm_label,horizon,mean_delta_from_trial_baseline
-Collaborative Visit,total_team_steps,acbba,ideal,1,-5.57027777777778
-Collaborative Visit,total_team_steps,acbba,ideal,2,-14.6436111111111
-Collaborative Visit,total_team_steps,acbba,ideal,3,-16.4936111111111
-Collaborative Visit,total_team_steps,acbba,ideal,5,-17.4669444444444
-Collaborative Visit,total_team_steps,acbba,ideal,8,-19.0636111111111
-Collaborative Visit,total_team_steps,acbba,ideal,12,-19.7636111111111
-Collaborative Visit,total_team_steps,acbba,bernoulli_025,1,10.5363888888889
-Collaborative Visit,total_team_steps,acbba,bernoulli_025,2,8.57305555555556
-Collaborative Visit,total_team_steps,acbba,bernoulli_025,3,13.7330555555556
-Collaborative Visit,total_team_steps,acbba,bernoulli_025,5,20.1830555555556
-Collaborative Visit,total_team_steps,acbba,bernoulli_025,8,19.6263888888889
-Collaborative Visit,total_team_steps,acbba,bernoulli_025,12,20.3497222222222
-Collaborative Visit,total_team_steps,dga,ideal,1,-7.05138888888889
-Collaborative Visit,total_team_steps,dga,ideal,2,-3.96472222222222
-Collaborative Visit,total_team_steps,dga,ideal,3,-4.50138888888889
-Collaborative Visit,total_team_steps,dga,ideal,5,-4.46138888888889
-Collaborative Visit,total_team_steps,dga,ideal,8,-4.22472222222222
-Collaborative Visit,total_team_steps,dga,ideal,12,-3.84472222222222
-Collaborative Visit,total_team_steps,dga,bernoulli_025,1,1.02194444444444
-Collaborative Visit,total_team_steps,dga,bernoulli_025,2,4.12194444444444
-Collaborative Visit,total_team_steps,dga,bernoulli_025,3,4.74527777777778
-Collaborative Visit,total_team_steps,dga,bernoulli_025,5,6.62861111111111
-Collaborative Visit,total_team_steps,dga,bernoulli_025,8,5.85527777777778
-Collaborative Visit,total_team_steps,dga,bernoulli_025,12,5.67527777777778
-Collaborative Visit,total_team_steps,dmchba,ideal,1,-4.88916666666667
-Collaborative Visit,total_team_steps,dmchba,ideal,2,-4.4125
-Collaborative Visit,total_team_steps,dmchba,ideal,3,-4.35583333333333
-Collaborative Visit,total_team_steps,dmchba,ideal,5,-4.33916666666667
-Collaborative Visit,total_team_steps,dmchba,ideal,8,-4.5825
-Collaborative Visit,total_team_steps,dmchba,ideal,12,-4.6625
-Collaborative Visit,total_team_steps,dmchba,bernoulli_025,1,3.27083333333333
-Collaborative Visit,total_team_steps,dmchba,bernoulli_025,2,4.77416666666667
-Collaborative Visit,total_team_steps,dmchba,bernoulli_025,3,4.81416666666667
-Collaborative Visit,total_team_steps,dmchba,bernoulli_025,5,4.8575
-Collaborative Visit,total_team_steps,dmchba,bernoulli_025,8,4.8375
-Collaborative Visit,total_team_steps,dmchba,bernoulli_025,12,4.6875
-Collaborative Visit,total_team_steps,hipc,ideal,1,10.1877777777778
-Collaborative Visit,total_team_steps,hipc,ideal,2,0.781111111111111
-Collaborative Visit,total_team_steps,hipc,ideal,3,-5.47555555555556
-Collaborative Visit,total_team_steps,hipc,ideal,5,-10.5722222222222
-Collaborative Visit,total_team_steps,hipc,ideal,8,-11.6422222222222
-Collaborative Visit,total_team_steps,hipc,ideal,12,-12.2255555555556
-Collaborative Visit,total_team_steps,hipc,bernoulli_025,1,20.1877777777778
-Collaborative Visit,total_team_steps,hipc,bernoulli_025,2,9.59111111111111
-Collaborative Visit,total_team_steps,hipc,bernoulli_025,3,3.48111111111111
-Collaborative Visit,total_team_steps,hipc,bernoulli_025,5,-1.16888888888889
-Collaborative Visit,total_team_steps,hipc,bernoulli_025,8,-1.98555555555556
-Collaborative Visit,total_team_steps,hipc,bernoulli_025,12,-1.15888888888889
-Collaborative Visit,total_team_steps,pi,ideal,1,-7.25305555555556
-Collaborative Visit,total_team_steps,pi,ideal,2,-15.2030555555556
-Collaborative Visit,total_team_steps,pi,ideal,3,-21.4163888888889
-Collaborative Visit,total_team_steps,pi,ideal,5,-24.4830555555556
-Collaborative Visit,total_team_steps,pi,ideal,8,-24.8863888888889
-Collaborative Visit,total_team_steps,pi,ideal,12,-25.7797222222222
-Collaborative Visit,total_team_steps,pi,bernoulli_025,1,19.1002777777778
-Collaborative Visit,total_team_steps,pi,bernoulli_025,2,15.1969444444444
-Collaborative Visit,total_team_steps,pi,bernoulli_025,3,20.4469444444444
-Collaborative Visit,total_team_steps,pi,bernoulli_025,5,19.2569444444444
-Collaborative Visit,total_team_steps,pi,bernoulli_025,8,22.3802777777778
-Collaborative Visit,total_team_steps,pi,bernoulli_025,12,22.6402777777778
-Bayesian Search,post_clue_steps_to_find,acbba,ideal,1,-18.3296221322537
-Bayesian Search,post_clue_steps_to_find,acbba,ideal,2,-17.0138326585695
-Bayesian Search,post_clue_steps_to_find,acbba,ideal,3,-24.0705128205128
-Bayesian Search,post_clue_steps_to_find,acbba,ideal,5,-23.3984480431849
-Bayesian Search,post_clue_steps_to_find,acbba,ideal,8,-22.4794197031039
-Bayesian Search,post_clue_steps_to_find,acbba,ideal,12,-18.8235492577598
-Bayesian Search,post_clue_steps_to_find,acbba,bernoulli_025,1,23.8080296896086
-Bayesian Search,post_clue_steps_to_find,acbba,bernoulli_025,2,29.2574224021592
-Bayesian Search,post_clue_steps_to_find,acbba,bernoulli_025,3,23.6825236167341
-Bayesian Search,post_clue_steps_to_find,acbba,bernoulli_025,5,19.4841430499325
-Bayesian Search,post_clue_steps_to_find,acbba,bernoulli_025,8,14.6784750337382
-Bayesian Search,post_clue_steps_to_find,acbba,bernoulli_025,12,13.2047908232119
-Bayesian Search,post_clue_steps_to_find,dga,ideal,1,-16.0700680272109
-Bayesian Search,post_clue_steps_to_find,dga,ideal,2,-13.3149659863946
-Bayesian Search,post_clue_steps_to_find,dga,ideal,3,-13.9761904761905
-Bayesian Search,post_clue_steps_to_find,dga,ideal,5,-19.1231292517007
-Bayesian Search,post_clue_steps_to_find,dga,ideal,8,-19.2455782312925
-Bayesian Search,post_clue_steps_to_find,dga,ideal,12,-16.4619047619048
-Bayesian Search,post_clue_steps_to_find,dga,bernoulli_025,1,15.921768707483
-Bayesian Search,post_clue_steps_to_find,dga,bernoulli_025,2,14.1707482993197
-Bayesian Search,post_clue_steps_to_find,dga,bernoulli_025,3,16.7585034013605
-Bayesian Search,post_clue_steps_to_find,dga,bernoulli_025,5,17.6156462585034
-Bayesian Search,post_clue_steps_to_find,dga,bernoulli_025,8,16.5013605442177
-Bayesian Search,post_clue_steps_to_find,dga,bernoulli_025,12,17.2238095238095
-Bayesian Search,post_clue_steps_to_find,dmchba,ideal,1,-9.23785425101214
-Bayesian Search,post_clue_steps_to_find,dmchba,ideal,2,-8.14068825910931
-Bayesian Search,post_clue_steps_to_find,dmchba,ideal,3,-14.6062753036437
-Bayesian Search,post_clue_steps_to_find,dmchba,ideal,5,-16.1204453441296
-Bayesian Search,post_clue_steps_to_find,dmchba,ideal,8,-12.0151821862348
-Bayesian Search,post_clue_steps_to_find,dmchba,ideal,12,-9.61032388663968
-Bayesian Search,post_clue_steps_to_find,dmchba,bernoulli_025,1,15.418016194332
-Bayesian Search,post_clue_steps_to_find,dmchba,bernoulli_025,2,20.0334008097166
-Bayesian Search,post_clue_steps_to_find,dmchba,bernoulli_025,3,7.41396761133603
-Bayesian Search,post_clue_steps_to_find,dmchba,bernoulli_025,5,5.15890688259109
-Bayesian Search,post_clue_steps_to_find,dmchba,bernoulli_025,8,11.6325910931174
-Bayesian Search,post_clue_steps_to_find,dmchba,bernoulli_025,12,10.0738866396761
-Bayesian Search,post_clue_steps_to_find,hipc,ideal,1,-26.1534552845528
-Bayesian Search,post_clue_steps_to_find,hipc,ideal,2,-21.9989837398374
-Bayesian Search,post_clue_steps_to_find,hipc,ideal,3,-21.5274390243902
-Bayesian Search,post_clue_steps_to_find,hipc,ideal,5,-23.8363821138211
-Bayesian Search,post_clue_steps_to_find,hipc,ideal,8,-18.3201219512195
-Bayesian Search,post_clue_steps_to_find,hipc,ideal,12,-21.6819105691057
-Bayesian Search,post_clue_steps_to_find,hipc,bernoulli_025,1,22.4766260162602
-Bayesian Search,post_clue_steps_to_find,hipc,bernoulli_025,2,21.5660569105691
-Bayesian Search,post_clue_steps_to_find,hipc,bernoulli_025,3,20.7123983739837
-Bayesian Search,post_clue_steps_to_find,hipc,bernoulli_025,5,18.8140243902439
-Bayesian Search,post_clue_steps_to_find,hipc,bernoulli_025,8,30.744918699187
-Bayesian Search,post_clue_steps_to_find,hipc,bernoulli_025,12,19.2042682926829
-Bayesian Search,post_clue_steps_to_find,pi,ideal,1,-26.7668690958165
-Bayesian Search,post_clue_steps_to_find,pi,ideal,2,-24.8114035087719
-Bayesian Search,post_clue_steps_to_find,pi,ideal,3,-15.4186909581646
-Bayesian Search,post_clue_steps_to_find,pi,ideal,5,-15.4024966261808
-Bayesian Search,post_clue_steps_to_find,pi,ideal,8,-16.7790148448043
-Bayesian Search,post_clue_steps_to_find,pi,ideal,12,-5.13124156545209
-Bayesian Search,post_clue_steps_to_find,pi,bernoulli_025,1,28.7594466936572
-Bayesian Search,post_clue_steps_to_find,pi,bernoulli_025,2,17.3019568151147
-Bayesian Search,post_clue_steps_to_find,pi,bernoulli_025,3,18.9740215924426
-Bayesian Search,post_clue_steps_to_find,pi,bernoulli_025,5,11.8161268556005
-Bayesian Search,post_clue_steps_to_find,pi,bernoulli_025,8,13.0064102564103
-Bayesian Search,post_clue_steps_to_find,pi,bernoulli_025,12,14.4517543859649
-Coverage,total_team_steps,acbba,ideal,1,-122.718333333333
-Coverage,total_team_steps,acbba,ideal,2,-131.078333333333
-Coverage,total_team_steps,acbba,ideal,3,-91.3783333333333
-Coverage,total_team_steps,acbba,ideal,5,-122.278333333333
-Coverage,total_team_steps,acbba,ideal,8,-121.038333333333
-Coverage,total_team_steps,acbba,ideal,12,-103.578333333333
-Coverage,total_team_steps,acbba,bernoulli_025,1,93.2216666666667
-Coverage,total_team_steps,acbba,bernoulli_025,2,123.081666666667
-Coverage,total_team_steps,acbba,bernoulli_025,3,97.7416666666667
-Coverage,total_team_steps,acbba,bernoulli_025,5,94.7416666666667
-Coverage,total_team_steps,acbba,bernoulli_025,8,138.641666666667
-Coverage,total_team_steps,acbba,bernoulli_025,12,144.641666666667
-Coverage,total_team_steps,dga,ideal,1,-99.6816666666667
-Coverage,total_team_steps,dga,ideal,2,-117.001666666667
-Coverage,total_team_steps,dga,ideal,3,-116.961666666667
-Coverage,total_team_steps,dga,ideal,5,-118.661666666667
-Coverage,total_team_steps,dga,ideal,8,-100.941666666667
-Coverage,total_team_steps,dga,ideal,12,-118.461666666667
-Coverage,total_team_steps,dga,bernoulli_025,1,118.038333333333
-Coverage,total_team_steps,dga,bernoulli_025,2,117.098333333333
-Coverage,total_team_steps,dga,bernoulli_025,3,110.018333333333
-Coverage,total_team_steps,dga,bernoulli_025,5,108.118333333333
-Coverage,total_team_steps,dga,bernoulli_025,8,107.898333333333
-Coverage,total_team_steps,dga,bernoulli_025,12,110.538333333333
-Coverage,total_team_steps,dmchba,ideal,1,-124.215
-Coverage,total_team_steps,dmchba,ideal,2,-97.275
-Coverage,total_team_steps,dmchba,ideal,3,-91.295
-Coverage,total_team_steps,dmchba,ideal,5,-78.235
-Coverage,total_team_steps,dmchba,ideal,8,-63.815
-Coverage,total_team_steps,dmchba,ideal,12,-50.895
-Coverage,total_team_steps,dmchba,bernoulli_025,1,84.425
-Coverage,total_team_steps,dmchba,bernoulli_025,2,80.145
-Coverage,total_team_steps,dmchba,bernoulli_025,3,77.965
-Coverage,total_team_steps,dmchba,bernoulli_025,5,80.265
-Coverage,total_team_steps,dmchba,bernoulli_025,8,85.685
-Coverage,total_team_steps,dmchba,bernoulli_025,12,97.245
-Coverage,total_team_steps,hipc,ideal,1,-119.451086956522
-Coverage,total_team_steps,hipc,ideal,2,-118.08152173913
-Coverage,total_team_steps,hipc,ideal,3,-122.58152173913
-Coverage,total_team_steps,hipc,ideal,5,-120.472826086957
-Coverage,total_team_steps,hipc,ideal,8,-116.429347826087
-Coverage,total_team_steps,hipc,ideal,12,-103.58152173913
-Coverage,total_team_steps,hipc,bernoulli_025,1,101.896739130435
-Coverage,total_team_steps,hipc,bernoulli_025,2,107.092391304348
-Coverage,total_team_steps,hipc,bernoulli_025,3,107.505434782609
-Coverage,total_team_steps,hipc,bernoulli_025,5,121.657608695652
-Coverage,total_team_steps,hipc,bernoulli_025,8,120.070652173913
-Coverage,total_team_steps,hipc,bernoulli_025,12,142.375
-Coverage,total_team_steps,pi,ideal,1,-172.673333333333
-Coverage,total_team_steps,pi,ideal,2,-151.293333333333
-Coverage,total_team_steps,pi,ideal,3,-127.313333333333
-Coverage,total_team_steps,pi,ideal,5,-132.773333333333
-Coverage,total_team_steps,pi,ideal,8,-124.233333333333
-Coverage,total_team_steps,pi,ideal,12,-111.233333333333
-Coverage,total_team_steps,pi,bernoulli_025,1,57.0866666666667
-Coverage,total_team_steps,pi,bernoulli_025,2,119.086666666667
-Coverage,total_team_steps,pi,bernoulli_025,3,151.386666666667
-Coverage,total_team_steps,pi,bernoulli_025,5,168.026666666667
-Coverage,total_team_steps,pi,bernoulli_025,8,148.226666666667
-Coverage,total_team_steps,pi,bernoulli_025,12,175.706666666667
+scenario,metric,algorithm_key,comm_label,horizon,mean_delta_from_trial_baseline,selected_for_main_benchmark
+Collaborative Visit (CV),total_team_steps,acbba,ideal,1,-5.57027777777778,0
+Collaborative Visit (CV),total_team_steps,acbba,ideal,2,-14.6436111111111,0
+Collaborative Visit (CV),total_team_steps,acbba,ideal,3,-16.4936111111111,0
+Collaborative Visit (CV),total_team_steps,acbba,ideal,5,-17.4669444444444,1
+Collaborative Visit (CV),total_team_steps,acbba,ideal,8,-19.0636111111111,0
+Collaborative Visit (CV),total_team_steps,acbba,ideal,12,-19.7636111111111,0
+Collaborative Visit (CV),total_team_steps,acbba,bernoulli_025,1,10.5363888888889,0
+Collaborative Visit (CV),total_team_steps,acbba,bernoulli_025,2,8.57305555555556,0
+Collaborative Visit (CV),total_team_steps,acbba,bernoulli_025,3,13.7330555555556,0
+Collaborative Visit (CV),total_team_steps,acbba,bernoulli_025,5,20.1830555555556,1
+Collaborative Visit (CV),total_team_steps,acbba,bernoulli_025,8,19.6263888888889,0
+Collaborative Visit (CV),total_team_steps,acbba,bernoulli_025,12,20.3497222222222,0
+Collaborative Visit (CV),total_team_steps,dga,ideal,1,-7.05138888888889,1
+Collaborative Visit (CV),total_team_steps,dga,ideal,2,-3.96472222222222,0
+Collaborative Visit (CV),total_team_steps,dga,ideal,3,-4.50138888888889,0
+Collaborative Visit (CV),total_team_steps,dga,ideal,5,-4.46138888888889,0
+Collaborative Visit (CV),total_team_steps,dga,ideal,8,-4.22472222222222,0
+Collaborative Visit (CV),total_team_steps,dga,ideal,12,-3.84472222222222,0
+Collaborative Visit (CV),total_team_steps,dga,bernoulli_025,1,1.02194444444444,1
+Collaborative Visit (CV),total_team_steps,dga,bernoulli_025,2,4.12194444444444,0
+Collaborative Visit (CV),total_team_steps,dga,bernoulli_025,3,4.74527777777778,0
+Collaborative Visit (CV),total_team_steps,dga,bernoulli_025,5,6.62861111111111,0
+Collaborative Visit (CV),total_team_steps,dga,bernoulli_025,8,5.85527777777778,0
+Collaborative Visit (CV),total_team_steps,dga,bernoulli_025,12,5.67527777777778,0
+Collaborative Visit (CV),total_team_steps,dmchba,ideal,1,-4.88916666666667,0
+Collaborative Visit (CV),total_team_steps,dmchba,ideal,2,-4.4125,0
+Collaborative Visit (CV),total_team_steps,dmchba,ideal,3,-4.35583333333333,1
+Collaborative Visit (CV),total_team_steps,dmchba,ideal,5,-4.33916666666667,0
+Collaborative Visit (CV),total_team_steps,dmchba,ideal,8,-4.5825,0
+Collaborative Visit (CV),total_team_steps,dmchba,ideal,12,-4.6625,0
+Collaborative Visit (CV),total_team_steps,dmchba,bernoulli_025,1,3.27083333333333,0
+Collaborative Visit (CV),total_team_steps,dmchba,bernoulli_025,2,4.77416666666667,0
+Collaborative Visit (CV),total_team_steps,dmchba,bernoulli_025,3,4.81416666666667,1
+Collaborative Visit (CV),total_team_steps,dmchba,bernoulli_025,5,4.8575,0
+Collaborative Visit (CV),total_team_steps,dmchba,bernoulli_025,8,4.8375,0
+Collaborative Visit (CV),total_team_steps,dmchba,bernoulli_025,12,4.6875,0
+Collaborative Visit (CV),total_team_steps,hipc,ideal,1,10.1877777777778,0
+Collaborative Visit (CV),total_team_steps,hipc,ideal,2,0.781111111111111,0
+Collaborative Visit (CV),total_team_steps,hipc,ideal,3,-5.47555555555556,1
+Collaborative Visit (CV),total_team_steps,hipc,ideal,5,-10.5722222222222,0
+Collaborative Visit (CV),total_team_steps,hipc,ideal,8,-11.6422222222222,0
+Collaborative Visit (CV),total_team_steps,hipc,ideal,12,-12.2255555555556,0
+Collaborative Visit (CV),total_team_steps,hipc,bernoulli_025,1,20.1877777777778,0
+Collaborative Visit (CV),total_team_steps,hipc,bernoulli_025,2,9.59111111111111,0
+Collaborative Visit (CV),total_team_steps,hipc,bernoulli_025,3,3.48111111111111,1
+Collaborative Visit (CV),total_team_steps,hipc,bernoulli_025,5,-1.16888888888889,0
+Collaborative Visit (CV),total_team_steps,hipc,bernoulli_025,8,-1.98555555555556,0
+Collaborative Visit (CV),total_team_steps,hipc,bernoulli_025,12,-1.15888888888889,0
+Collaborative Visit (CV),total_team_steps,pi,ideal,1,-7.25305555555556,0
+Collaborative Visit (CV),total_team_steps,pi,ideal,2,-15.2030555555556,0
+Collaborative Visit (CV),total_team_steps,pi,ideal,3,-21.4163888888889,0
+Collaborative Visit (CV),total_team_steps,pi,ideal,5,-24.4830555555556,1
+Collaborative Visit (CV),total_team_steps,pi,ideal,8,-24.8863888888889,0
+Collaborative Visit (CV),total_team_steps,pi,ideal,12,-25.7797222222222,0
+Collaborative Visit (CV),total_team_steps,pi,bernoulli_025,1,19.1002777777778,0
+Collaborative Visit (CV),total_team_steps,pi,bernoulli_025,2,15.1969444444444,0
+Collaborative Visit (CV),total_team_steps,pi,bernoulli_025,3,20.4469444444444,0
+Collaborative Visit (CV),total_team_steps,pi,bernoulli_025,5,19.2569444444444,1
+Collaborative Visit (CV),total_team_steps,pi,bernoulli_025,8,22.3802777777778,0
+Collaborative Visit (CV),total_team_steps,pi,bernoulli_025,12,22.6402777777778,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,ideal,1,-18.3296221322537,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,ideal,2,-17.0138326585695,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,ideal,3,-24.0705128205128,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,ideal,5,-23.3984480431849,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,ideal,8,-22.4794197031039,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,ideal,12,-18.8235492577598,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,bernoulli_025,1,23.8080296896086,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,bernoulli_025,2,29.2574224021592,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,bernoulli_025,3,23.6825236167341,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,bernoulli_025,5,19.4841430499325,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,bernoulli_025,8,14.6784750337382,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,acbba,bernoulli_025,12,13.2047908232119,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,ideal,1,-16.0700680272109,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,ideal,2,-13.3149659863946,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,ideal,3,-13.9761904761905,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,ideal,5,-19.1231292517007,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,ideal,8,-19.2455782312925,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,ideal,12,-16.4619047619048,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,bernoulli_025,1,15.921768707483,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,bernoulli_025,2,14.1707482993197,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,bernoulli_025,3,16.7585034013605,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,bernoulli_025,5,17.6156462585034,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,bernoulli_025,8,16.5013605442177,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dga,bernoulli_025,12,17.2238095238095,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,ideal,1,-9.23785425101214,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,ideal,2,-8.14068825910931,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,ideal,3,-14.6062753036437,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,ideal,5,-16.1204453441296,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,ideal,8,-12.0151821862348,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,ideal,12,-9.61032388663968,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,bernoulli_025,1,15.418016194332,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,bernoulli_025,2,20.0334008097166,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,bernoulli_025,3,7.41396761133603,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,bernoulli_025,5,5.15890688259109,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,bernoulli_025,8,11.6325910931174,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,dmchba,bernoulli_025,12,10.0738866396761,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,ideal,1,-26.1534552845528,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,ideal,2,-21.9989837398374,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,ideal,3,-21.5274390243902,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,ideal,5,-23.8363821138211,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,ideal,8,-18.3201219512195,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,ideal,12,-21.6819105691057,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,bernoulli_025,1,22.4766260162602,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,bernoulli_025,2,21.5660569105691,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,bernoulli_025,3,20.7123983739837,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,bernoulli_025,5,18.8140243902439,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,bernoulli_025,8,30.744918699187,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,hipc,bernoulli_025,12,19.2042682926829,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,ideal,1,-26.7668690958165,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,ideal,2,-24.8114035087719,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,ideal,3,-15.4186909581646,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,ideal,5,-15.4024966261808,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,ideal,8,-16.7790148448043,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,ideal,12,-5.13124156545209,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,bernoulli_025,1,28.7594466936572,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,bernoulli_025,2,17.3019568151147,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,bernoulli_025,3,18.9740215924426,1
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,bernoulli_025,5,11.8161268556005,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,bernoulli_025,8,13.0064102564103,0
+Clue-Informed Probabilistic Search (CLIPS),post_clue_steps_to_find,pi,bernoulli_025,12,14.4517543859649,0
+Full Grid Search (FGS),total_team_steps,acbba,ideal,1,-122.718333333333,0
+Full Grid Search (FGS),total_team_steps,acbba,ideal,2,-131.078333333333,0
+Full Grid Search (FGS),total_team_steps,acbba,ideal,3,-91.3783333333333,1
+Full Grid Search (FGS),total_team_steps,acbba,ideal,5,-122.278333333333,0
+Full Grid Search (FGS),total_team_steps,acbba,ideal,8,-121.038333333333,0
+Full Grid Search (FGS),total_team_steps,acbba,ideal,12,-103.578333333333,0
+Full Grid Search (FGS),total_team_steps,acbba,bernoulli_025,1,93.2216666666667,0
+Full Grid Search (FGS),total_team_steps,acbba,bernoulli_025,2,123.081666666667,0
+Full Grid Search (FGS),total_team_steps,acbba,bernoulli_025,3,97.7416666666667,1
+Full Grid Search (FGS),total_team_steps,acbba,bernoulli_025,5,94.7416666666667,0
+Full Grid Search (FGS),total_team_steps,acbba,bernoulli_025,8,138.641666666667,0
+Full Grid Search (FGS),total_team_steps,acbba,bernoulli_025,12,144.641666666667,0
+Full Grid Search (FGS),total_team_steps,dga,ideal,1,-99.6816666666667,0
+Full Grid Search (FGS),total_team_steps,dga,ideal,2,-117.001666666667,0
+Full Grid Search (FGS),total_team_steps,dga,ideal,3,-116.961666666667,0
+Full Grid Search (FGS),total_team_steps,dga,ideal,5,-118.661666666667,1
+Full Grid Search (FGS),total_team_steps,dga,ideal,8,-100.941666666667,0
+Full Grid Search (FGS),total_team_steps,dga,ideal,12,-118.461666666667,0
+Full Grid Search (FGS),total_team_steps,dga,bernoulli_025,1,118.038333333333,0
+Full Grid Search (FGS),total_team_steps,dga,bernoulli_025,2,117.098333333333,0
+Full Grid Search (FGS),total_team_steps,dga,bernoulli_025,3,110.018333333333,0
+Full Grid Search (FGS),total_team_steps,dga,bernoulli_025,5,108.118333333333,1
+Full Grid Search (FGS),total_team_steps,dga,bernoulli_025,8,107.898333333333,0
+Full Grid Search (FGS),total_team_steps,dga,bernoulli_025,12,110.538333333333,0
+Full Grid Search (FGS),total_team_steps,dmchba,ideal,1,-124.215,0
+Full Grid Search (FGS),total_team_steps,dmchba,ideal,2,-97.275,0
+Full Grid Search (FGS),total_team_steps,dmchba,ideal,3,-91.295,0
+Full Grid Search (FGS),total_team_steps,dmchba,ideal,5,-78.235,0
+Full Grid Search (FGS),total_team_steps,dmchba,ideal,8,-63.815,1
+Full Grid Search (FGS),total_team_steps,dmchba,ideal,12,-50.895,0
+Full Grid Search (FGS),total_team_steps,dmchba,bernoulli_025,1,84.425,0
+Full Grid Search (FGS),total_team_steps,dmchba,bernoulli_025,2,80.145,0
+Full Grid Search (FGS),total_team_steps,dmchba,bernoulli_025,3,77.965,0
+Full Grid Search (FGS),total_team_steps,dmchba,bernoulli_025,5,80.265,0
+Full Grid Search (FGS),total_team_steps,dmchba,bernoulli_025,8,85.685,1
+Full Grid Search (FGS),total_team_steps,dmchba,bernoulli_025,12,97.245,0
+Full Grid Search (FGS),total_team_steps,hipc,ideal,1,-119.451086956522,0
+Full Grid Search (FGS),total_team_steps,hipc,ideal,2,-118.08152173913,0
+Full Grid Search (FGS),total_team_steps,hipc,ideal,3,-122.58152173913,1
+Full Grid Search (FGS),total_team_steps,hipc,ideal,5,-120.472826086957,0
+Full Grid Search (FGS),total_team_steps,hipc,ideal,8,-116.429347826087,0
+Full Grid Search (FGS),total_team_steps,hipc,ideal,12,-103.58152173913,0
+Full Grid Search (FGS),total_team_steps,hipc,bernoulli_025,1,101.896739130435,0
+Full Grid Search (FGS),total_team_steps,hipc,bernoulli_025,2,107.092391304348,0
+Full Grid Search (FGS),total_team_steps,hipc,bernoulli_025,3,107.505434782609,1
+Full Grid Search (FGS),total_team_steps,hipc,bernoulli_025,5,121.657608695652,0
+Full Grid Search (FGS),total_team_steps,hipc,bernoulli_025,8,120.070652173913,0
+Full Grid Search (FGS),total_team_steps,hipc,bernoulli_025,12,142.375,0
+Full Grid Search (FGS),total_team_steps,pi,ideal,1,-172.673333333333,0
+Full Grid Search (FGS),total_team_steps,pi,ideal,2,-151.293333333333,0
+Full Grid Search (FGS),total_team_steps,pi,ideal,3,-127.313333333333,1
+Full Grid Search (FGS),total_team_steps,pi,ideal,5,-132.773333333333,0
+Full Grid Search (FGS),total_team_steps,pi,ideal,8,-124.233333333333,0
+Full Grid Search (FGS),total_team_steps,pi,ideal,12,-111.233333333333,0
+Full Grid Search (FGS),total_team_steps,pi,bernoulli_025,1,57.0866666666667,0
+Full Grid Search (FGS),total_team_steps,pi,bernoulli_025,2,119.086666666667,0
+Full Grid Search (FGS),total_team_steps,pi,bernoulli_025,3,151.386666666667,1
+Full Grid Search (FGS),total_team_steps,pi,bernoulli_025,5,168.026666666667,0
+Full Grid Search (FGS),total_team_steps,pi,bernoulli_025,8,148.226666666667,0
+Full Grid Search (FGS),total_team_steps,pi,bernoulli_025,12,175.706666666667,0

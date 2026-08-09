@@ -1,0 +1,151 @@
+mission,comm_model,comm_label,degradation_pct,algorithm,attempted_trials,completed_trials,failed_trials,completion_rate,failure_rate,completion_ci95_wilson_low,completion_ci95_wilson_high,failure_reasons,six_way_paired_n_continuous_metrics,continuous_metric_scope
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_05,5,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_05,5,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_05,5,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_05,5,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_05,5,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_05,5,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_1,10,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_1,10,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_1,10,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_1,10,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_1,10,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_1,10,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_2,20,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_2,20,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_2,20,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_2,20,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_2,20,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_2,20,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_3,30,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_3,30,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_3,30,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_3,30,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_3,30,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_3,30,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_4,40,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_4,40,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_4,40,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_4,40,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_4,40,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_4,40,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_5,50,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_5,50,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_5,50,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_5,50,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_5,50,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_5,50,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_6,60,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_6,60,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_6,60,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_6,60,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_6,60,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_6,60,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_7,70,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_7,70,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_7,70,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_7,70,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_7,70,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),bernoulli,bernoulli_drop_0_7,70,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_05_rho_0_8,5,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_05_rho_0_8,5,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_05_rho_0_8,5,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_05_rho_0_8,5,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_05_rho_0_8,5,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_05_rho_0_8,5,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_10_rho_0_8,10,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_10_rho_0_8,10,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_10_rho_0_8,10,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_10_rho_0_8,10,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_10_rho_0_8,10,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_10_rho_0_8,10,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_20_rho_0_8,20,CBAA,100,97,3,0.97,0.03,0.915480635709472,0.989745475975961,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=3),94,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_20_rho_0_8,20,ACBBA,100,100,0,1,0,0.963006501793014,1,none,94,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_20_rho_0_8,20,PI,100,99,1,0.99,0.01,0.945513803821295,0.998232567935859,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=1),94,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_20_rho_0_8,20,HIPC,100,100,0,1,0,0.963006501793014,1,none,94,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_20_rho_0_8,20,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,94,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_20_rho_0_8,20,DGA,100,98,2,0.98,0.02,0.929988209271456,0.994498032449838,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=2),94,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_30_rho_0_8,30,CBAA,100,97,3,0.97,0.03,0.915480635709472,0.989745475975961,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=3),85,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_30_rho_0_8,30,ACBBA,100,100,0,1,0,0.963006501793014,1,none,85,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_30_rho_0_8,30,PI,100,96,4,0.96,0.04,0.901629285641121,0.984336696008452,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=4),85,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_30_rho_0_8,30,HIPC,100,99,1,0.99,0.01,0.945513803821295,0.998232567935859,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=1),85,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_30_rho_0_8,30,DMCHBA,100,99,1,0.99,0.01,0.945513803821295,0.998232567935859,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=1),85,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_30_rho_0_8,30,DGA,100,93,7,0.93,0.07,0.862504852609265,0.965680738932727,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=7),85,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_40_rho_0_8,40,CBAA,100,91,9,0.91,0.09,0.837737871472837,0.951927459997435,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=9),77,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_40_rho_0_8,40,ACBBA,100,100,0,1,0,0.963006501793014,1,none,77,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_40_rho_0_8,40,PI,100,96,4,0.96,0.04,0.901629285641121,0.984336696008452,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=4),77,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_40_rho_0_8,40,HIPC,100,98,2,0.98,0.02,0.929988209271456,0.994498032449838,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=2),77,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_40_rho_0_8,40,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,77,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_40_rho_0_8,40,DGA,100,88,12,0.88,0.12,0.801879005732886,0.930005935629805,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=12),77,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_50_rho_0_8,50,CBAA,100,82,18,0.82,0.18,0.733326416136993,0.882997745010536,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=18),41,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_50_rho_0_8,50,ACBBA,100,100,0,1,0,0.963006501793014,1,none,41,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_50_rho_0_8,50,PI,100,76,24,0.76,0.24,0.667676636501855,0.833086744430512,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=24),41,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_50_rho_0_8,50,HIPC,100,93,7,0.93,0.07,0.862504852609265,0.965680738932727,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=7),41,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_50_rho_0_8,50,DMCHBA,100,96,4,0.96,0.04,0.901629285641121,0.984336696008452,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=4),41,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_50_rho_0_8,50,DGA,100,79,21,0.79,0.21,0.700200311659101,0.858343459380847,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=21),41,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_60_rho_0_8,60,CBAA,100,62,38,0.62,0.38,0.522097552955111,0.709024007475213,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=38),24,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_60_rho_0_8,60,ACBBA,100,99,1,0.99,0.01,0.945513803821295,0.998232567935859,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=1),24,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_60_rho_0_8,60,PI,100,53,47,0.53,0.47,0.432888569700994,0.624891820406587,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=47),24,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_60_rho_0_8,60,HIPC,100,87,13,0.87,0.13,0.790196485599236,0.922428325727595,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=13),24,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_60_rho_0_8,60,DMCHBA,100,82,18,0.82,0.18,0.733326416136993,0.882997745010536,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=18),24,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_60_rho_0_8,60,DGA,100,84,16,0.84,0.16,0.755797306107298,0.899047115111952,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=16),24,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_70_rho_0_8,70,CBAA,100,70,30,0.7,0.3,0.604151453666533,0.781051147050672,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=30),17,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_70_rho_0_8,70,ACBBA,100,91,9,0.91,0.09,0.837737871472837,0.951927459997435,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=9),17,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_70_rho_0_8,70,PI,100,45,55,0.45,0.55,0.35614537979512,0.547553970025579,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=55),17,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_70_rho_0_8,70,HIPC,100,71,29,0.71,0.29,0.614611088244289,0.789851642508777,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=29),17,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_70_rho_0_8,70,DMCHBA,100,78,22,0.78,0.22,0.689296464850142,0.849987176153946,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=22),17,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),gilbert_elliott,gilbert_elliott_drop_0_70_rho_0_8,70,DGA,100,77,23,0.77,0.23,0.678456169771262,0.841567341196965,RuntimeError: scheduler-event safety cap before 361-cell coverage (n=23),17,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),ideal,ideal_1_0,0,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),ideal,ideal_1_0,0,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),ideal,ideal_1_0,0,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),ideal,ideal_1_0,0,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),ideal,ideal_1_0,0,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),ideal,ideal_1_0,0,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg59_4,5,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg59_4,5,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg59_4,5,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg59_4,5,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg59_4,5,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg59_4,5,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg56_04,10,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg56_04,10,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg56_04,10,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg56_04,10,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg56_04,10,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg56_04,10,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg52_15,20,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg52_15,20,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg52_15,20,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg52_15,20,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg52_15,20,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg52_15,20,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg49_17,30,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg49_17,30,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg49_17,30,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg49_17,30,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg49_17,30,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg49_17,30,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg46_04,40,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg46_04,40,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg46_04,40,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg46_04,40,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg46_04,40,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg46_04,40,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg42_16,50,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg42_16,50,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg42_16,50,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg42_16,50,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg42_16,50,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg42_16,50,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg37_79,60,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg37_79,60,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg37_79,60,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg37_79,60,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg37_79,60,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg37_79,60,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg32_58,70,CBAA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg32_58,70,ACBBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg32_58,70,PI,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg32_58,70,HIPC,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg32_58,70,DMCHBA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility
+Full Grid Search (FGS),rayleigh_style,rayleigh_style_sens_neg32_58,70,DGA,100,100,0,1,0,0.963006501793014,1,none,100,conditional on completion and six-way paired eligibility

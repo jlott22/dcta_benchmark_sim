@@ -1,5 +1,5 @@
-% Paper figure generation: horizon tuning trends for Collaborative Visit,
-% Bayesian Search, and Coverage.
+% Paper figure generation: horizon tuning trends for Collaborative Visit (CV),
+% Clue-Informed Probabilistic Search (CLIPS), and Full Grid Search (FGS).
 %
 % The figure is designed as a compact vertical, single-column IEEE-style
 % figure. Each panel is one scenario. Algorithm is encoded by color; ideal
@@ -17,18 +17,29 @@ outDir = fullfile(scriptDir, 'figures');
 if ~exist(outDir, 'dir')
     mkdir(outDir);
 end
+tableDir = fullfile(scriptDir, 'tables');
+if ~exist(tableDir, 'dir')
+    mkdir(tableDir);
+end
 
 horizons = [1, 2, 3, 5, 8, 12];
 commLabels = ["ideal", "bernoulli_025"];
 algorithms = ["acbba", "dga", "dmchba", "hipc", "pi"];
 algorithmLabels = ["ACBBA", "DGA", "DMCHBA", "HIPC", "PI"];
+% Rows: CV, CLIPS, FGS. Columns follow algorithms above. These are the
+% selected main-benchmark horizons documented in Table default_horizons of
+% the current manuscript.
+selectedHorizons = [5, 1, 3, 3, 5; 8, 3, 5, 5, 3; 3, 5, 8, 3, 3];
+if any(~ismember(selectedHorizons, horizons), 'all')
+    error('At least one selected horizon is absent from the tested sweep.');
+end
 
 scenarioSpecs = struct( ...
-    'name', {'Collaborative Visit', 'Bayesian Search', 'Coverage'}, ...
+    'name', {'Collaborative Visit (CV)', 'Clue-Informed Probabilistic Search (CLIPS)', 'Full Grid Search (FGS)'}, ...
     'inputFile', { ...
-        fullfile(repoRoot, 'results', 'sensitivity_known_target_visit_horizon_300', 'combined', 'system_performance.csv'), ...
-        fullfile(repoRoot, 'results', 'sensitivity_clue_search_horizon_300', 'combined', 'system_performance.csv'), ...
-        fullfile(repoRoot, 'results', 'sensitivity_coverage_horizon_50', 'combined', 'system_performance.csv') ...
+        fullfile(repoRoot, 'results', 'sensitivity_known_target_visit_horizon_300', 'combined', 'sensitivity_known_target_visit_horizon_300_combined_system_performance.csv'), ...
+        fullfile(repoRoot, 'results', 'sensitivity_clue_search_horizon_300', 'combined', 'sensitivity_clue_search_horizon_300_combined_system_performance.csv'), ...
+        fullfile(repoRoot, 'results', 'sensitivity_coverage_horizon_50', 'combined', 'sensitivity_coverage_horizon_50_combined_system_performance.csv') ...
     }, ...
     'metric', {'total_team_steps', 'post_clue_steps_to_find', 'total_team_steps'});
 
@@ -42,7 +53,8 @@ for si = 1:numel(scenarioSpecs)
         commLabels, ...
         algorithms);
     results(end + 1) = result; %#ok<SAGROW>
-    summaryRows = [summaryRows; makeSummaryRows(result, horizons, commLabels, algorithms)]; %#ok<AGROW>
+    summaryRows = [summaryRows; makeSummaryRows( ...
+        result, horizons, commLabels, algorithms, selectedHorizons(si, :))]; %#ok<AGROW>
 
     fprintf('%s\n', result.name);
     fprintf('  Metric: %s\n', result.metric);
@@ -51,7 +63,7 @@ for si = 1:numel(scenarioSpecs)
     fprintf('  Dropped incomplete algorithm-trials: %d\n\n', result.droppedTrials);
 end
 
-summaryFile = fullfile(outDir, 'horizon_tuning_paired_trial_delta_summary.csv');
+summaryFile = fullfile(tableDir, 'horizon_tuning_paired_trial_delta_summary.csv');
 writetable(summaryRows, summaryFile);
 fprintf('Summary written to: %s\n', summaryFile);
 
@@ -74,6 +86,18 @@ for si = 1:numel(results)
                 'LineStyle', char(lineStyles(ci)), ...
                 'Color', colors(ai, :), ...
                 'LineWidth', lineWidth);
+        end
+        selectedH = selectedHorizons(si, ai);
+        selectedIndex = find(horizons == selectedH, 1);
+        for ci = 1:numel(commLabels)
+            plot(ax, selectedH, results(si).meanDelta(ai, ci, selectedIndex), ...
+                'LineStyle', 'none', ...
+                'Marker', 'p', ...
+                'MarkerSize', 4.8, ...
+                'MarkerFaceColor', colors(ai, :), ...
+                'MarkerEdgeColor', [0 0 0], ...
+                'LineWidth', 0.65, ...
+                'HandleVisibility', 'off');
         end
     end
     yline(ax, 0, '-', 'Color', [0.55 0.55 0.55], 'LineWidth', 0.7);
@@ -108,17 +132,18 @@ hold(axesList(1), 'off');
 
 lgd = legend(legendHandles, cellstr(algorithmLabels), ...
     'Orientation', 'horizontal', ...
-    'NumColumns', 5, ...
+    'NumColumns', 3, ...
     'Location', 'southoutside', ...
     'Box', 'off', ...
     'FontSize', 6);
 lgd.Layout.Tile = 'south';
 
-title(layout, {'Horizon tuning trends', 'solid = ideal, dotted = Bernoulli p=0.25'}, ...
-    'FontWeight', 'normal', 'FontSize', 8);
+title(layout, {'Horizon tuning trends', ...
+    'solid=ideal; dotted=Bernoulli 0.25; star=selected'}, ...
+    'FontWeight', 'normal', 'FontSize', 7.5);
 
-pngFile = fullfile(outDir, 'horizon_tuning_paired_trial_delta_trends.png');
-figFile = fullfile(outDir, 'horizon_tuning_paired_trial_delta_trends.fig');
+pngFile = fullfile(outDir, 'horizon_tuning.png');
+figFile = fullfile(outDir, 'horizon_tuning.fig');
 try
     exportgraphics(gcf, pngFile, 'Resolution', 600);
 catch
@@ -130,20 +155,22 @@ fprintf('Figure written to: %s\n', pngFile);
 fprintf('MATLAB figure written to: %s\n', figFile);
 
 heatmapSpecs = struct( ...
-    'name', {'Collaborative Visit', 'Bayesian Search', 'Coverage'}, ...
+    'name', {'Collaborative Visit (CV)', 'Clue-Informed Probabilistic Search (CLIPS)', 'Full Grid Search (FGS)'}, ...
     'decisionFile', { ...
         fullfile(repoRoot, 'results', 'analysis', 'tables', 'known_horizon_tuning_decision.csv'), ...
         fullfile(repoRoot, 'results', 'analysis', 'tables', 'clue_horizon_tuning_decision.csv'), ...
         fullfile(repoRoot, 'results', 'analysis', 'tables', 'coverage_horizon_tuning_decision.csv') ...
     });
 
-heatmapResults = struct('name', {}, 'score', {}, 'chosen', {});
-for si = 1:numel(heatmapSpecs)
-    heatmapResults(end + 1) = loadRobustScoreMatrix( ... %#ok<SAGROW>
-        heatmapSpecs(si), ...
-        algorithms, ...
-        horizons);
-end
+decisionFilesPresent = all(arrayfun(@(spec) isfile(spec.decisionFile), heatmapSpecs));
+if decisionFilesPresent
+    heatmapResults = struct('name', {}, 'score', {}, 'chosen', {});
+    for si = 1:numel(heatmapSpecs)
+        heatmapResults(end + 1) = loadRobustScoreMatrix( ... %#ok<SAGROW>
+            heatmapSpecs(si), ...
+            algorithms, ...
+            horizons);
+    end
 
 figure('Name', 'Paper horizon robust-score heatmap', 'Color', 'w', 'Units', 'inches', ...
     'Position', [1, 1, 3.5, 6.5]);
@@ -207,8 +234,11 @@ catch
 end
 savefig(gcf, heatFigFile);
 
-fprintf('Heatmap written to: %s\n', heatPngFile);
-fprintf('MATLAB heatmap figure written to: %s\n', heatFigFile);
+    fprintf('Heatmap written to: %s\n', heatPngFile);
+    fprintf('MATLAB heatmap figure written to: %s\n', heatFigFile);
+else
+    fprintf('Skipping optional robust-score heatmap: decision CSVs are not present.\n');
+end
 
 function result = analyzeScenario(spec, horizons, commLabels, algorithms)
     T = readtable(spec.inputFile, 'TextType', 'string');
@@ -302,7 +332,7 @@ function result = analyzeScenario(spec, horizons, commLabels, algorithms)
     result.droppedTrials = droppedTrials;
 end
 
-function summaryRows = makeSummaryRows(result, horizons, commLabels, algorithms)
+function summaryRows = makeSummaryRows(result, horizons, commLabels, algorithms, selectedHorizons)
     summaryRows = table();
     for ai = 1:numel(algorithms)
         for ci = 1:numel(commLabels)
@@ -314,8 +344,10 @@ function summaryRows = makeSummaryRows(result, horizons, commLabels, algorithms)
                     commLabels(ci), ...
                     horizons(hi), ...
                     result.meanDelta(ai, ci, hi), ...
+                    horizons(hi) == selectedHorizons(ai), ...
                     'VariableNames', {'scenario', 'metric', 'algorithm_key', ...
-                    'comm_label', 'horizon', 'mean_delta_from_trial_baseline'})];
+                    'comm_label', 'horizon', 'mean_delta_from_trial_baseline', ...
+                    'selected_for_main_benchmark'})];
             end
         end
     end

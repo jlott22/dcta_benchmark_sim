@@ -1,8 +1,11 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 *.zip binary
-
 # Preserve canonical result and provenance bytes across Windows and Linux.
 /results/**/combined/*.csv -text
 /results/**/artifacts/** -text
 /results/analysis/archive/** -text
+results/clue_search_core_500/combined/archive/pre_corrected_active_20260809/clue_search_core_500_combined_robot_performance.csv filter=lfs diff=lfs merge=lfs -text
+results/clue_search_core_500/combined/clue_search_core_500_combined_robot_performance.csv filter=lfs diff=lfs merge=lfs -text
+results/known_target_visit_core_500/combined/archive/pre_corrected_active_20260809/known_target_visit_core_500_combined_robot_performance.csv filter=lfs diff=lfs merge=lfs -text
+results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_robot_performance.csv filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,19 @@
+DCTA publication analysis validation log
+Generated UTC: 2026-08-09T18:29:36.790641+00:00
+Script: results/analysis/run_publication_analysis.py
+Mean CI: two-sided 95% Student-t interval.
+Wilcoxon: normal approximation with continuity correction; zero differences excluded.
+McNemar: exact two-sided binomial test; Holm adjusted over 15 pairs per significant condition.
+Continuous FGS metrics: conditional on successful completion; no cap penalty assigned.
+
+VALIDATION CHECKS
+PASS: FGS GE failures: 424/4,800; every failed row is a RuntimeError safety-cap termination and carries no imputed continuous metrics
+PASS: FGS GE aggregate failures by level match 0,0,6,16,27,74,133,168
+PASS: Every FGS run under Ideal, Bernoulli, and Rayleigh-style communication completed
+PASS: FGS GE six-way paired counts match 100,100,94,85,77,41,24,17
+PASS: CLIPS and CV each contain 24,000 corrected fixed-rho=0.8 GE runs and zero recorded failures
+PASS: Completion counts and rates add exactly
+PASS: FGS Holm families: 5 significant conditions x 15 comparisons
+PASS: PRDA Holm families: 90 families, all exactly 15 comparisons
+PASS: All PRDS and PRDA summaries have positive eligible trajectory n
+PASS: Figure-metric condition tests: 375 Holm families, all exactly 15 comparisons; CLIPS post-clue tests cover 25 conditions

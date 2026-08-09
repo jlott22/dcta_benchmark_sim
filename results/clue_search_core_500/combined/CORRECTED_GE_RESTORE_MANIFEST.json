@@ -1,0 +1,77 @@
+{
+  "restored_utc": "2026-08-09T17:58:49.212213+00:00",
+  "source_revision": "f898015",
+  "bundle": "CLIPS",
+  "active_directory": "results/clue_search_core_500/combined",
+  "archived_directory": "results/clue_search_core_500/combined/archive/pre_corrected_active_20260809",
+  "archived_files": [
+    {
+      "name": "clue_search_core_500_combined_condition_manifest.csv",
+      "bytes": 122748,
+      "sha256": "50c42e914a046e5cacac605a2cd69eafcbe0ea069777c69dc0aa1f2d4f367973"
+    },
+    {
+      "name": "clue_search_core_500_combined_robot_performance.csv",
+      "bytes": 104172838,
+      "sha256": "0c6db93a4effa8113a3488e1ddb5e8a92fbd41d9f22f75a5e624412a8bd9f4ff"
+    },
+    {
+      "name": "clue_search_core_500_combined_system_performance.csv",
+      "bytes": 36023133,
+      "sha256": "f52a4896ffdad1b9f46a39b043dd998dfc759303b6d5946a76cb8ba5d1cc81d0"
+    },
+    {
+      "name": "clue_search_core_500_combined_trial_summary.csv",
+      "bytes": 30155847,
+      "sha256": "dfa4f5c08cc58726973538756b4e830c9a6c5c2d14540f82b7ee4913d6d44c05"
+    }
+  ],
+  "restored_files": [
+    {
+      "destination_name": "clue_search_core_500_combined_condition_manifest.csv",
+      "git_sources": [
+        "clue_500_combined/condition_manifest.csv"
+      ],
+      "rows": 150,
+      "bytes": 133400,
+      "sha256": "17593bde3904cb75e3c4c0120575c243f403ebfb2278b8cbcb633a1bc276d722"
+    },
+    {
+      "destination_name": "clue_search_core_500_combined_system_performance.csv",
+      "git_sources": [
+        "clue_500_combined/system_performance_bay.csv"
+      ],
+      "rows": 75000,
+      "bytes": 36622580,
+      "sha256": "e5b2fceeb9700788c6643305113d3e59e1b7ac61eddde4542fbff59173b5481c"
+    },
+    {
+      "destination_name": "clue_search_core_500_combined_trial_summary.csv",
+      "git_sources": [
+        "clue_500_combined/trial_summary.csv"
+      ],
+      "rows": 75000,
+      "bytes": 30759856,
+      "sha256": "ef8bfdcca2dec7bbca43fad73e57cbe2547786e70d9e979601d4b171a40ef977"
+    },
+    {
+      "destination_name": "clue_search_core_500_combined_robot_performance.csv",
+      "git_sources": [
+        "clue_500_combined/robot_performance_part_001.csv",
+        "clue_500_combined/robot_performance_part_002.csv"
+      ],
+      "rows": 300000,
+      "bytes": 106581437,
+      "sha256": "dd1256b35dd129b0e0a05464a853f8218d20fc003be85f49a90404e17b9ce93d"
+    },
+    {
+      "destination_name": "clue_search_core_500_corrected_ge_condition_manifest.csv",
+      "git_sources": [
+        "clue_500_combined/corrected_ge_condition_manifest.csv"
+      ],
+      "rows": 48,
+      "bytes": 94957,
+      "sha256": "1f0f89328bd9622c0c74d73a9526e5db02efd9543b081fdf1b157e97421e5997"
+    }
+  ]
+}
