@@ -502,7 +502,7 @@ grid_coverage,coverage_g25_d140_bernoulli_025_acbba,25,140,5,bernoulli_025,acbba
 grid_coverage,coverage_g25_d140_bernoulli_025_dmchba,25,140,5,bernoulli_025,dmchba,50,50,0,0,0,0,{},
 grid_coverage,coverage_g25_d140_bernoulli_025_hipc,25,140,5,bernoulli_025,hipc,50,48,2,2,0,0,"{""RuntimeError"": 2}",13 44
 grid_coverage,coverage_g25_d140_bernoulli_025_pi,25,140,5,bernoulli_025,pi,50,50,0,0,0,0,{},
-grid_coverage,coverage_g25_d140_bernoulli_025_dga,25,140,5,bernoulli_025,dga,50,40,10,6,0,4,"{""RuntimeError"": 6, ""missing_trial_result"": 4}",1 9 13 26 27 28 29 32 33 36
+grid_coverage,coverage_g25_d140_bernoulli_025_dga,25,140,5,bernoulli_025,dga,50,40,10,10,0,0,"{""RuntimeError"": 10}",1 9 13 26 27 28 29 32 33 36
 grid_coverage,coverage_g25_d85_ideal_cbaa,25,85,8,ideal,cbaa,50,50,0,0,0,0,{},
 grid_coverage,coverage_g25_d85_ideal_acbba,25,85,8,ideal,acbba,50,50,0,0,0,0,{},
 grid_coverage,coverage_g25_d85_ideal_dmchba,25,85,8,ideal,dmchba,50,50,0,0,0,0,{},
@@ -538,7 +538,7 @@ grid_coverage,coverage_g34_d220_bernoulli_025_acbba,34,220,6,bernoulli_025,acbba
 grid_coverage,coverage_g34_d220_bernoulli_025_dmchba,34,220,6,bernoulli_025,dmchba,50,48,2,2,0,0,"{""RuntimeError"": 2}",0 1
 grid_coverage,coverage_g34_d220_bernoulli_025_hipc,34,220,6,bernoulli_025,hipc,50,20,30,30,0,0,"{""RuntimeError"": 30}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 40 41 42 43 44 45 46 47 48 49
 grid_coverage,coverage_g34_d220_bernoulli_025_pi,34,220,6,bernoulli_025,pi,50,36,14,14,0,0,"{""RuntimeError"": 14}",20 21 22 23 24 25 26 27 28 29 40 41 42 49
-grid_coverage,coverage_g34_d220_bernoulli_025_dga,34,220,6,bernoulli_025,dga,50,45,5,3,0,2,"{""RuntimeError"": 3, ""missing_trial_result"": 2}",19 32 34 40 47
+grid_coverage,coverage_g34_d220_bernoulli_025_dga,34,220,6,bernoulli_025,dga,50,45,5,5,0,0,"{""RuntimeError"": 5}",19 32 34 40 47
 grid_coverage,coverage_g34_d140_ideal_cbaa,34,140,9,ideal,cbaa,50,50,0,0,0,0,{},
 grid_coverage,coverage_g34_d140_ideal_acbba,34,140,9,ideal,acbba,50,50,0,0,0,0,{},
 grid_coverage,coverage_g34_d140_ideal_dmchba,34,140,9,ideal,dmchba,50,50,0,0,0,0,{},
@@ -550,7 +550,7 @@ grid_coverage,coverage_g34_d140_bernoulli_025_acbba,34,140,9,bernoulli_025,acbba
 grid_coverage,coverage_g34_d140_bernoulli_025_dmchba,34,140,9,bernoulli_025,dmchba,50,47,3,3,0,0,"{""RuntimeError"": 3}",0 20 21
 grid_coverage,coverage_g34_d140_bernoulli_025_hipc,34,140,9,bernoulli_025,hipc,50,38,12,12,0,0,"{""RuntimeError"": 12}",1 10 20 21 22 23 24 25 26 27 28 29
 grid_coverage,coverage_g34_d140_bernoulli_025_pi,34,140,9,bernoulli_025,pi,50,40,10,10,0,0,"{""RuntimeError"": 10}",10 11 12 13 14 15 16 17 18 19
-grid_coverage,coverage_g34_d140_bernoulli_025_dga,34,140,9,bernoulli_025,dga,50,40,10,1,0,9,"{""RuntimeError"": 1, ""missing_trial_result"": 9}",0 3 4 5 16 17 18 19 34 44
+grid_coverage,coverage_g34_d140_bernoulli_025_dga,34,140,9,bernoulli_025,dga,50,40,10,10,0,0,"{""RuntimeError"": 10}",0 3 4 5 16 17 18 19 34 44
 grid_coverage,coverage_g34_d85_ideal_cbaa,34,85,14,ideal,cbaa,50,50,0,0,0,0,{},
 grid_coverage,coverage_g34_d85_ideal_acbba,34,85,14,ideal,acbba,50,38,12,12,0,0,"{""RuntimeError"": 12}",8 12 13 14 16 17 21 24 27 37 40 48
 grid_coverage,coverage_g34_d85_ideal_dmchba,34,85,14,ideal,dmchba,50,50,0,0,0,0,{},
@@ -562,16 +562,16 @@ grid_coverage,coverage_g34_d85_bernoulli_025_acbba,34,85,14,bernoulli_025,acbba,
 grid_coverage,coverage_g34_d85_bernoulli_025_dmchba,34,85,14,bernoulli_025,dmchba,50,46,4,4,0,0,"{""RuntimeError"": 4}",0 20 30 40
 grid_coverage,coverage_g34_d85_bernoulli_025_hipc,34,85,14,bernoulli_025,hipc,50,38,12,12,0,0,"{""RuntimeError"": 12}",10 11 12 13 14 15 16 17 18 19 29 39
 grid_coverage,coverage_g34_d85_bernoulli_025_pi,34,85,14,bernoulli_025,pi,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
-grid_coverage,coverage_g34_d85_bernoulli_025_dga,34,85,14,bernoulli_025,dga,50,39,11,1,0,10,"{""RuntimeError"": 1, ""missing_trial_result"": 10}",9 13 14 28 29 32 33 34 38 39 40
+grid_coverage,coverage_g34_d85_bernoulli_025_dga,34,85,14,bernoulli_025,dga,50,39,11,11,0,0,"{""RuntimeError"": 11}",9 13 14 28 29 32 33 34 38 39 40
 grid_coverage,coverage_g34_d50_ideal_cbaa,34,50,24,ideal,cbaa,50,36,14,14,0,0,"{""RuntimeError"": 14}",0 1 13 15 16 19 25 32 36 38 40 44 47 48
 grid_coverage,coverage_g34_d50_ideal_acbba,34,50,24,ideal,acbba,50,9,41,41,0,0,"{""RuntimeError"": 41}",0 2 3 4 5 8 9 10 11 13 14 15 16 17 19 20 21 22 24 25 26 27 28 30 31 32 34 35 36 37 38 40 41 42 43 44 45 46 47 48 49
 grid_coverage,coverage_g34_d50_ideal_dmchba,34,50,24,ideal,dmchba,50,49,1,1,0,0,"{""RuntimeError"": 1}",1
 grid_coverage,coverage_g34_d50_ideal_hipc,34,50,24,ideal,hipc,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
 grid_coverage,coverage_g34_d50_ideal_pi,34,50,24,ideal,pi,50,50,0,0,0,0,{},
-grid_coverage,coverage_g34_d50_ideal_dga,34,50,24,ideal,dga,50,49,1,0,0,1,"{""missing_trial_result"": 1}",19
+grid_coverage,coverage_g34_d50_ideal_dga,34,50,24,ideal,dga,50,49,1,1,0,0,"{""RuntimeError"": 1}",19
 grid_coverage,coverage_g34_d50_bernoulli_025_cbaa,34,50,24,bernoulli_025,cbaa,50,25,25,25,0,0,"{""RuntimeError"": 25}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
 grid_coverage,coverage_g34_d50_bernoulli_025_acbba,34,50,24,bernoulli_025,acbba,50,40,10,10,0,0,"{""RuntimeError"": 10}",10 11 12 13 14 15 16 17 18 19
 grid_coverage,coverage_g34_d50_bernoulli_025_dmchba,34,50,24,bernoulli_025,dmchba,50,49,1,1,0,0,"{""RuntimeError"": 1}",0
 grid_coverage,coverage_g34_d50_bernoulli_025_hipc,34,50,24,bernoulli_025,hipc,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
 grid_coverage,coverage_g34_d50_bernoulli_025_pi,34,50,24,bernoulli_025,pi,50,0,50,50,0,0,"{""RuntimeError"": 50}",0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
-grid_coverage,coverage_g34_d50_bernoulli_025_dga,34,50,24,bernoulli_025,dga,50,29,21,1,0,20,"{""RuntimeError"": 1, ""missing_trial_result"": 20}",4 7 8 9 13 14 19 23 24 29 30 32 33 34 38 39 43 44 47 48 49
+grid_coverage,coverage_g34_d50_bernoulli_025_dga,34,50,24,bernoulli_025,dga,50,29,21,21,0,0,"{""RuntimeError"": 21}",4 7 8 9 13 14 19 23 24 29 30 32 33 34 38 39 43 44 47 48 49
