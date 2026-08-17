@@ -1,0 +1,14 @@
+repository_path,bytes,data_rows,last_modified,sha256,active_source_verified
+results/analysis/tables/dcta_metric_results.csv,3171015,5580,2026-08-17 00:25:39 *,e06c9cc4b2c029fca0b755204c257b627a6ddd593fcd83eae34901d15c3fcf13,1
+results/analysis/tables/figure_maximum_agent_steps_source.csv,178362,486,2026-08-16 21:54:56 *,ed18595d39063125b7b6d2a7a31a5c2d7e1d6b0e23ae09bc3af8285bcc0acd7e,1
+results/analysis/tables/figure_communication_tradeoff_source.csv,274058,432,2026-08-09 15:52:49 *,dee3133f72e715cff0e1086dcb819f6f7b09fbd09fae06bf41ab72ca325ac2e7,1
+results/analysis/tables/grid_density_analysis_results.csv,4055239,11971,2026-08-17 00:34:16 *,0b56529065b84d3d408cc23f823df76a8b0e096f94481d16aec9f281b4811f4e,1
+results/analysis/tables/grid_density_complete_block_plot_source.csv,53410,96,2026-08-17 00:27:51 *,3c120eec2a198d88335b31cc6157e00de8e1a617af957c98351e36c9ee526da4,1
+results/analysis/tables/revised_prds.csv,307254,540,2026-08-17 00:26:18 *,b918fbeadf7847c32f4b7270f3cb3d823564fa54e8a3702d499ea1084112c40a,1
+results/analysis/tables/figure_prds_supplement_source.csv,31789,54,2026-08-16 23:28:55 *,ef000935721ec4f08e4df3cba92c95d1ce2cb9183751e9ff0d7b57d6f02bb7e9,1
+results/analysis/tables/horizon_tuning_paired_trial_delta_summary.csv,15637,180,2026-08-17 00:28:57 *,41b236d5a47140dd4dfd6b01f38c4bc063055e466414eba48684b4bdcbe31ee7,1
+results/analysis/tables/trajectory_sample_sizes.csv,2535766,1890,2026-08-17 00:26:18 *,96631aead934290b72b5a887419178b2920f419ef86dc53456a45ceb11ae5a7d,1
+results/analysis/tables/clue_horizon_tuning_decision.csv,5952,30,2026-08-11 10:46:11 *,f3d1e9b0c2fe0b4b0c85c6bfaef09cedce8ddf88a500e50372f5538202e4bde4,1
+results/analysis/tables/known_horizon_tuning_decision.csv,5670,30,2026-08-16 22:17:18 *,341996eb1686615a65597f2689d58894e22f8fa87e46cbe149ede5ccfb872c10,1
+results/clue_search_core_500/combined/clue_search_core_500_combined_system_performance.csv,36622580,75000,2026-08-09 15:52:51 *,e5b2fceeb9700788c6643305113d3e59e1b7ac61eddde4542fbff59173b5481c,1
+results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_system_performance.csv,37523739,75000,2026-08-09 15:52:52 *,86a5db8763347590ac065da9727a8cec67e2e077ec18c46030373924b8a06717,1

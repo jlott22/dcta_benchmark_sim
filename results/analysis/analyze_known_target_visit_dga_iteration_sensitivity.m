@@ -1,253 +1,232 @@
-% Analyze known-target DGA iteration tuning relative to per-trial average.
+% Reproduce the CV DGA-generation selection used by the paper.
 %
-% Metric: total_team_steps
-% Baseline: for each message condition x trial_id, average the metric across
-% all available DGA iteration values.
-% Plotted value: mean percent difference from that per-trial baseline.
+% Primary outcome: maximum agent steps (max_robot_steps).
+% Selection rule: minimize the unweighted mean normalized regret across
+% ideal communication and Bernoulli loss with p_d = 0.25.
 %
-% Trials are excluded within each message condition if any iteration value for
-% that trial has total_team_steps == 0.
+% This script intentionally creates tables and a validation log only. DGA
+% tuning is reported in the methods text and is not a numbered paper figure.
 
 clear; clc;
 
 scriptDir = fileparts(mfilename('fullpath'));
 repoRoot = fileparts(fileparts(scriptDir));
-outDir = fullfile(scriptDir, 'figures');
-if ~exist(outDir, 'dir')
-    mkdir(outDir);
-end
 tableDir = fullfile(scriptDir, 'tables');
 if ~exist(tableDir, 'dir')
     mkdir(tableDir);
 end
-inputFile = fullfile(repoRoot, 'results', 'sensitivity_known_target_visit_dga_iteration_300', 'combined', ...
+
+inputFile = fullfile(repoRoot, 'results', ...
+    'sensitivity_known_target_visit_dga_iteration_300', 'combined', ...
     'sensitivity_known_target_visit_dga_iteration_300_combined_system_performance.csv');
-metricName = 'total_team_steps';
+summaryFile = fullfile(tableDir, 'dga_iteration_condition_summary.csv');
+selectionFile = fullfile(tableDir, 'dga_iteration_selection.csv');
+manifestFile = fullfile(tableDir, 'dga_iteration_source_manifest.csv');
+logFile = fullfile(tableDir, 'dga_iteration_analysis_log.txt');
+
+requiredColumns = ["algorithm", "comm_model", "comm_label", "trial_id", ...
+    "trial_status", "all_targets_visited", "completed_target_count", ...
+    "target_count", "value", "max_robot_steps"];
+testedIterations = [1; 2; 5; 10; 25; 50];
+communicationOrder = ["ideal"; "bernoulli_025"];
 selectedIterations = 25;
 
 T = readtable(inputFile, 'TextType', 'string');
-if ~ismember(metricName, T.Properties.VariableNames)
-    error('Metric column not found: %s', metricName);
+missingColumns = setdiff(requiredColumns, string(T.Properties.VariableNames));
+if ~isempty(missingColumns)
+    error('DGA tuning input is missing required columns: %s', ...
+        strjoin(missingColumns, ', '));
 end
 
-if ismember('trial_status', T.Properties.VariableNames)
-    T = T(T.trial_status ~= "failed", :);
+T.algorithm = upper(strtrim(string(T.algorithm)));
+T.comm_key = lower(strtrim(string(T.comm_label)));
+T.iterations = double(T.value);
+T.maximum_agent_steps = double(T.max_robot_steps);
+T.eligible = T.algorithm == "DGA" & ...
+    lower(strtrim(string(T.trial_status))) == "completed" & ...
+    logicalColumn(T.all_targets_visited) & ...
+    double(T.completed_target_count) == double(T.target_count) & ...
+    isfinite(T.maximum_agent_steps) & T.maximum_agent_steps > 0;
+
+if height(T) ~= 3600
+    error('Expected 3,600 CV DGA tuning rows; found %d.', height(T));
+end
+if ~isequal(sort(unique(T.iterations)), testedIterations)
+    error('Unexpected DGA iteration levels in the raw input.');
+end
+if ~isequal(sort(unique(T.comm_key)), sort(communicationOrder))
+    error('Unexpected communication conditions in the raw input.');
 end
 
-T.metric_value = double(T.(metricName));
-T.iter_value = extractIteration(T);
-T.comm_plot = extractComm(T);
+conditionRows = cell(0, 14);
+for ci = 1:numel(communicationOrder)
+    comm = communicationOrder(ci);
+    commLabel = displayCommunication(comm);
+    conditionMeans = nan(numel(testedIterations), 1);
+    attemptedCounts = zeros(numel(testedIterations), 1);
+    eligibleCounts = zeros(numel(testedIterations), 1);
 
-valid = ~isnan(T.metric_value) & ~isnan(T.iter_value) & ~isnan(double(T.trial_id));
-T = T(valid, :);
+    for ki = 1:numel(testedIterations)
+        k = testedIterations(ki);
+        rows = T(T.comm_key == comm & T.iterations == k, :);
+        attemptedCounts(ki) = height(rows);
+        values = rows.maximum_agent_steps(rows.eligible);
+        eligibleCounts(ki) = numel(values);
+        if attemptedCounts(ki) ~= 300 || eligibleCounts(ki) ~= 300
+            error(['Expected 300 attempted and eligible rows for %s, k=%d; ' ...
+                'found %d attempted and %d eligible.'], comm, k, ...
+                attemptedCounts(ki), eligibleCounts(ki));
+        end
+        conditionMeans(ki) = mean(values);
+    end
 
-comms = unique(T.comm_plot, 'stable');
-overlayData = struct( ...
-    'comm', {}, ...
-    'iterations', {}, ...
-    'avgPctDiff', {}, ...
-    'usedTrials', {}, ...
-    'droppedTrials', {});
-summaryRows = table(strings(0, 1), strings(0, 1), zeros(0, 1), zeros(0, 1), ...
-    zeros(0, 1), zeros(0, 1), false(0, 1), ...
-    'VariableNames', {'scenario', 'comm_label', 'dga_iterations', ...
-    'mean_percent_difference_from_trial_iteration_mean', ...
-    'fully_paired_trials', 'dropped_incomplete_trials', ...
+    bestMean = min(conditionMeans);
+    for ki = 1:numel(testedIterations)
+        k = testedIterations(ki);
+        rows = T(T.comm_key == comm & T.iterations == k & T.eligible, :);
+        values = rows.maximum_agent_steps;
+        regret = 100 * (conditionMeans(ki) - bestMean) / bestMean;
+        conditionRows(end + 1, :) = { ... %#ok<SAGROW>
+            "Collaborative Visit (CV)", comm, commLabel, k, ...
+            attemptedCounts(ki), eligibleCounts(ki), mean(values), ...
+            median(values), std(values, 0), min(values), max(values), ...
+            bestMean, regret, k == selectedIterations};
+    end
+end
+
+conditionSummary = cell2table(conditionRows, 'VariableNames', { ...
+    'mission', 'comm_model', 'comm_label', 'dga_iterations', ...
+    'attempted_trials', 'eligible_trials', 'mean_maximum_agent_steps', ...
+    'median_maximum_agent_steps', 'sd_maximum_agent_steps', ...
+    'minimum_maximum_agent_steps', 'maximum_maximum_agent_steps', ...
+    'best_condition_mean', 'normalized_regret_pct', ...
     'selected_for_main_benchmark'});
-fprintf('Input: %s\n', inputFile);
-fprintf('Metric: %s\n\n', metricName);
 
-for ci = 1:numel(comms)
-    comm = comms(ci);
-    G = T(T.comm_plot == comm, :);
-    iterations = sort(unique(G.iter_value))';
-    trialIds = unique(G.trial_id)';
-
-    y = nan(size(iterations));
-    usedTrials = 0;
-    droppedTrials = 0;
-    pctByIter = cell(size(iterations));
-    for ii = 1:numel(iterations)
-        pctByIter{ii} = [];
-    end
-
-    for ti = 1:numel(trialIds)
-        tid = trialIds(ti);
-        values = nan(size(iterations));
-        complete = true;
-        for ii = 1:numel(iterations)
-            rows = G(G.trial_id == tid & G.iter_value == iterations(ii), :);
-            if height(rows) ~= 1
-                complete = false;
-                break;
-            end
-            values(ii) = rows.metric_value(1);
-        end
-
-        if ~complete || any(isnan(values)) || any(values == 0)
-            droppedTrials = droppedTrials + 1;
-            continue;
-        end
-
-        baseline = mean(values);
-        if baseline == 0
-            droppedTrials = droppedTrials + 1;
-            continue;
-        end
-
-        usedTrials = usedTrials + 1;
-        pctDiff = 100 .* (values - baseline) ./ baseline;
-        for ii = 1:numel(iterations)
-            pctByIter{ii}(end + 1) = pctDiff(ii); %#ok<SAGROW>
-        end
-    end
-
-    for ii = 1:numel(iterations)
-        y(ii) = mean(pctByIter{ii}, 'omitnan');
-    end
-
-    if usedTrials == 0
-        fprintf('Skipping %s: no paired nonzero trials\n', comm);
-        continue;
-    end
-
-    figure('Name', sprintf('DGA iteration / %s', comm));
-    plot(iterations, y, '-o', 'LineWidth', 1.5);
-    yline(0, '-', 'Color', [0.6 0.6 0.6]);
-    grid on;
-    xlabel('DGA iterations per trigger');
-    ylabel(sprintf('Average %% difference from per-trial mean %s', metricName), 'Interpreter', 'none');
-    title(sprintf('DGA iteration / %s', comm), 'Interpreter', 'none');
-    xticks(iterations);
-
-    fprintf('%s: used_trials=%d dropped_trials=%d\n', comm, usedTrials, droppedTrials);
-    disp(table(iterations(:), y(:), 'VariableNames', {'iteration', 'avg_pct_diff'}));
-
-    overlayData(end + 1).comm = comm; %#ok<SAGROW>
-    overlayData(end).iterations = iterations;
-    overlayData(end).avgPctDiff = y;
-    overlayData(end).usedTrials = usedTrials;
-    overlayData(end).droppedTrials = droppedTrials;
-
-    summaryRows = [summaryRows; table( ... %#ok<AGROW>
-        repmat("Collaborative Visit (CV)", numel(iterations), 1), ...
-        repmat(comm, numel(iterations), 1), iterations(:), y(:), ...
-        repmat(usedTrials, numel(iterations), 1), ...
-        repmat(droppedTrials, numel(iterations), 1), ...
-        iterations(:) == selectedIterations, ...
-        'VariableNames', summaryRows.Properties.VariableNames)];
+selectionRows = cell(numel(testedIterations), 8);
+for ki = 1:numel(testedIterations)
+    k = testedIterations(ki);
+    ideal = conditionSummary(conditionSummary.comm_model == "ideal" & ...
+        conditionSummary.dga_iterations == k, :);
+    bernoulli = conditionSummary(conditionSummary.comm_model == "bernoulli_025" & ...
+        conditionSummary.dga_iterations == k, :);
+    meanRegret = mean([ideal.normalized_regret_pct, bernoulli.normalized_regret_pct]);
+    selectionRows(ki, :) = {k, ideal.mean_maximum_agent_steps, ...
+        bernoulli.mean_maximum_agent_steps, ideal.normalized_regret_pct, ...
+        bernoulli.normalized_regret_pct, meanRegret, ...
+        k == selectedIterations, "minimum mean normalized regret"};
 end
 
-summaryFile = fullfile(tableDir, 'dga_iteration_percent_delta_summary.csv');
-writetable(summaryRows, summaryFile);
-fprintf('Summary written to: %s\n', summaryFile);
+selectionSummary = cell2table(selectionRows, 'VariableNames', { ...
+    'dga_iterations', 'ideal_mean_maximum_agent_steps', ...
+    'bernoulli_025_mean_maximum_agent_steps', ...
+    'ideal_normalized_regret_pct', ...
+    'bernoulli_025_normalized_regret_pct', ...
+    'mean_normalized_regret_pct', 'selected_for_main_benchmark', ...
+    'selection_rule'});
 
-if ~isempty(overlayData)
-    figure('Name', 'DGA iteration / all communication modes', 'Color', 'w', ...
-        'Units', 'inches', 'Position', [1, 1, 3.5, 2.8]);
-    hold on;
-    allIterations = [];
-    legendLabels = strings(1, numel(overlayData));
-    colors = lines(numel(overlayData));
-    lineHandles = gobjects(1, numel(overlayData));
-    for i = 1:numel(overlayData)
-        entry = overlayData(i);
-        lineHandles(i) = plot(entry.iterations, entry.avgPctDiff, '-o', ...
-            'Color', colors(i, :), 'LineWidth', 1.5);
-        selectedIndex = find(entry.iterations == selectedIterations, 1);
-        if isempty(selectedIndex)
-            error('Selected DGA iteration count %d is absent from %s.', ...
-                selectedIterations, entry.comm);
-        end
-        plot(selectedIterations, entry.avgPctDiff(selectedIndex), ...
-            'LineStyle', 'none', ...
-            'Marker', 'p', ...
-            'MarkerSize', 8, ...
-            'MarkerFaceColor', colors(i, :), ...
-            'MarkerEdgeColor', [0 0 0], ...
-            'LineWidth', 0.8, ...
-            'HandleVisibility', 'off');
-        allIterations = [allIterations, entry.iterations]; %#ok<AGROW>
-        if entry.comm == "ideal"
-            legendLabels(i) = "Ideal";
-        elseif entry.comm == "bernoulli_025"
-            legendLabels(i) = "Bernoulli p=0.25";
-        else
-            legendLabels(i) = entry.comm;
-        end
-    end
-    yline(0, '-', 'Color', [0.6 0.6 0.6], 'HandleVisibility', 'off');
-    selectedHandle = plot(nan, nan, 'kp', ...
-        'MarkerFaceColor', [1 1 1], 'MarkerSize', 9, ...
-        'LineStyle', 'none', 'DisplayName', sprintf('Selected k=%d', selectedIterations));
-    hold off;
-    grid on;
-    xlabel('DGA iterations per trigger');
-    ylabel('Mean total-step deviation (%)');
-    title('CV DGA iteration sensitivity', 'FontWeight', 'normal', 'FontSize', 8);
-    xticks(sort(unique(allIterations)));
-    set(gca, 'FontSize', 7);
-    legend([lineHandles, selectedHandle], ...
-        [legendLabels, "Selected k=" + string(selectedIterations)], ...
-        'Interpreter', 'none', 'Location', 'best', 'FontSize', 6.5);
-
-    fprintf('DGA iteration / all communication modes: plotted_conditions=%d\n', numel(overlayData));
-
-    pngFile = fullfile(outDir, 'DGA_iteration.png');
-    figFile = fullfile(outDir, 'DGA_iteration.fig');
-    try
-        exportgraphics(gcf, pngFile, 'Resolution', 600);
-    catch
-        print(gcf, pngFile, '-dpng', '-r600');
-    end
-    savefig(gcf, figFile);
-    fprintf('Figure written to: %s\n', pngFile);
-    fprintf('MATLAB figure written to: %s\n', figFile);
+[~, selectedIndex] = min(selectionSummary.mean_normalized_regret_pct);
+calculatedSelection = selectionSummary.dga_iterations(selectedIndex);
+if calculatedSelection ~= selectedIterations
+    error('Selection mismatch: expected k=25, calculated k=%d.', calculatedSelection);
 end
 
-function iter = extractIteration(T)
-    iter = nan(height(T), 1);
-    for i = 1:height(T)
-        value = "";
-        if ismember('value', T.Properties.VariableNames)
-            value = string(T.value(i));
-        end
-        if strlength(value) == 0 && ismember('setting', T.Properties.VariableNames)
-            value = string(T.setting(i));
-        end
-        value = erase(value, "iter_");
-        value = erase(value, "iter");
-        parsed = str2double(value);
-        if ~isnan(parsed)
-            iter(i) = parsed;
-            continue;
-        end
+assertNear(conditionMean(conditionSummary, "ideal", 50), 21.6266666667, 1e-9, ...
+    'ideal k=50 mean');
+assertNear(conditionMean(conditionSummary, "ideal", 25), 21.8666666667, 1e-9, ...
+    'ideal k=25 mean');
+assertNear(conditionMean(conditionSummary, "bernoulli_025", 25), 23.1833333333, 1e-9, ...
+    'Bernoulli k=25 mean');
 
-        condition = "";
-        if ismember('condition_id', T.Properties.VariableNames)
-            condition = string(T.condition_id(i));
-        elseif ismember('run_id', T.Properties.VariableNames)
-            condition = string(T.run_id(i));
-        end
-        token = regexp(condition, '(^|_)iter_(\d+)(_|$)', 'tokens', 'once');
-        if isempty(token)
-            token = regexp(condition, '(^|_)iter(\d+)(_|$)', 'tokens', 'once');
-        end
-        if ~isempty(token)
-            iter(i) = str2double(token{2});
-        end
+writetable(conditionSummary, summaryFile);
+writetable(selectionSummary, selectionFile);
+
+fileInfo = dir(inputFile);
+sourceManifest = table("CV DGA-generation sensitivity", ...
+    string(repositoryRelative(inputFile, repoRoot)), fileInfo.bytes, ...
+    string(datetime(fileInfo.datenum, 'ConvertFrom', 'datenum', ...
+    'Format', 'yyyy-MM-dd HH:mm:ss')), height(T), ...
+    "max_robot_steps", ...
+    "completed + all targets visited + finite positive maximum-agent steps", ...
+    'VariableNames', {'dataset', 'repository_path', 'bytes', ...
+    'last_modified', 'raw_rows', 'outcome_column', 'eligibility_rule'});
+writetable(sourceManifest, manifestFile);
+
+selectedRow = selectionSummary(selectionSummary.selected_for_main_benchmark, :);
+fid = fopen(logFile, 'w');
+if fid < 0
+    error('Could not open validation log: %s', logFile);
+end
+cleanup = onCleanup(@() fclose(fid)); %#ok<NASGU>
+fprintf(fid, 'CV DGA-generation sensitivity validation\n');
+fprintf(fid, 'Input: %s\n', repositoryRelative(inputFile, repoRoot));
+fprintf(fid, 'Raw rows: %d\n', height(T));
+fprintf(fid, 'Outcome: max_robot_steps (maximum-agent steps)\n');
+fprintf(fid, ['Eligibility: completed + all targets visited + completed target count ' ...
+    'equals target count + finite positive outcome\n']);
+fprintf(fid, 'Eligible rows: %d / %d\n', nnz(T.eligible), height(T));
+fprintf(fid, 'Trials per communication x k condition: 300\n');
+fprintf(fid, 'Selected k: %d\n', selectedIterations);
+fprintf(fid, 'Selection rule: minimum unweighted mean normalized regret across ideal and Bernoulli p_d=0.25\n');
+fprintf(fid, 'Selected mean normalized regret: %.9f%%\n', ...
+    selectedRow.mean_normalized_regret_pct);
+fprintf(fid, 'Ideal means: k=50 %.6f, k=25 %.6f maximum-agent steps\n', ...
+    conditionMean(conditionSummary, "ideal", 50), ...
+    conditionMean(conditionSummary, "ideal", 25));
+fprintf(fid, 'Bernoulli p_d=0.25 mean: k=25 %.6f maximum-agent steps\n', ...
+    conditionMean(conditionSummary, "bernoulli_025", 25));
+fprintf(fid, 'Validation: PASS\n');
+
+fprintf('DGA tuning selection: k=%d (mean normalized regret %.6f%%)\n', ...
+    selectedIterations, selectedRow.mean_normalized_regret_pct);
+fprintf('Wrote %s\n', repositoryRelative(summaryFile, repoRoot));
+fprintf('Wrote %s\n', repositoryRelative(selectionFile, repoRoot));
+fprintf('Wrote %s\n', repositoryRelative(manifestFile, repoRoot));
+fprintf('Wrote %s\n', repositoryRelative(logFile, repoRoot));
+
+function result = logicalColumn(values)
+    if islogical(values)
+        result = values;
+    elseif isnumeric(values)
+        result = values ~= 0 & isfinite(values);
+    else
+        normalized = lower(strtrim(string(values)));
+        result = ismember(normalized, ["true", "1", "yes"]);
     end
 end
 
-function comm = extractComm(T)
-    comm = strings(height(T), 1);
-    for i = 1:height(T)
-        if ismember('comm_label', T.Properties.VariableNames) && strlength(string(T.comm_label(i))) > 0
-            comm(i) = string(T.comm_label(i));
-        elseif ismember('comm_level', T.Properties.VariableNames) && strlength(string(T.comm_level(i))) > 0
-            comm(i) = string(T.comm_model(i)) + "_" + string(T.comm_level(i));
-        else
-            comm(i) = string(T.comm_model(i));
-        end
+function label = displayCommunication(comm)
+    if comm == "ideal"
+        label = "Ideal";
+    elseif comm == "bernoulli_025"
+        label = "Bernoulli loss, p_d=0.25";
+    else
+        label = comm;
+    end
+end
+
+function value = conditionMean(summary, comm, iterations)
+    row = summary(summary.comm_model == comm & ...
+        summary.dga_iterations == iterations, :);
+    if height(row) ~= 1
+        error('Expected one summary row for %s, k=%d.', comm, iterations);
+    end
+    value = row.mean_maximum_agent_steps;
+end
+
+function assertNear(actual, expected, tolerance, label)
+    if abs(actual - expected) > tolerance
+        error('%s mismatch: expected %.12g, found %.12g.', ...
+            label, expected, actual);
+    end
+end
+
+function relative = repositoryRelative(pathValue, repoRoot)
+    normalizedPath = replace(string(pathValue), "\", "/");
+    normalizedRoot = replace(string(repoRoot), "\", "/");
+    prefix = normalizedRoot + "/";
+    if startsWith(lower(normalizedPath), lower(prefix))
+        relative = extractAfter(normalizedPath, strlength(prefix));
+    else
+        relative = normalizedPath;
     end
 end

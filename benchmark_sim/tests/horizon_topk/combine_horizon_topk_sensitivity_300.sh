@@ -2,7 +2,7 @@
 set -u
 set -o pipefail
 
-REPO_ROOT="/home/jlott/dcta_benchmark_sim"
+REPO_ROOT="${DCTA_REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)}"
 cd "$REPO_ROOT" || exit 1
 
 # Rebuilds combined CSVs for the 300-trial horizon and top-k sensitivity runs.

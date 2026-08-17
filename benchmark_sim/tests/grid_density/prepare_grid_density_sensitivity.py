@@ -2,11 +2,8 @@
 """
 Prepare scenario files and a condition manifest for the grid-density saturation sensitivity study.
 
-Designed to be saved in:
-  /home/jlott/dcta_benchmark_sim/benchmark_sim/tests/grid_density/prepare_grid_density_sensitivity.py
-
 Run indirectly through run_grid_density_sensitivity.sh, or directly from repo root:
-  python3 benchmark_sim/tests/grid_density/prepare_grid_density_sensitivity.py --repo-root /home/jlott/dcta_benchmark_sim
+  python3 benchmark_sim/tests/grid_density/prepare_grid_density_sensitivity.py
 """
 from __future__ import annotations
 
@@ -17,6 +14,7 @@ from pathlib import Path
 from typing import Dict, List, Sequence, Tuple
 
 Cell = Tuple[int, int]
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 GRIDS: List[int] = [14, 19, 25, 34, 48]
 TARGET_DENSITIES: List[int] = [220, 180, 140, 110, 85, 65, 50]
@@ -51,7 +49,7 @@ ALGORITHMS = [
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repo-root", default="/home/jlott/dcta_benchmark_sim")
+    parser.add_argument("--repo-root", default=str(REPO_ROOT))
     parser.add_argument("--run-root", default=None, help="Default: <repo-root>/results/sensitivity_clue_search_grid_density_50")
     parser.add_argument("--num-trials", type=int, default=50)
     parser.add_argument("--num-clues", type=int, default=4)

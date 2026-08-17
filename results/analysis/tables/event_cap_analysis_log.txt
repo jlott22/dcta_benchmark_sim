@@ -1,0 +1,21 @@
+DCTA event-cap audit
+Started: 2026-08-17 00:28:28 *
+Conservative comparison cap: 5000 scheduler events
+
+CLIPS core: attempted=75000 successful=74999 failed=1
+CV core: attempted=75000 successful=75000 failed=0
+FGS core: attempted=15000 successful=14576 failed=424
+CLIPS grid-density: attempted=9600 successful=9500 failed=100
+CV grid-density: attempted=9600 successful=9536 failed=64
+FGS grid-density: attempted=9600 successful=8683 failed=917
+CLIPS horizon: attempted=18000 successful=17996 failed=4
+CLIPS top-k: attempted=21600 successful=20959 failed=641
+FGS horizon: attempted=3000 successful=2996 failed=4
+CV DGA iterations: attempted=3600 successful=3600 failed=0
+CV horizon: attempted=18000 successful=18000 failed=0
+CV top-k: attempted=21600 successful=21600 failed=0
+Validation: 12 campaigns, 57 grid/robot summaries, 279600 attempts, 2155 failures.
+
+PASS: cap audit completed.
+Report: results/analysis/EVENT_CAP_ANALYSIS.md
+Tables: results/analysis/tables

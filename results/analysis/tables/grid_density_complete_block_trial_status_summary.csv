@@ -1,0 +1,11 @@
+scenario,grid_size,raw_algorithm_rows,raw_completed_rows,raw_failed_rows,event_cap_failure_runs,stagnation_failure_runs,other_failure_runs,scope
+CLIPS,14,2400,2395,5,5,0,0,raw trial-status rows retained; summary only
+CLIPS,19,2400,2399,1,1,0,0,raw trial-status rows retained; summary only
+CLIPS,25,2400,2398,2,2,0,0,raw trial-status rows retained; summary only
+CLIPS,34,2400,2308,92,92,0,0,raw trial-status rows retained; summary only
+CLIPS,NaN,9600,9500,100,100,0,0,raw trial-status rows retained; summary only
+CV,14,2400,2400,0,0,0,0,raw trial-status rows retained; summary only
+CV,19,2400,2400,0,0,0,0,raw trial-status rows retained; summary only
+CV,25,2400,2396,4,0,4,0,raw trial-status rows retained; summary only
+CV,34,2400,2340,60,55,5,0,raw trial-status rows retained; summary only
+CV,NaN,9600,9536,64,55,9,0,raw trial-status rows retained; summary only

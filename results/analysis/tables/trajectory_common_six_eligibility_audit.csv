@@ -1,0 +1,1891 @@
+mission,scenario,comm_model,metric,method,algorithm_a,algorithm_b,previous_eligibility_n,common_six_eligible_n,trajectories_excluded_by_common_six
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_steps,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,total_team_steps,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_messages_per_step,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,max_agent_messages,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,messages_per_unique_cell,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_task_replans,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,team_path_replans,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,system_cell_revisits,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,bernoulli,post_clue_steps_to_find,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_steps,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,total_team_steps,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_messages_per_step,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,max_agent_messages,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,messages_per_unique_cell,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_task_replans,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,team_path_replans,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,system_cell_revisits,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDS,ACBBA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDS,PI,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDS,DMCHBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDS,DGA,,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,ACBBA,PI,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,ACBBA,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,ACBBA,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,PI,DMCHBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,PI,DGA,385,383,2
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,gilbert_elliott,post_clue_steps_to_find,PRDA,DMCHBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_steps,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,total_team_steps,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_messages_per_step,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,max_agent_messages,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,messages_per_unique_cell,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_task_replans,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,team_path_replans,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,system_cell_revisits,PRDA,DMCHBA,DGA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDS,CBAA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDS,ACBBA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDS,PI,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDS,HIPC,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDS,DMCHBA,,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDS,DGA,,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,CBAA,ACBBA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,CBAA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,CBAA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,CBAA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,CBAA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,ACBBA,PI,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,ACBBA,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,ACBBA,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,ACBBA,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,PI,HIPC,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,PI,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,PI,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,HIPC,DMCHBA,383,383,0
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,HIPC,DGA,384,383,1
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,rayleigh_style,post_clue_steps_to_find,PRDA,DMCHBA,DGA,383,383,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_steps,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,total_team_steps,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_messages_per_step,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,max_agent_messages,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_unique_cell,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_task_replans,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,team_path_replans,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,duplicate_target_visits,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,target_completion_gini,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,bernoulli,messages_per_target,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_steps,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,total_team_steps,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_messages_per_step,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,max_agent_messages,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_unique_cell,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_task_replans,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,team_path_replans,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,duplicate_target_visits,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,target_completion_gini,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,gilbert_elliott,messages_per_target,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_steps,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,total_team_steps,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_messages_per_step,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,max_agent_messages,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_unique_cell,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_task_replans,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,team_path_replans,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,duplicate_target_visits,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,target_completion_gini,PRDA,DMCHBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDS,CBAA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDS,ACBBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDS,PI,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDS,HIPC,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDS,DMCHBA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDS,DGA,,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,CBAA,ACBBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,CBAA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,CBAA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,CBAA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,CBAA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,ACBBA,PI,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,ACBBA,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,ACBBA,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,ACBBA,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,PI,HIPC,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,PI,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,PI,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,HIPC,DMCHBA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,HIPC,DGA,500,500,0
+Collaborative Visit (CV),CV,rayleigh_style,messages_per_target,PRDA,DMCHBA,DGA,500,500,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_steps,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,total_team_steps,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_messages_per_step,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,max_agent_messages,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,messages_per_unique_cell,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_task_replans,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,team_path_replans,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,bernoulli,system_cell_revisits,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_steps,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,total_team_steps,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,team_messages_per_step,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,max_agent_messages,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,messages_per_unique_cell,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,team_task_replans,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,team_path_replans,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDS,CBAA,,30,3,27
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDS,ACBBA,,90,3,87
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDS,PI,,20,3,17
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDS,HIPC,,58,3,55
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDS,DMCHBA,,65,3,62
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDS,DGA,,43,3,40
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,ACBBA,28,3,25
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,PI,7,3,4
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,HIPC,24,3,21
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,DMCHBA,21,3,18
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,CBAA,DGA,15,3,12
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,ACBBA,PI,19,3,16
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,ACBBA,HIPC,53,3,50
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,ACBBA,DMCHBA,57,3,54
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,ACBBA,DGA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,PI,HIPC,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,PI,DMCHBA,13,3,10
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,PI,DGA,11,3,8
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,HIPC,DMCHBA,39,3,36
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,HIPC,DGA,25,3,22
+Full Grid Search (FGS),FGS,gilbert_elliott,system_cell_revisits,PRDA,DMCHBA,DGA,28,3,25
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_steps,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,total_team_steps,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_messages_per_step,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,max_agent_messages,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,messages_per_unique_cell,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,unique_cell_contribution_gini,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_task_replans,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,team_path_replans,PRDA,DMCHBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDS,CBAA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDS,ACBBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDS,PI,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDS,HIPC,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDS,DMCHBA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDS,DGA,,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,CBAA,ACBBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,CBAA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,CBAA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,CBAA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,CBAA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,ACBBA,PI,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,ACBBA,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,ACBBA,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,ACBBA,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,PI,HIPC,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,PI,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,PI,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,HIPC,DMCHBA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,HIPC,DGA,100,100,0
+Full Grid Search (FGS),FGS,rayleigh_style,system_cell_revisits,PRDA,DMCHBA,DGA,100,100,0

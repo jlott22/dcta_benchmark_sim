@@ -1,0 +1,13 @@
+mission,scenario,algorithm,mean_message_publications_per_team_step,mean_maximum_agent_steps,source_condition_count,sum_condition_eligible_n,min_condition_eligible_n,max_condition_eligible_n,aggregation_rule,figure_stem
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,CBAA,4.26020852825079,63.8272425591149,24,9248,384,386,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,ACBBA,10.9054558660739,60.5827129227368,24,9248,384,386,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,PI,3.40148877891349,63.3387848884034,24,9248,384,386,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,HIPC,4.28998743066641,63.1615424227471,24,9248,384,386,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,DMCHBA,2.06257481934993,56.7183517960882,24,9248,384,386,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Clue-Informed Probabilistic Search (CLIPS),CLIPS,DGA,2.91745264222375,64.1043744354514,24,9248,384,386,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Collaborative Visit (CV),CV,CBAA,5.19236866090707,26.0205,24,12000,500,500,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Collaborative Visit (CV),CV,ACBBA,4.28428842322177,29.1085833333333,24,12000,500,500,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Collaborative Visit (CV),CV,PI,2.87798771993189,34.8635833333333,24,12000,500,500,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Collaborative Visit (CV),CV,HIPC,2.93363061392234,32.3003333333333,24,12000,500,500,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Collaborative Visit (CV),CV,DMCHBA,2.08271992592866,24.7809166666667,24,12000,500,500,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff
+Collaborative Visit (CV),CV,DGA,3.37702831654532,24.4908333333333,24,12000,500,500,unweighted mean of 24 condition means (3 communication models x 8 impaired levels),communication_performance_tradeoff

@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Combine condition-partitioned DGA final-500 outputs and verify completeness.
 
-REPO_ROOT="${DCTA_REPO_ROOT:-/home/jlott/dcta_benchmark_sim}"
+REPO_ROOT="${DCTA_REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)}"
 RAW_ROOT="$REPO_ROOT/results/clue_search_core_500/raw/dga"
 COMBINED_ROOT="$REPO_ROOT/results/clue_search_core_500/combined_dga"
 SCENARIO_FILE="$REPO_ROOT/scenarios/final_trial_500.csv"

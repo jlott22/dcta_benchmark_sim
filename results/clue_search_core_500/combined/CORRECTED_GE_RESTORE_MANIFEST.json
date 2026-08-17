@@ -3,7 +3,7 @@
   "source_revision": "f898015",
   "bundle": "CLIPS",
   "active_directory": "results/clue_search_core_500/combined",
-  "archived_directory": "results/clue_search_core_500/combined/archive/pre_corrected_active_20260809",
+  "archived_directory": "archive_private/pre_release_cleanup_2026-08-16/results/clue_search_core_500/combined/archive/pre_corrected_active_20260809",
   "archived_files": [
     {
       "name": "clue_search_core_500_combined_condition_manifest.csv",

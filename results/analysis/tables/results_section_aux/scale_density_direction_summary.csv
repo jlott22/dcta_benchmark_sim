@@ -1,0 +1,7 @@
+algorithm,tested_density_pairwise_comparisons,holm_significant_comparisons,significant_favoring_fewer_robots,significant_favoring_more_robots,significant_zero_direction
+CBAA,48,45,45,0,0
+ACBBA,48,44,44,0,0
+PI,48,38,38,0,0
+HIPC,48,14,0,14,0
+DMCHBA,48,43,43,0,0
+DGA,48,16,15,1,0

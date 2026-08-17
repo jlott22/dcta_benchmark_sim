@@ -41,8 +41,10 @@ end
 metricCsvPath = fullfile(tablesDir, "dcta_metric_results.csv");
 statCsvPath = fullfile(tablesDir, "dcta_statistical_tests.csv");
 manifestPath = fullfile(tablesDir, "dcta_metric_source_manifest.csv");
+clipsRevisitRateTrialPath = fullfile(tablesDir, "clips_system_cell_revisit_rate_trial_values.csv");
+clipsRevisitRateConditionPath = fullfile(tablesDir, "clips_system_cell_revisit_rate_condition_summary.csv");
 logPath = fullfile(tablesDir, "dcta_metric_analysis_log.txt");
-scriptPath = mfilename("fullpath") + ".m";
+scriptPath = "results/analysis/build_dcta_paired_metric_results.m";
 
 rng(rngSeed, "twister");
 logFid = fopen(logPath, "w");
@@ -50,8 +52,8 @@ cleanupObj = onCleanup(@() fclose(logFid));
 logLine(logFid, "DCTA paired metric analysis");
 logLine(logFid, "Date/time: %s", string(datetime("now")));
 logLine(logFid, "MATLAB version: %s", version);
-logLine(logFid, "Project root: %s", projectRoot);
-logLine(logFid, "Analysis directory: %s", analysisDir);
+logLine(logFid, "Project root: repository root");
+logLine(logFid, "Analysis directory: results/analysis");
 logLine(logFid, "Run mode: %s", dctaAnalysisRunMode);
 logLine(logFid, "Bootstrap iterations: %d", bootstrapIterations);
 logLine(logFid, "RNG seed: %d", rngSeed);
@@ -69,7 +71,7 @@ manifestRows = {};
 
 coverageFiles = dir(fullfile(coverageCandidateDir, "*"));
 coverageNames = string({coverageFiles(~[coverageFiles.isdir]).name});
-logLine(logFid, "Coverage source folder inspected: %s", coverageCandidateDir);
+logLine(logFid, "Coverage source folder inspected: results/coverage_core_100/combined");
 logLine(logFid, "Coverage source files: %s", strjoin(coverageNames, ", "));
 
 if dctaAnalysisRunMode == "full"
@@ -118,8 +120,8 @@ if dctaAnalysisRunMode == "full"
     knownRobot = normalizeSourceTable(knownRobot);
     knownManifest = normalizeSourceTable(knownManifest);
 
-    logScenarioIdentity(logFid, clipsScenario, bayesianCandidateDir, clueSystem, clueTrial, clueManifest);
-    logScenarioIdentity(logFid, cvScenario, collaborativeDir, knownSystem, knownTrial, knownManifest);
+    logScenarioIdentity(logFid, clipsScenario, "results/clue_search_core_500/combined", clueSystem, clueTrial, clueManifest);
+    logScenarioIdentity(logFid, cvScenario, "results/known_target_visit_core_500/combined", knownSystem, knownTrial, knownManifest);
 
     assertAlgorithms(logFid, clipsScenario, clueManifest, algorithmOrder);
     assertAlgorithms(logFid, cvScenario, knownManifest, algorithmOrder);
@@ -143,7 +145,7 @@ coverageTrial = normalizeSourceTable(coverageTrial);
 coverageRobot = normalizeSourceTable(coverageRobot);
 coverageManifest = normalizeSourceTable(coverageManifest);
 
-logScenarioIdentity(logFid, coverageScenario, coverageCandidateDir, coverageSystem, coverageTrial, coverageManifest);
+logScenarioIdentity(logFid, coverageScenario, "results/coverage_core_100/combined", coverageSystem, coverageTrial, coverageManifest);
 assertAlgorithms(logFid, coverageScenario, coverageManifest, algorithmOrder);
 
 %% Build metric-ready tables
@@ -153,7 +155,7 @@ analysisVars = ["scenario","trial_id","algorithm","comm_model","comm_level_raw",
     "metric_max_agent_steps","metric_total_team_steps","metric_team_messages_per_step", ...
     "metric_max_agent_messages","metric_messages_per_unique_cell","metric_unique_cell_contribution_gini", ...
     "metric_team_task_replans","metric_team_path_replans","metric_system_cell_revisits","metric_duplicate_target_visits", ...
-    "metric_target_completion_gini","metric_messages_per_target"];
+    "metric_system_cell_revisit_rate","metric_target_completion_gini","metric_messages_per_target"];
 dataParts = {};
 if dctaAnalysisRunMode == "full"
     clueData = buildMetricData(clipsScenario, clueSystem, clueTrial, clueRobot, algorithmOrder, logFid);
@@ -169,6 +171,7 @@ logLine(logFid, "Exact clue-first eligibility rule selected: trial_status == com
 logLine(logFid, "Collaborative eligibility rule selected: trial_status == completed, all_targets_visited true, completed_target_count == target_count, and required metric data present.");
 logLine(logFid, "Coverage eligibility rule selected: completed coverage trial in system and trial summaries; no clue or target domain fields are used.");
 logLine(logFid, "Message counting selected: messages_sent_total for team publish count; robot_performance.messages_sent max for max_agent_messages when system max is absent.");
+logLine(logFid, "CLIPS revisit-rate definition selected: system_revisits / total_team_steps for each trial; condition means are arithmetic means of these per-trial rates.");
 logLine(logFid, "Task-replan definition selected: team_task_replans uses task_cell_replans_total, which increments when a current task/goal is invalidated and replaced.");
 logLine(logFid, "Path-replan definition selected: team_path_replans uses path_replans_total, which counts path-planner replans from blocked, infeasible, collision, or navigation-friction conditions.");
 logLine(logFid, "Rayleigh nominal mapping selected: -59.40,-56.04,-52.15,-49.17,-46.04,-42.16,-37.79,-32.58 -> 5,10,20,30,40,50,60,70 percent. Worst Rayleigh condition is labeled 70%%.");
@@ -180,6 +183,9 @@ metricNames = ["max_agent_steps","total_team_steps","team_messages_per_step", ..
     "max_agent_messages","messages_per_unique_cell","unique_cell_contribution_gini", ...
     "team_task_replans","team_path_replans","system_cell_revisits","duplicate_target_visits", ...
     "target_completion_gini","messages_per_target"];
+if dctaAnalysisRunMode == "full"
+    metricNames = [metricNames, "system_cell_revisit_rate"];
+end
 
 metricCols = ["scenario","metric","metric_family","result_type","comm_model","comm_level_raw", ...
     "comm_level_pct","algorithm","total_trial_count","eligible_paired_trials","excluded_trials", ...
@@ -244,6 +250,17 @@ end
 metricTable = rowsToMetricTable(metricRows, metricCols);
 statTable = rowsToStatTable(statRows, statCols);
 manifestTable = rowsToManifestTable(manifestRows);
+for i = 1:height(manifestTable)
+    sourcePath = string(manifestTable.full_file_path(i));
+    prefix = projectRoot + filesep;
+    assert(startsWith(lower(sourcePath), lower(prefix)), ...
+        "Source manifest path is outside the repository: %s", sourcePath);
+    manifestTable.full_file_path(i) = replace( ...
+        extractAfter(sourcePath, strlength(prefix)), "\", "/");
+end
+manifestTable.Properties.VariableNames{ ...
+    strcmp(manifestTable.Properties.VariableNames, "full_file_path")} = ...
+    'repository_path';
 
 if dctaAnalysisRunMode == "coverage_append_only"
     existingMetricTable = readtable(metricCsvPath, "TextType", "string");
@@ -262,17 +279,36 @@ writetable(metricTable, metricCsvPath);
 writetable(statTable, statCsvPath);
 writetable(manifestTable, manifestPath);
 
+% Publish an auditable CLIPS-only rate table.  The trial-level table retains
+% every source row and marks common six-algorithm block eligibility; the
+% condition table contains the requested mean of those individual trial rates.
+if dctaAnalysisRunMode == "full"
+    clipsRevisitRateTrialTable = buildClipsRevisitRateTrialTable(clueData, algorithmOrder);
+    clipsRevisitRateConditionTable = buildClipsRevisitRateConditionTable(metricTable, clipsScenario);
+    writetable(clipsRevisitRateTrialTable, clipsRevisitRateTrialPath);
+    writetable(clipsRevisitRateConditionTable, clipsRevisitRateConditionPath);
+end
+
 logCounts(logFid, allData, metricTable, algorithmOrder, nominalLevels);
-logLine(logFid, "Output metric CSV: %s", metricCsvPath);
-logLine(logFid, "Output statistical test CSV: %s", statCsvPath);
-logLine(logFid, "Output source manifest CSV: %s", manifestPath);
-logLine(logFid, "Output analysis log: %s", logPath);
+logLine(logFid, "Output metric CSV: results/analysis/tables/dcta_metric_results.csv");
+logLine(logFid, "Output statistical test CSV: results/analysis/tables/dcta_statistical_tests.csv");
+logLine(logFid, "Output source manifest CSV: results/analysis/tables/dcta_metric_source_manifest.csv");
+if dctaAnalysisRunMode == "full"
+    logLine(logFid, "Output CLIPS revisit-rate trial CSV: results/analysis/tables/clips_system_cell_revisit_rate_trial_values.csv");
+    logLine(logFid, "Output CLIPS revisit-rate condition CSV: results/analysis/tables/clips_system_cell_revisit_rate_condition_summary.csv");
+end
+logLine(logFid, "Output analysis log: results/analysis/tables/dcta_metric_analysis_log.txt");
 
 %% Required final validation
 fprintf("Validating generated CSV outputs...\n");
 metricGenerated = readtable(metricCsvPath, "TextType", "string");
 statGenerated = readtable(statCsvPath, "TextType", "string");
 validation = validateTwoFileOutputs(metricGenerated, statGenerated, metricNames, algorithmOrder, logFid);
+if dctaAnalysisRunMode == "full"
+    trialRateGenerated = readtable(clipsRevisitRateTrialPath, "TextType", "string");
+    conditionRateGenerated = readtable(clipsRevisitRateConditionPath, "TextType", "string");
+    validateClipsRevisitRateOutputs(clueData, trialRateGenerated, conditionRateGenerated, algorithmOrder, logFid);
+end
 
 fprintf("\nValidation summary\n");
 fprintf("  Metric rows: %d\n", height(metricGenerated));
@@ -585,6 +621,13 @@ function data = buildMetricData(scenario, systemT, trialT, robotT, algorithmOrde
         data.messages_per_target = safeDivide(data.messages_sent_total_metric, toDouble(data.completed_target_count));
     end
 
+    % This is a trial-level ratio (not a ratio of condition means).  It is
+    % defined only for CLIPS because the requested outcome is CLIPS-specific.
+    data.system_cell_revisit_rate = NaN(height(data), 1);
+    if scenario == "Clue-Informed Probabilistic Search (CLIPS)"
+        data.system_cell_revisit_rate = safeDivide(data.system_cell_revisits, data.total_team_steps_metric);
+    end
+
     data.unique_cell_contribution_gini = selectFirstNumeric(data, ["workload_gini_unique_cells_contributed","derived_unique_cell_contribution_gini"]);
     data.team_task_replans = toDouble(data.task_cell_replans_total);
     data.team_path_replans = toDouble(data.path_replans_total);
@@ -598,6 +641,7 @@ function data = buildMetricData(scenario, systemT, trialT, robotT, algorithmOrde
     data.metric_team_task_replans = data.team_task_replans;
     data.metric_team_path_replans = data.team_path_replans;
     data.metric_system_cell_revisits = data.system_cell_revisits;
+    data.metric_system_cell_revisit_rate = data.system_cell_revisit_rate;
     data.metric_duplicate_target_visits = data.duplicate_target_visits;
     data.metric_target_completion_gini = data.target_completion_gini;
     data.metric_messages_per_target = data.messages_per_target;
@@ -634,6 +678,79 @@ function robotAgg = aggregateRobotMetrics(robotT, keyVars)
     else
         robotAgg.derived_target_completion_gini = NaN(height(robotAgg), 1);
     end
+end
+
+function T = buildClipsRevisitRateTrialTable(data, algorithmOrder)
+    rateEligible = data.base_eligible & isfinite(data.metric_system_cell_revisit_rate);
+    commonBlockEligible = false(height(data), 1);
+    keyVars = ["trial_id","comm_model","comm_level_raw","comm_level_pct"];
+    blocks = unique(data(:, keyVars), "rows", "stable");
+    for b = 1:height(blocks)
+        mask = data.trial_id == blocks.trial_id(b) & ...
+            data.comm_model == blocks.comm_model(b) & ...
+            data.comm_level_raw == blocks.comm_level_raw(b) & ...
+            data.comm_level_pct == blocks.comm_level_pct(b);
+        algorithmsPresent = unique(data.algorithm(mask), "stable");
+        exactAlgorithmSet = numel(algorithmsPresent) == numel(algorithmOrder) && ...
+            all(ismember(algorithmOrder, algorithmsPresent));
+        commonBlockEligible(mask) = sum(mask) == numel(algorithmOrder) && ...
+            exactAlgorithmSet && all(rateEligible(mask));
+    end
+
+    T = table( ...
+        data.scenario, data.trial_id, data.algorithm, data.comm_model, ...
+        data.comm_level_raw, data.comm_level_pct, string(data.trial_status), ...
+        string(data.trial_trial_status), string(data.trial_first_clue_robot), ...
+        data.total_team_steps_metric, data.system_cell_revisits, ...
+        data.metric_system_cell_revisit_rate, data.base_eligible, rateEligible, ...
+        commonBlockEligible, ...
+        'VariableNames', {'scenario','trial_id','algorithm','comm_model', ...
+        'comm_level_raw','comm_level_pct','system_trial_status', ...
+        'trial_summary_status','first_clue_robot','total_team_steps', ...
+        'system_revisits','revisits_per_team_step','base_eligible', ...
+        'rate_metric_eligible','common_six_algorithm_block_eligible'});
+    T = sortrows(T, ["comm_model","comm_level_pct","trial_id","algorithm"]);
+end
+
+function T = buildClipsRevisitRateConditionTable(metricTable, clipsScenario)
+    keep = metricTable.scenario == clipsScenario & ...
+        metricTable.metric == "system_cell_revisit_rate" & ...
+        metricTable.result_type == "condition_metric";
+    T = metricTable(keep, ["comm_model","comm_level_raw","comm_level_pct","algorithm", ...
+        "total_trial_count","eligible_paired_trials","excluded_trials", ...
+        "mean_value","median_value","standard_deviation","ci95_low","ci95_high"]);
+    T.Properties.VariableNames = {'comm_model','comm_level_raw','comm_level_pct','algorithm', ...
+        'attempted_trial_blocks','eligible_common_six_algorithm_blocks','excluded_trial_blocks', ...
+        'mean_revisits_per_team_step','median_revisits_per_team_step', ...
+        'standard_deviation_revisits_per_team_step','ci95_low','ci95_high'};
+    T = sortrows(T, ["comm_model","comm_level_pct","algorithm"]);
+end
+
+function validateClipsRevisitRateOutputs(clueData, trialTable, conditionTable, algorithmOrder, fid)
+    expectedConditionRows = height(unique(clueData(:, ["comm_model","comm_level_raw","comm_level_pct"]), "rows")) * numel(algorithmOrder);
+    if height(trialTable) ~= height(clueData)
+        error("CLIPS revisit-rate trial output lost source rows (%d vs %d).", height(trialTable), height(clueData));
+    end
+    if height(conditionTable) ~= expectedConditionRows
+        error("CLIPS revisit-rate condition output has %d rows; expected %d.", height(conditionTable), expectedConditionRows);
+    end
+    if any(trialTable.system_revisits < 0 & ~isnan(trialTable.system_revisits)) || ...
+            any(trialTable.revisits_per_team_step < 0 & ~isnan(trialTable.revisits_per_team_step))
+        error("CLIPS revisit-rate output contains a negative revisit count or rate.");
+    end
+    formulaRows = isfinite(trialTable.system_revisits) & isfinite(trialTable.total_team_steps) & ...
+        trialTable.total_team_steps > 0 & isfinite(trialTable.revisits_per_team_step);
+    expectedRates = trialTable.system_revisits(formulaRows) ./ trialTable.total_team_steps(formulaRows);
+    if any(abs(trialTable.revisits_per_team_step(formulaRows) - expectedRates) > 1e-12)
+        error("CLIPS revisit-rate output does not equal system_revisits / total_team_steps.");
+    end
+    eligible = toDouble(trialTable.common_six_algorithm_block_eligible) ~= 0;
+    if any(~isfinite(trialTable.revisits_per_team_step(eligible))) || ...
+            any(~trialTable.rate_metric_eligible(eligible))
+        error("A CLIPS common eligible block has a nonfinite revisit rate.");
+    end
+    logLine(fid, "CLIPS revisit-rate output: %d trial rows retained, %d condition-by-algorithm means, %d common six-algorithm blocks.", ...
+        height(trialTable), height(conditionTable), sum(eligible) / numel(algorithmOrder));
 end
 
 function validateMetricData(fid, data, algorithmOrder)
@@ -692,7 +809,9 @@ function metrics = metricsForScenario(scenario)
     shared = ["max_agent_steps","total_team_steps","team_messages_per_step", ...
         "max_agent_messages","messages_per_unique_cell","unique_cell_contribution_gini", ...
         "team_task_replans","team_path_replans"];
-    if scenario == "Clue-Informed Probabilistic Search (CLIPS)" || scenario == "Full Grid Search (FGS)"
+    if scenario == "Clue-Informed Probabilistic Search (CLIPS)"
+        metrics = [shared, "system_cell_revisits","system_cell_revisit_rate"];
+    elseif scenario == "Full Grid Search (FGS)"
         metrics = [shared, "system_cell_revisits"];
     else
         metrics = [shared, "duplicate_target_visits","target_completion_gini","messages_per_target"];
@@ -1156,7 +1275,7 @@ function fam = metricFamily(metric)
             fam = "communication_bottleneck";
         case {"messages_per_unique_cell","messages_per_target"}
             fam = "communication_productivity";
-        case {"system_cell_revisits","duplicate_target_visits"}
+        case {"system_cell_revisits","system_cell_revisit_rate","duplicate_target_visits"}
             fam = "repeated_effort";
         case {"unique_cell_contribution_gini","target_completion_gini"}
             fam = "workload_balance";
@@ -1183,6 +1302,8 @@ function units = metricUnits(metric)
             units = "replan_events";
         case "system_cell_revisits"
             units = "revisits";
+        case "system_cell_revisit_rate"
+            units = "revisits_per_team_step";
         case "duplicate_target_visits"
             units = "duplicate_target_visits";
         case "messages_per_target"
@@ -1222,6 +1343,8 @@ function src = metricSourceColumn(scenario, metric)
                 src = "path_replans_total";
             case "system_cell_revisits"
                 src = "system_revisits";
+            case "system_cell_revisit_rate"
+                src = "system_revisits / total_team_steps";
             otherwise
                 src = "";
         end

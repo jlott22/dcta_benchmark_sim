@@ -3,7 +3,7 @@
   "source_revision": "f898015",
   "bundle": "CV",
   "active_directory": "results/known_target_visit_core_500/combined",
-  "archived_directory": "results/known_target_visit_core_500/combined/archive/pre_corrected_active_20260809",
+  "archived_directory": "archive_private/pre_release_cleanup_2026-08-16/results/known_target_visit_core_500/combined/archive/pre_corrected_active_20260809",
   "archived_files": [
     {
       "name": "known_target_visit_core_500_combined_condition_manifest.csv",

@@ -27,6 +27,12 @@ Thumbs.db
 *.temp
 *.log
 *~
+*.asv
+
+# Private pre-release archive. Keep its README so collaborators understand
+# where local historical material belongs, but never publish its contents.
+/archive_private/*
+!/archive_private/README.md
 
 # Generated figures and image artifacts
 *.fig
@@ -40,6 +46,12 @@ Thumbs.db
 *.webp
 *.svg
 *.eps
+
+# Final paper figures and their editable MATLAB copies are release artifacts.
+!/results/analysis/figures/*.png
+!/results/analysis/figures/inspection/
+!/results/analysis/figures/inspection/*.png
+!/results/analysis/figures/inspection/*.fig
 
 # Transient study execution state (preserve combined CSV/JSON and manifests)
 /results/**/logs/

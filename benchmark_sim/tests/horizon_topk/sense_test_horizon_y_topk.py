@@ -5,7 +5,7 @@ import csv
 import shlex
 from pathlib import Path
 
-REPO_ROOT = Path("/home/jlott/dcta_benchmark_sim")
+REPO_ROOT = Path(__file__).resolve().parents[3]
 SCENARIO_FILE = "results/sensitivity_scenarios/clue_tuning_g19_n300_seed20260702.csv"
 SCENARIO_SEED = 20260702
 SCENARIO_TRIALS = 300

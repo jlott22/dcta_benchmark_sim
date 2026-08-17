@@ -1,0 +1,38 @@
+check_id,scope,metric,expected,observed,absolute_tolerance,status,source
+clips_grid_blocks,CLIPS,eligible condition-trial blocks,1560,1560,0,PASS,grid_density_complete_block_eligibility_counts.csv
+cv_grid_blocks,CV,eligible condition-trial blocks,1544,1544,0,PASS,grid_density_complete_block_eligibility_counts.csv
+clips_dmchba_leaders,CLIPS,DMCHBA first-place conditions,11,11,0,PASS,grid_density_complete_block_algorithm_summary.csv
+clips_dmchba_rank,CLIPS,DMCHBA mean condition rank,2.84375,2.84375,1e-12,PASS,grid_density_complete_block_algorithm_summary.csv
+clips_dmchba_gap,CLIPS,DMCHBA mean percent above condition best,4.95660507443191,4.95660507443191,1e-10,PASS,grid_density_complete_block_algorithm_summary.csv
+clips_acbba_leaders,CLIPS,ACBBA first-place conditions,10,10,0,PASS,grid_density_complete_block_algorithm_summary.csv
+clips_acbba_rank,CLIPS,ACBBA mean condition rank,2.34375,2.34375,1e-12,PASS,grid_density_complete_block_algorithm_summary.csv
+clips_acbba_gap,CLIPS,ACBBA mean percent above condition best,6.04837493027049,6.04837493027049,1e-10,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_dga_leaders,CV,DGA first-place conditions,17,17,0,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_dga_rank,CV,DGA mean condition rank,1.6875,1.6875,1e-12,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_dga_gap,CV,DGA mean percent above condition best,1.18276857780872,1.18276857780872,1e-10,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_dmchba_leaders,CV,DMCHBA first-place conditions,14,14,0,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_dmchba_rank,CV,DMCHBA mean condition rank,1.6875,1.6875,1e-12,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_dmchba_gap,CV,DMCHBA mean percent above condition best,1.34014350516198,1.34014350516198,1e-10,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_cbaa_leaders,CV,CBAA first-place conditions,1,1,0,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_cbaa_rank,CV,CBAA mean condition rank,2.8125,2.8125,1e-12,PASS,grid_density_complete_block_algorithm_summary.csv
+cv_cbaa_gap,CV,CBAA mean percent above condition best,4.38333233327565,4.38333233327565,1e-10,PASS,grid_density_complete_block_algorithm_summary.csv
+clips_34_cbaa,CLIPS,34-by-34 CBAA plotted mean,55.929347826087,55.929347826087,1e-10,PASS,grid_density_complete_block_plot_source.csv
+clips_34_acbba,CLIPS,34-by-34 ACBBA plotted mean,53.8913043478261,53.8913043478261,1e-10,PASS,grid_density_complete_block_plot_source.csv
+clips_34_pi,CLIPS,34-by-34 PI plotted mean,57.2119565217391,57.2119565217391,1e-10,PASS,grid_density_complete_block_plot_source.csv
+clips_34_hipc,CLIPS,34-by-34 HIPC plotted mean,55.8777173913044,55.8777173913044,1e-10,PASS,grid_density_complete_block_plot_source.csv
+clips_34_dmchba,CLIPS,34-by-34 DMCHBA plotted mean,54.4076086956522,54.4076086956522,1e-10,PASS,grid_density_complete_block_plot_source.csv
+clips_34_dga,CLIPS,34-by-34 DGA plotted mean,61.3260869565217,61.3260869565217,1e-10,PASS,grid_density_complete_block_plot_source.csv
+grid_terminal_failures,CLIPS+CV,terminal failures,164,164,0,PASS,grid_density_complete_block_trial_status_summary.csv
+grid_event_caps,CLIPS+CV,event-cap failures,155,155,0,PASS,grid_density_complete_block_trial_status_summary.csv
+grid_stagnation,CLIPS+CV,stagnation failures,9,9,0,PASS,grid_density_complete_block_trial_status_summary.csv
+grid_34_terminal_failures,CLIPS+CV,34-by-34 terminal failures,152,152,0,PASS,grid_density_complete_block_trial_status_summary.csv
+clips_prds_n,CLIPS,common-six PRDS trajectories per model/algorithm,383,383,0,PASS,trajectory_common_six_eligibility_audit.csv
+cv_prds_n,CV,common-six PRDS trajectories per model/algorithm,500,500,0,PASS,trajectory_common_six_eligibility_audit.csv
+dga_selected_k,CV,selected DGA generations,25,25,0,PASS,dga_iteration_selection.csv
+dga_regret,CV,selected mean normalized regret percent,0.554870530209622,0.554870530209622,1e-12,PASS,dga_iteration_selection.csv
+dga_ideal_mean,CV,selected ideal mean maximum-agent steps,21.8666666666667,21.8666666666667,1e-12,PASS,dga_iteration_selection.csv
+dga_bernoulli_mean,CV,selected Bernoulli mean maximum-agent steps,23.1833333333333,23.1833333333333,1e-12,PASS,dga_iteration_selection.csv
+active_png_count,figures,active PNG files,5,5,0,PASS,results/analysis/figures
+inspection_png_count,figures,inspection PNG files,5,5,0,PASS,results/analysis/figures/inspection
+editable_fig_count,figures,editable MATLAB FIG files,5,5,0,PASS,results/analysis/figures/inspection
+figure_source_count,figures,dedicated source CSV files,5,5,0,PASS,results/analysis/tables/final_figure_sources

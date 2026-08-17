@@ -1,0 +1,33 @@
+DCTA robot-density / grid-size sensitivity analysis
+Started: 2026-08-17 00:33:55 *
+MATLAB: 25.2.0.3123386 (R2025b) Update 3
+Repository: repository root
+
+=== Clue-Informed Probabilistic Search (CLIPS) ===
+Rows: 9600; completed: 9500; failed: 100
+Grid sizes: 14, 19, 25, 34
+Nominal cells/robot: 50, 85, 140, 220
+Communication labels: ideal, bernoulli_025
+Algorithms: CBAA, ACBBA, PI, HIPC, DMCHBA, DGA
+
+=== Collaborative Visit (CV) ===
+Rows: 9600; completed: 9536; failed: 64
+Grid sizes: 14, 19, 25, 34
+Nominal cells/robot: 50, 85, 140, 220
+Communication labels: ideal, bernoulli_025
+Algorithms: CBAA, ACBBA, PI, HIPC, DMCHBA, DGA
+
+=== Full Grid Search (FGS) ===
+Rows: 9600; completed: 8683; failed: 917
+Grid sizes: 14, 19, 25, 34
+Nominal cells/robot: 50, 85, 140, 220
+Communication labels: ideal, bernoulli_025
+Algorithms: CBAA, ACBBA, PI, HIPC, DMCHBA, DGA
+
+Wrote results/analysis/tables/grid_density_analysis_results.csv (11971 rows)
+
+=== Validation ===
+PASS: input audits, row counts, Holm adjustments, and output inventory.
+
+Completed: 2026-08-17 00:34:16 *
+Canonical output: results/analysis/tables/grid_density_analysis_results.csv

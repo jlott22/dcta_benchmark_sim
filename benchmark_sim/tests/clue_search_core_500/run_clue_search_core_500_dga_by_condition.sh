@@ -4,7 +4,7 @@ set -uo pipefail
 # Run one complete DGA final-500 job per communication condition.
 # Usage: bash benchmark_sim/tests/clue_search_core_500_dga/run_clue_search_core_500_dga_by_condition.sh [max_parallel_conditions]
 
-REPO_ROOT="${DCTA_REPO_ROOT:-/home/jlott/dcta_benchmark_sim}"
+REPO_ROOT="${DCTA_REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)}"
 SCENARIO_FILE="$REPO_ROOT/scenarios/final_trial_500.csv"
 RAW_ROOT="$REPO_ROOT/results/clue_search_core_500/raw/dga"
 LOG_DIR="$RAW_ROOT/_logs"

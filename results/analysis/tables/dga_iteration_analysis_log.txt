@@ -1,0 +1,13 @@
+CV DGA-generation sensitivity validation
+Input: results/sensitivity_known_target_visit_dga_iteration_300/combined/sensitivity_known_target_visit_dga_iteration_300_combined_system_performance.csv
+Raw rows: 3600
+Outcome: max_robot_steps (maximum-agent steps)
+Eligibility: completed + all targets visited + completed target count equals target count + finite positive outcome
+Eligible rows: 3600 / 3600
+Trials per communication x k condition: 300
+Selected k: 25
+Selection rule: minimum unweighted mean normalized regret across ideal and Bernoulli p_d=0.25
+Selected mean normalized regret: 0.554870530%
+Ideal means: k=50 21.626667, k=25 21.866667 maximum-agent steps
+Bernoulli p_d=0.25 mean: k=25 23.183333 maximum-agent steps
+Validation: PASS

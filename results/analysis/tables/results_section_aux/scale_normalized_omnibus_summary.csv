@@ -1,0 +1,5 @@
+scenario,analysis_family,family_count,significant_family_count
+CLIPS,grid_size_omnibus,48,0
+CLIPS,density_omnibus,48,5
+CV,grid_size_omnibus,48,48
+CV,density_omnibus,48,42

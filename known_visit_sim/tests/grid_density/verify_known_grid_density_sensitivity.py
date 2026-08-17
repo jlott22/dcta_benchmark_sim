@@ -7,6 +7,8 @@ import csv
 from collections import Counter, defaultdict
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
 EXPECTED_GRIDS = 5
 EXPECTED_DENSITIES = 7
 EXPECTED_COMMS = 4
@@ -16,7 +18,10 @@ EXPECTED_CONDITIONS = EXPECTED_GRIDS * EXPECTED_DENSITIES * EXPECTED_COMMS * EXP
 
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/results/sensitivity_known_target_visit_grid_density_50")
+    p.add_argument(
+        "--run-root",
+        default=str(REPO_ROOT / "results" / "sensitivity_known_target_visit_grid_density_50"),
+    )
     return p.parse_args()
 
 

@@ -1,0 +1,13 @@
+campaign,mission,path,bytes,last_modified
+CLIPS core,CLIPS,results/clue_search_core_500/combined/clue_search_core_500_combined_system_performance.csv,36622580,2026-08-09 15:52:51 *
+CV core,CV,results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_system_performance.csv,37523739,2026-08-09 15:52:52 *
+FGS core,FGS,results/coverage_core_100/combined/coverage_core_100_combined_system_performance.csv,7364433,2026-08-09 15:52:51 *
+CLIPS grid-density,CLIPS,results/sensitivity_clue_search_grid_density_50/combined/sensitivity_clue_search_grid_density_50_combined_system_performance.csv,6602289,2026-08-09 15:52:53 *
+CV grid-density,CV,results/sensitivity_known_target_visit_grid_density_50/combined/system_performance.csv,7451136,2026-08-09 15:52:48 *
+FGS grid-density,FGS,results/sensitivity_coverage_grid_density_50/combined/system_performance.csv,5130909,2026-08-09 15:52:48 *
+CLIPS horizon,CLIPS,results/sensitivity_clue_search_horizon_300/combined/sensitivity_clue_search_horizon_300_combined_system_performance.csv,9216342,2026-08-09 15:52:53 *
+CLIPS top-k,CLIPS,results/sensitivity_clue_search_topk_300/combined/sensitivity_clue_search_topk_300_combined_system_performance.csv,10822699,2026-08-09 15:52:53 *
+FGS horizon,FGS,results/sensitivity_coverage_horizon_50/combined/sensitivity_coverage_horizon_50_combined_system_performance.csv,1325855,2026-08-09 15:52:53 *
+CV DGA iterations,CV,results/sensitivity_known_target_visit_dga_iteration_300/combined/sensitivity_known_target_visit_dga_iteration_300_combined_system_performance.csv,1794396,2026-08-09 15:52:53 *
+CV horizon,CV,results/sensitivity_known_target_visit_horizon_300/combined/sensitivity_known_target_visit_horizon_300_combined_system_performance.csv,8746248,2026-08-09 15:52:53 *
+CV top-k,CV,results/sensitivity_known_target_visit_topk_300/combined/sensitivity_known_target_visit_topk_300_combined_system_performance.csv,10045739,2026-08-09 15:52:53 *

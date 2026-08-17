@@ -1,39 +1,51 @@
-# Decentralized Task-Cell Allocation Benchmark Simulator
+# Decentralized Task-Cell Allocation Benchmark
 
-This repository contains asynchronous grid simulators for evaluating decentralized task-cell allocation under degraded communication. It includes clue-informed search, coverage search, and collaborative visits to known target locations.
+This repository contains the simulators, scenarios, raw combined results, analysis code, and finalized figures for *Benchmarking Decentralized Multi-Robot Task Allocation in Search Missions Under Degraded Communication*.
 
-## Canonical Results
+The benchmark evaluates six decentralized task-allocation algorithms—CBAA, ACBBA, PI, HIPC, DMCHBA, and DGA—in three grid missions:
 
-All evaluation-ready data lives under `results/`. Each study exposes one `combined/` directory with its canonical CSV files.
+- Clue-Informed Probabilistic Search (CLIPS)
+- Full Grid Search (FGS)
+- Collaborative Visit (CV)
 
-| Study | Scenario | Trials | Canonical location |
-| --- | --- | ---: | --- |
-| Clue-search core | Clue-informed target search | 75,000 | `results/clue_search_core_500/combined/` |
-| Coverage core | Area coverage | 15,000 | `results/coverage_core_100/combined/` |
-| Known-target visit core | Collaborative visits to known targets | 75,000 | `results/known_target_visit_core_500/combined/` |
+The release preserves the recorded raw CSV values. Generated tables and paper figures can be rebuilt from those files without modifying them.
 
-The coverage core includes the corrected bursty Gilbert-Elliott subset: 4,800 trials, with 4,376 completed and 424 terminal safety-cap failures. GE condition IDs use the canonical `gilbert_elliott` spelling. The command-line runner also accepts the historical `gilbert_elliot` spelling as an input alias.
+## Clone and set up
 
-Sensitivity datasets are also under `results/` and are named by scenario, parameter, and trial count. The root-level `results/analysis/` directory contains reproducible analysis scripts, `tables/` for generated CSV summaries, `figures/` for generated plots, and `archive/` for superseded analysis artifacts.
+Two canonical robot-performance CSVs are stored with Git LFS. Install Git LFS before cloning or run `git lfs pull` after cloning.
 
-Historical source paths recorded in CSV columns such as `out_dir`, `source_out_dir`, and `source_command` remain unchanged. They document where a trial originally ran; they are not live paths in this checkout.
-
-## Repository Layout
-
-```text
-benchmark_sim/       clue-search and coverage simulator
-known_visit_sim/     collaborative known-target visit simulator
-scenarios/           deterministic input scenarios
-results/             canonical combined datasets and analysis
-  analysis/          reproducible analysis scripts and outputs
-  coverage_core_100/
-  clue_search_core_500/
-  known_target_visit_core_500/
+```bash
+git lfs install
+git clone <repository-url>
+cd dcta_benchmark_sim
+python -m venv .venv
+# Linux/macOS: source .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 ```
 
-## Run A Trial
+Python 3.10 or newer is supported. The simulators themselves use the standard library; NumPy and pandas are required by the publication analysis. Install `pygame` separately only for the optional live viewer.
 
-Run commands from the repository root.
+MATLAB R2025b with Statistics and Machine Learning Toolbox is recommended for exact figure and statistical-table regeneration. The scripts use functions including `tiedrank`, `tinv`, `signrank`, `ranksum`, and `chi2cdf`.
+
+## Repository layout
+
+```text
+benchmark_sim/       CLIPS and FGS simulator, algorithms, and tests
+known_visit_sim/     CV simulator, algorithms, and tests
+scenarios/           deterministic paper scenarios
+results/             canonical raw/combined datasets
+  analysis/          retained analysis and figure-generation code
+    tables/          derived numerical results and provenance
+    figures/         the five finalized paper figures
+archive_private/     ignored local preservation area for superseded artifacts
+```
+
+See [results/README.md](results/README.md) for the data inventory and [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the exact analysis order, eligibility rules, and verification targets. A SHA-256 inventory of the release data is written to `results/RELEASE_MANIFEST.csv`.
+
+## Run a trial
+
+Run commands from the repository root. For a CLIPS trial:
 
 ```bash
 python -m benchmark_sim.run_trials \
@@ -47,7 +59,7 @@ python -m benchmark_sim.run_trials \
   --out-dir results/example_clue_trial
 ```
 
-For collaborative known-target visits:
+For a CV trial:
 
 ```bash
 python -m known_visit_sim.run_trials \
@@ -58,11 +70,17 @@ python -m known_visit_sim.run_trials \
   --out-dir results/example_known_target_trial
 ```
 
-## Verification
+Historical `out_dir`, `source_out_dir`, and `source_command` fields in raw CSVs are provenance strings from the machines that ran the experiments; they are not live paths required by this checkout.
+
+## Verify the simulators
 
 ```bash
 python -m unittest discover -s benchmark_sim/tests -v
 python -m unittest discover -s known_visit_sim/tests -v
 ```
 
-Python 3.10 or newer is required. `pygame` is optional and only needed for the live viewer.
+## Final paper artifacts
+
+The five authoritative 600-dpi PNGs are in `results/analysis/figures/`. Matching editable MATLAB `.fig` files and visual-inspection copies are in `results/analysis/figures/inspection/`. Every plotted value has a dedicated CSV in `results/analysis/tables/final_figure_sources/`.
+
+Superseded files are not part of the public release tree. During local cleanup they are preserved under `archive_private/`, which is intentionally ignored by Git except for its explanatory README.

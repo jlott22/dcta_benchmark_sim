@@ -1,0 +1,13 @@
+campaign,mission,campaign_family,failed_n,event_cap_failure_n,stagnation_failure_n,unrecovered_output_n,other_failure_n,event_cap_failures_at_lower_5000_n,event_cap_failures_above_lower_5000_n,event_cap_failure_recorded_cap_min,event_cap_failure_recorded_cap_max,stagnation_consecutive_no_progress_limit,stagnation_total_events_min,stagnation_total_events_max
+CLIPS core,CLIPS,core,1,1,0,0,0,0,1,10000,10000,2000,NaN,NaN
+CV core,CV,core,0,0,0,0,0,0,0,NaN,NaN,2000,NaN,NaN
+FGS core,FGS,core,424,424,0,0,0,0,424,10000,100000,2000,NaN,NaN
+CLIPS grid-density,CLIPS,grid-density,100,100,0,0,0,100,0,5000,5000,2000,NaN,NaN
+CV grid-density,CV,grid-density,64,55,9,0,0,55,0,5000,5000,2000,2371,4823
+FGS grid-density,FGS,grid-density,917,871,0,46,0,801,70,5000,192133,2000,NaN,NaN
+CLIPS horizon,CLIPS,other sensitivity,4,4,0,0,0,2,2,5000,10000,2000,NaN,NaN
+CLIPS top-k,CLIPS,other sensitivity,641,641,0,0,0,0,641,10000,10000,2000,NaN,NaN
+FGS horizon,FGS,other sensitivity,4,4,0,0,0,0,4,10000,10000,2000,NaN,NaN
+CV DGA iterations,CV,other sensitivity,0,0,0,0,0,0,0,NaN,NaN,2000,NaN,NaN
+CV horizon,CV,other sensitivity,0,0,0,0,0,0,0,NaN,NaN,2000,NaN,NaN
+CV top-k,CV,other sensitivity,0,0,0,0,0,0,0,NaN,NaN,2000,NaN,NaN

@@ -7,6 +7,8 @@ import csv
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
 CSV_TYPES = [
     "system_performance.csv",
     "trial_summary.csv",
@@ -31,7 +33,10 @@ BACKFILL_COLS = [
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/results/sensitivity_known_target_visit_grid_density_50")
+    parser.add_argument(
+        "--run-root",
+        default=str(REPO_ROOT / "results" / "sensitivity_known_target_visit_grid_density_50"),
+    )
     return parser.parse_args()
 
 

@@ -4,7 +4,8 @@ set -euo pipefail
 # Recombine DGA iteration sensitivity raw outputs, including repair outputs.
 # Adds source metadata and de-duplicates by source_iter/source_comm_label/episode.
 
-cd /home/jlott/dcta_benchmark_sim
+REPO_ROOT="${DCTA_REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)}"
+cd "$REPO_ROOT"
 
 OUT_ROOT="results/sensitivity_clue_search_dga_iteration"
 COMBINED_DIR="$OUT_ROOT/combined"

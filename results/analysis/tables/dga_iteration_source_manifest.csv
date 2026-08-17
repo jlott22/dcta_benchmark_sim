@@ -1,0 +1,2 @@
+dataset,repository_path,bytes,last_modified,raw_rows,outcome_column,eligibility_rule
+CV DGA-generation sensitivity,results/sensitivity_known_target_visit_dga_iteration_300/combined/sensitivity_known_target_visit_dga_iteration_300_combined_system_performance.csv,1794396,2026-08-09 15:52:53,3600,max_robot_steps,completed + all targets visited + finite positive maximum-agent steps

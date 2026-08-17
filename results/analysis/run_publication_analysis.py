@@ -8,8 +8,10 @@ Methods implemented here:
 
 * FGS binary completion: Cochran's Q, exact paired McNemar tests, and Holm
   correction within each significant communication condition.
-* PRDS: algorithm-complete ideal-plus-eight-level log-linear trajectories.
-* PRDA: pairwise-complete relative log trajectories integrated by the
+* PRDS and PRDA: common-six complete ideal-plus-eight-level trajectories.
+  A trial is retained for a mission, metric, and communication model only when
+  all six algorithms have eligible finite outcomes at all nine nominal levels.
+  PRDS uses log-linear slopes; PRDA integrates relative log trajectories by the
   trapezoidal rule, with Wilcoxon signed-rank tests and 15-test Holm families.
 
 No failed trial is assigned a continuous-metric penalty.  Efficiency analyses
@@ -643,11 +645,20 @@ def compute_degradation_analysis(all_data: dict[str, pd.DataFrame]) -> tuple[pd.
                 curves_by_algorithm = {
                     algorithm: curve_table(data, metric, model, algorithm) for algorithm in ALGORITHMS
                 }
-                legacy_ids = set.intersection(*(set(curves.index.tolist()) for curves in curves_by_algorithm.values()))
-                legacy_n = len(legacy_ids)
+                common_ids = pd.Index(
+                    sorted(
+                        set.intersection(
+                            *(set(curves.index.tolist()) for curves in curves_by_algorithm.values())
+                        )
+                    ),
+                    name="trial_id",
+                )
+                common_n = len(common_ids)
                 offset = METRIC_OFFSETS[metric]
 
                 for algorithm, curves in curves_by_algorithm.items():
+                    algorithm_complete_n = len(curves)
+                    curves = curves.loc[common_ids]
                     z = np.log(curves.to_numpy(dtype=float) + offset)
                     centered_levels = LEVELS - LEVELS.mean()
                     beta = ((z - z.mean(axis=1, keepdims=True)) * centered_levels).sum(axis=1) / np.square(centered_levels).sum()
@@ -671,7 +682,7 @@ def compute_degradation_analysis(all_data: dict[str, pd.DataFrame]) -> tuple[pd.
                             "log_offset_c": offset,
                             "units": "percent metric change per +1 percentage point degradation",
                             "source_column": METRIC_SOURCES[metric],
-                            "eligibility_rule": "algorithm-complete: ideal and all eight model levels for this algorithm; completed/eligible finite metric values",
+                            "eligibility_rule": "common-six complete: all six algorithms have completed/eligible finite metric values at ideal and all eight model levels for the same trial IDs",
                             "ci_method": "two-sided 95% Student-t interval for the mean",
                             "wilcoxon_method": test["test_method"],
                         }
@@ -683,7 +694,7 @@ def compute_degradation_analysis(all_data: dict[str, pd.DataFrame]) -> tuple[pd.
                             "scenario": spec.short_name,
                             "comm_model": model,
                             "metric": metric,
-                            "method": "PRDS algorithm-complete",
+                            "method": "PRDS common-six complete",
                             "algorithm_a": algorithm,
                             "algorithm_b": "",
                             "eligible_n": len(ids),
@@ -699,17 +710,20 @@ def compute_degradation_analysis(all_data: dict[str, pd.DataFrame]) -> tuple[pd.
                             "method": "PRDS",
                             "algorithm_a": algorithm,
                             "algorithm_b": "",
-                            "legacy_six_way_complete_n": legacy_n,
-                            "revised_complete_n": len(ids),
-                            "additional_trajectories": len(ids) - legacy_n,
+                            "previous_eligibility_n": algorithm_complete_n,
+                            "common_six_eligible_n": common_n,
+                            "trajectories_excluded_by_common_six": algorithm_complete_n - common_n,
                         }
                     )
 
                 family_tests: list[dict] = []
                 for algorithm_a, algorithm_b in itertools.combinations(ALGORITHMS, 2):
-                    curves_a = curves_by_algorithm[algorithm_a]
-                    curves_b = curves_by_algorithm[algorithm_b]
-                    ids = curves_a.index.intersection(curves_b.index).sort_values()
+                    curves_a_all = curves_by_algorithm[algorithm_a]
+                    curves_b_all = curves_by_algorithm[algorithm_b]
+                    pairwise_ids = curves_a_all.index.intersection(curves_b_all.index).sort_values()
+                    curves_a = curves_a_all.loc[common_ids]
+                    curves_b = curves_b_all.loc[common_ids]
+                    ids = common_ids
                     a = curves_a.loc[ids].to_numpy(dtype=float)
                     b = curves_b.loc[ids].to_numpy(dtype=float)
                     relative = np.log(a + offset) - np.log(b + offset)
@@ -734,7 +748,7 @@ def compute_degradation_analysis(all_data: dict[str, pd.DataFrame]) -> tuple[pd.
                             "log_offset_c": offset,
                             "units": "mean log-relative-degradation x 100",
                             "source_column": METRIC_SOURCES[metric],
-                            "eligibility_rule": "pairwise-complete: ideal and all eight model levels for both named algorithms; completed/eligible finite metric values",
+                            "eligibility_rule": "common-six complete: all six algorithms have completed/eligible finite metric values at ideal and all eight model levels for the same trial IDs",
                             "interpretation": "negative: algorithm_a became relatively better; positive: algorithm_a became relatively worse",
                             "ci_method": "two-sided 95% Student-t interval for the mean",
                         }
@@ -758,7 +772,7 @@ def compute_degradation_analysis(all_data: dict[str, pd.DataFrame]) -> tuple[pd.
                             "scenario": spec.short_name,
                             "comm_model": model,
                             "metric": metric,
-                            "method": "PRDA pairwise-complete",
+                            "method": "PRDA common-six complete",
                             "algorithm_a": algorithm_a,
                             "algorithm_b": algorithm_b,
                             "eligible_n": len(int_ids),
@@ -774,9 +788,9 @@ def compute_degradation_analysis(all_data: dict[str, pd.DataFrame]) -> tuple[pd.
                             "method": "PRDA",
                             "algorithm_a": algorithm_a,
                             "algorithm_b": algorithm_b,
-                            "legacy_six_way_complete_n": legacy_n,
-                            "revised_complete_n": len(int_ids),
-                            "additional_trajectories": len(int_ids) - legacy_n,
+                            "previous_eligibility_n": len(pairwise_ids),
+                            "common_six_eligible_n": common_n,
+                            "trajectories_excluded_by_common_six": len(pairwise_ids) - common_n,
                         }
                     )
                     if metric == "max_agent_steps" and len(ids):
@@ -1204,7 +1218,7 @@ def main() -> None:
     print("Computing FGS completion/failure statistics...")
     fgs_summary, fgs_q, fgs_pairs = fgs_completion_analysis(all_data["FGS"])
 
-    print("Computing algorithm-complete PRDS and pairwise-complete PRDA...")
+    print("Computing common-six complete PRDS and PRDA...")
     prds, prda, prda_tests, sample_sizes, old_vs_new, sanity = compute_degradation_analysis(all_data)
 
     print("Computing plotting summaries and GE realized drop fractions...")
@@ -1223,7 +1237,7 @@ def main() -> None:
     write_csv(prda, "revised_prda.csv")
     write_csv(prda_tests, "revised_prda_statistical_tests.csv")
     write_csv(sample_sizes, "trajectory_sample_sizes.csv")
-    write_csv(old_vs_new, "trajectory_eligibility_old_vs_new.csv")
+    write_csv(old_vs_new, "trajectory_common_six_eligibility_audit.csv")
     write_csv(sanity, "prda_sign_sanity_checks.csv")
     write_csv(condition_summary, "publication_figure_condition_summary.csv")
     write_csv(condition_tests, "publication_condition_pairwise_tests.csv")

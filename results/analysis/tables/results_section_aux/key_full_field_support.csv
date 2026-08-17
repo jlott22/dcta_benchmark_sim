@@ -1,0 +1,4 @@
+scenario,metric,focal_algorithm,focal_vs_field_comparison_count,focal_holm_better,focal_holm_worse,nonsignificant
+CLIPS,team_messages_per_step,DMCHBA,120,120,0,0
+CV,team_messages_per_step,DMCHBA,120,120,0,0
+CV,total_team_steps,HIPC,120,120,0,0

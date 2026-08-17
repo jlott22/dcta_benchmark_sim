@@ -4,8 +4,10 @@
 # Preserve canonical result and provenance bytes across Windows and Linux.
 /results/**/combined/*.csv -text
 /results/**/artifacts/** -text
-/results/analysis/archive/** -text
-results/clue_search_core_500/combined/archive/pre_corrected_active_20260809/clue_search_core_500_combined_robot_performance.csv filter=lfs diff=lfs merge=lfs -text
 results/clue_search_core_500/combined/clue_search_core_500_combined_robot_performance.csv filter=lfs diff=lfs merge=lfs -text
-results/known_target_visit_core_500/combined/archive/pre_corrected_active_20260809/known_target_visit_core_500_combined_robot_performance.csv filter=lfs diff=lfs merge=lfs -text
 results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_robot_performance.csv filter=lfs diff=lfs merge=lfs -text
+results/known_target_visit_core_500/combined/target_performance_part_005.csv filter=lfs diff=lfs merge=lfs -text
+results/sensitivity_known_target_visit_grid_density_50/combined/robot_performance.csv filter=lfs diff=lfs merge=lfs -text
+results/sensitivity_known_target_visit_grid_density_50/combined/target_performance.csv filter=lfs diff=lfs merge=lfs -text
+results/sensitivity_known_target_visit_horizon_300/combined/sensitivity_known_target_visit_horizon_300_combined_target_performance.csv filter=lfs diff=lfs merge=lfs -text
+results/sensitivity_known_target_visit_topk_300/combined/sensitivity_known_target_visit_topk_300_combined_target_performance.csv filter=lfs diff=lfs merge=lfs -text

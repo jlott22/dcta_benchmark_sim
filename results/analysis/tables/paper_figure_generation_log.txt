@@ -1,0 +1,25 @@
+Final CLIPS/CV DCTA MATLAB figure regeneration
+Started: 2026-08-17 00:38:15 *
+MATLAB: 25.2.0.3123386 (R2025b) Update 3
+Repository: repository root
+
+Wrote source manifest: results/analysis/tables/paper_figure_source_manifest.csv
+PASS: active-table structure and cross-table numerical provenance verified.
+Wrote archive manifest: archive_private/figure_regeneration_history/archive_manifest.csv
+Wrote dedicated source: results/analysis/tables/final_figure_sources/source_primary_mission_performance_curves.csv (324 rows)
+Exported primary_mission_performance_curves [active PNG 600 dpi, inspection PNG, FIG] at 7.00 x 2.71 in
+Wrote dedicated source: results/analysis/tables/final_figure_sources/source_communication_performance_tradeoff.csv (12 rows)
+Exported communication_performance_tradeoff [active PNG 600 dpi, inspection PNG, FIG] at 3.49 x 2.12 in
+Wrote dedicated source: results/analysis/tables/final_figure_sources/source_grid_density_maximum_agent_steps_summary.csv (96 rows)
+Exported grid_density_maximum_agent_steps_summary [active PNG 600 dpi, inspection PNG, FIG] at 3.49 x 4.30 in
+Wrote dedicated source: results/analysis/tables/final_figure_sources/source_horizon_tuning_line_option_a.csv (60 rows)
+Exported horizon_tuning [active PNG 600 dpi, inspection PNG, FIG] at 3.49 x 3.74 in
+Wrote dedicated source: results/analysis/tables/final_figure_sources/source_prds_heatmap_option_b.csv (36 rows)
+Exported prds_supplement [active PNG 600 dpi, inspection PNG, FIG] at 3.49 x 2.82 in
+PASS: source inventory, archive, dimensions, formats, and active-directory uniqueness.
+
+PASS: all five active CLIPS/CV paper figures regenerated and validated in MATLAB.
+Active 600-dpi PNGs: results/analysis/figures
+Inspection PNG/FIG copies: results/analysis/figures/inspection
+Dedicated source CSVs: results/analysis/tables/final_figure_sources
+Validation report: results/analysis/PAPER_FIGURE_VALIDATION.md

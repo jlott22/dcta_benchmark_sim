@@ -1,0 +1,7 @@
+algorithm,clips_horizon,cv_horizon,selection_basis
+CBAA,1,1,fixed non-bundle value
+ACBBA,8,3,robust-score decision table
+PI,3,5,robust-score decision table
+HIPC,5,8,robust-score decision table
+DMCHBA,5,3,robust-score decision table
+DGA,3,3,robust-score decision table

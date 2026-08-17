@@ -1,0 +1,4 @@
+scenario,metric,algorithm_1,algorithm_2,impaired_condition_count,algorithm_1_holm_better,algorithm_2_holm_better,nonsignificant
+CLIPS,max_agent_steps,DMCHBA,ACBBA,24,8,0,16
+CLIPS,post_clue_steps_to_find,DMCHBA,ACBBA,24,8,0,16
+CV,max_agent_steps,DGA,DMCHBA,24,13,2,9

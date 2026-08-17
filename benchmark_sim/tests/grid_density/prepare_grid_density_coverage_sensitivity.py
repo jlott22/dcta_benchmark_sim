@@ -2,11 +2,8 @@
 """
 Prepare a condition manifest for the COVERAGE grid-density sensitivity study.
 
-Designed to be saved in:
-  /home/jlott/dcta_benchmark_sim/benchmark_sim/tests/grid_density/prepare_grid_density_coverage_sensitivity.py
-
 Run indirectly through run_grid_density_coverage_sensitivity.sh, or directly from repo root:
-  python3 benchmark_sim/tests/grid_density/prepare_grid_density_coverage_sensitivity.py --repo-root /home/jlott/dcta_benchmark_sim
+  python3 benchmark_sim/tests/grid_density/prepare_grid_density_coverage_sensitivity.py
 """
 from __future__ import annotations
 
@@ -14,6 +11,8 @@ import argparse
 import csv
 from pathlib import Path
 from typing import Dict, List
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 GRIDS: List[int] = [14, 19, 25, 34, 48]
 TARGET_DENSITIES: List[int] = [220, 180, 140, 110, 85, 65, 50]
@@ -48,7 +47,7 @@ ALGORITHMS = [
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repo-root", default="/home/jlott/dcta_benchmark_sim")
+    parser.add_argument("--repo-root", default=str(REPO_ROOT))
     parser.add_argument("--run-root", default=None, help="Default: <repo-root>/results/sensitivity_coverage_grid_density_50")
     parser.add_argument("--num-trials", type=int, default=50)
     parser.add_argument("--sim-seed-base", type=int, default=800000)

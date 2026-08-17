@@ -1,0 +1,6 @@
+figure_id,stem,canvas_width_in,canvas_height_in,png_width_px,png_height_px,png_path,fig_path,source_rows
+Figure 1,primary_mission_performance_curves,7,2.71,4200,1626,results/analysis/figures/primary_mission_performance_curves.png,results/analysis/figures/inspection/primary_mission_performance_curves.fig,324
+Figure 2,communication_performance_tradeoff,3.49,2.12,2094,1272,results/analysis/figures/communication_performance_tradeoff.png,results/analysis/figures/inspection/communication_performance_tradeoff.fig,12
+Figure 4,grid_density_maximum_agent_steps_summary,3.49,4.3,2094,2580,results/analysis/figures/grid_density_maximum_agent_steps_summary.png,results/analysis/figures/inspection/grid_density_maximum_agent_steps_summary.fig,96
+Figure 5,horizon_tuning,3.49,3.74,2094,2244,results/analysis/figures/horizon_tuning.png,results/analysis/figures/inspection/horizon_tuning.fig,60
+Figure 3,prds_supplement,3.49,2.82,2094,1692,results/analysis/figures/prds_supplement.png,results/analysis/figures/inspection/prds_supplement.fig,36

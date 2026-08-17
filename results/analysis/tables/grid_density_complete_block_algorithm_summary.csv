@@ -1,0 +1,13 @@
+scenario,algorithm,scale_condition_count,mean_condition_rank,median_condition_rank,first_place_condition_count,top2_condition_count,mean_percent_above_condition_best,median_percent_above_condition_best,attempted_block_total,raw_completed_n_total,common_block_eligible_n_total,raw_failed_n_total,summary_rule
+CLIPS,ACBBA,32,2.34375,2,10,20,6.04837493027049,2.84073169996686,1600,1586,1560,14,unweighted across 32 complete-block condition means
+CLIPS,DMCHBA,32,2.84375,2.5,11,16,4.95660507443191,3.62138376123517,1600,1600,1560,0,unweighted across 32 complete-block condition means
+CLIPS,PI,32,3.5625,4,3,6,10.5479307300442,6.43219887709918,1600,1578,1560,22,unweighted across 32 complete-block condition means
+CLIPS,HIPC,32,3.703125,4,4,7,11.8215106487773,6.35789460320685,1600,1576,1560,24,unweighted across 32 complete-block condition means
+CLIPS,CBAA,32,3.859375,4,3,7,11.776378084438,7.1040085537785,1600,1563,1560,37,unweighted across 32 complete-block condition means
+CLIPS,DGA,32,4.6875,5.25,1,6,13.4335216090833,13.5513972950267,1600,1597,1560,3,unweighted across 32 complete-block condition means
+CV,DMCHBA,32,1.6875,2,14,28,1.34014350516198,0.684709923068242,1600,1598,1544,2,unweighted across 32 complete-block condition means
+CV,DGA,32,1.6875,1,17,25,1.18276857780872,0,1600,1599,1544,1,unweighted across 32 complete-block condition means
+CV,CBAA,32,2.8125,3,1,7,4.38333233327565,4.49899427172154,1600,1600,1544,0,unweighted across 32 complete-block condition means
+CV,ACBBA,32,4,4,0,2,20.9889392885351,19.3262325239146,1600,1597,1544,3,unweighted across 32 complete-block condition means
+CV,PI,32,5.25,5,0,0,51.4433918330076,56.460900742629,1600,1577,1544,23,unweighted across 32 complete-block condition means
+CV,HIPC,32,5.5625,6,0,0,56.3540776906438,62.9544461914745,1600,1565,1544,35,unweighted across 32 complete-block condition means

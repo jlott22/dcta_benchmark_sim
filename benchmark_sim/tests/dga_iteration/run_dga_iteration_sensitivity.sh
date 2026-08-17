@@ -14,7 +14,7 @@ set -euo pipefail
 # but only on its assigned subset of trials.
 # ============================================================
 
-REPO_ROOT="/home/jlott/dcta_benchmark_sim"
+REPO_ROOT="${DCTA_REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)}"
 cd "$REPO_ROOT"
 
 NUM_CORES="${1:-8}"

@@ -3,11 +3,8 @@
 Prepare scenario files and a condition manifest for the known-target visit
 robot-density/grid-size sensitivity study.
 
-Designed to be saved in:
-  /home/jlott/dcta_benchmark_sim/known_visit_sim/tests/grid_density/prepare_known_grid_density_sensitivity.py
-
 Run indirectly through run_known_grid_density_sensitivity.sh, or directly from repo root:
-  python3 known_visit_sim/tests/grid_density/prepare_known_grid_density_sensitivity.py --repo-root /home/jlott/dcta_benchmark_sim
+  python3 known_visit_sim/tests/grid_density/prepare_known_grid_density_sensitivity.py
 """
 from __future__ import annotations
 
@@ -24,6 +21,7 @@ except Exception:  # pragma: no cover - helpful error on wrong repo/package stat
     generate_robot_ids = None
 
 Cell = Tuple[int, int]
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 # Same grid/density matrix used for the clue/coverage scaling tests.
 GRIDS: List[int] = [14, 19, 25, 34, 48]
@@ -60,7 +58,7 @@ ALGORITHMS = [
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repo-root", default="/home/jlott/dcta_benchmark_sim")
+    parser.add_argument("--repo-root", default=str(REPO_ROOT))
     parser.add_argument("--run-root", default=None, help="Default: <repo-root>/results/sensitivity_known_target_visit_grid_density_50")
     parser.add_argument("--num-trials", type=int, default=50)
     parser.add_argument("--num-targets", type=int, default=10, help="Keep this at 10 for the known-target benchmark.")

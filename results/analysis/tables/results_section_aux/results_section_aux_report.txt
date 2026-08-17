@@ -1,0 +1,165 @@
+Revised Results auxiliary analysis
+Generated: 17-Aug-2026 00:30:22
+Purpose: descriptive support for revised Results; no new inferential test family.
+All numerical outputs are computed from the repository tables listed below.
+INPUT: results/analysis/tables/dcta_metric_results.csv | rows=5580 | bytes=3171015 | modified=17-Aug-2026 00:25:39
+INPUT: results/analysis/tables/publication_condition_pairwise_tests.csv | rows=5625 | bytes=2412113 | modified=17-Aug-2026 00:26:18
+INPUT: results/analysis/tables/publication_figure_condition_summary.csv | rows=2250 | bytes=740221 | modified=17-Aug-2026 00:26:18
+INPUT: results/analysis/tables/figure_clips_post_clue_source.csv | rows=162 | bytes=55313 | modified=09-Aug-2026 15:52:49
+INPUT: results/analysis/tables/figure_maximum_agent_steps_source.csv | rows=486 | bytes=178362 | modified=16-Aug-2026 21:54:56
+INPUT: results/analysis/tables/grid_density_analysis_results.csv | rows=11971 | bytes=4055239 | modified=17-Aug-2026 00:26:51
+INPUT: results/analysis/tables/grid_density_complete_block_condition_summary.csv | rows=384 | bytes=79931 | modified=17-Aug-2026 00:27:50
+
+CORE PRIMARY MAXIMUM-AGENT STEPS
+    scenario    algorithm    impaired_condition_count    unweighted_mean_max_agent_steps    median_condition_mean_max_agent_steps    mean_condition_rank    first_place_condition_count    top2_condition_count    mean_percent_above_condition_best    median_percent_above_condition_best
+    ________    _________    ________________________    _______________________________    _____________________________________    ___________________    ___________________________    ____________________    _________________________________    ___________________________________
+
+    "CLIPS"     "DMCHBA"                24                           56.718                                57.014                          1.3333                       19                          21                          0.38716                                    0
+    "CLIPS"     "ACBBA"                 24                           60.583                                60.018                          2.0417                        5                          19                           6.7812                               4.2744
+    "CLIPS"     "HIPC"                  24                           63.162                                63.321                          3.8333                        0                           2                           11.329                               11.763
+    "CLIPS"     "PI"                    24                           63.339                                64.083                          4.5417                        0                           0                           11.613                               11.392
+    "CLIPS"     "CBAA"                  24                           63.827                                63.518                          4.7917                        0                           2                           12.566                               10.776
+    "CLIPS"     "DGA"                   24                           64.104                                64.127                          4.4583                        0                           4                           13.362                               13.193
+    "CV"        "DGA"                   24                           24.491                                23.777                          1.1667                       20                          24                          0.25629                                    0
+    "CV"        "DMCHBA"                24                           24.781                                23.877                          1.8333                        4                          24                           1.4456                               1.4025
+    "CV"        "CBAA"                  24                            26.02                                25.368                          3.0833                        0                           0                           6.5788                                6.063
+    "CV"        "ACBBA"                 24                           29.109                                29.074                          4.2917                        0                           0                           19.381                               19.552
+    "CV"        "HIPC"                  24                             32.3                                33.691                           4.875                        0                           0                           33.727                               32.272
+    "CV"        "PI"                    24                           34.864                                34.209                            5.75                        0                           0                           43.435                               49.837
+
+
+
+CLIPS POST-CLUE CONFIRMATION
+    algorithm    impaired_condition_count    unweighted_mean_post_clue_team_steps    median_condition_mean_post_clue_team_steps    min_condition_eligible_n    max_condition_eligible_n
+    _________    ________________________    ____________________________________    __________________________________________    ________________________    ________________________
+
+    "DMCHBA"                24                              158.46                                     160.42                                384                         386
+    "ACBBA"                 24                              172.96                                     172.65                                384                         386
+    "CBAA"                  24                              180.62                                     181.39                                384                         386
+    "HIPC"                  24                              182.09                                     183.41                                384                         386
+    "PI"                    24                              183.26                                     186.31                                384                         386
+    "DGA"                   24                              186.84                                     186.91                                384                         386
+
+
+
+KEY DIRECT TOP-PAIR HOLM SUPPORT
+    scenario             metric              algorithm_1    algorithm_2    impaired_condition_count    algorithm_1_holm_better    algorithm_2_holm_better    nonsignificant
+    ________    _________________________    ___________    ___________    ________________________    _______________________    _______________________    ______________
+
+    "CLIPS"     "max_agent_steps"             "DMCHBA"       "ACBBA"                  24                          8                          0                     16
+    "CLIPS"     "post_clue_steps_to_find"     "DMCHBA"       "ACBBA"                  24                          8                          0                     16
+    "CV"        "max_agent_steps"             "DGA"          "DMCHBA"                 24                         13                          2                      9
+
+
+
+EXCEPTIONAL FULL-FIELD HOLM SUPPORT
+    scenario             metric             focal_algorithm    focal_vs_field_comparison_count    focal_holm_better    focal_holm_worse    nonsignificant
+    ________    ________________________    _______________    _______________________________    _________________    ________________    ______________
+
+    "CLIPS"     "team_messages_per_step"       "DMCHBA"                      120                         120                  0                  0
+    "CV"        "team_messages_per_step"       "DMCHBA"                      120                         120                  0                  0
+    "CV"        "total_team_steps"             "HIPC"                        120                         120                  0                  0
+
+
+
+SECONDARY METRIC SUMMARY
+    scenario                metric                 algorithm    unweighted_mean_across_24_impaired_conditions    median_condition_mean    min_condition_eligible_n    max_condition_eligible_n              units
+    ________    _______________________________    _________    _____________________________________________    _____________________    ________________________    ________________________    _________________________
+
+    "CLIPS"     "total_team_steps"                 "CBAA"                           243.81                               244.36                     384                         386               "steps"
+    "CLIPS"     "total_team_steps"                 "ACBBA"                          236.15                               235.76                     384                         386               "steps"
+    "CLIPS"     "total_team_steps"                 "PI"                             246.45                                249.4                     384                         386               "steps"
+    "CLIPS"     "total_team_steps"                 "HIPC"                           245.27                                246.5                     384                         386               "steps"
+    "CLIPS"     "total_team_steps"                 "DMCHBA"                         221.64                               223.83                     384                         386               "steps"
+    "CLIPS"     "total_team_steps"                 "DGA"                            250.03                               250.08                     384                         386               "steps"
+    "CLIPS"     "team_messages_per_step"           "CBAA"                           4.2602                               4.3512                     384                         386               "messages_per_step"
+    "CLIPS"     "team_messages_per_step"           "ACBBA"                          10.905                               11.383                     384                         386               "messages_per_step"
+    "CLIPS"     "team_messages_per_step"           "PI"                             3.4015                               3.4431                     384                         386               "messages_per_step"
+    "CLIPS"     "team_messages_per_step"           "HIPC"                             4.29                               4.3663                     384                         386               "messages_per_step"
+    "CLIPS"     "team_messages_per_step"           "DMCHBA"                         2.0626                               2.0674                     384                         386               "messages_per_step"
+    "CLIPS"     "team_messages_per_step"           "DGA"                            2.9175                               2.9366                     384                         386               "messages_per_step"
+    "CLIPS"     "system_cell_revisits"             "CBAA"                           66.781                               68.726                     384                         386               "revisits"
+    "CLIPS"     "system_cell_revisits"             "ACBBA"                           59.36                                58.34                     384                         386               "revisits"
+    "CLIPS"     "system_cell_revisits"             "PI"                              68.03                               68.004                     384                         386               "revisits"
+    "CLIPS"     "system_cell_revisits"             "HIPC"                           67.731                               68.203                     384                         386               "revisits"
+    "CLIPS"     "system_cell_revisits"             "DMCHBA"                         39.157                               40.905                     384                         386               "revisits"
+    "CLIPS"     "system_cell_revisits"             "DGA"                            65.712                               67.179                     384                         386               "revisits"
+    "CV"        "total_team_steps"                 "CBAA"                            96.42                                 95.7                     500                         500               "steps"
+    "CV"        "total_team_steps"                 "ACBBA"                          99.921                               100.84                     500                         500               "steps"
+    "CV"        "total_team_steps"                 "PI"                             105.44                               106.94                     500                         500               "steps"
+    "CV"        "total_team_steps"                 "HIPC"                           68.936                               66.127                     500                         500               "steps"
+    "CV"        "total_team_steps"                 "DMCHBA"                         89.988                               86.855                     500                         500               "steps"
+    "CV"        "total_team_steps"                 "DGA"                            85.181                               82.532                     500                         500               "steps"
+    "CV"        "team_messages_per_step"           "CBAA"                           5.1924                               5.2393                     500                         500               "messages_per_step"
+    "CV"        "team_messages_per_step"           "ACBBA"                          4.2843                                4.318                     500                         500               "messages_per_step"
+    "CV"        "team_messages_per_step"           "PI"                              2.878                                 2.97                     500                         500               "messages_per_step"
+    "CV"        "team_messages_per_step"           "HIPC"                           2.9336                               2.9861                     500                         500               "messages_per_step"
+    "CV"        "team_messages_per_step"           "DMCHBA"                         2.0827                                2.083                     500                         500               "messages_per_step"
+    "CV"        "team_messages_per_step"           "DGA"                             3.377                               3.4416                     500                         500               "messages_per_step"
+    "CV"        "duplicate_target_visits"          "CBAA"                           2.6818                                2.334                     500                         500               "duplicate_target_visits"
+    "CV"        "duplicate_target_visits"          "ACBBA"                          2.9888                                2.646                     500                         500               "duplicate_target_visits"
+    "CV"        "duplicate_target_visits"          "PI"                             3.3569                                3.074                     500                         500               "duplicate_target_visits"
+    "CV"        "duplicate_target_visits"          "HIPC"                           1.3088                                0.968                     500                         500               "duplicate_target_visits"
+    "CV"        "duplicate_target_visits"          "DMCHBA"                         1.7128                                1.161                     500                         500               "duplicate_target_visits"
+    "CV"        "duplicate_target_visits"          "DGA"                            1.3529                                0.887                     500                         500               "duplicate_target_visits"
+    "CV"        "unique_cell_contribution_gini"    "CBAA"                         0.075192                             0.075524                     500                         500               "gini"
+    "CV"        "unique_cell_contribution_gini"    "ACBBA"                          0.1092                              0.10193                     500                         500               "gini"
+    "CV"        "unique_cell_contribution_gini"    "PI"                            0.17634                              0.15036                     500                         500               "gini"
+    "CV"        "unique_cell_contribution_gini"    "HIPC"                          0.34824                              0.32426                     500                         500               "gini"
+    "CV"        "unique_cell_contribution_gini"    "DMCHBA"                       0.074899                             0.070667                     500                         500               "gini"
+    "CV"        "unique_cell_contribution_gini"    "DGA"                          0.098655                             0.096307                     500                         500               "gini"
+    "CV"        "target_completion_gini"           "CBAA"                          0.27496                               0.2666                     500                         500               "gini"
+    "CV"        "target_completion_gini"           "ACBBA"                          0.2661                               0.2539                     500                         500               "gini"
+    "CV"        "target_completion_gini"           "PI"                            0.31462                              0.31265                     500                         500               "gini"
+    "CV"        "target_completion_gini"           "HIPC"                          0.43846                              0.45675                     500                         500               "gini"
+    "CV"        "target_completion_gini"           "DMCHBA"                        0.23776                               0.2248                     500                         500               "gini"
+    "CV"        "target_completion_gini"           "DGA"                            0.2463                              0.23695                     500                         500               "gini"
+
+
+
+SCALE-STUDY PRIMARY MAX-STEP CONSISTENCY (DESCRIPTIVE)
+First-place/top-2 counts and mean rank are descriptive summaries only.
+    scenario    algorithm    scale_condition_count    mean_condition_rank    median_condition_rank    first_place_condition_count    top2_condition_count    mean_percent_above_condition_best    median_percent_above_condition_best    attempted_n_total    completed_n_total    eligible_n_total    failed_n_total
+    ________    _________    _____________________    ___________________    _____________________    ___________________________    ____________________    _________________________________    ___________________________________    _________________    _________________    ________________    ______________
+
+    "CLIPS"     "ACBBA"               32                    2.3438                      2                         10                          20                          6.0484                                 2.8407                        1600                 1586                 1560                14
+    "CLIPS"     "DMCHBA"              32                    2.8438                    2.5                         11                          16                          4.9566                                 3.6214                        1600                 1600                 1560                 0
+    "CLIPS"     "PI"                  32                    3.5625                      4                          3                           6                          10.548                                 6.4322                        1600                 1578                 1560                22
+    "CLIPS"     "HIPC"                32                    3.7031                      4                          4                           7                          11.822                                 6.3579                        1600                 1576                 1560                24
+    "CLIPS"     "CBAA"                32                    3.8594                      4                          3                           7                          11.776                                  7.104                        1600                 1563                 1560                37
+    "CLIPS"     "DGA"                 32                    4.6875                   5.25                          1                           6                          13.434                                 13.551                        1600                 1597                 1560                 3
+    "CV"        "DMCHBA"              32                    1.6875                      2                         14                          28                          1.3401                                0.68471                        1600                 1598                 1544                 2
+    "CV"        "DGA"                 32                    1.6875                      1                         17                          25                          1.1828                                      0                        1600                 1599                 1544                 1
+    "CV"        "CBAA"                32                    2.8125                      3                          1                           7                          4.3833                                  4.499                        1600                 1600                 1544                 0
+    "CV"        "ACBBA"               32                         4                      4                          0                           2                          20.989                                 19.326                        1600                 1597                 1544                 3
+    "CV"        "PI"                  32                      5.25                      5                          0                           0                          51.443                                 56.461                        1600                 1577                 1544                23
+    "CV"        "HIPC"                32                    5.5625                      6                          0                           0                          56.354                                 62.954                        1600                 1565                 1544                35
+
+
+
+SCALE NORMALIZED-PRIMARY OMNIBUS COUNTS
+    scenario      analysis_family      family_count    significant_family_count
+    ________    ___________________    ____________    ________________________
+
+    "CLIPS"     "grid_size_omnibus"         48                     0
+    "CLIPS"     "density_omnibus"           48                     5
+    "CV"        "grid_size_omnibus"         48                    48
+    "CV"        "density_omnibus"           48                    42
+
+
+
+CV DENSITY DIRECTION SUMMARY
+    algorithm    tested_density_pairwise_comparisons    holm_significant_comparisons    significant_favoring_fewer_robots    significant_favoring_more_robots    significant_zero_direction
+    _________    ___________________________________    ____________________________    _________________________________    ________________________________    __________________________
+
+    "CBAA"                       48                                  45                                45                                    0                               0
+    "ACBBA"                      48                                  44                                44                                    0                               0
+    "PI"                         48                                  38                                38                                    0                               0
+    "HIPC"                       48                                  14                                 0                                   14                               0
+    "DMCHBA"                     48                                  43                                43                                    0                               0
+    "DGA"                        48                                  16                                15                                    1                               0
+
+
+
+PASS
+All auxiliary summaries generated without modifying source data.

@@ -29,7 +29,7 @@ algorithmLabels = ["ACBBA", "DGA", "DMCHBA", "HIPC", "PI"];
 % Rows: CV, CLIPS, FGS. Columns follow algorithms above. These are the
 % selected main-benchmark horizons documented in Table default_horizons of
 % the current manuscript.
-selectedHorizons = [5, 1, 3, 3, 5; 8, 3, 5, 5, 3; 3, 5, 8, 3, 3];
+selectedHorizons = [3, 3, 3, 8, 5; 8, 3, 5, 5, 3; 3, 5, 8, 3, 3];
 if any(~ismember(selectedHorizons, horizons), 'all')
     error('At least one selected horizon is absent from the tested sweep.');
 end
@@ -67,6 +67,11 @@ summaryFile = fullfile(tableDir, 'horizon_tuning_paired_trial_delta_summary.csv'
 writetable(summaryRows, summaryFile);
 fprintf('Summary written to: %s\n', summaryFile);
 
+% Historical exploratory layouts are retained below for provenance, but the
+% release pipeline creates only the finalized Figure 5 through
+% generate_final_paper_figures_CLIPS_CV.m.
+generateHistoricalFigures = false;
+if generateHistoricalFigures
 figure('Name', 'Paper horizon tuning trends', 'Color', 'w', 'Units', 'inches', ...
     'Position', [1, 1, 3.5, 6.9]);
 layout = tiledlayout(3, 1, 'TileSpacing', 'compact', 'Padding', 'compact');
@@ -238,6 +243,7 @@ savefig(gcf, heatFigFile);
     fprintf('MATLAB heatmap figure written to: %s\n', heatFigFile);
 else
     fprintf('Skipping optional robust-score heatmap: decision CSVs are not present.\n');
+end
 end
 
 function result = analyzeScenario(spec, horizons, commLabels, algorithms)

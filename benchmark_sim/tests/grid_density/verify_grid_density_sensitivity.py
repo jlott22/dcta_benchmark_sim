@@ -7,12 +7,17 @@ import csv
 from pathlib import Path
 from collections import Counter, defaultdict
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
 EXPECTED_CONDITIONS = 5 * 7 * 4 * 6
 
 
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--run-root", default="/home/jlott/dcta_benchmark_sim/results/sensitivity_clue_search_grid_density_50")
+    p.add_argument(
+        "--run-root",
+        default=str(REPO_ROOT / "results" / "sensitivity_clue_search_grid_density_50"),
+    )
     return p.parse_args()
 
 
