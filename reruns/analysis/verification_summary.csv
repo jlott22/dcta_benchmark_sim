@@ -1,0 +1,5 @@
+check,passed,detail
+clips_only_pi_changed,1,"Only PI changed in CLIPS"
+cv_only_expected_algorithms_changed,1,"Only ACBBA, HIPC, and PI changed in CV"
+flat_curve_classifications_match,1,"Only CLIPS DGA and CV DMCHBA were classified horizon-insensitive"
+final_horizons_match_locked_expectation,1,"CLIPS=[8,1,3,5,5,2]; CV=[2,1,3,3,2,2] in sorted algorithm order"
