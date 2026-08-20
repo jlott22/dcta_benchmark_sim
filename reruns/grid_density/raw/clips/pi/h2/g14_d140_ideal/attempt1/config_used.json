@@ -1,0 +1,74 @@
+{
+  "sim_config": {
+    "trial_mode": "clue_search",
+    "grid_size": 14,
+    "robot_ids": [
+      "00",
+      "01"
+    ],
+    "start_positions": {
+      "00": [
+        0,
+        0
+      ],
+      "01": [
+        0,
+        13
+      ]
+    },
+    "start_headings": {
+      "00": [
+        1,
+        0
+      ],
+      "01": [
+        1,
+        0
+      ]
+    },
+    "robot_start_layout": "edge_even",
+    "condition_id": "pi_g14_d140_ideal",
+    "target_cells_per_robot": 140.0,
+    "actual_cells_per_robot": 98.0,
+    "target_decay_exp": 1.0,
+    "reward_factor": 5.0,
+    "move_cost": 1.0,
+    "turn_cost": 0.3,
+    "visited_step_penalty": 4.0,
+    "min_step_cost": 0.01,
+    "async_step_mean_s": 1.6,
+    "async_step_jitter_s": 0.1,
+    "async_min_delay_s": 1.5,
+    "async_max_delay_s": 1.7,
+    "async_initial_spread_s": 0.1,
+    "async_tick_span_s": 0.25,
+    "turn_quarter_s": 0.3,
+    "replan_delay_s": 0.3,
+    "no_goal_delay_s": 0.5,
+    "comm_delay_s": 0.04,
+    "comm_delay_jitter_s": 0.01,
+    "collision_intent_settle_s": 0.1,
+    "collision_goal_backoff_max_s": 5.0,
+    "debug_max_events": 5000,
+    "write_parquet": false,
+    "commitment_horizon": 2,
+    "max_candidate_cells": null,
+    "logic_revision": "dcta_parity_v1",
+    "study_profile": "custom",
+    "scenario_file_sha256": "95fe4e46f3c15da64ab8656605a5093c082d79e6c7f43859e3752dc255ac3760",
+    "scenario_selection_sha256": "2e16b45d85197d093ced9da2c3d2ff8f1d35a252c10278fc936bff1dcc2782e6"
+  },
+  "logic_revision": "dcta_parity_v1",
+  "study_profile": "custom",
+  "scenario_file_sha256": "95fe4e46f3c15da64ab8656605a5093c082d79e6c7f43859e3752dc255ac3760",
+  "scenario_selection_sha256": "2e16b45d85197d093ced9da2c3d2ff8f1d35a252c10278fc936bff1dcc2782e6",
+  "expected_scenario_sha256": "",
+  "algorithm": "benchmark_sim.algorithms.PI:PIAllocator",
+  "algorithm_name": "PI",
+  "comm_model": "ideal",
+  "comm_level": "1.0",
+  "scenario_file": "reruns\\grid_density\\scenarios\\clips\\scaling_grid14_trials50.csv",
+  "trial_mode": "clue_search",
+  "seed": 701000,
+  "retry_failed": false
+}

@@ -1,0 +1,110 @@
+{
+  "sim_config": {
+    "trial_mode": "clue_search",
+    "grid_size": 34,
+    "robot_ids": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "04",
+      "05"
+    ],
+    "start_positions": {
+      "00": [
+        0,
+        0
+      ],
+      "01": [
+        0,
+        7
+      ],
+      "02": [
+        0,
+        13
+      ],
+      "03": [
+        0,
+        20
+      ],
+      "04": [
+        0,
+        26
+      ],
+      "05": [
+        0,
+        33
+      ]
+    },
+    "start_headings": {
+      "00": [
+        1,
+        0
+      ],
+      "01": [
+        1,
+        0
+      ],
+      "02": [
+        1,
+        0
+      ],
+      "03": [
+        1,
+        0
+      ],
+      "04": [
+        1,
+        0
+      ],
+      "05": [
+        1,
+        0
+      ]
+    },
+    "robot_start_layout": "edge_even",
+    "condition_id": "pi_g34_d220_bernoulli_drop_0_25",
+    "target_cells_per_robot": 220.0,
+    "actual_cells_per_robot": 192.666667,
+    "target_decay_exp": 1.0,
+    "reward_factor": 5.0,
+    "move_cost": 1.0,
+    "turn_cost": 0.3,
+    "visited_step_penalty": 4.0,
+    "min_step_cost": 0.01,
+    "async_step_mean_s": 1.6,
+    "async_step_jitter_s": 0.1,
+    "async_min_delay_s": 1.5,
+    "async_max_delay_s": 1.7,
+    "async_initial_spread_s": 0.1,
+    "async_tick_span_s": 0.25,
+    "turn_quarter_s": 0.3,
+    "replan_delay_s": 0.3,
+    "no_goal_delay_s": 0.5,
+    "comm_delay_s": 0.04,
+    "comm_delay_jitter_s": 0.01,
+    "collision_intent_settle_s": 0.1,
+    "collision_goal_backoff_max_s": 5.0,
+    "debug_max_events": 48034,
+    "write_parquet": false,
+    "commitment_horizon": 2,
+    "max_candidate_cells": null,
+    "logic_revision": "dcta_parity_v1",
+    "study_profile": "custom",
+    "scenario_file_sha256": "6f5fe7366a3ce4add9caba9b97af08ed7c9d8c35a4c66c217609622f0547e170",
+    "scenario_selection_sha256": "29aa6abb1a38912438db390757dde9141bd7f9a9a2a6b031155074d026e9065b"
+  },
+  "logic_revision": "dcta_parity_v1",
+  "study_profile": "custom",
+  "scenario_file_sha256": "6f5fe7366a3ce4add9caba9b97af08ed7c9d8c35a4c66c217609622f0547e170",
+  "scenario_selection_sha256": "29aa6abb1a38912438db390757dde9141bd7f9a9a2a6b031155074d026e9065b",
+  "expected_scenario_sha256": "",
+  "algorithm": "benchmark_sim.algorithms.PI:PIAllocator",
+  "algorithm_name": "PI",
+  "comm_model": "bernoulli",
+  "comm_level": "drop_0.25",
+  "scenario_file": "reruns\\grid_density\\scenarios\\clips\\scaling_grid34_trials50.csv",
+  "trial_mode": "clue_search",
+  "seed": 730100,
+  "retry_failed": false
+}

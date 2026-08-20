@@ -1,0 +1,173 @@
+{
+  "sim_config": {
+    "trial_mode": "clue_search",
+    "grid_size": 25,
+    "robot_ids": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12"
+    ],
+    "start_positions": {
+      "00": [
+        0,
+        0
+      ],
+      "01": [
+        0,
+        2
+      ],
+      "02": [
+        0,
+        4
+      ],
+      "03": [
+        0,
+        6
+      ],
+      "04": [
+        0,
+        8
+      ],
+      "05": [
+        0,
+        10
+      ],
+      "06": [
+        0,
+        12
+      ],
+      "07": [
+        0,
+        14
+      ],
+      "08": [
+        0,
+        16
+      ],
+      "09": [
+        0,
+        18
+      ],
+      "10": [
+        0,
+        20
+      ],
+      "11": [
+        0,
+        22
+      ],
+      "12": [
+        0,
+        24
+      ]
+    },
+    "start_headings": {
+      "00": [
+        1,
+        0
+      ],
+      "01": [
+        1,
+        0
+      ],
+      "02": [
+        1,
+        0
+      ],
+      "03": [
+        1,
+        0
+      ],
+      "04": [
+        1,
+        0
+      ],
+      "05": [
+        1,
+        0
+      ],
+      "06": [
+        1,
+        0
+      ],
+      "07": [
+        1,
+        0
+      ],
+      "08": [
+        1,
+        0
+      ],
+      "09": [
+        1,
+        0
+      ],
+      "10": [
+        1,
+        0
+      ],
+      "11": [
+        1,
+        0
+      ],
+      "12": [
+        1,
+        0
+      ]
+    },
+    "robot_start_layout": "edge_even",
+    "condition_id": "pi_g25_d50_ideal",
+    "target_cells_per_robot": 50.0,
+    "actual_cells_per_robot": 48.076923,
+    "target_decay_exp": 1.0,
+    "reward_factor": 5.0,
+    "move_cost": 1.0,
+    "turn_cost": 0.3,
+    "visited_step_penalty": 4.0,
+    "min_step_cost": 0.01,
+    "async_step_mean_s": 1.6,
+    "async_step_jitter_s": 0.1,
+    "async_min_delay_s": 1.5,
+    "async_max_delay_s": 1.7,
+    "async_initial_spread_s": 0.1,
+    "async_tick_span_s": 0.25,
+    "turn_quarter_s": 0.3,
+    "replan_delay_s": 0.3,
+    "no_goal_delay_s": 0.5,
+    "comm_delay_s": 0.04,
+    "comm_delay_jitter_s": 0.01,
+    "collision_intent_settle_s": 0.1,
+    "collision_goal_backoff_max_s": 5.0,
+    "debug_max_events": 56268,
+    "write_parquet": false,
+    "commitment_horizon": 2,
+    "max_candidate_cells": null,
+    "logic_revision": "dcta_parity_v1",
+    "study_profile": "custom",
+    "scenario_file_sha256": "0690372b5c8441436ded53746c6b370f1aa18ebb7a7f2c9268e393591b984742",
+    "scenario_selection_sha256": "7dc2228f3c50b39b18dcc2d6aa0e782f452a5e52aac7edce7bf586c910277b48"
+  },
+  "logic_revision": "dcta_parity_v1",
+  "study_profile": "custom",
+  "scenario_file_sha256": "0690372b5c8441436ded53746c6b370f1aa18ebb7a7f2c9268e393591b984742",
+  "scenario_selection_sha256": "7dc2228f3c50b39b18dcc2d6aa0e782f452a5e52aac7edce7bf586c910277b48",
+  "expected_scenario_sha256": "",
+  "algorithm": "benchmark_sim.algorithms.PI:PIAllocator",
+  "algorithm_name": "PI",
+  "comm_model": "ideal",
+  "comm_level": "1.0",
+  "scenario_file": "reruns\\grid_density\\scenarios\\clips\\scaling_grid25_trials50.csv",
+  "trial_mode": "clue_search",
+  "seed": 723000,
+  "retry_failed": false
+}
