@@ -1,0 +1,114 @@
+{
+  "analysis_completed_utc": "2026-08-31T21:56:03+00:00",
+  "analysis_products": [
+    {
+      "path": "results/cv_computational_timing/analysis/timing_invocation_primary_10target.csv",
+      "sha256": "6fc24fe8f2a5eae27dab4ca4c13e7b1ff9ef3b2ff0ab54b640867460799b8389"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_invocation_scaling_summary.csv",
+      "sha256": "b23b9c7314138b72248d278f19dd6ac883fa5e686c007973af6bb536acffc335"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_cumulative_primary_10target.csv",
+      "sha256": "164fc5318e17ce912600c9a52475e6d28a245bd20d0ab9efa11fae3af91d6f5b"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_cumulative_scaling_summary.csv",
+      "sha256": "2911ca2618b5f9e73e536923e555f0c01961cf4a9fa24fededdf09d20c62f90f"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_call_frequency_summary.csv",
+      "sha256": "814ebd5cb193395a4da79ee0a872dd1a0dd7cd35c5cdfb24d37e0f20b101bd43"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_pairwise_tests.csv",
+      "sha256": "3231a905b8cdaf3bcd54ba4fcb16ca190b01f5c43ebd6230c7cde0782ae869b6"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_timeout_summary.csv",
+      "sha256": "ed69d4e1eb80f3b90663338e691c8ef948c8f19844d3ddd25ba4307d6a8c5a1f"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_figure_sources.csv",
+      "sha256": "6cb8b3a516ba3623a3a95d2d913b28d42fe4483c429e5eff6190091d8a0cb0dc"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_analysis_manifest.json",
+      "sha256": "a0af63c279f8b16daa864245552d73d4af436a14aa596df2764b86d3470930ba"
+    },
+    {
+      "path": "results/cv_computational_timing/TIMING_FINDINGS.md",
+      "sha256": "31a64e96c4551714c4c96fbcb4b9adfb02af85bcf7d5c43bf31359f3dabb2db9"
+    },
+    {
+      "path": "results/cv_computational_timing/PAPER_DATA_HANDOFF.md",
+      "sha256": "f9466954c68cc2744ae998734e3753eda72bcae2ea65c1421f5c2e0b7d3bc04f"
+    },
+    {
+      "path": "results/cv_computational_timing/figures/timing_invocation_vs_target_count.png",
+      "sha256": "65045d655127dcce35390d9f3aef0bfeb10b8d1f529ff688e8fa99a1390efb26"
+    },
+    {
+      "path": "results/cv_computational_timing/figures/timing_cumulative_vs_target_count.png",
+      "sha256": "99e4ddf83626bb14966cd905a8abd9db13feccfbe4366b7183afcbe603586aa0"
+    },
+    {
+      "path": "results/cv_computational_timing/figures/timing_call_count_vs_target_count.png",
+      "sha256": "55f300a7f4e244ee050c323f86d52aed180ea6764f14f29accc6bff3c0acddb6"
+    },
+    {
+      "path": "results/cv_computational_timing/figures/timing_per_invocation_vs_cumulative_10target.png",
+      "sha256": "68b709e9a8463e774cb932df9d206f38c4e8609eff0f61b7d1761bdaf7b2d5dc"
+    }
+  ],
+  "created_utc": "2026-08-31T21:56:00+00:00",
+  "immutable_job_manifest": "results/cv_computational_timing/manifests/jobs.jsonl",
+  "no_horizon_rerun_manifest": "results/cv_computational_timing/manifests/user_directed_no_horizon_rerun.json",
+  "outputs": [
+    {
+      "path": "results/cv_computational_timing/combined/timing_invocation_trial_level.csv",
+      "rows": 2400,
+      "sha256": "417882ed499b4c984951c95afcc49c6a896d8510fff0d3ed718e7eb55cbf7538"
+    },
+    {
+      "path": "results/cv_computational_timing/combined/timing_invocation_robot_level.csv",
+      "rows": 9600,
+      "sha256": "8f9676034582b2e06d381b28003c5ab76df416675ecb63abb7c5d54a8df382fa"
+    },
+    {
+      "path": "results/cv_computational_timing/combined/timing_mission_trial_level.csv",
+      "rows": 1350,
+      "sha256": "6b69346dd8a3896b8a64d19a9d6f7489501f07c758c5463b17a50b57abafb3c9"
+    },
+    {
+      "path": "results/cv_computational_timing/combined/timing_mission_robot_level.csv",
+      "rows": 5400,
+      "sha256": "034387c8d6c80bf89099316a5769a6caee0eab4ebc97989e2d5cba91dfda36fb"
+    },
+    {
+      "path": "results/cv_computational_timing/combined/timing_timeout_and_failure_log.csv",
+      "rows": 0,
+      "sha256": "13713ea69cf7d817e29e043336e2ddef37db62fcc91b4e46ad7e8f4d80a5c54f"
+    },
+    {
+      "path": "results/cv_computational_timing/combined/timing_condition_summary.csv",
+      "rows": 192,
+      "sha256": "c1f92932741b4b2fd0e4c6f715abfc7843cfb3cda4473856abc40d96db2da7d8"
+    },
+    {
+      "path": "results/cv_computational_timing/analysis/timing_final_validation.json",
+      "rows": null,
+      "sha256": "5d409785df5a88d299843f6537f0c0f0dae1b16015b26ae5bcf65e399a9ffe3e"
+    }
+  ],
+  "paired_bootstrap_iterations": 5000,
+  "raw_source": "results/cv_computational_timing/raw",
+  "raw_status_counts": {
+    "completed": 3750
+  },
+  "schema_version": 1,
+  "unit_of_analysis": "scenario_trial",
+  "validation_passed": true,
+  "validation_report": "results/cv_computational_timing/analysis/timing_final_validation.json"
+}

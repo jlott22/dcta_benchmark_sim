@@ -1,0 +1,49 @@
+experiment,algorithm,task_load,expected_jobs,completed_jobs,failed_jobs,timeout_jobs,completion_rate,timeout_rate,reporting_rule
+experiment1,CBAA,5,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,ACBBA,5,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,PI,5,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,HIPC,5,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,DMCHBA,5,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,DGA,5,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,CBAA,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,ACBBA,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,PI,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,HIPC,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,DMCHBA,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,DGA,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,CBAA,25,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,ACBBA,25,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,PI,25,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,HIPC,25,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,DMCHBA,25,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,DGA,25,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment1,CBAA,50,100,100,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment1,ACBBA,50,100,100,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment1,PI,50,100,100,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment1,HIPC,50,100,100,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment1,DMCHBA,50,100,100,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment1,DGA,50,100,100,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment2,CBAA,5,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,ACBBA,5,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,PI,5,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,HIPC,5,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,DMCHBA,5,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,DGA,5,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,CBAA,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,ACBBA,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,PI,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,HIPC,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,DMCHBA,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,DGA,10,100,100,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,CBAA,25,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,ACBBA,25,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,PI,25,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,HIPC,25,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,DMCHBA,25,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,DGA,25,50,50,0,0,1.0,0.0,all terminal outcomes retained
+experiment2,CBAA,50,25,25,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment2,ACBBA,50,25,25,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment2,PI,50,25,25,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment2,HIPC,50,25,25,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment2,DMCHBA,50,25,25,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate
+experiment2,DGA,50,25,25,0,0,1.0,0.0,completion and timeout rates first; successful timing values separate

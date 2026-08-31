@@ -1,0 +1,84 @@
+{
+  "canonical_source_checks": [
+    {
+      "expected_sha256": "7feb2c5f51a5c58b6ea61d4f0155a8cc2db625ed5af56d8f1503a1dfa9254d94",
+      "observed_sha256": "7feb2c5f51a5c58b6ea61d4f0155a8cc2db625ed5af56d8f1503a1dfa9254d94",
+      "passed": true,
+      "path": "results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_system_performance.csv"
+    },
+    {
+      "expected_sha256": "b942c419c6af21879b7d40b56f8c3370373367f86c7251ca16984c81827b8b5d",
+      "observed_sha256": "b942c419c6af21879b7d40b56f8c3370373367f86c7251ca16984c81827b8b5d",
+      "passed": true,
+      "path": "results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_trial_summary.csv"
+    },
+    {
+      "expected_sha256": "e9e6de461d8a91bac924a6449dac962116c3e8f37dd8fc60f0a2090710f7db7f",
+      "observed_sha256": "e9e6de461d8a91bac924a6449dac962116c3e8f37dd8fc60f0a2090710f7db7f",
+      "passed": true,
+      "path": "results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_robot_performance.csv"
+    },
+    {
+      "expected_sha256": "9e46591b00e4a15182307e27c60c7fd888d54ec733fb69b1b88d412d2cfd7706",
+      "observed_sha256": "9e46591b00e4a15182307e27c60c7fd888d54ec733fb69b1b88d412d2cfd7706",
+      "passed": true,
+      "path": "results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_condition_manifest.csv"
+    },
+    {
+      "expected_sha256": "d2df7dd1b59efa4d64d5abd6d3da1a9df0cf581a841ed65ac1bcb411617bd9a7",
+      "observed_sha256": "d2df7dd1b59efa4d64d5abd6d3da1a9df0cf581a841ed65ac1bcb411617bd9a7",
+      "passed": true,
+      "path": "results/known_target_visit_core_500/combined/target_performance_parts_manifest.csv"
+    },
+    {
+      "expected_sha256": "4ded7a464ed35b5ad1e0cfca2c0f969f463b36df1faab83667e95b352bf1b8aa",
+      "observed_sha256": "4ded7a464ed35b5ad1e0cfca2c0f969f463b36df1faab83667e95b352bf1b8aa",
+      "passed": true,
+      "path": "results/sensitivity_known_target_visit_grid_density_50/combined/system_performance.csv"
+    },
+    {
+      "expected_sha256": "ca3a9f343e35282627df47fc32838cbf182b8b2e82196c0ed3e7209cc5af9a8e",
+      "observed_sha256": "ca3a9f343e35282627df47fc32838cbf182b8b2e82196c0ed3e7209cc5af9a8e",
+      "passed": true,
+      "path": "results/sensitivity_known_target_visit_grid_density_50/combined/trial_summary.csv"
+    },
+    {
+      "expected_sha256": "40c1cea7e3f9ff87b6e63df78e8b2a070307ebee761727c97d7043ce13899236",
+      "observed_sha256": "40c1cea7e3f9ff87b6e63df78e8b2a070307ebee761727c97d7043ce13899236",
+      "passed": true,
+      "path": "results/sensitivity_known_target_visit_grid_density_50/combined/robot_performance.csv"
+    },
+    {
+      "expected_sha256": "f155efcc8b508a5b44897725a3dee76d06fc4406ba7351f53f63938d07653aa6",
+      "observed_sha256": "f155efcc8b508a5b44897725a3dee76d06fc4406ba7351f53f63938d07653aa6",
+      "passed": true,
+      "path": "results/sensitivity_known_target_visit_grid_density_50/combined/target_performance.csv"
+    },
+    {
+      "expected_sha256": "f7b642488586cac95246abe7d4b3ee2482ca5b9d7405c67ddc411c6f43fd9b35",
+      "observed_sha256": "f7b642488586cac95246abe7d4b3ee2482ca5b9d7405c67ddc411c6f43fd9b35",
+      "passed": true,
+      "path": "results/sensitivity_known_target_visit_grid_density_50/combined/condition_manifest.csv"
+    }
+  ],
+  "completed_non_50": 3000,
+  "duplicate_trial_rows": 0,
+  "expected_jobs": 3750,
+  "infrastructure_errors": [],
+  "issues": [],
+  "malformed_outputs": [],
+  "no_horizon_configuration": {
+    "DGA": "NoHorizonDGAAllocator; current active-task count; generic config unset; iterations=25",
+    "DMCHBA": "NoHorizonDMCHBAAllocator; current active-task count; generic config unset"
+  },
+  "paired_scenarios": 625,
+  "passed": true,
+  "result_records": 3750,
+  "schema_version": 1,
+  "scientific_timeouts": [],
+  "status_counts": {
+    "completed": 3750
+  },
+  "terminal_50": 750,
+  "validated_utc": "2026-08-31T21:56:00+00:00"
+}

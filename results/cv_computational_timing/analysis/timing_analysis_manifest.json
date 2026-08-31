@@ -1,0 +1,12 @@
+{
+  "completed_utc": "2026-08-31T21:56:03+00:00",
+  "inferential_loads": [
+    5,
+    10,
+    25
+  ],
+  "paired_bootstrap_iterations": 5000,
+  "statistics": "Friedman omnibus, Kendall W, Wilcoxon signed-rank normal approximation, Holm within metric-load family, paired bootstrap mean-difference CI",
+  "stress_load": 50,
+  "unit_of_analysis": "scenario_trial"
+}

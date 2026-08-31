@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-31T00:00:00Z",
+  "repository": {
+    "path": "C:/Users/lottj/Desktop/research/decentralized benchmark/dcta_benchmark_sim",
+    "head_commit": "d27fb17a7832374ec791a8efabda303fbdfcb4de",
+    "head_branch": "agent/sync-analysis-and-results-20260809",
+    "origin_main_commit": "d27fb17a7832374ec791a8efabda303fbdfcb4de",
+    "local_main_commit": "749533fee9124942d064656a233b3befb4624467",
+    "worktree_state": "Pre-existing dirty worktree; 1,675 porcelain entries were present before this study. No reset, checkout, or existing-data write was performed."
+  },
+  "authority_rule": "The current-worktree integration manifests and their matching hashes establish authority. RELEASE_MANIFEST.csv predates the integrations and is not authoritative for the active CV files.",
+  "core_cv": {
+    "integration_manifest": "results/CORE_RERUN_INTEGRATION_MANIFEST.json",
+    "combined_root": "results/known_target_visit_core_500/combined",
+    "scenario": {
+      "path": "scenarios/known_visit_g19_t10_n500.csv",
+      "sha256": "064c7d15a551e1299c4630fa8d9ca178265bb33c0bc13a3dc1061d44411039c1",
+      "grid_size": 19,
+      "robot_count": 4,
+      "target_count": 10,
+      "robot_start_layout": "edge_even"
+    },
+    "files": [
+      {
+        "path": "results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_system_performance.csv",
+        "rows": 75000,
+        "sha256": "7feb2c5f51a5c58b6ea61d4f0155a8cc2db625ed5af56d8f1503a1dfa9254d94"
+      },
+      {
+        "path": "results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_trial_summary.csv",
+        "rows": 75000,
+        "sha256": "b942c419c6af21879b7d40b56f8c3370373367f86c7251ca16984c81827b8b5d"
+      },
+      {
+        "path": "results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_robot_performance.csv",
+        "rows": 300000,
+        "sha256": "e9e6de461d8a91bac924a6449dac962116c3e8f37dd8fc60f0a2090710f7db7f"
+      },
+      {
+        "path": "results/known_target_visit_core_500/combined/known_target_visit_core_500_combined_condition_manifest.csv",
+        "rows": 150,
+        "sha256": "9e46591b00e4a15182307e27c60c7fd888d54ec733fb69b1b88d412d2cfd7706"
+      },
+      {
+        "path": "results/known_target_visit_core_500/combined/target_performance_parts_manifest.csv",
+        "rows": 6,
+        "sha256": "d2df7dd1b59efa4d64d5abd6d3da1a9df0cf581a841ed65ac1bcb411617bd9a7",
+        "expanded_target_rows": 750000
+      }
+    ],
+    "coverage": {
+      "algorithms": ["CBAA", "ACBBA", "PI", "HIPC", "DMCHBA", "DGA"],
+      "communication_conditions": 25,
+      "paired_trials_per_algorithm_condition": 500,
+      "pairing_check": "passed; each condition has the same 500 trial IDs for all six algorithms",
+      "trial_status_counts": {"completed": 75000, "failed": 0}
+    },
+    "active_metadata": {
+      "CBAA": {"recorded_commitment_horizon": 1, "dga_iterations": null},
+      "ACBBA": {"recorded_commitment_horizon": 2, "dga_iterations": null},
+      "PI": {"recorded_commitment_horizon": 2, "dga_iterations": null},
+      "HIPC": {"recorded_commitment_horizon": 2, "dga_iterations": null},
+      "DMCHBA": {"recorded_commitment_horizon": 3, "dga_iterations": null},
+      "DGA": {"recorded_commitment_horizon": 3, "dga_iterations": 25}
+    }
+  },
+  "grid_density_cv": {
+    "integration_manifest": "results/GRID_DENSITY_RERUN_INTEGRATION_MANIFEST.json",
+    "combined_root": "results/sensitivity_known_target_visit_grid_density_50/combined",
+    "files": [
+      {
+        "path": "results/sensitivity_known_target_visit_grid_density_50/combined/system_performance.csv",
+        "rows": 9600,
+        "sha256": "4ded7a464ed35b5ad1e0cfca2c0f969f463b36df1faab83667e95b352bf1b8aa"
+      },
+      {
+        "path": "results/sensitivity_known_target_visit_grid_density_50/combined/trial_summary.csv",
+        "rows": 9600,
+        "sha256": "ca3a9f343e35282627df47fc32838cbf182b8b2e82196c0ed3e7209cc5af9a8e"
+      },
+      {
+        "path": "results/sensitivity_known_target_visit_grid_density_50/combined/robot_performance.csv",
+        "rows": 66000,
+        "sha256": "40c1cea7e3f9ff87b6e63df78e8b2a070307ebee761727c97d7043ce13899236"
+      },
+      {
+        "path": "results/sensitivity_known_target_visit_grid_density_50/combined/target_performance.csv",
+        "rows": 96000,
+        "sha256": "f155efcc8b508a5b44897725a3dee76d06fc4406ba7351f53f63938d07653aa6"
+      },
+      {
+        "path": "results/sensitivity_known_target_visit_grid_density_50/combined/condition_manifest.csv",
+        "rows": 192,
+        "sha256": "f7b642488586cac95246abe7d4b3ee2482ca5b9d7405c67ddc411c6f43fd9b35"
+      }
+    ],
+    "coverage": {
+      "grid_sizes": [14, 19, 25, 34],
+      "nominal_cells_per_robot": [50, 85, 140, 220],
+      "communication_conditions": ["ideal", "bernoulli_025"],
+      "algorithm_condition_blocks": 32,
+      "algorithms": ["CBAA", "ACBBA", "PI", "HIPC", "DMCHBA", "DGA"],
+      "paired_trials_per_algorithm_condition": 50,
+      "pairing_check": "passed; each grid/density/communication block has the same 50 trial IDs for all six algorithms",
+      "trial_status_counts": {"completed": 9591, "failed": 9}
+    },
+    "failed_trial_accounting": {
+      "ACBBA RuntimeError": 1,
+      "DGA_iter_25 RuntimeError": 1,
+      "DMCHBA RuntimeError": 2,
+      "HIPC RuntimeError": 5
+    }
+  },
+  "exclusions": [
+    "results/archive/pre_core_rerun_integration_20260820",
+    "reruns/archive",
+    "Historical raw locations referenced only by provenance columns",
+    "results/RELEASE_MANIFEST.csv for current active-CV integrity claims"
+  ],
+  "unresolved_scientific_provenance_discrepancy": "Active source/data metadata still expose commitment horizon 3 for DMCHBA and DGA. The timing campaign supplies no study-level generic horizon override to either production allocator and documents that separation; it does not edit or relabel canonical data."
+}
